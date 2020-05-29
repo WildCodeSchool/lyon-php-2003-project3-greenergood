@@ -1,0 +1,76 @@
+h1 {
+  font-size: 40px;
+  font-family: "Lobster", cursive;
+}
+
+h2 {
+  font-size: 24px;
+  font-family: "Lobster", cursive;
+}
+
+.greyOnWhite {
+  color: #5F5F5F;
+}
+
+.greenOnWhite {
+  color: #5AAFAA;
+}
+
+.whiteOnGreen {
+  color: white;
+  background-color: #5AAFAA;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.plusbutton {
+  background-color: #5AAFAA;
+  /* Green */
+  border: none;
+  border-radius: 100%;
+  color: #5F5F5F;
+  padding: 0px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 4em;
+}
+
+.cardaction {
+  border: none;
+  margin: 10px;
+}
+.cardaction a:hover {
+  text-decoration: none;
+}
+.cardaction img {
+  position: relative;
+}
+.cardaction .card-body {
+  text-align: center;
+  text-decoration: none;
+  border: none;
+}
+.cardaction .card-title {
+  font-size: 16px;
+  color: #5AAFAA;
+}
+.cardaction .card-text {
+  color: #5F5F5F;
+}
+.cardaction .badge {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+.cardaction .canceled {
+  background-color: blueviolet;
+}
+.cardaction .ongoing {
+  background-color: #5AAFAA;
+}
+.cardaction .past {
+  background-color: cornflowerblue;
+}
+
+/*# sourceMappingURL=style.css.map */

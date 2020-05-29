@@ -1,0 +1,87 @@
+// Colors
+$primarycolor :#5AAFAA;
+$secondarycolor : #FDEE6E;
+$tertiarycolor : #5F5F5F;
+
+// Fonts
+$titlefont : 'Lobster', cursive;
+$textfont : 'Montserrat', sans-serif;
+
+// Font size
+$h1size : 40px;
+$h2size : 24px;
+$textsize : 16px;
+
+h1{
+  font-size: $h1size;
+  font-family: $titlefont;
+}
+
+h2{
+  font-size: $h2size;
+  font-family: $titlefont;
+}
+
+.greyOnWhite{
+  color: $tertiarycolor;
+}
+
+.greenOnWhite{
+  color: $primarycolor;
+}
+
+.whiteOnGreen{
+  color: white;
+  background-color: $primarycolor;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.plusbutton {
+  background-color: $primarycolor; /* Green */
+  border: none;
+  border-radius: 100%;
+  color: $tertiarycolor;
+  padding: 0px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 4em;
+}
+
+.cardaction{
+  border: none;
+  margin: 10px;
+    a:hover{
+      text-decoration: none;
+    }
+  img{
+    position: relative;
+  }
+  .card-body{
+    text-align: center;
+    text-decoration: none;
+    border: none;
+  }
+  .card-title{
+    font-size: $textsize;
+    color: $primarycolor;
+  }
+  .card-text{
+    color: $tertiarycolor;
+  }
+  .badge{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  .canceled{
+    background-color: blueviolet;
+  }
+  .ongoing{
+    background-color: $primarycolor;
+  }
+  .past{
+    background-color: cornflowerblue;
+  }
+}
