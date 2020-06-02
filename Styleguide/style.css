@@ -1,3 +1,4 @@
+@charset "UTF-8";
 h1 {
   font-size: 40px;
   font-family: "Lobster", cursive;
@@ -88,6 +89,47 @@ h2 {
 
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+.cardmethod {
+  border-radius: 25px;
+  border-color: white;
+  display: flex;
+  width: 20rem;
+  justify-content: center;
+  align-items: center;
+}
+.cardmethod .card-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cardmethod .card-body {
+  text-align: center;
+}
+.cardmethod .card-title {
+  font-family: "Montserrat", sans-serif;
+  color: #5F5F5F;
+}
+.cardmethod .threeDots:after {
+  content: "︙";
+  font-size: 35px;
+  font-weight: bold;
+  color: #5AAFAA;
+  opacity: 50%;
+  margin: 15px;
+  padding-bottom: 15px;
+}
+.cardmethod a {
+  text-decoration: none;
+}
+.cardmethod a:hover {
+  text-decoration: none;
+}
+.cardmethod .card-img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

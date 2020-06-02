@@ -110,3 +110,44 @@ h2{
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
+
+.cardmethod {
+  border-radius: 25px;
+  border-color: white;
+  display: flex;
+  width: 20rem;
+  justify-content: center;
+  align-items: center;
+  .card-head {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .card-body {
+    text-align: center;
+  }
+  .card-title{
+    font-family: $textfont;
+    color: $tertiarycolor;
+  }
+  .threeDots:after {
+      content: '\FE19';
+      font-size: 35px;
+      font-weight: bold;
+      color: $primarycolor;
+      opacity: 50%;
+      margin: 15px;
+      padding-bottom: 15px;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .card-img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+}
