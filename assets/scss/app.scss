@@ -98,6 +98,7 @@ h2{
     -webkit-transition-property: box-shadow;
     transition-property: box-shadow;
 }
+
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
@@ -109,18 +110,22 @@ h2{
     width: 20rem;
     justify-content: center;
     align-items: center;
+
     .card-head {
         display:flex;
         flex-direction: row;
         align-items: center;
     }
+
     .card-body {
         text-align: center;
     }
+
     .card-title{
         font-family: $textfont;
         color: $tertiarycolor;
     }
+
     .threeDots:after {
         content: '\FE19';
         font-size: 35px;
@@ -130,12 +135,15 @@ h2{
         margin: 15px;
         padding-bottom: 15px;
     }
+
     a {
         text-decoration: none;
     }
+
     a:hover {
         text-decoration: none;
     }
+
     .card-img {
         border-radius: 50%;
         height: 100px;
@@ -154,35 +162,43 @@ h2{
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .footerLink {
         margin: 10px;
+
         a {
             text-decoration: none;
             font-size: 16px;
             color: $primarycolor;
+
             &:hover, &:active {
                 text-decoration: underline;
             }
         }
     }
+
     .footerImgContainer {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         margin: 10px;
+
         .footerImg {
             width: 40px;
             height: 40px;
             margin: 0 5px;
         }
+
         .footerBig {
             width: 30px;
             height: 30px;
             margin: 5px 10px 0 10px;
         }
     }
+
     .footerMessage {
         color: $tertiarycolor;
+        
         p {
             text-align: center;
             font-size: 12px;
