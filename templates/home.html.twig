@@ -1,0 +1,23 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+<h1 class="greenOnWhite container-center">Qu'est ce que la Gare Centrale ?</h1>
+
+
+    <div class="container-center">
+    <div class="whiteOnGreen text-center link-box">
+        <h2><a href="#" class="link-of-linkbox">Retrouver les actions en cours</a></h2>
+        <hr class="col-3" />
+        <h2><a href="{{ path('method_show') }}" class="link-of-linkbox">Découvrir les fiches méthodes</a></h2>
+        <hr class="col-3" />
+        <h2><a href="#" class="link-of-linkbox">Ouvrir l'agenda</a></h2>
+        <hr class="col-3" />
+        <h2><a href="{{ path('trombinoscope_show') }}" class="link-of-linkbox">Accéder au trombinoscope</a></h2>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
