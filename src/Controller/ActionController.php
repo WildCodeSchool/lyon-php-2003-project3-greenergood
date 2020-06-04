@@ -9,6 +9,7 @@ use App\Repository\ActionRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/action", name="action_")
@@ -37,7 +38,7 @@ class ActionController extends AbstractController
             $entityManager->flush();
 
             // When the SHOW method is coded, delete this line and uncomment the next two lines
-            return $this->redirectToRoute("action_add");
+            return $this->redirectToRoute("action_new");
             // Redirect to the page of the Action
             // return $this->redirectToRoute("action_show");
         }

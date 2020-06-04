@@ -3,8 +3,10 @@
 {%  block title %}Nouvelle fiche Action{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle Action</h1>
+    <div class="action-form">
+        <h1 class="greenOnWhite">Créer une nouvelle fiche Action</h1>
 
-    {{ include('/action/_form.thml.twig') }}
+        {{ include('/action/_form.html.twig') }}
+    </div>
 
 {% endblock %}

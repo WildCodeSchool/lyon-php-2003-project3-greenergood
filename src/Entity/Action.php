@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ActionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ActionRepository::class)
@@ -19,48 +20,72 @@ class Action
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom ne devrait pas être vide")
+     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotNull(message="Le numéro d'édition ne devrait pas être nul",)
      */
-    private $editNumber;
+    private $editionNumber;
+
+    /**
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive()
+     */
+    private $number;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max="255",
+     *     maxMessage="Le lien ne devrait pas dépasser {{ limit }} caractères",
+     * )
      */
     private $actionPicture;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="La description ne devrait pas être vide")
+     * @Assert\Length(max="255", maxMessage="La description ne devrait pas dépasser {{ limit }} caractères")
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime()
      */
     private $startDate;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
      */
     private $endDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255",
+     *     maxMessage="Le lieu ne devrait pas dépasser {{ limit }} caractères",
+     * )
      */
-    private $area;
+    private $location;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $textarea;
+    private $content;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Choice(
+     *     choices = { "En cours", "Terminé", "Annulé" }
+     * )
      */
-    private $status;
+    private $status = 'En cours';
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -84,14 +109,14 @@ class Action
         return $this;
     }
 
-    public function getEditNumber(): ?int
+    public function getEditionNumber(): ?int
     {
-        return $this->editNumber;
+        return $this->editionNumber;
     }
 
-    public function setEditNumber(int $editNumber): self
+    public function setEditionNumber(int $editionNumber): self
     {
-        $this->editNumber = $editNumber;
+        $this->editionNumber = $editionNumber;
 
         return $this;
     }
@@ -144,26 +169,26 @@ class Action
         return $this;
     }
 
-    public function getArea(): ?string
+    public function getLocation(): ?string
     {
-        return $this->area;
+        return $this->location;
     }
 
-    public function setArea(?string $area): self
+    public function setLocation(?string $location): self
     {
-        $this->area = $area;
+        $this->location = $location;
 
         return $this;
     }
 
-    public function getTextarea(): ?string
+    public function getContent(): ?string
     {
-        return $this->textarea;
+        return $this->content;
     }
 
-    public function setTextarea(?string $textarea): self
+    public function setContent(?string $content): self
     {
-        $this->textarea = $textarea;
+        $this->content = $content;
 
         return $this;
     }
@@ -188,6 +213,18 @@ class Action
     public function setProjectProgress(?string $projectProgress): self
     {
         $this->projectProgress = $projectProgress;
+
+        return $this;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(int $number): self
+    {
+        $this->number = $number;
 
         return $this;
     }

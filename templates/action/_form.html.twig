@@ -1,4 +1,10 @@
-{{ form_start(form) }}
+{# Generate a form from the $form variable in the ActionController.php method "new" #}
+
+ {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}    {{ form_errors(form) }}
     {{ form_widget(form) }}
-<button>{{ button_label|default('Save') }}</button>
+
+    <div class="col-12 text-center">
+        <button class="btn form-button">{{ button_label|default('Créer la fiche action') }}</button>
+    </div>
+
 {{ form_end(form) }}
