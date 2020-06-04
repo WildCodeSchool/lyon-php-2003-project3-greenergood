@@ -2,214 +2,213 @@
 @import "~bootstrap/scss/bootstrap";
 
 @mixin flexCenter($direction) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
 }
 
 h1 {
-  font-size: $h1size;
-  font-family: $titlefont;
+    font-size: $h1size;
+    font-family: $titlefont;
 }
 
 h2 {
-  font-size: $h2size;
-  font-family: $titlefont;
+    font-size: $h2size;
+    font-family: $titlefont;
 }
 
 .greyOnWhite {
-  color: $tertiarycolor;
+    color: $tertiarycolor;
 }
 
 .greenOnWhite {
-  color: $primarycolor;
+    color: $primarycolor;
 }
 
 .whiteOnGreen {
-  color: white;
-  background-color: $primarycolor;
-  padding: 5px;
-  border-radius: 5px;
+    color: white;
+    background-color: $primarycolor;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .plusbutton {
-  background-color: $primarycolor; /* Green */
-  border: none;
-  border-radius: 100%;
-  color: $tertiarycolor;
-  padding: 0px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 4em;
+    background-color: $primarycolor; /* Green */
+    border: none;
+    border-radius: 100%;
+    color: $tertiarycolor;
+    padding: 0px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4em;
 }
 
 .cardaction {
-  border: none;
-  margin: 10px;
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  img {
-    position: relative;
-  }
-
-  .card-body {
-    text-align: center;
-    text-decoration: none;
     border: none;
-  }
+    margin: 10px;
 
-  .card-title {
-    font-size: $textsize;
-    color: $primarycolor;
-  }
+    a:hover {
+        text-decoration: none;
+    }
 
-  .card-text {
-    color: $tertiarycolor;
-  }
+    img {
+        position: relative;
+    }
 
-  .badge {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-  }
+    .card-body {
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
 
-  .canceled {
-    background-color: blueviolet;
-  }
+    .card-title {
+        font-size: $textsize;
+        color: $primarycolor;
+    }
 
-  .ongoing {
-    background-color: $primarycolor;
-  }
+    .card-text {
+        color: $tertiarycolor;
+    }
 
-  .past {
-    background-color: cornflowerblue;
-  }
+    .badge {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+    }
+
+    .canceled {
+        background-color: blueviolet;
+    }
+
+    .ongoing {
+        background-color: $primarycolor;
+    }
+
+    .past {
+        background-color: cornflowerblue;
+    }
 }
 
 /* Glow */
 .hvr-glow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
 }
 
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
 
 .cardmethod {
-  border-radius: 25px;
-  border-color: white;
-  display: flex;
-  width: 20rem;
-  justify-content: center;
-  align-items: center;
-
-  .card-head {
+    border-radius: 25px;
+    border-color: white;
     display: flex;
-    flex-direction: row;
+    width: 20rem;
+    justify-content: center;
     align-items: center;
-  }
 
-  .card-body {
-    text-align: center;
-  }
+    .card-head {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
-  .card-title {
-    font-family: $textfont;
-    color: $tertiarycolor;
-  }
+    .card-body {
+        text-align: center;
+    }
 
-  .threeDots:after {
-    content: '\FE19';
-    font-size: 35px;
-    font-weight: bold;
-    color: $primarycolor;
-    opacity: 50%;
-    margin: 15px;
-    padding-bottom: 15px;
-  }
+    .card-title {
+        font-family: $textfont;
+        color: $tertiarycolor;
+    }
 
-  a {
-    text-decoration: none;
-    font-family: $textfont;
-  }
+    .threeDots:after {
+        content: '\FE19';
+        font-size: 35px;
+        font-weight: bold;
+        color: $primarycolor;
+        opacity: 50%;
+        margin: 15px;
+        padding-bottom: 15px;
+    }
 
-  a:hover {
-    text-decoration: none;
-  }
+    a {
+        text-decoration: none;
+        font-family: $textfont;
+    }
 
-  .card-img {
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-  }
+    a:hover {
+        text-decoration: none;
+    }
+
+    .card-img {
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+    }
 }
-
 /* TABLET VIEW SMALL TO MEDIUM */
 @media all and (max-width: 768px) {
 
-  .container-center {
-    @include flexCenter(column);
-  }
+    .container-center {
+        @include flexCenter(column);
+    }
 
-  .link-box {
-    border-radius: 30px;
-    padding: 50px;
-    margin: 20px;
-  }
+    .link-box {
+        border-radius: 30px;
+        padding: 50px;
+        margin: 20px;
+    }
 
-  .link-of-linkbox {
-    font-size: 1.8rem;
-    color: #FFFFFF;
-  }
+    .link-of-linkbox {
+        font-size: 1.8rem;
+        color: #FFFFFF;
+    }
 
-  hr {
-    padding: 1px;
-    background: #FFF;
-  }
+    hr {
+        padding: 1px;
+        background:#FFF;
+    }
 
-  a:hover {
-    text-decoration: none;
-  }
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 /* DESKTOP VIEW LARGE */
 @media all and (min-width: 769px) {
 
-  .container-center {
-    @include flexCenter(column);
-  }
+    .container-center {
+        @include flexCenter(column);
+    }
 
-  .link-box {
-    border-radius: 30px;
-    width: 35%;
-    padding: 30px;
-  }
+    .link-box {
+        border-radius: 30px;
+        width: 35%;
+        padding: 30px;
+    }
 
-  .link-of-linkbox {
-    font-size: 2rem;
-    color: #FFFFFF;
-  }
+    .link-of-linkbox {
+        font-size: 2rem;
+        color: #FFFFFF;
+    }
 
-  hr {
-    padding: 1px;
-    background: #FFF;
-  }
+    hr {
+        padding: 1px;
+        background:#FFF;
+    }
 
-  a:hover {
-    text-decoration: none;
-    color: $secondarycolor;
-  }
+    a:hover {
+        text-decoration: none;
+        color : $secondarycolor;
+    }
 }
