@@ -9,4 +9,15 @@
 require('../scss/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
+const $ = require('jquery');
+
+// JS threeDots action sheet.
+$(document).ready(function(){
+
+    $(".menu").hide();
+    $(".threeDots").show();
+
+    $('.threeDots').click(function(){
+        $(".menu").toggle();
+    });
+});
