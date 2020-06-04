@@ -1,27 +1,25 @@
 @import "vars";
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import "../../node_modules/bootstrap";
 
-// Media Query Breakpoint: 768 px
-
-h1{
+h1 {
     font-size: $h1size;
     font-family: $titlefont;
 }
 
-h2{
+h2 {
     font-size: $h2size;
     font-family: $titlefont;
 }
 
-.greyOnWhite{
+.greyOnWhite {
     color: $tertiarycolor;
 }
 
-.greenOnWhite{
+.greenOnWhite {
     color: $primarycolor;
 }
 
-.whiteOnGreen{
+.whiteOnGreen {
     color: white;
     background-color: $primarycolor;
     padding: 5px;
@@ -112,7 +110,7 @@ h2{
     align-items: center;
 
     .card-head {
-        display:flex;
+        display: flex;
         flex-direction: row;
         align-items: center;
     }
@@ -121,7 +119,7 @@ h2{
         text-align: center;
     }
 
-    .card-title{
+    .card-title {
         font-family: $textfont;
         color: $tertiarycolor;
     }
@@ -148,6 +146,33 @@ h2{
         border-radius: 50%;
         height: 100px;
         width: 100px;
+    }
+}
+
+// NAVBAR
+
+nav {
+    font-family: "Montserrat", sans-serif;
+}
+
+.navbar {
+    background-color: $primarycolor;
+    padding: 0 1rem;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-brand {
+    padding: 0;
+
+    img {
+        height: 80px;
     }
 }
 
