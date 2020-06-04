@@ -157,6 +157,32 @@ h2 {
     }
 }
 
+// NAVBAR
+
+nav {
+    font-family: "Montserrat", sans-serif;
+}
+
+.navbar {
+    background-color: $primarycolor;
+    padding: 0 1rem;
+}
+
+.navbar-nav {
+    margin: auto;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-brand {
+    padding: 0;
+    
+    img {
+        height: 80px;
+    }
+
 /* TABLET VIEW SMALL TO MEDIUM */
 @media all and (max-width: 768px) {
 
@@ -211,31 +237,5 @@ h2 {
     a:hover {
         text-decoration: none;
         color : $secondarycolor;
-      
-// NAVBAR
-
-nav {
-    font-family: "Montserrat", sans-serif;
-}
-
-.navbar {
-    background-color: $primarycolor;
-    padding: 0 1rem;
-}
-
-.navbar-nav {
-    margin: auto;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: white;
-}
-
-.navbar-brand {
-    padding: 0;
-    
-    img {
-        height: 80px;
     }
-}
 }
