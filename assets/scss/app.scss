@@ -1,6 +1,7 @@
 @import "vars";
 @import "~bootstrap/scss/bootstrap";
 
+//Function to center block
 @mixin flexCenter($direction) {
     display: flex;
     justify-content: center;
@@ -156,9 +157,8 @@ h2 {
         width: 100px;
     }
 }
-/* TABLET VIEW SMALL TO MEDIUM */
-@media all and (max-width: 768px) {
 
+    //Box containing the links in the homepage
     .container-center {
         @include flexCenter(column);
     }
@@ -176,17 +176,43 @@ h2 {
 
     hr {
         padding: 1px;
-        background:#FFF;
+        background: #FFF;
     }
 
     a:hover {
         text-decoration: none;
     }
-}
+
+    //Button to redirect to the new benevole page
+    .button-new-benevole {
+        @include flexCenter(row);
+        color: $primarycolor;
+
+        img {
+            height: 35px;
+        }
+
+        h4 {
+            background-color: $secondarycolor;
+            font-size: 16px;
+            padding-left: 5px;
+        }
+
+        .logo-new {
+            z-index: 1;
+            height: 70px;
+            margin-left: -19px;
+        }
+
+        .arrow_benevole {
+            padding: 0px 20px 0px 15px;
+        }
+    }
 
 /* DESKTOP VIEW LARGE */
 @media all and (min-width: 769px) {
 
+    //Box containing the links in the homepage
     .container-center {
         @include flexCenter(column);
     }
@@ -204,11 +230,37 @@ h2 {
 
     hr {
         padding: 1px;
-        background:#FFF;
+        background: #FFF;
     }
 
     a:hover {
         text-decoration: none;
-        color : $secondarycolor;
+        color: $secondarycolor;
+    }
+
+    //Button to redirect to the new benevole page
+    .button-new-benevole {
+       @include flexCenter(row);
+        color: $primarycolor;
+
+        img {
+            height: 80px;
+        }
+
+        h4 {
+            background-color: $secondarycolor;
+            padding-left: 15px;
+            font-size: 24px;
+        }
+
+        .logo-new {
+            z-index: 1;
+            height: 140px;
+            margin-left: -19px;
+        }
+
+        .arrow_benevole {
+            padding: 0px 50px 0px 50px;
+        }
     }
 }
