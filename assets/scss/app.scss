@@ -17,6 +17,7 @@ body {
     padding-top: 80px;
 }
 
+
 h1 {
     font-size: $h1size;
     font-family: $titlefont;
@@ -388,4 +389,52 @@ nav {
         flex-direction: row;
         justify-content: space-between;
     }
+}
+
+/*MINI MENU*/
+a {
+    color: $warm-color;
+}
+
+.mini-menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* CSS threeDots */
+.threeDots:after {
+    content: "...";
+    font-size: 35px;
+    font-weight: bold;
+    color: #5AAFAA;
+    opacity: 50%;
+    margin: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+
+.menu a {
+    list-style-type: none;
+    padding:6px 12px;
+    margin-right: -0.56em;
+    margin-left: -0.56em;
+    color: white;
+    font-family: $textfont;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #5F5F5F;
+}
+
+.action {
+    color: white;
+    margin: 0;
+}
+
+.menu {
+    text-decoration: none;
+    display:inline-block;
+    position:relative;
+    text-align: center;
+    margin: 0;
 }

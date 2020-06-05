@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Entity\Action;
@@ -16,6 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ActionController extends AbstractController
 {
+    /**
+     * @Route("/", name="index")
+     */
+    public function index() :Response
+    {
+        return $this->render('/action.html.twig');
+    }
+  
     /**
      * Method used to add a new Action file to the database
      *
