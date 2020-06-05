@@ -302,62 +302,6 @@ nav {
     }
 }
 
-/* TABLET VIEW SMALL TO MEDIUM */
-@media all and (max-width: 768px) {
-
-    .container-center {
-        @include flexCenter(column);
-    }
-
-    .link-box {
-        border-radius: 30px;
-        padding: 50px;
-        margin: 20px;
-    }
-
-    .link-of-linkbox {
-        font-size: 1.8rem;
-        color: #FFFFFF;
-    }
-
-    hr {
-        padding: 1px;
-        background:#FFF;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-}
-
-/* DESKTOP VIEW LARGE */
-@media all and (min-width: 769px) {
-
-    .container-center {
-        @include flexCenter(column);
-    }
-
-    .link-box {
-        border-radius: 30px;
-        width: 35%;
-        padding: 30px;
-    }
-
-    .link-of-linkbox {
-        font-size: 2rem;
-        color: #FFFFFF;
-    }
-
-    hr {
-        padding: 1px;
-        background:#FFF;
-    }
-
-    a:hover {
-        text-decoration: none;
-        color : $secondarycolor;
-    }
-
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
