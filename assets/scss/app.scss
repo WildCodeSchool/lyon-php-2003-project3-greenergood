@@ -9,9 +9,19 @@
     flex-direction: $direction;
 }
 
+html {
+    scroll-padding-top: 80px;
+}
+
+body {
+    padding-top: 80px;
+}
+
 h1 {
     font-size: $h1size;
     font-family: $titlefont;
+    text-align: center;
+    padding: 20px;
 }
 
 h2 {
@@ -290,6 +300,29 @@ nav {
     img {
         height: 80px;
     }
+}
+
+/* NEW ACTION PAGE STYLING */
+.action-form {
+    width: 90%;
+    margin: auto auto;
+}
+
+.form-button {
+    background-color: $primarycolor;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    &:hover {
+        color: $secondarycolor;
+    }
+}
+
+.col-form-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8em;
 }
 
 /* FOOTER */
