@@ -1,10 +1,28 @@
 @import "vars";
-@import "../../node_modules/bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+//Function to center block
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+body {
+    padding-top: 80px;
+}
 
 
 h1 {
     font-size: $h1size;
     font-family: $titlefont;
+    text-align: center;
+    padding: 20px;
 }
 
 h2 {
@@ -137,6 +155,7 @@ h2 {
 
     a {
         text-decoration: none;
+        font-family: $textfont;
     }
 
     a:hover {
@@ -147,6 +166,113 @@ h2 {
         border-radius: 50%;
         height: 100px;
         width: 100px;
+    }
+}
+
+//Box containing the links in the homepage
+.container-center {
+    @include flexCenter(column);
+}
+
+.link-box {
+    border-radius: 30px;
+    padding: 50px;
+    margin: 20px;
+}
+
+.link-of-linkbox {
+    font-size: 1.8rem;
+    color: #FFFFFF;
+}
+
+hr {
+    padding: 1px;
+    background: #FFF;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+//Button to redirect to the new benevole page
+.button-new-benevole {
+    @include flexCenter(row);
+    color: $primarycolor;
+
+    img {
+        height: 35px;
+    }
+
+    h4 {
+        background-color: $secondarycolor;
+        font-size: 16px;
+        padding-left: 5px;
+    }
+
+    .logo-new {
+        z-index: 1;
+        height: 70px;
+        margin-left: -19px;
+    }
+
+    .arrow_benevole {
+        padding: 0px 20px 0px 15px;
+    }
+}
+
+/* DESKTOP VIEW LARGE */
+@media all and (min-width: 769px) {
+
+    //Box containing the links in the homepage
+    .container-center {
+        @include flexCenter(column);
+    }
+
+    .link-box {
+        border-radius: 30px;
+        width: 35%;
+        padding: 30px;
+    }
+
+    .link-of-linkbox {
+        font-size: 2rem;
+        color: #FFFFFF;
+    }
+
+    hr {
+        padding: 1px;
+        background: #FFF;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: $secondarycolor;
+    }
+
+    //Button to redirect to the new benevole page
+    .button-new-benevole {
+        @include flexCenter(row);
+        color: $primarycolor;
+
+        img {
+            height: 80px;
+        }
+
+        h4 {
+            background-color: $secondarycolor;
+            padding-left: 15px;
+            font-size: 24px;
+        }
+
+        .logo-new {
+            z-index: 1;
+            height: 140px;
+            margin-left: -19px;
+        }
+
+        .arrow_benevole {
+            padding: 0px 50px 0px 50px;
+        }
     }
 }
 
@@ -175,6 +301,29 @@ nav {
     img {
         height: 80px;
     }
+}
+
+/* NEW ACTION PAGE STYLING */
+.action-form {
+    width: 90%;
+    margin: auto auto;
+}
+
+.form-button {
+    background-color: $primarycolor;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    &:hover {
+        color: $secondarycolor;
+    }
+}
+
+.col-form-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8em;
 }
 
 /* FOOTER */
@@ -242,7 +391,7 @@ nav {
     }
 }
 
-/*MINI MENU
+/*MINI MENU*/
 a {
     color: $warm-color;
 }
