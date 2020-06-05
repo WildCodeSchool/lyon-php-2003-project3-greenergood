@@ -12,12 +12,10 @@ require('../scss/app.scss');
 const $ = require('jquery');
 
 // JS threeDots action sheet.
-$(document).ready(function(){
-
-    $(".menu").hide();
-    $(".threeDots").show();
-
-    $('.threeDots').click(function(){
-        $(".menu").toggle();
+$(document).ready(function showThreeDots() {
+    $('.menu').hide();
+    $('.threeDots').show();
+    $('.threeDots').click(function showThreeDots() {
+        $('.menu').toggle();
     });
 });
