@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\MethodRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=MethodRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\MethodRepository", repositoryClass=MethodRepository::class)
  */
 class Method
 {
@@ -19,13 +20,15 @@ class Method
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $cardNumber;
+    private $cardNumber = 1;
 
     /**
      * @ORM\Column(type="datetime")
@@ -34,11 +37,13 @@ class Method
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $prerequisites;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $content;
 

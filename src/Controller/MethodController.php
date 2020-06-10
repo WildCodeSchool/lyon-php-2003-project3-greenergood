@@ -31,6 +31,8 @@ class MethodController extends AbstractController
     public function new(Request $request): Response
     {
         $method = new Method();
+        $method->setCreatedAt(new \DateTime('now'));
+
         $form = $this->createForm(MethodType::class, $method);
         $form->handleRequest($request);
 
@@ -39,7 +41,10 @@ class MethodController extends AbstractController
             $entityManager->persist($method);
             $entityManager->flush();
 
-            return $this->redirectToRoute('method_index');
+            // When the SHOW method is coded, delete this line and uncomment the next two lines
+            return $this->redirectToRoute("method_new");
+            // Redirect to the page of the new method
+            // return $this->redirectToRoute("method_show");
         }
 
         return $this->render('method/new.html.twig', [

@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    <div class="col-12 text-center">
+        <button class="btn form-button">{{ button_label|default('Créer la fiche méthode') }}</button>
+    </div>
+    {{ form_end(form) }}
