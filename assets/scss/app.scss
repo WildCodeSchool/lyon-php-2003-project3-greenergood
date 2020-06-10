@@ -122,11 +122,13 @@ h2 {
 
 .cardmethod {
     border-radius: 25px;
-    border-color: white;
+    border-color: black;
     display: flex;
     width: 20rem;
     justify-content: center;
     align-items: center;
+    position: relative;
+    margin: 10px;
 
     .card-head {
         display: flex;
@@ -151,6 +153,9 @@ h2 {
         opacity: 50%;
         margin: 15px;
         padding-bottom: 15px;
+        position: absolute;
+        right: -125px;
+        top: -35px;
     }
 
     a {
@@ -411,18 +416,6 @@ nav {
     cursor: pointer;
 }
 
-.menu a {
-    list-style-type: none;
-    padding: 6px 12px;
-    margin-right: -0.56em;
-    margin-left: -0.56em;
-    color: white;
-    font-family: $textfont;
-    font-size: 12px;
-    text-decoration: none;
-    background-color: #5F5F5F;
-}
-
 .action {
     color: white;
     margin: 0;
@@ -434,6 +427,18 @@ nav {
     position: relative;
     text-align: center;
     margin: 0;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        margin-right: -0.56em;
+        margin-left: -0.56em;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        background-color: #5F5F5F;
+    }
 }
 
 /* CSS Method */
@@ -446,5 +451,19 @@ nav {
     span {
         font-weight: bold;
     }
+}
 
+.menu-method {
+    background-color: #5F5F5F;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        margin-right: -0.56em;
+        margin-left: -0.56em;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+    }
 }
