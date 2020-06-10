@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Method index{% endblock %}
+
+{% block body %}
+    <h1>Method index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CardNumber</th>
+                <th>CreatedAt</th>
+                <th>Prerequisites</th>
+                <th>Content</th>
+                <th>Objectives</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for method in methods %}
+            <tr>
+                <td>{{ method.id }}</td>
+                <td>{{ method.name }}</td>
+                <td>{{ method.cardNumber }}</td>
+                <td>{{ method.createdAt ? method.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ method.prerequisites }}</td>
+                <td>{{ method.content }}</td>
+                <td>{{ method.objectives }}</td>
+                <td>
+                    <a href="{{ path('method_show', {'id': method.id}) }}">show</a>
+                    <a href="{{ path('method_edit', {'id': method.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('method_new') }}">Create new</a>
+{% endblock %}
