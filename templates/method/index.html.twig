@@ -3,43 +3,37 @@
 {% block title %}Method index{% endblock %}
 
 {% block body %}
-    <h1>Method index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>CardNumber</th>
-                <th>CreatedAt</th>
-                <th>Prerequisites</th>
-                <th>Content</th>
-                <th>Objectives</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for method in methods %}
-            <tr>
-                <td>{{ method.id }}</td>
-                <td>{{ method.name }}</td>
-                <td>{{ method.cardNumber }}</td>
-                <td>{{ method.createdAt ? method.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ method.prerequisites }}</td>
-                <td>{{ method.content }}</td>
-                <td>{{ method.objectives }}</td>
-                <td>
-                    <a href="{{ path('method_show', {'id': method.id}) }}">show</a>
-                    <a href="{{ path('method_edit', {'id': method.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1 class="greenOnWhite">Fiches méthodes</h1>
+    <div class="container-center">
+        <button class="btn btn-secondary method-btn">
+            <a href="{{ path('method_new') }}">
+                <span>+</span> Nouvelle fiche
+            </a>
+        </button>
+    </div>
+    <div class="container-center">
+        <div class="card cardmethod">
 
-    <a href="{{ path('method_new') }}">Create new</a>
+            <div class="card-body">
+                <div class="card-head">
+                    <h5 class="card-title">Nom de la méthode</h5>
+                    <div class="dropup">
+                        <div class="threeDots" type="button" data-toggle="dropdown"
+                             aria-haspopup="true" aria-expanded="false">
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Modifier</a>
+                            <a class="dropdown-item" href="#">Dupliquer</a>
+                            <a class="dropdown-item" href="#">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img class="card-img" src="https://i.picsum.photos/id/0/300/300.jpg" alt="Card image cap">
+        </div>
+
+    </div>
+
+
 {% endblock %}

@@ -192,6 +192,7 @@ hr {
 
 a:hover {
     text-decoration: none;
+    color: $secondarycolor;
 }
 
 //Button to redirect to the new user page
@@ -412,7 +413,7 @@ nav {
 
 .menu a {
     list-style-type: none;
-    padding:6px 12px;
+    padding: 6px 12px;
     margin-right: -0.56em;
     margin-left: -0.56em;
     color: white;
@@ -429,8 +430,21 @@ nav {
 
 .menu {
     text-decoration: none;
-    display:inline-block;
-    position:relative;
+    display: inline-block;
+    position: relative;
     text-align: center;
     margin: 0;
+}
+
+/* CSS Method */
+.method-btn {
+    a {
+        color: white;
+        font-family: $textfont;
+    }
+
+    span {
+        font-weight: bold;
+    }
+
 }
