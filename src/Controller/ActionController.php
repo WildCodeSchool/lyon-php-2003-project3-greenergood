@@ -77,7 +77,7 @@ class ActionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('action_index');
+            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
         }
 
         return $this->render('action/edit.html.twig', [
