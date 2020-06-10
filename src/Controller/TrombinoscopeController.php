@@ -18,6 +18,6 @@ class TrombinoscopeController extends AbstractController
      */
     public function show() : Response
     {
-        return $this->render("trombinoscope/show.html.twig");
+        return $this->render("trombinoscope/index.html.twig");
     }
 }
