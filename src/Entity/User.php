@@ -54,7 +54,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $entry_date;
+    private $entryDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -69,7 +69,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $user_picture;
+    private $userPicture;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -202,12 +202,12 @@ class User implements UserInterface
 
     public function getEntryDate(): ?\DateTimeInterface
     {
-        return $this->entry_date;
+        return $this->entryDate;
     }
 
-    public function setEntryDate(?\DateTimeInterface $entry_date): self
+    public function setEntryDate(?\DateTimeInterface $entryDate): self
     {
-        $this->entry_date = $entry_date;
+        $this->entryDate = $entryDate;
 
         return $this;
     }
@@ -238,12 +238,12 @@ class User implements UserInterface
 
     public function getUserPicture(): ?string
     {
-        return $this->user_picture;
+        return $this->userPicture;
     }
 
-    public function setUserPicture(string $user_picture): self
+    public function setUserPicture(string $userPicture): self
     {
-        $this->user_picture = $user_picture;
+        $this->userPicture = $userPicture;
 
         return $this;
     }

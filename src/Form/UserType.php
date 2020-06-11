@@ -40,8 +40,7 @@ class UserType extends AbstractType
                     'choices' => [
                         'Actif' => 1,
                         'Inactif' => 0,
-                    ]]
-            );
+                    ]]);
 
         $builder->get('roles')
             ->addModelTransformer(new CallbackTransformer(
