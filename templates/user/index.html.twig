@@ -6,6 +6,10 @@
     <div class="container-fluid">
         <h1 class="greenOnWhite">Liste des utilisateurs</h1>
 
+        <div class="count">
+            {{ pagination.getTotalItemCount }}
+        </div>
+
         <table class="table">
             <thead>
             <tr>
@@ -35,6 +39,10 @@
             {% endfor %}
             </tbody>
         </table>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
 
         <a href="{{ path('user_new') }}"><button class="btn form-button">{{ button_label|default('Créer') }}</button></a>
     </div>
