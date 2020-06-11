@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 /**
  * @Route("/method")
@@ -31,8 +32,7 @@ class MethodController extends AbstractController
     public function new(Request $request): Response
     {
         $method = new Method();
-        $method->setCreatedAt(new \DateTime('now'));
-
+        $method->setCreatedAt(new DateTime('now'));
         $form = $this->createForm(MethodType::class, $method);
         $form->handleRequest($request);
 

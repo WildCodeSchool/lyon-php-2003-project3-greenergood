@@ -14,8 +14,8 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
-            ->add('prerequisites', null, ['label' => "Pré-requis *"])
-            ->add('content', null, ['label' => "Contenu *"])
+            ->add('prerequisites', null, ['label' => "Données *"])
+            ->add('content', null, ['label' => "Procédure *"])
             ->add('objectives', null, ['label' => "Objectifs"])
         ;
     }
