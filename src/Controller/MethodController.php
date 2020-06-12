@@ -22,7 +22,6 @@ class MethodController extends AbstractController
      */
     public function index(MethodRepository $methodRepository): Response
     {
-        dump($methodRepository);
         return $this->render('method/index.html.twig', [
             'methods' => $methodRepository->findAll(),
         ]);

@@ -3,12 +3,10 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity\Method;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
-
 
 class MethodFixtures extends Fixture
 {
@@ -20,7 +18,6 @@ class MethodFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $method = new Method();
             $method->setName($faker->domainWord);
-            $method->setCardNumber($faker->randomDigit);
             $method->setCreatedAt($faker->dateTime);
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);
