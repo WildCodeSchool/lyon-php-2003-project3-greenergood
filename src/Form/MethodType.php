@@ -13,7 +13,6 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('cardNumber')
             ->add('createdAt')
             ->add('prerequisites')
             ->add('content')

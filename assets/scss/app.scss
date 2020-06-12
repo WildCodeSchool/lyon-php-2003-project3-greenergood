@@ -122,16 +122,18 @@ h2 {
 
 .cardmethod {
     border-radius: 25px;
-    border-color: white;
+    border-color: $primarycolor;
     display: flex;
     width: 20rem;
     justify-content: center;
     align-items: center;
+    margin: 10px;
 
     .card-head {
         display: flex;
         flex-direction: row;
         align-items: center;
+        padding: 0 25px;
     }
 
     .card-body {
@@ -166,7 +168,14 @@ h2 {
         border-radius: 50%;
         height: 100px;
         width: 100px;
+        margin-bottom: 10px;
     }
+}
+
+.dropup-method {
+    position: absolute;
+    right: 0;
+    top: 15px;
 }
 
 //Box containing the links in the homepage
@@ -192,6 +201,7 @@ hr {
 
 a:hover {
     text-decoration: none;
+    color: $secondarycolor;
 }
 
 //Button to redirect to the new user page
@@ -220,7 +230,7 @@ a:hover {
     }
 }
 
-/* DESKTOP VIEW LARGE */
+/* HOMEPAGE DESKTOP VIEW */
 @media all and (min-width: 769px) {
 
     //Box containing the links in the homepage
@@ -455,4 +465,103 @@ nav {
     position: relative;
     text-align: center;
     margin: 0;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        margin-right: -0.56em;
+        margin-left: -0.56em;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        background-color: #5F5F5F;
+    }
+}
+
+/* CSS CARD METHODS */
+.method-btn {
+    a {
+        color: white;
+        font-family: $textfont;
+    }
+
+    span {
+        font-weight: bold;
+    }
+}
+
+.container-card-method {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-method {
+    background-color: #5F5F5F;
+    margin-left: -70px;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        margin-left: 3em;
+    }
+}
+
+/* CSS CARD METHODS DESKTOP VIEW */
+@media all and (min-width: 769px) {
+
+    .container-card-method {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .container-btn-method {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .method-btn {
+            margin-left: 90px;
+        }
+    }
+
+    .container-color-method {
+        background-color: $primarycolor;
+    }
+
+    .method {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .menu-method {
+        width: 261px;
+        margin-left: -110px;
+
+
+        a {
+            list-style-type: none;
+            padding: 6px 12px;
+            color: white;
+            font-family: $textfont;
+            font-size: 12px;
+            text-decoration: none;
+            margin-left: 0em;
+            margin-right: 0em;
+        }
+    }
+
+    .pipe-link-method {
+        border-right: 1px solid white;
+        border-left: 1px solid white;
+    }
 }

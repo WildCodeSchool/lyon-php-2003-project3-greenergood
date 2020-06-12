@@ -23,11 +23,6 @@ class Method
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $cardNumber;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -60,18 +55,6 @@ class Method
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getCardNumber(): ?int
-    {
-        return $this->cardNumber;
-    }
-
-    public function setCardNumber(int $cardNumber): self
-    {
-        $this->cardNumber = $cardNumber;
 
         return $this;
     }
