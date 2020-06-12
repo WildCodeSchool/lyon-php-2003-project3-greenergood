@@ -9,11 +9,11 @@
         <div class="mini-menu">
             <div class="threeDots"></div>
             <div class="menu">
-                <a href="#">Modifier</a>
+                <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
                 <span class="action">|</span>
                 <a href="#">Dupliquer</a>
                 <span class="action">|</span>
-                <a href="#">Appliquer</a>
+                <a href="#">Supprimer</a>
             </div>
         </div>
     </div>
@@ -25,6 +25,8 @@
 
             <div class="action-center-header">
                 <h1>{{ action.name }}</h1>
+
+                {# add {{ action.status here }} #}
 
                 {# Display edition Number is it is set #}
                 {% if action.editionNumber %}
@@ -49,6 +51,8 @@
         </div>
 
         <div class="action-yellow-box">
+            <div class="text-center">{{ action.content }}</div>
+            <hr class="action-separator">
             <div class="text-center">
                 {{ action.startDate ? action.startDate|date('d M Y') : '' }}
                 {% if action.endDate %}
@@ -124,19 +128,5 @@
                     <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
             </div>
         </div>
-
-
-        <br><br><br>
-    <div>For ref only</div>
-                <td>{{ action.content }}</td>
-                <td>{{ action.status }}</td>
-                <td></td>
-
-    <a href="{{ path('action_index') }}">back to list</a>
-
-    <a href="{{ path('action_edit', {'id': action.id}) }}">edit</a>
-
-    {{ include('action/_delete_form.html.twig') }}
-
     </div>
 {% endblock %}
