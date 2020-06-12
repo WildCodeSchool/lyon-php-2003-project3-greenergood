@@ -297,8 +297,14 @@ nav {
     padding: 0 1rem;
 }
 
+.navbar-collapse{
+    display: flex;
+    align-items: center;
+}
+
 .navbar-nav {
-    margin: auto;
+    align-items: center;
+    flex: 1;
 }
 
 .navbar-light .navbar-nav .nav-link {
