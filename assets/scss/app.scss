@@ -347,6 +347,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
 
     .footerLink {
         margin: 10px;
@@ -383,9 +384,10 @@ nav {
 
     .footerMessage {
         color: $tertiarycolor;
+        margin: 10px;
+        padding-top: 10px;
 
         p {
-
             text-align: center;
             font-size: 12px;
         }
@@ -396,8 +398,28 @@ nav {
 
 @media only screen and (min-width: 768px) {
     .footer {
+
         flex-direction: row;
         justify-content: space-between;
+
+        .footerLink {
+
+            flex: 1;
+        }
+
+        .footerImgContainer {
+
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .footerMessage {
+
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 }
 
@@ -418,6 +440,18 @@ nav {
     margin: 15px;
     padding-bottom: 15px;
     cursor: pointer;
+}
+
+.menu a {
+    list-style-type: none;
+    padding: 6px 12px;
+    margin-right: -0.56em;
+    margin-left: -0.56em;
+    color: white;
+    font-family: $textfont;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #5F5F5F;
 }
 
 .action {

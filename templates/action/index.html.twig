@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Action index{% endblock %}
+
+{% block body %}
+    <h1>Nos actions</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Numéro d'édition</th>
+                <th>Numéro</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Localisation</th>
+                <th>Contenu</th>
+                <th>Status</th>
+                <th>Progression</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for action in actions %}
+            <tr>
+                <td>{{ action.id }}</td>
+                <td>{{ action.name }}</td>
+                <td>{{ action.editionNumber }}</td>
+                <td>{{ action.number }}</td>
+                <td>{{ action.actionPicture }}</td>
+                <td>{{ action.description }}</td>
+                <td>{{ action.startDate ? action.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ action.endDate ? action.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ action.location }}</td>
+                <td>{{ action.content }}</td>
+                <td>{{ action.status }}</td>
+                <td>{{ action.projectProgress }}</td>
+                <td>
+                    <a href="{{ path('action_show', {'id': action.id}) }}">Afficher</a>
+                    <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('action_new') }}">Créer nouvelle fiche</a>
+{% endblock %}
