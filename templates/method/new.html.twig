@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Method{% endblock %}
+
+{% block body %}
+    <h1>Create new Method</h1>
+
+    {{ include('method/_form.html.twig') }}
+
+    <a href="{{ path('method_index') }}">back to list</a>
+{% endblock %}
