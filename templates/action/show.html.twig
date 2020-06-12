@@ -1,66 +1,147 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Action{% endblock %}
+{% block title %}Fiche Action - {{ action.name }}{% endblock %}
 
 {% block body %}
-    <h1>Action</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ action.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ action.name }}</td>
-            </tr>
-            <tr>
-                <th>EditionNumber</th>
-                <td>{{ action.editionNumber }}</td>
-            </tr>
-            <tr>
-                <th>Number</th>
-                <td>{{ action.number }}</td>
-            </tr>
-            <tr>
-                <th>ActionPicture</th>
-                <td>{{ action.actionPicture }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ action.description }}</td>
-            </tr>
-            <tr>
-                <th>StartDate</th>
-                <td>{{ action.startDate ? action.startDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>EndDate</th>
-                <td>{{ action.endDate ? action.endDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ action.location }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
+    <div class="action-top-header">
+
+        {# Drop down menu for add / modify Action #}
+        <div class="mini-menu">
+            <div>Fiche ACTION n°{{ action.id }}</div>
+            <div class="threeDots"></div>
+            <div class="menu">
+                <a href="{{ path('action_edit', {'id' : action.id }) }}">Modifier</a>
+                <span class="action">|</span>
+                <a href="#">Dupliquer</a>
+                <span class="action">|</span>
+                <a href="{{ path('action_delete', {'id' : action.id }) }}">Supprimer</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="action-header">
+
+            <div class="action-center-left"></div>
+
+            <div class="action-center-header">
+                <h1>{{ action.name }}</h1>
+
+                {# Display edition Number is it is set #}
+                {% if action.editionNumber %}
+                    <figure class="col-6 offset-3 edition-box">
+                        <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}" alt="Fond vert du titre">
+                        <figcaption>
+                            {% if action.editionNumber != 1 %}
+                                {{ action.editionNumber }}ème édition
+                            {% else %}
+                                {{ action.editionNumber }}ère édition
+                            {% endif %}
+                        </figcaption>
+                    </figure>
+                {% endif %}
+
+            </div>
+
+            <div class="action-center-right">
+                <img class="action-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+            </div>
+
+        </div>
+
+        <div class="action-yellow-box">
+            <div class="text-center">
+                {{ action.startDate ? action.startDate|date('d M Y') : '' }}
+                {% if action.endDate %}
+                    - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                {% endif %}
+            </div>
+            <hr class="action-separator">
+            <div class="text-center">
+                Lieu : {{ action.location }}
+            </div>
+            <hr class="action-separator">
+            <div>
+                {{ action.description }}
+            </div>
+        </div>
+
+        <div class="action-progress-box">{{ action.projectProgress }}</div>
+
+        <div>
+            {# Generate as many teams as teams associated with action when set up#}
+            <div class="col-6 team-title">Equipe logistique...</div>
+
+            {# Generate as many pictures as User associated with action when set up#}
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+
+            {# Add link to button when functionality is set #}
+            <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter un membre">
+        </div>
+
+        <div>
+            {# Generate as many teams as teams associated with action when set up#}
+            <div class="col-6 team-title">Equipe de coordination</div>
+
+            {# Generate as many pictures as User associated with action when set up#}
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
+
+            {# Add link to button when functionality is set #}
+            <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter un membre">
+        </div>
+
+
+        <div class="action-subtitles">Organisation interne</div>
+        <div class="row action-list-item">
+            <div class="col-sm-2 organisation-button"><a href="#">Organigramme</a></div>
+            <div class="col-sm-2 organisation-button"><a href="#">Comptes rendus</a></div>
+            <div class="col-sm-2 organisation-button"><a href="#">Calendrier</a></div>
+            <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
+            <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
+        </div>
+
+        <div class="action-subtitles">Fiches METHODE</div>
+        <div class="action-methods">
+            {# Dynamicaly display list of methods associated with the action when implemented #}
+            <li><a href="#">Nom de la fiche méthode n°1</a></li>
+            <li><a href="#">Nom de la fiche méthode n°2</a></li>
+            <li><a href="#">Nom de la fiche méthode n°3</a></li>
+        </div>
+
+        <div class="action-subtitles">LIVRABLES</div>
+
+        <div class="deliverable-box">
+            <div class="action-methods">
+                {# Dynamicaly display list of livrables associated with the action when implemented #}
+                <li><a href="#">Livrable 1</a></li>
+                <li><a href="#">Livrable 2</a></li>
+                <li><a href="#">TEXTE LIBRE</a></li>
+            </div>
+            <div class="important-link-center">
+                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}" alt="Lien vers les images"></a>
+                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
+            </div>
+        </div>
+
+
+        <br><br><br>
+    <div>For ref only</div>
                 <td>{{ action.content }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
                 <td>{{ action.status }}</td>
-            </tr>
-            <tr>
-                <th>ProjectProgress</th>
-                <td>{{ action.projectProgress }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <td></td>
 
     <a href="{{ path('action_index') }}">back to list</a>
 
     <a href="{{ path('action_edit', {'id': action.id}) }}">edit</a>
 
     {{ include('action/_delete_form.html.twig') }}
+
+    </div>
 {% endblock %}

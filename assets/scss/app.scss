@@ -21,8 +21,9 @@ body {
 h1 {
     font-size: $h1size;
     font-family: $titlefont;
+    color: $primarycolor;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0 20px 0;
 }
 
 h2 {
@@ -220,62 +221,6 @@ a:hover {
     }
 }
 
-/* DESKTOP VIEW LARGE */
-@media all and (min-width: 769px) {
-
-    //Box containing the links in the homepage
-    .container-center {
-        @include flexCenter(column);
-    }
-
-    .link-box {
-        border-radius: 30px;
-        width: 35%;
-        padding: 30px;
-    }
-
-    .link-of-linkbox {
-        font-size: 2rem;
-        color: #FFFFFF;
-    }
-
-    hr {
-        padding: 1px;
-        background: #FFF;
-    }
-
-    a:hover {
-        text-decoration: none;
-        color: $secondarycolor;
-    }
-
-    //Button to redirect to the new benevole page
-    .button-new-benevole {
-        @include flexCenter(row);
-        color: $primarycolor;
-
-        img {
-            height: 80px;
-        }
-
-        h4 {
-            background-color: $secondarycolor;
-            padding-left: 15px;
-            font-size: 24px;
-        }
-
-        .logo-new {
-            z-index: 1;
-            height: 140px;
-            margin-left: -19px;
-        }
-
-        .arrow_benevole {
-            padding: 0px 50px 0px 50px;
-        }
-    }
-}
-
 // NAVBAR
 
 nav {
@@ -324,6 +269,178 @@ nav {
 .col-form-label {
     font-family: "Montserrat", sans-serif;
     font-size: 0.8em;
+}
+
+/* DISPLAY ACTION PAGE */
+.edition-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    figcaption {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.action-image-box {
+    display: flex;
+    justify-content: center;
+}
+
+.team-title {
+    color: white;
+    background-color: $primarycolor;
+    padding: 10px;
+    margin: 15px 0 15px 0;
+}
+
+.action-top-header {
+    font-size: 0.8em;
+    display: flex;
+    justify-content: start;
+
+}
+
+.action-header {
+    display: flex;
+    align-items: center;
+
+        .action-center-header {
+            flex: 3;
+        }
+}
+
+
+.action-center-right {
+    flex: 1;
+}
+
+.action-image {
+    height: 125px;
+    Width: 125px;
+    border-radius: 50%;
+    flex: 1;
+}
+
+.action-edition-style {
+    max-width: 100%;
+    height: 30px;
+}
+
+.action-yellow-box{
+    padding: 5px;
+    border: 10px solid $secondarycolor;
+}
+
+.action-progress-box {
+    background-color: $secondarycolor;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.action-separator {
+    width: 30%;
+}
+
+.action-member-image, .action-plus-image {
+    height: 75px;
+    Width: auto;
+    border-radius: 50%;
+}
+
+.deliverable-box {
+    display: flex;
+    flex-direction: column;
+
+    .important-link-image, {
+        background-color: $secondarycolor;
+        border-radius: 5px;
+        padding: 15px 30px 15px 30px;
+        margin: 10px 15px 0 15px;
+        width: 40%;
+        height: auto;
+    }
+
+    .important-link-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+}
+
+.action-list-item {
+    padding: 0 15px 0 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    .organisation-button, .organisation-button-plus {
+        font-family: $titlefont;
+        border-radius: 5px;
+        padding: 15px 10px 15px 10px;
+        margin: 10px 5px 0 5px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .organisation-button {
+        color: white;
+        background-color: $primarycolor;
+        font-size: 0.8rem;
+        a {
+            color: white;
+
+            &:hover {
+                color: $secondarycolor;
+            }
+        }
+    }
+
+    .organisation-button-plus {
+        color: $tertiarycolor;
+        font-size: 24px;
+        background-color: lighten($tertiarycolor, 40%);
+
+        a:hover {
+                color: $secondarycolor;
+            }
+        }
+    }
+
+
+.action-subtitles {
+    background-color: $secondarycolor;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.action-methods {
+    margin-top: 10px;
+    padding: 5px;
+    border: 10px solid $tertiarycolor;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+
+        li {
+            margin-left: 20px;
+        }
 }
 
 /* FOOTER */
@@ -433,4 +550,84 @@ nav {
     position:relative;
     text-align: center;
     margin: 0;
+}
+
+/* DESKTOP VIEW LARGE */
+@media all and (min-width: 769px) {
+
+    //Box containing the links in the homepage
+    .container-center {
+        @include flexCenter(column);
+    }
+
+    .link-box {
+        border-radius: 30px;
+        width: 35%;
+        padding: 30px;
+    }
+
+    .link-of-linkbox {
+        font-size: 2rem;
+        color: #FFFFFF;
+    }
+
+    hr {
+        padding: 1px;
+        background: #FFF;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: $secondarycolor;
+    }
+
+    //Button to redirect to the new benevole page
+    .button-new-benevole {
+        @include flexCenter(row);
+        color: $primarycolor;
+
+        img {
+            height: 80px;
+        }
+
+        h4 {
+            background-color: $secondarycolor;
+            padding-left: 15px;
+            font-size: 24px;
+        }
+
+        .logo-new {
+            z-index: 1;
+            height: 140px;
+            margin-left: -19px;
+        }
+
+        .arrow_benevole {
+            padding: 0px 50px 0px 50px;
+        }
+    }
+
+    /*  Action display page  */
+    .action-center-left {
+        display: block;
+        flex: 1;
+    }
+
+    .deliverable-box {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+
+        .action-methods {
+            flex: 3;
+        }
+
+        .important-link-center {
+            flex-direction: column;
+            flex: 1;
+
+            .important-links-image {
+            }
+        }
+    }
 }
