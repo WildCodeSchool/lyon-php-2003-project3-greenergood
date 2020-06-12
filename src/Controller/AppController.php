@@ -21,10 +21,10 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/user", name="userIndex")
+     * @Route("/member", name="member_index")
      */
-    public function userIndex(): Response
+    public function memberIndex(): Response
     {
-        return $this->render("user/index.html.twig");
+        return $this->render("member/index.html.twig");
     }
 }
