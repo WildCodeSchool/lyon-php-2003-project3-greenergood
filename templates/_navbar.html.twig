@@ -44,7 +44,10 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Mon profil</a>
                     <a class="dropdown-item" href="#">Mes favoris</a>
-                    <a class="dropdown-item" href="#">Déconnexion</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="dropdown-item" href="{{ path('user_index') }}">Administration</a>
+                    {% endif %}
+                    <a class="dropdown-item" href="/logout">Déconnexion</a>
                 </div>
             </li>
         </ul>
