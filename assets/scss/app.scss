@@ -194,7 +194,7 @@ a:hover {
     text-decoration: none;
 }
 
-//Button to redirect to the new benevole page
+//Button to redirect to the new user page
 .button-new-benevole {
     @include flexCenter(row);
     color: $primarycolor;
@@ -249,7 +249,7 @@ a:hover {
         color: $secondarycolor;
     }
 
-    //Button to redirect to the new benevole page
+    //Button to redirect to the new user page
     .button-new-benevole {
         @include flexCenter(row);
         color: $primarycolor;
