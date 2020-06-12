@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>User</h1>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ user.fonction }}</td>
+            </tr>
+            <tr>
+                <th>Entry_date</th>
+                <td>{{ user.entryDate ? user.entryDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ user.description }}</td>
+            </tr>
+            <tr>
+                <th>User_picture</th>
+                <td>{{ user.userPicture }}</td>
+            </tr>
+            <tr>
+                <th>Linkedin</th>
+                <td>{{ user.linkedin }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ user.facebook }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ user.status }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Editer') }}</button></a><br>
+
+        {{ include('user/_delete_form.html.twig') }}
+
+        <a href="{{ path('user_index') }}">Retour à la liste</a>
+
+    </div>
+{% endblock %}
