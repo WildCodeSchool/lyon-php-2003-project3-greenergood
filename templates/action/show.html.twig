@@ -3,26 +3,22 @@
 {% block title %}Fiche Action - {{ action.name }}{% endblock %}
 
 {% block body %}
-
-    <div class="action-top-header">
-
-        {# Drop down menu for add / modify Action #}
+    <div class="horizontal">
+        <div class="">Fiche ACTION n°{{ action.id }}</div>
+        <!-- Menu three dots -->
         <div class="mini-menu">
-            <div>Fiche ACTION n°{{ action.id }}</div>
             <div class="threeDots"></div>
             <div class="menu">
-                <a href="{{ path('action_edit', {'id' : action.id }) }}">Modifier</a>
+                <a href="#">Modifier</a>
                 <span class="action">|</span>
                 <a href="#">Dupliquer</a>
                 <span class="action">|</span>
-                <a href="{{ path('action_delete', {'id' : action.id }) }}">Supprimer</a>
+                <a href="#">Appliquer</a>
             </div>
         </div>
-
     </div>
 
     <div class="container-fluid">
-
         <div class="action-header">
 
             <div class="action-center-left"></div>
@@ -76,7 +72,6 @@
             <div class="col-6 team-title">Equipe logistique...</div>
 
             {# Generate as many pictures as User associated with action when set up#}
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
             <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
             <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
 
