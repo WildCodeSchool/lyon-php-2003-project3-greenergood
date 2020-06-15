@@ -528,18 +528,18 @@ nav {
 
 
     /*MINI MENU*/
-    .mini-menu {
+    .action-mini-menu {
         display: flex;
         align-items: center;
         flex-direction: column;
         position: relative;
     }
 
-    .threeDots {
+    .action-three-dots {
         display: flex;
     }
 
-    .threeDots:after {
+    .action-three-dots:after {
         content: '\2026';
         font-size: 35px;
         font-weight: bold;
@@ -550,7 +550,7 @@ nav {
         margin-top: -25%;
     }
 
-    .menu a {
+    .action-menu a {
         list-style-type: none;
         padding: 6px 12px;
         margin-right: -0.56em;
