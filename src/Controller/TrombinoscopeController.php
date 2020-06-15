@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class TrombinoscopeController extends AbstractController
 {
     /**
-     * @Route("/", name="show")
+     * @Route("/", name="index")
      */
-    public function show() : Response
+    public function index() : Response
     {
-        return $this->render("trombinoscope/show.html.twig");
+        return $this->render("trombinoscope/index.html.twig");
     }
 }

@@ -7,13 +7,13 @@
         <div>Fiche ACTION n°{{ action.id }}</div>
         <!-- Menu three dots -->
         <div class="action-mini-menu">
-            <div class="action-three-dots"></div>
-            <div class="action-menu">
-                <a href="#">Modifier</a>
+            <div class="action-three-dots threeDots"></div>
+            <div class="action-menu menu">
+                <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
                 <span class="action">|</span>
                 <a href="#">Dupliquer</a>
                 <span class="action">|</span>
-                <a href="#">Appliquer</a>
+                <a href="{{ path('action_delete', {'id': action.id}) }}">Supprimer</a>
             </div>
         </div>
     </div>
@@ -129,12 +129,5 @@
                     <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
             </div>
         </div>
-
-    <a href="{{ path('action_index') }}">back to list</a>
-
-    <a href="{{ path('action_edit', {'id': action.id}) }}">edit</a>
-
-    {{ include('action/_delete_form.html.twig') }}
-
     </div>
 {% endblock %}
