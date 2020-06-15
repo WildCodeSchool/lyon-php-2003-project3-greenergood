@@ -50,6 +50,11 @@
 
         <div class="action-yellow-box">
             <div class="text-center">
+                {{ action.content }}
+            </div>
+            <hr class="action-separator">
+
+            <div class="text-center">
                 {{ action.startDate ? action.startDate|date('d M Y') : '' }}
                 {% if action.endDate %}
                     - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
@@ -60,7 +65,7 @@
                 Lieu : {{ action.location }}
             </div>
             <hr class="action-separator">
-            <div>
+            <div class="text-center">
                 {{ action.description }}
             </div>
         </div>
@@ -124,13 +129,6 @@
                     <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
             </div>
         </div>
-
-
-        <br><br><br>
-    <div>For ref only</div>
-                <td>{{ action.content }}</td>
-                <td>{{ action.status }}</td>
-                <td></td>
 
     <a href="{{ path('action_index') }}">back to list</a>
 
