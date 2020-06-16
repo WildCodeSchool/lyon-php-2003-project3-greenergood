@@ -26,6 +26,8 @@
             <div class="action-center-header">
                 <h1>{{ action.name }}</h1>
 
+                {# add {{ action.status here }} #}
+
                 {# Display edition Number is it is set #}
                 {% if action.editionNumber %}
                     <figure class="col-6 offset-3 edition-box">
@@ -49,6 +51,8 @@
         </div>
 
         <div class="action-yellow-box">
+            <div class="text-center">{{ action.content }}</div>
+            <hr class="action-separator">
             <div class="text-center">
                 {{ action.content }}
             </div>
