@@ -3,591 +3,591 @@
 
 //Function to center block
 @mixin flexCenter($direction) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
 }
 
 html {
-  scroll-padding-top: 80px;
+    scroll-padding-top: 80px;
 }
 
 body {
-  padding-top: 80px;
+    padding-top: 80px;
 }
 
 
 h1 {
-  font-size: $h1size;
-  font-family: $titlefont;
-  color: $primarycolor;
-  text-align: center;
-  padding: 20px 0 20px 0;
+    font-size: $h1size;
+    font-family: $titlefont;
+    color: $primarycolor;
+    text-align: center;
+    padding: 20px 0 20px 0;
 }
 
 h2 {
-  font-size: $h2size;
-  font-family: $titlefont;
+    font-size: $h2size;
+    font-family: $titlefont;
 }
 
 .greyOnWhite {
-  color: $tertiarycolor;
+    color: $tertiarycolor;
 }
 
 .greenOnWhite {
-  color: $primarycolor;
+    color: $primarycolor;
 }
 
 .whiteOnGreen {
-  color: white;
-  background-color: $primarycolor;
-  padding: 5px;
-  border-radius: 5px;
+    color: white;
+    background-color: $primarycolor;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .horizontal {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .plusbutton {
-  background-color: $primarycolor; /* Green */
-  border: none;
-  border-radius: 100%;
-  color: $tertiarycolor;
-  padding: 0px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 4em;
+    background-color: $primarycolor; /* Green */
+    border: none;
+    border-radius: 100%;
+    color: $tertiarycolor;
+    padding: 0px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4em;
 }
 
 .cardaction {
-  border: none;
-  margin: 10px;
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  img {
-    position: relative;
-  }
-
-  .card-body {
-    text-align: center;
-    text-decoration: none;
     border: none;
-  }
+    margin: 10px;
 
-  .card-title {
-    font-size: $textsize;
-    color: $primarycolor;
-  }
+    a:hover {
+      text-decoration: none;
+    }
 
-  .card-text {
-    color: $tertiarycolor;
-  }
+    img {
+      position: relative;
+    }
 
-  .badge {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-  }
+    .card-body {
+      text-align: center;
+      text-decoration: none;
+      border: none;
+    }
 
-  .canceled {
-    background-color: blueviolet;
-  }
+    .card-title {
+      font-size: $textsize;
+      color: $primarycolor;
+    }
 
-  .ongoing {
-    background-color: $primarycolor;
-  }
+    .card-text {
+      color: $tertiarycolor;
+    }
 
-  .past {
-    background-color: cornflowerblue;
-  }
+    .badge {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+    }
+
+    .canceled {
+      background-color: blueviolet;
+    }
+
+    .ongoing {
+      background-color: $primarycolor;
+    }
+
+    .past {
+      background-color: cornflowerblue;
+    }
 }
 
 /* Glow */
 .hvr-glow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
 }
 
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
 }
 
 .cardmethod {
-  border-radius: 25px;
-  border-color: $primarycolor;
-  display: flex;
-  width: 20rem;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-
-  .card-head {
+    border-radius: 25px;
+    border-color: $primarycolor;
     display: flex;
-    flex-direction: row;
+    width: 20rem;
+    justify-content: center;
     align-items: center;
-    padding: 0 25px;
-  }
+    margin: 10px;
 
-  .card-body {
-    text-align: center;
-  }
+    .card-head {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 25px;
+    }
 
-  .card-title {
-    font-family: $textfont;
-    color: $tertiarycolor;
-  }
+    .card-body {
+      text-align: center;
+    }
 
-  .threeDots:after {
-    content: '\FE19';
-    font-size: 35px;
-    font-weight: bold;
-    color: $primarycolor;
-    opacity: 50%;
-    margin: 15px;
-    padding-bottom: 15px;
-  }
+    .card-title {
+      font-family: $textfont;
+      color: $tertiarycolor;
+    }
 
-  a {
-    text-decoration: none;
-    font-family: $textfont;
-  }
+    .threeDots:after {
+      content: '\FE19';
+      font-size: 35px;
+      font-weight: bold;
+      color: $primarycolor;
+      opacity: 50%;
+      margin: 15px;
+      padding-bottom: 15px;
+    }
 
-  a:hover {
-    text-decoration: none;
-  }
+    a {
+      text-decoration: none;
+      font-family: $textfont;
+    }
 
-  .card-img {
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    margin-bottom: 10px;
-  }
+    a:hover {
+      text-decoration: none;
+    }
+
+    .card-img {
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 10px;
+    }
 }
 
 .dropup-method {
-  position: absolute;
-  right: 0;
-  top: 15px;
+    position: absolute;
+    right: 0;
+    top: 15px;
 }
 
 //Box containing the links in the homepage
 .container-center {
-  @include flexCenter(column);
+    @include flexCenter(column);
 }
 
 .link-box {
-  border-radius: 30px;
-  padding: 50px;
-  margin: 20px;
+    border-radius: 30px;
+    padding: 50px;
+    margin: 20px;
 }
 
 .link-of-linkbox {
-  font-size: 1.8rem;
-  color: #FFFFFF;
+    font-size: 1.8rem;
+    color: #FFFFFF;
 }
 
 hr {
-  padding: 1px;
-  background: #FFF;
+    padding: 1px;
+    background: #FFF;
 }
 
 a:hover {
-  text-decoration: none;
-  color: $secondarycolor;
+    text-decoration: none;
+    color: $secondarycolor;
 }
 
 //Button to redirect to the new user page
 .button-new-benevole {
-  @include flexCenter(row);
-  color: $primarycolor;
+    @include flexCenter(row);
+    color: $primarycolor;
 
-  img {
-    height: 35px;
-  }
+    img {
+        height: 35px;
+    }
 
-  h4 {
-    background-color: $secondarycolor;
-    font-size: 16px;
-    padding-left: 5px;
-  }
+    h4 {
+        background-color: $secondarycolor;
+        font-size: 16px;
+        padding-left: 5px;
+    }
 
-  .logo-new {
-    z-index: 1;
-    height: 70px;
-    margin-left: -19px;
-  }
+    .logo-new {
+        z-index: 1;
+        height: 70px;
+        margin-left: -19px;
+    }
 
-  .arrow_benevole {
-    padding: 0px 20px 0px 15px;
-  }
+    .arrow_benevole {
+        padding: 0px 20px 0px 15px;
+    }
 }
 
 /* HOMEPAGE DESKTOP VIEW */
 @media all and (min-width: 769px) {
 
-  //Box containing the links in the homepage
-  .container-center {
-    @include flexCenter(column);
-  }
-
-  .link-box {
-    border-radius: 30px;
-    width: 35%;
-    padding: 30px;
-  }
-
-  .link-of-linkbox {
-    font-size: 2rem;
-    color: #FFFFFF;
-  }
-
-  hr {
-    padding: 1px;
-    background: #FFF;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: $secondarycolor;
-  }
-
-  //Button to redirect to the new user page
-  .button-new-benevole {
-    @include flexCenter(row);
-    color: $primarycolor;
-
-    img {
-      height: 80px;
+    //Box containing the links in the homepage
+    .container-center {
+      @include flexCenter(column);
     }
 
-    h4 {
-      background-color: $secondarycolor;
-      padding-left: 15px;
-      font-size: 24px;
+    .link-box {
+      border-radius: 30px;
+      width: 35%;
+      padding: 30px;
     }
 
-    .logo-new {
-      z-index: 1;
-      height: 140px;
-      margin-left: -19px;
+    .link-of-linkbox {
+      font-size: 2rem;
+      color: #FFFFFF;
     }
 
-    .arrow_benevole {
-      padding: 0px 50px 0px 50px;
+    hr {
+      padding: 1px;
+      background: #FFF;
     }
-  }
+
+    a:hover {
+      text-decoration: none;
+      color: $secondarycolor;
+    }
+
+    //Button to redirect to the new user page
+    .button-new-benevole {
+      @include flexCenter(row);
+      color: $primarycolor;
+
+      img {
+        heig  ht: 80px;
+      }
+
+      h4 {
+          background-color: $secondarycolor;
+          padding-left: 15px;
+          font-size: 24px;
+      }
+
+      .logo-new {
+          z-index: 1;
+          height: 140px;
+          margin-left: -19px;
+      }
+
+      .arrow_benevole {
+          padding: 0px 50px 0px 50px;
+      }
+    }
 }
 
 // NAVBAR
 
 nav {
-  font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .navbar {
-  background-color: $primarycolor;
-  padding: 0 1rem;
+    background-color: $primarycolor;
+    padding: 0 1rem;
 }
 
 .navbar-collapse {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-nav {
-  align-items: center;
-  flex: 1;
+    align-items: center;
+    flex: 1;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: white;
+    color: white;
 }
 
 .navbar-brand {
-  padding: 0;
+    padding: 0;
 
-  img {
-    height: 80px;
-  }
+    img {
+        height: 80px;
+    }
 }
 
 /* NEW ACTION PAGE STYLING */
 .action-form {
-  width: 90%;
-  margin: auto auto;
+    width: 90%;
+    margin: auto auto;
 }
 
 .form-button {
-  background-color: $primarycolor;
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  margin-bottom: 20px;
+    background-color: $primarycolor;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
 
-  &:hover {
-    color: $secondarycolor;
-  }
+    &:hover {
+        color: $secondarycolor;
+    }
 }
 
 .col-form-label {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8em;
 }
 
 /* DISPLAY ACTION PAGE */
 
 .action-image-box {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .team-title {
-  color: white;
-  background-color: $primarycolor;
-  padding: 10px;
-  margin: 15px 0 15px 0;
+    color: white;
+    background-color: $primarycolor;
+    padding: 10px;
+    margin: 15px 0 15px 0;
 }
 
 .action-top-header {
-  font-size: 0.8em;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 .action-header {
-  display: flex;
-  align-items: center;
-
-  .action-center-header {
-    flex: 3;
-  }
-
-  .action-center-right {
-    flex: 1;
-  }
-
-  .edition-box {
-    position: relative;
     display: flex;
-    justify-content: center;
+    align-items: center;
 
-    figcaption {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      top: 0;
-      left: 0px;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      display: flex;
-      color: white;
-      font-family: $titlefont;
+    .action-center-header {
+        flex: 3;
     }
-  }
 
-  .action-edition-style {
-    max-width: 100%;
-    height: 30px;
-  }
+    .action-center-right {
+        flex: 1;
+    }
+
+    .edition-box {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        figcaption {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0px;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            color: white;
+            font-family: $titlefont;
+          }
+    }
+
+    .action-edition-style {
+        max-width: 100%;
+        height: 30px;
+    }
 }
 
 .action-image {
-  height: 125px;
-  Width: 125px;
-  border-radius: 50%;
-  flex: 1;
+    height: 125px;
+    Width: 125px;
+    border-radius: 50%;
+    flex: 1;
 }
 
 .action-yellow-box {
-  padding: 5px;
-  border: 10px solid $secondarycolor;
+    padding: 5px;
+    border: 10px solid $secondarycolor;
 
-  .action-separator {
-    width: 30%;
-  }
+    .action-separator {
+        width: 30%;
+    }
 }
 
 .action-progress-box {
-  background-color: $secondarycolor;
-  margin-top: 10px;
-  padding: 15px;
+    background-color: $secondarycolor;
+    margin-top: 10px;
+    padding: 15px;
 }
 
 .action-member-image, .action-plus-image {
-  height: 75px;
-  Width: auto;
-  border-radius: 50%;
+    height: 75px;
+    Width: auto;
+    border-radius: 50%;
 }
 
 .deliverable-box {
-  display: flex;
-  flex-direction: column;
-
-  .important-link-image, {
-    background-color: $secondarycolor;
-    border-radius: 5px;
-    padding: 15px 30px 15px 30px;
-    margin: 10px 15px 0 15px;
-    width: 40%;
-    height: auto;
-  }
-
-  .important-link-center {
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    flex-direction: column;
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .important-link-image, {
+        background-color: $secondarycolor;
+        border-radius: 5px;
+        padding: 15px 30px 15px 30px;
+        margin: 10px 15px 0 15px;
+        width: 40%;
+        height: auto;
+    }
+
+    .important-link-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .action-list-item {
-  padding: 0 15px 0 15px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-
-  .organisation-button, .organisation-button-plus {
-    font-family: $titlefont;
-    border-radius: 5px;
-    padding: 15px 10px 15px 10px;
-    margin: 10px 5px 0 5px;
-    height: 70px;
+    padding: 0 15px 0 15px;
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
+    text-align: center;
 
-  .organisation-button {
-    color: white;
-    background-color: $primarycolor;
-    font-size: 0.8rem;
-
-    a {
-      color: white;
-
-      &:hover {
-        color: $secondarycolor;
-      }
+    .organisation-button, .organisation-button-plus {
+        font-family: $titlefont;
+        border-radius: 5px;
+        padding: 15px 10px 15px 10px;
+        margin: 10px 5px 0 5px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    .organisation-button {
+        color: white;
+        background-color: $primarycolor;
+        font-size: 0.8rem;
+
+        a {
+            color: white;
+
+            &:hover {
+                color: $secondarycolor;
+            }
+        }
   }
 
   .organisation-button-plus {
-    color: $tertiarycolor;
-    font-size: 24px;
-    background-color: lighten($tertiarycolor, 40%);
+      color: $tertiarycolor;
+      font-size: 24px;
+      background-color: lighten($tertiarycolor, 40%);
 
-    a:hover {
-      color: $secondarycolor;
+      a:hover {
+          color: $secondarycolor;
+      }
     }
-  }
 }
 
 
 .action-subtitles {
-  background-color: $secondarycolor;
-  text-align: center;
-  margin-top: 10px;
+    background-color: $secondarycolor;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .action-methods {
-  margin-top: 10px;
-  padding: 5px;
-  border: 10px solid $tertiarycolor;
-  display: flex;
-  align-items: start;
-  flex-direction: column;
+    margin-top: 10px;
+    padding: 5px;
+    border: 10px solid $tertiarycolor;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
 
-  li {
-    margin-left: 20px;
-  }
+    li {
+        margin-left: 20px;
+    }
 }
 
 /* Boostrap action dropdown */
 .bootstrap-action-custom {
-  color: white;
-  font-family: $textfont;
-  font-size: 12px;
-  text-decoration: none;
-  background-color: #5F5F5F;
+    color: white;
+    font-family: $textfont;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #5F5F5F;
 }
 
 /* FOOTER */
 
 .footer {
-  font-family: $textfont;
-  font-size: 20px;
-  margin: 10px 30px;
-  padding: 5px;
-  border-top: solid 1px black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
+    font-family: $textfont;
+    font-size: 20px;
+    margin: 10px 30px;
+    padding: 5px;
+    border-top: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
 
-  .footerLink {
-    margin: 10px;
+    .footerLink {
+      margin: 10px;
 
-    a {
-      text-decoration: none;
-      font-size: 16px;
-      color: $primarycolor;
+      a {
+          text-decoration: none;
+          font-size: 16px;
+          color: $primarycolor;
 
-      &:hover, &:active {
-        text-decoration: underline;
+          &:hover, &:active {
+            text-decoration: underline;
+          }
       }
     }
-  }
 
-  .footerImgContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin: 10px;
+    .footerImgContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin: 10px;
 
-    .footerImg {
-      width: 40px;
-      height: 40px;
-      margin: 0 5px;
+        .footerImg {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+        }
+
+        .footerBig {
+            width: 30px;
+            height: 30px;
+            margin: 5px 10px 0 10px;
+        }
     }
 
-    .footerBig {
-      width: 30px;
-      height: 30px;
-      margin: 5px 10px 0 10px;
-    }
-  }
+    .footerMessage {
+        color: $tertiarycolor;
+        margin: 10px;
+        padding-top: 10px;
 
-  .footerMessage {
-    color: $tertiarycolor;
-    margin: 10px;
-    padding-top: 10px;
-
-    p {
-      text-align: center;
-      font-size: 12px;
+        p {
+            text-align: center;
+            font-size: 12px;
+        }
     }
-  }
 }
 
 /* FOOTER DESKTOP */
@@ -595,107 +595,107 @@ nav {
 @media only screen and (min-width: 768px) {
   .footer {
 
-    flex-direction: row;
-    justify-content: space-between;
+      flex-direction: row;
+      justify-content: space-between;
 
-    .footerLink {
+      .footerLink {
 
-      flex: 1;
+          flex: 1;
+      }
+
+      .footerImgContainer {
+
+          flex: 1;
+          display: flex;
+          justify-content: center;
+      }
+
+      .footerMessage {
+
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+      }
     }
-
-    .footerImgContainer {
-
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .footerMessage {
-
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-    }
-  }
 }
 
 // SHOW METHOD PAGE
 /*MINI MENU*/
 .mini-menu {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* CSS threeDots */
 .threeDots:after {
-  content: "\2026";
-  font-size: 35px;
-  font-weight: bold;
-  color: $primarycolor;
-  opacity: 50%;
-  margin: 0 15px;
-  align-self: center;
-  margin-top: -25%;
+    content: "\2026";
+    font-size: 35px;
+    font-weight: bold;
+    color: $primarycolor;
+    opacity: 50%;
+    margin: 0 15px;
+    align-self: center;
+    margin-top: -25%;
 }
 
 .action {
-  color: white;
-  margin: 0;
+    color: white;
+    margin: 0;
 }
 
 .menu {
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  margin: 0;
-
-  a {
-    list-style-type: none;
-    padding: 6px 12px;
-    margin-right: -0.56em;
-    margin-left: -0.56em;
-    color: white;
-    font-family: $textfont;
-    font-size: 12px;
     text-decoration: none;
-    background-color: #5F5F5F;
-  }
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 0;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        margin-right: -0.56em;
+        margin-left: -0.56em;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        background-color: #5F5F5F;
+    }
 }
 
 // Action show page
 .action-mini-menu {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
 }
 
 .action-three-dots {
-  display: flex;
+    display: flex;
 }
 
 .action-menu {
-  text-decoration: none;
-  position: absolute;
-  text-align: center;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  top: 100%;
-
-  a {
-    list-style-type: none;
-    padding: 6px 12px;
-    margin-right: -0.56em;
-    margin-left: -0.56em;
-    color: white;
-    font-family: $textfont;
-    font-size: 12px;
     text-decoration: none;
-    background-color: #5F5F5F;
-  }
+    position: absolute;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    top: 100%;
+
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        margin-right: -0.56em;
+        margin-left: -0.56em;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        background-color: #5F5F5F;
+    }
 }
 
 /* DESKTOP VIEW LARGE */
@@ -703,164 +703,160 @@ nav {
 
   //Box containing the links in the homepage
   .container-center {
-    @include flexCenter(column);
+      @include flexCenter(column);
   }
 
   .link-box {
-    border-radius: 30px;
-    width: 35%;
-    padding: 30px;
+      border-radius: 30px;
+      width: 35%;
+      padding: 30px;
   }
 
   .link-of-linkbox {
-    font-size: 2rem;
-    color: #FFFFFF;
+      font-size: 2rem;
+      color: #FFFFFF;
   }
 
   hr {
-    padding: 1px;
-    background: #FFF;
+      padding: 1px;
+      background: #FFF;
   }
 
   a:hover {
-    text-decoration: none;
-    color: $secondarycolor;
+      text-decoration: none;
+      color: $secondarycolor;
   }
 
   //Button to redirect to the new benevole page
   .button-new-benevole {
-    @include flexCenter(row);
-    color: $primarycolor;
+      @include flexCenter(row);
+      color: $primarycolor;
 
-    img {
-      height: 80px;
-    }
+      img {
+          height: 80px;
+      }
 
-    h4 {
-      background-color: $secondarycolor;
-      padding-left: 15px;
-      font-size: 24px;
-    }
+      h4 {
+          background-color: $secondarycolor;
+          padding-left: 15px;
+          font-size: 24px;
+      }
 
-    .logo-new {
-      z-index: 1;
-      height: 140px;
-      margin-left: -19px;
-    }
+      .logo-new {
+          z-index: 1;
+          height: 140px;
+          margin-left: -19px;
+      }
 
-    .arrow_benevole {
-      padding: 0px 50px 0px 50px;
-    }
+      .arrow_benevole {
+          padding: 0px 50px 0px 50px;
+      }
   }
 
   /*  Action display page  */
   .action-center-left {
-    display: block;
-    flex: 1;
+      display: block;
+      flex: 1;
   }
 
   .deliverable-box {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
 
-    .action-methods {
-      flex: 3;
-    }
-
-    .important-link-center {
-      flex-direction: column;
-      flex: 1;
-
-      .important-links-image {
+      .action-methods {
+          flex: 3;
       }
-    }
+
+      .important-link-center {
+          flex-direction: column;
+          flex: 1;
+      }
   }
 }
 
 /* CSS CARD METHODS */
 .method-btn {
-  a {
-    color: white;
-    font-family: $textfont;
-  }
+    a {
+        color: white;
+        font-family: $textfont;
+    }
 
-  span {
-    font-weight: bold;
-  }
+    span {
+        font-weight: bold;
+    }
 }
 
 .container-card-method {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .menu-method {
-  background-color: #5F5F5F;
-  margin-left: -70px;
+    background-color: #5F5F5F;
+    margin-left: -70px;
 
-  a {
-    list-style-type: none;
-    padding: 6px 12px;
-    color: white;
-    font-family: $textfont;
-    font-size: 12px;
-    text-decoration: none;
-    margin-left: 3em;
-  }
+    a {
+        list-style-type: none;
+        padding: 6px 12px;
+        color: white;
+        font-family: $textfont;
+        font-size: 12px;
+        text-decoration: none;
+        margin-left: 3em;
+    }
 }
 
 /* CSS CARD METHODS DESKTOP VIEW */
 @media all and (min-width: 769px) {
 
   .container-card-method {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
-    flex-wrap: wrap;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
   }
 
   .container-btn-method {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
 
-    .method-btn {
-      margin-left: 90px;
-    }
+      .method-btn {
+          margin-left: 90px;
+      }
   }
 
   .container-color-method {
-    background-color: $primarycolor;
+      background-color: $primarycolor;
   }
 
   .method {
-    display: flex;
-    align-items: stretch;
+      display: flex;
+      align-items: stretch;
   }
 
   .menu-method {
-    width: 261px;
-    margin-left: -110px;
+      width: 261px;
+      margin-left: -110px;
 
-
-    a {
-      list-style-type: none;
-      padding: 6px 12px;
-      color: white;
-      font-family: $textfont;
-      font-size: 12px;
-      text-decoration: none;
-      margin-left: 0em;
-      margin-right: 0em;
-    }
+      a {
+          list-style-type: none;
+          padding: 6px 12px;
+          color: white;
+          font-family: $textfont;
+          font-size: 12px;
+          text-decoration: none;
+          margin-left: 0em;
+          margin-right: 0em;
+      }
   }
 
   .pipe-link-method {
-    border-right: 1px solid white;
-    border-left: 1px solid white;
+      border-right: 1px solid white;
+      border-left: 1px solid white;
   }
 }
