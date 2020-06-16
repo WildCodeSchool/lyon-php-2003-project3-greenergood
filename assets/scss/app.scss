@@ -68,44 +68,44 @@ h2 {
     margin: 10px;
 
     a:hover {
-      text-decoration: none;
+        text-decoration: none;
     }
 
     img {
-      position: relative;
+        position: relative;
     }
 
     .card-body {
-      text-align: center;
-      text-decoration: none;
-      border: none;
+        text-align: center;
+        text-decoration: none;
+        border: none;
     }
 
     .card-title {
-      font-size: $textsize;
-      color: $primarycolor;
+        font-size: $textsize;
+        color: $primarycolor;
     }
 
     .card-text {
-      color: $tertiarycolor;
+        color: $tertiarycolor;
     }
 
     .badge {
-      position: absolute;
-      top: 8px;
-      right: 16px;
+        position: absolute;
+        top: 8px;
+        right: 16px;
     }
 
     .canceled {
-      background-color: blueviolet;
+        background-color: blueviolet;
     }
 
     .ongoing {
-      background-color: $primarycolor;
+        background-color: $primarycolor;
     }
 
     .past {
-      background-color: cornflowerblue;
+        background-color: cornflowerblue;
     }
 }
 
@@ -136,45 +136,45 @@ h2 {
     margin: 10px;
 
     .card-head {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 25px;
     }
 
     .card-body {
-      text-align: center;
+        text-align: center;
     }
 
     .card-title {
-      font-family: $textfont;
-      color: $tertiarycolor;
+        font-family: $textfont;
+        color: $tertiarycolor;
     }
 
     .threeDots:after {
-      content: '\FE19';
-      font-size: 35px;
-      font-weight: bold;
-      color: $primarycolor;
-      opacity: 50%;
-      margin: 15px;
-      padding-bottom: 15px;
+        content: '\FE19';
+        font-size: 35px;
+        font-weight: bold;
+        color: $primarycolor;
+        opacity: 50%;
+        margin: 15px;
+        padding-bottom: 15px;
     }
 
     a {
-      text-decoration: none;
-      font-family: $textfont;
+        text-decoration: none;
+        font-family: $textfont;
     }
 
     a:hover {
-      text-decoration: none;
+        text-decoration: none;
     }
 
     .card-img {
-      border-radius: 50%;
-      height: 100px;
-      width: 100px;
-      margin-bottom: 10px;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        margin-bottom: 10px;
     }
 }
 
@@ -241,54 +241,54 @@ a:hover {
 
     //Box containing the links in the homepage
     .container-center {
-      @include flexCenter(column);
+        @include flexCenter(column);
     }
 
     .link-box {
-      border-radius: 30px;
-      width: 35%;
-      padding: 30px;
+        border-radius: 30px;
+        width: 35%;
+        padding: 30px;
     }
 
     .link-of-linkbox {
-      font-size: 2rem;
-      color: #FFFFFF;
+        font-size: 2rem;
+        color: #FFFFFF;
     }
 
     hr {
-      padding: 1px;
-      background: #FFF;
+        padding: 1px;
+        background: #FFF;
     }
 
     a:hover {
-      text-decoration: none;
-      color: $secondarycolor;
+        text-decoration: none;
+        color: $secondarycolor;
     }
 
     //Button to redirect to the new user page
     .button-new-benevole {
-      @include flexCenter(row);
-      color: $primarycolor;
+        @include flexCenter(row);
+        color: $primarycolor;
 
-      img {
-        height: 80px;
-      }
+        img {
+          height: 80px;
+        }
 
-      h4 {
-          background-color: $secondarycolor;
-          padding-left: 15px;
-          font-size: 24px;
-      }
+        h4 {
+            background-color: $secondarycolor;
+            padding-left: 15px;
+            font-size: 24px;
+        }
 
-      .logo-new {
-          z-index: 1;
-          height: 140px;
-          margin-left: -19px;
-      }
+        .logo-new {
+            z-index: 1;
+            height: 140px;
+            margin-left: -19px;
+        }
 
-      .arrow_benevole {
-          padding: 0px 50px 0px 50px;
-      }
+        .arrow_benevole {
+            padding: 0px 50px 0px 50px;
+        }
     }
 }
 
@@ -492,16 +492,16 @@ nav {
         }
   }
 
-  .organisation-button-plus {
-      color: $tertiarycolor;
-      font-size: 24px;
-      background-color: lighten($tertiarycolor, 40%);
+    .organisation-button-plus {
+        color: $tertiarycolor;
+        font-size: 24px;
+        background-color: lighten($tertiarycolor, 40%);
 
-      a:hover {
-          color: $secondarycolor;
+        a:hover {
+            color: $secondarycolor;
+        }
       }
-    }
-}
+  }
 
 
 .action-subtitles {
@@ -546,17 +546,17 @@ nav {
     background-color: white;
 
     .footerLink {
-      margin: 10px;
+        margin: 10px;
 
-      a {
-          text-decoration: none;
-          font-size: 16px;
-          color: $primarycolor;
+        a {
+            text-decoration: none;
+            font-size: 16px;
+            color: $primarycolor;
 
-          &:hover, &:active {
-            text-decoration: underline;
-          }
-      }
+            &:hover, &:active {
+                text-decoration: underline;
+            }
+        }
     }
 
     .footerImgContainer {
@@ -593,29 +593,29 @@ nav {
 /* FOOTER DESKTOP */
 
 @media only screen and (min-width: 768px) {
-  .footer {
+    .footer {
 
-      flex-direction: row;
-      justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
 
-      .footerLink {
+        .footerLink {
 
-          flex: 1;
-      }
+            flex: 1;
+        }
 
-      .footerImgContainer {
+        .footerImgContainer {
 
-          flex: 1;
-          display: flex;
-          justify-content: center;
-      }
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
 
-      .footerMessage {
+        .footerMessage {
 
-          flex: 1;
-          display: flex;
-          justify-content: flex-end;
-      }
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 }
 
@@ -702,77 +702,77 @@ nav {
 @media all and (min-width: 769px) {
 
   //Box containing the links in the homepage
-  .container-center {
-      @include flexCenter(column);
-  }
+    .container-center {
+        @include flexCenter(column);
+    }
 
-  .link-box {
-      border-radius: 30px;
-      width: 35%;
-      padding: 30px;
-  }
+    .link-box {
+        border-radius: 30px;
+        width: 35%;
+        padding: 30px;
+    }
 
-  .link-of-linkbox {
-      font-size: 2rem;
-      color: #FFFFFF;
-  }
+    .link-of-linkbox {
+        font-size: 2rem;
+        color: #FFFFFF;
+    }
 
-  hr {
-      padding: 1px;
-      background: #FFF;
-  }
+    hr {
+        padding: 1px;
+        background: #FFF;
+    }
 
-  a:hover {
-      text-decoration: none;
-      color: $secondarycolor;
-  }
+    a:hover {
+        text-decoration: none;
+        color: $secondarycolor;
+    }
 
-  //Button to redirect to the new benevole page
-  .button-new-benevole {
-      @include flexCenter(row);
-      color: $primarycolor;
+    //Button to redirect to the new benevole page
+    .button-new-benevole {
+        @include flexCenter(row);
+        color: $primarycolor;
 
-      img {
-          height: 80px;
-      }
+        img {
+            height: 80px;
+        }
 
-      h4 {
-          background-color: $secondarycolor;
-          padding-left: 15px;
-          font-size: 24px;
-      }
+        h4 {
+            background-color: $secondarycolor;
+            padding-left: 15px;
+            font-size: 24px;
+        }
 
-      .logo-new {
-          z-index: 1;
-          height: 140px;
-          margin-left: -19px;
-      }
+        .logo-new {
+            z-index: 1;
+            height: 140px;
+            margin-left: -19px;
+        }
 
-      .arrow_benevole {
-          padding: 0px 50px 0px 50px;
-      }
-  }
+        .arrow_benevole {
+            padding: 0px 50px 0px 50px;
+        }
+    }
 
   /*  Action display page  */
-  .action-center-left {
-      display: block;
-      flex: 1;
-  }
+    .action-center-left {
+        display: block;
+        flex: 1;
+    }
 
-  .deliverable-box {
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: center;
+    .deliverable-box {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
 
-      .action-methods {
-          flex: 3;
-      }
+        .action-methods {
+            flex: 3;
+        }
 
-      .important-link-center {
-          flex-direction: column;
-          flex: 1;
-      }
-  }
+        .important-link-center {
+            flex-direction: column;
+            flex: 1;
+        }
+    }
 }
 
 /* CSS CARD METHODS */
@@ -812,51 +812,51 @@ nav {
 /* CSS CARD METHODS DESKTOP VIEW */
 @media all and (min-width: 769px) {
 
-  .container-card-method {
-      display: flex;
-      flex-direction: row;
-      align-items: stretch;
-      justify-content: center;
-      flex-wrap: wrap;
-  }
+    .container-card-method {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-  .container-btn-method {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
+    .container-btn-method {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
 
-      .method-btn {
-          margin-left: 90px;
-      }
-  }
+        .method-btn {
+            margin-left: 90px;
+        }
+    }
 
-  .container-color-method {
-      background-color: $primarycolor;
-  }
+    .container-color-method {
+        background-color: $primarycolor;
+    }
 
-  .method {
-      display: flex;
-      align-items: stretch;
-  }
+    .method {
+        display: flex;
+        align-items: stretch;
+    }
 
-  .menu-method {
-      width: 261px;
-      margin-left: -110px;
+    .menu-method {
+        width: 261px;
+        margin-left: -110px;
 
-      a {
-          list-style-type: none;
-          padding: 6px 12px;
-          color: white;
-          font-family: $textfont;
-          font-size: 12px;
-          text-decoration: none;
-          margin-left: 0em;
-          margin-right: 0em;
-      }
-  }
+        a {
+            list-style-type: none;
+            padding: 6px 12px;
+            color: white;
+            font-family: $textfont;
+            font-size: 12px;
+            text-decoration: none;
+            margin-left: 0em;
+            margin-right: 0em;
+        }
+    }
 
-  .pipe-link-method {
-      border-right: 1px solid white;
-      border-left: 1px solid white;
-  }
+    .pipe-link-method {
+        border-right: 1px solid white;
+        border-left: 1px solid white;
+    }
 }
