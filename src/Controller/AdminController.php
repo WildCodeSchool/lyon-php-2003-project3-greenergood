@@ -9,7 +9,9 @@ use App\Form\RegistrationFormType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -18,12 +20,26 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Services\SendPassword;
+use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
+use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
+use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 /**
  * @Route("/admin")
  */
 class AdminController extends AbstractController
 {
+
+    use ResetPasswordControllerTrait;
+
+    private $resetPasswordHelper;
+
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
+    {
+        $this->resetPasswordHelper = $resetPasswordHelper;
+    }
+
     /**
      * @Route("/", name="admin_index")
      */
@@ -133,41 +149,5 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_user_index');
-    }
-
-    /**
-     * @Route("/users/register", name="admin_user_register")
-     * @param Request $request
-     * @param MailerInterface $mailer
-     * @return Response
-     * @throws TransportExceptionInterface
-     */
-    public function registerUser(Request $request, MailerInterface $mailer): Response
-    {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword('test');
-            $user->setStatus(1);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            /*$email = (new Email())
-                ->from(new Address('lucas.marguiron@gmail.com'))
-                ->to(new Address($user->getEmail()))
-                ->subject('Veuillez valider votre compte sur La Gare Centrale')
-                ->html('Votre compte sur la gare centrale a été crée');
-
-            $mailer->send($email);*/
-
-            return $this->redirectToRoute('admin_user_index');
-        }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
     }
 }

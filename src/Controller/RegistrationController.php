@@ -4,20 +4,40 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Service\SendPassword;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
+use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
+use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 class RegistrationController extends AbstractController
 {
+
+    use ResetPasswordControllerTrait;
+
+    private $resetPasswordHelper;
+
+    public function __construct(ResetPasswordHelperInterface $resetPasswordHelper)
+    {
+        $this->resetPasswordHelper = $resetPasswordHelper;
+    }
+
     /**
      * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param SendPassword $sendPassword
+     * @param MailerInterface $mailer
+     * @return Response
      */
-    public function register(Request $request, MailerInterface $mailer): Response
+    public function register(Request $request, SendPassword $sendPassword, MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -30,15 +50,12 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            /*$email = (new Email())
-                ->from(new Address('lucas.marguiron@gmail.com'))
-                ->to(new Address($user->getEmail()))
-                ->subject('Veuillez valider votre compte sur La Gare Centrale')
-                ->html('Votre compte sur la gare centrale a été crée');
+            $sendPassword->newPassword(
+                $form->get('email')->getData(),
+                $mailer
+            );
 
-            $mailer->send($email);*/
-
-            return $this->redirectToRoute('admin_user_index');
+            return $this->redirectToRoute("admin_user_index");
         }
 
         return $this->render('registration/register.html.twig', [
