@@ -18,6 +18,8 @@ class MethodController extends AbstractController
 {
     /**
      * @Route("/", name="method_index", methods={"GET"})
+     * @param MethodRepository $methodRepository
+     * @return Response
      */
     public function index(MethodRepository $methodRepository): Response
     {
@@ -28,6 +30,8 @@ class MethodController extends AbstractController
 
     /**
      * @Route("/new", name="method_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -55,16 +59,21 @@ class MethodController extends AbstractController
 
     /**
      * @Route("/{id}", name="method_show", methods={"GET"})
+     * @param Method $method
+     * @return Response
      */
     public function show(Method $method): Response
     {
-        return $this->render('method/show.html.twig', [
+        return $this->render('method/index.html.twig', [
             'method' => $method,
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="method_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Method $method
+     * @return Response
      */
     public function edit(Request $request, Method $method): Response
     {
@@ -85,6 +94,9 @@ class MethodController extends AbstractController
 
     /**
      * @Route("/{id}", name="method_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Method $method
+     * @return Response
      */
     public function delete(Request $request, Method $method): Response
     {
