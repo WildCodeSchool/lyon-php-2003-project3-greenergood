@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Action;
 use App\Entity\Method;
+use App\Form\ActionType;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -84,6 +86,29 @@ class MethodController extends AbstractController
         }
 
         return $this->render('method/edit.html.twig', [
+            'method' => $method,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/duplicate", name="method_duplicate", methods={"GET","POST"})
+     */
+    public function duplicate(Request $request, Method $method): Response
+    {
+        $newMethod = clone $method;
+        $form = $this->createForm(MethodType::class, $newMethod);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newMethod);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('method_index');
+        }
+
+        return $this->render('action/duplicate.html.twig', [
             'method' => $method,
             'form' => $form->createView(),
         ]);
