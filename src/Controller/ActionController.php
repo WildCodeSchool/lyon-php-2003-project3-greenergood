@@ -45,7 +45,7 @@ class ActionController extends AbstractController
             $entityManager->flush();
 
             // When the SHOW method is coded, delete this line and uncomment the next two lines
-            return $this->redirectToRoute("action_new");
+            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
             // Redirect to the page of the Action
             // return $this->redirectToRoute("action_show");
         }
@@ -98,5 +98,30 @@ class ActionController extends AbstractController
         }
 
         return $this->redirectToRoute('action_index');
+    }
+
+    // Duplicate action sheet
+
+    /**
+     * @Route("/{id}/duplicate", name="duplicate", methods={"GET","POST"})
+     */
+    public function duplicate(Request $request, Action $action): Response
+    {
+        $newaction = clone $action;
+        $form = $this->createForm(ActionType::class, $newaction);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newaction);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
+        }
+
+        return $this->render('action/duplicate.html.twig', [
+            'action' => $action,
+            'form' => $form->createView(),
+        ]);
     }
 }

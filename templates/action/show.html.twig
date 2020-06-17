@@ -11,7 +11,7 @@
             <div class="action-menu menu">
                 <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
                 <span class="action">|</span>
-                <a href="#">Dupliquer</a>
+                <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
                 <span class="action">|</span>
                 <a href="{{ path('action_delete', {'id': action.id}) }}">Supprimer</a>
             </div>
@@ -33,9 +33,9 @@
                     <figure class="col-6 offset-3 edition-box">
                         <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}" alt="Fond vert du titre">
                         <figcaption>
-                            {% if action.editionNumber != 1 %}
+                            {% if action.editionNumber > 1 %}
                                 {{ action.editionNumber }}ème édition
-                            {% else %}
+                            {% elseif action.editionNumber == 1 %}
                                 {{ action.editionNumber }}ère édition
                             {% endif %}
                         </figcaption>
@@ -52,10 +52,6 @@
 
         <div class="action-yellow-box">
             <div class="text-center">{{ action.content }}</div>
-            <hr class="action-separator">
-            <div class="text-center">
-                {{ action.content }}
-            </div>
             <hr class="action-separator">
 
             <div class="text-center">
