@@ -1,5 +1,21 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.prerequisites) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.objectives) }}
+
+    <p class="methodLinks">Liens utiles</p>
+    <ul class="methodLinks-fields-list"
+        data-prototype="{{ form_widget(form.methodLinks.vars.prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ form.methodLinks|length }}">
+        {% for methodLink in form.methodLinks %}
+                <li class="remove-link">
+                    {{ form_widget(methodLinksField) }}
+                </li>
+        {% endfor %}
+    </ul>
+    <br>
     <div class="col-12 text-center">
         <button class="btn form-button">{{ button_label|default('Créer la fiche méthode') }}</button>
     </div>
