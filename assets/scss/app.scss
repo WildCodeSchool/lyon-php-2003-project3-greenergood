@@ -159,6 +159,7 @@ h2 {
         opacity: 50%;
         margin: 15px;
         padding-bottom: 15px;
+        cursor: pointer;
     }
 
     a {
@@ -168,6 +169,8 @@ h2 {
 
     a:hover {
         text-decoration: none;
+        color: $secondarycolor;
+        cursor: pointer;
     }
 
     .card-img {
@@ -663,24 +666,20 @@ nav {
 
 @media only screen and (min-width: 768px) {
     .footer {
-
         flex-direction: row;
         justify-content: space-between;
 
         .footerLink {
-
             flex: 1;
         }
 
         .footerImgContainer {
-
             flex: 1;
             display: flex;
             justify-content: center;
         }
 
         .footerMessage {
-
             flex: 1;
             display: flex;
             justify-content: flex-end;
@@ -930,3 +929,26 @@ nav {
         border-left: 1px solid white;
     }
 }
+
+/* NEW METHOD FORM */
+
+.methodLinks-fields-list {
+    list-style-type: none;
+}
+
+.methodLinks {
+    color: $tertiarycolor;
+    font-family: $textfont;
+    font-size: $textsize;
+}
+
+.btn-removeMethodLink {
+    background-color: $tertiarycolor;
+    margin-bottom: 20px;
+    font-family: $textfont;
+    font-size: 13px;
+    color: $secondarycolor;
+}
+
+
+

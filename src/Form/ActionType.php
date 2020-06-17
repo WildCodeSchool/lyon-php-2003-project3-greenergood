@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Action;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,12 +16,13 @@ class ActionType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de l'action *"])
-            ->add('editionNumber', null, ['label' => "N° de l'édition *"])
+            ->add('editionNumber', null, ['label' => "N° de l'édition"])
             ->add('actionPicture', null, ['label' => "Lien vers une photo"])
             ->add('description', null, ['label' => "Description *"])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd-MM--yyyy',
+                "data" => new DateTime(),
             ])
             ->add('endDate', DateType::class, [
                 'label' => "Date de fin",
@@ -29,12 +31,12 @@ class ActionType extends AbstractType
                 'required'   => false,
             ])
             ->add('location', null, ['label' => "Lieu"])
-            ->add('content', null, ['label' => "Champs libre"])
+            ->add('content', null, ['label' => "Champ libre"])
             ->add('status', ChoiceType::class, [
                 'choices'  => [
-                    'En cours' => 'En cours',
-                    'Terminé' => 'Terminé',
-                    'Annulé' => 'Annulé',
+                    'En cours' => 'started',
+                    'Terminé' => 'ended',
+                    'Annulé' => 'cancelled',
                 ],
             ])
             ->add('projectProgress', null, ['label' => "Avancement du projet"])

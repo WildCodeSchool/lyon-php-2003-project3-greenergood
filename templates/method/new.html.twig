@@ -1,11 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Method{% endblock %}
+{% block title %}Nouvelle fiche méthode{% endblock %}
 
 {% block body %}
-    <h1>Create new Method</h1>
+    <div class="action-form">
+        <h1 class="greenOnWhite">Créer une nouvelle fiche méthode</h1>
 
     {{ include('method/_form.html.twig') }}
+    </div>
+{% endblock %}
 
-    <a href="{{ path('method_index') }}">back to list</a>
+{% block javascripts %}
+    <script type="text/javascript">
+        function addPropositionFormDeleteLink($) {
+        }
+        // add-collection-widget.js
+        jQuery(document).ready(function () {
+            jQuery('.add-another-collection-widget').click(function (e) {
+                const list = jQuery(jQuery(this)
+                    .attr('data-list-selector'));
+                let counter = list.data('widget-counter') || list.children().length;
+                let newWidget = list.attr('data-prototype');
+                newWidget = newWidget.replace(/__name__/g, counter);
+                counter++;
+                list.data('widget-counter', counter);
+                const newElem = jQuery(list.attr('data-widget-tags'))
+                    .html(newWidget);
+                newElem.appendTo(list);
+            });
+            let $collectionHolder;
+            const $addTagButton = $('<button type="button" class="btn btn-primary btn-addMethodlink">Ajouter un lien</button>');
+            const $newLinkLi = $('<p></p>').append($addTagButton);
+            $collectionHolder = $('ul.methodLinks-fields-list');
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkLi);
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find('input').length);
+            $addTagButton.on('click', function(e) {
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+            function addTagForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                const prototype = $collectionHolder.data('prototype');
+                const index = $collectionHolder.data('index');
+                let newForm = prototype;
+                newForm = newForm.replace(/__name__/g, index);
+                $collectionHolder.data('index', index + 1);
+                const $newFormLi = $('<li></li>')
+                    .append(newForm);
+                $newLinkLi.before($newFormLi);
+                addTagFormDeleteLink($newFormLi);
+            }
+            function addTagFormDeleteLink($tagFormLi) {
+                const $removeFormButton = $('<button class="btn btn-sm btn-removeMethodLink" type="button">Supprimer</button>');
+                $tagFormLi.append($removeFormButton);
+                $removeFormButton.on('click', function(e) {
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+        });
+    </script>
 {% endblock %}
