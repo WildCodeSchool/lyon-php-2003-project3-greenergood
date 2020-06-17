@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -25,14 +25,14 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword('test');
-            $user->setStatus('1');
+            $user->setStatus(1);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             $email = (new Email())
-                ->from('lucas.marguiron@gmail.com')
-                ->to($user->getEmail())
+                ->from(new Address('lucas.marguiron@gmail.com'))
+                ->to(new Address($user->getEmail()))
                 ->subject('Veuillez valider votre compte sur La Gare Centrale')
                 ->html('Votre compte sur la gare centrale a été crée');
 
