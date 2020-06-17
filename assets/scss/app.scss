@@ -159,6 +159,7 @@ h2 {
         opacity: 50%;
         margin: 15px;
         padding-bottom: 15px;
+        cursor: pointer;
     }
 
     a {
@@ -168,6 +169,8 @@ h2 {
 
     a:hover {
         text-decoration: none;
+        color: $secondarycolor;
+        cursor: pointer;
     }
 
     .card-img {
