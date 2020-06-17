@@ -30,15 +30,15 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $email = (new Email())
+            /*$email = (new Email())
                 ->from(new Address('lucas.marguiron@gmail.com'))
                 ->to(new Address($user->getEmail()))
                 ->subject('Veuillez valider votre compte sur La Gare Centrale')
                 ->html('Votre compte sur la gare centrale a été crée');
 
-            $mailer->send($email);
+            $mailer->send($email);*/
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         return $this->render('registration/register.html.twig', [

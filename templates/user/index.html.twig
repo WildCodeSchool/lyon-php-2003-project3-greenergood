@@ -8,7 +8,8 @@
 
         <div class="count">
             Nombre total d'utilisateurs : {{ pagination.getTotalItemCount }}
-        </div><br>
+        </div>
+        <br>
         <table class="table">
             <thead>
             <tr>
@@ -16,6 +17,8 @@
                 <th>E-mail</th>
                 <th>Prénom</th>
                 <th>Nom de famille</th>
+                <th>Roles</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -26,9 +29,21 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.firstname }}</td>
                     <td>{{ user.lastname }}</td>
+                    <td>{{ user.roles|first|replace({'ROLE' : "", '_' : " "}) }}</td>
                     <td>
-                        <a href="{{ path('user_show', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Voir') }}</button></a>
-                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Editer') }}</button></a>
+                        {% if user.status == 1 %}
+                            Actif
+                        {% else %}
+                            Inactif
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('admin_user_show', {'id': user.id}) }}">
+                            <button class="btn form-button">{{ button_label|default('Voir') }}</button>
+                        </a>
+                        <a href="{{ path('admin_user_edit', {'id': user.id}) }}">
+                            <button class="btn form-button">{{ button_label|default('Editer') }}</button>
+                        </a>
                     </td>
                 </tr>
             {% else %}
@@ -43,6 +58,8 @@
             {{ knp_pagination_render(pagination) }}
         </div>
 
-        <a href="{{ path('user_new') }}"><button class="btn form-button">{{ button_label|default('Créer') }}</button></a>
+        <a href="{{ path('app_register') }}">
+            <button class="btn form-button">{{ button_label|default('Créer') }}</button>
+        </a>
     </div>
 {% endblock %}

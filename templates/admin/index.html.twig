@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1 class="greenOnWhite">Administration</h1>
+<ul>
+    <li><a href="{{ path('admin_user_index') }}">Gestion des utilisateurs</a></li>
+</ul>
+{% endblock %}

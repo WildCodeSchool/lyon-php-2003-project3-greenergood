@@ -33,13 +33,13 @@ class UserType extends AbstractType
             ])
             ->add('firstname', TextType::class, ['label' => "Prénom *"])
             ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
-            ->add('fonction', TextType::class, ['label' => "Fonction"])
-            ->add('entry_date', null, ['label' => "Date d'arrivée"])
-            ->add('address', TextType::class, ['label' => "Adresse"])
-            ->add('description', TextType::class, ['label' => "Description"])
-            ->add('user_picture', TextType::class, ['label' => "Photo de profil"])
-            ->add('linkedin', TextType::class, ['label' => "LinkedIn"])
-            ->add('facebook', TextType::class, ['label' => "Facebook"])
+            ->add('fonction', TextType::class, ['label' => "Fonction", 'required'   => false])
+            ->add('entry_date', null, ['label' => "Date d'arrivée", 'required'   => false])
+            ->add('address', TextType::class, ['label' => "Adresse", 'required'   => false])
+            ->add('description', TextType::class, ['label' => "Description", 'required'   => false])
+            ->add('user_picture', TextType::class, ['label' => "Photo de profil", 'required'   => false])
+            ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required'   => false])
+            ->add('facebook', TextType::class, ['label' => "Facebook", 'required'   => false])
             ->add('status', ChoiceType::class, [
                     'choices' => [
                         'Actif' => 1,

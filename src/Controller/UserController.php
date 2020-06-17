@@ -22,54 +22,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="user_index", methods={"GET"})
-     * @param UserRepository $userRepository
-     * @param PaginatorInterface $paginator
-     * @param Request $request
-     * @return Response
-     */
-    public function index(UserRepository $userRepository, PaginatorInterface $paginator, Request $request): Response
-    {
-        $users = $userRepository->findAll();
-
-        $pagination = $paginator->paginate(
-            $userRepository->findAll(), /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            10 /*limit per page*/
-        );
-
-        return $this->render('user/index.html.twig', [
-            'users' => $users,
-            'pagination' => $pagination
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
-     */
-    public function new(Request $request): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      * @param User $user
      * @return Response
