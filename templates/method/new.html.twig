@@ -29,7 +29,7 @@
                 newElem.appendTo(list);
             });
             let $collectionHolder;
-            const $addTagButton = $('<button type="button" class="btn btn-methodLink">Ajouter un lien</button>');
+            const $addTagButton = $('<button type="button" class="btn btn-primary btn-addMethodlink">Ajouter un lien</button>');
             const $newLinkLi = $('<p></p>').append($addTagButton);
             $collectionHolder = $('ul.methodLinks-fields-list');
             // add the "add a tag" anchor and li to the tags ul
@@ -54,7 +54,7 @@
                 addTagFormDeleteLink($newFormLi);
             }
             function addTagFormDeleteLink($tagFormLi) {
-                const $removeFormButton = $('<button class="btn btn-methodLink" type="button">Supprimer ce lien</button>');
+                const $removeFormButton = $('<button class="btn btn-sm btn-removeMethodLink" type="button">Supprimer</button>');
                 $tagFormLi.append($removeFormButton);
                 $removeFormButton.on('click', function(e) {
                     // remove the li for the tag form
