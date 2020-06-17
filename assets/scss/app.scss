@@ -861,17 +861,27 @@ nav {
 }
 
 //INDEX MOBILE VIEW
-.index ul {
-    list-style-type: none;
-}
-.bloc_page {
-    position: relative;
+.index  {
+
+    ul {
+        list-style-type: none;
+    }
+    a {
+        color: black;
+    }
+
+    h4 {
+
+        a {
+            font-family: $titlefont;
+            color: $primarycolor;
+            opacity: 85%;
+        }
+    }
 }
 
-h4 {
-    font-family: $titlefont;
-    color: $primarycolor;
-    opacity: 85%;
+.bloc_page {
+    position: relative;
 }
 
 .img-leaf-palm {

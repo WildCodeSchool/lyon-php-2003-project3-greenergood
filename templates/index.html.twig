@@ -11,22 +11,26 @@
         <h1>Index</h1>
 
         <div class="container-center index">
-            <h4>Fiches actions</h4>
+            <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
             <ul>
                 {% for action in actions %}
-                    <li>{{ action.name }} : {{ action.startDate|date('d-m-Y') }}</li>
+                    <li>
+                        <a href="{{ path('action_show', {'id':action.id}) }}">
+                            {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
+                        </a>
+                    </li>
                 {% endfor %}
             </ul>
-            <h4>Fiches méthodes</h4>
+            <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
             <ul>
                 {% for method in methods %}
-                    <li>{{ method.name }}</li>
+                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.name }}</a></li>
                 {% endfor %}
             </ul>
-            <h4>Fiches des membres</h4>
+            <h4><a href="{{ path('user_index') }}">Fiches des membres</a></h4>
             <ul>
                 {% for user in users %}
-                    <li>{{ user.lastname }}  {{ user.firstname }}</li>
+                    <li><a href="{{ path('user_show', {'id':user.id}) }}">{{ user.lastname }}  {{ user.firstname }}</a></li>
 
                 {% endfor %}
             </ul>

@@ -35,15 +35,17 @@ class AppController extends AbstractController
      * @Route("/index", name="index", methods={"GET"})
      * @param ActionRepository $actionRepository
      * @param MethodRepository $methodRepository
-     * @param UserRepository $user
+     * @param UserRepository $userRepository
      * @return Response
      */
-    public function index(ActionRepository $actionRepository, MethodRepository $methodRepository, UserRepository $user)
+    public function index(
+        ActionRepository $actionRepository, MethodRepository $methodRepository, UserRepository $userRepository
+    )
     {
         return $this->render('index.html.twig', [
             'methods' => $methodRepository->findAll(),
             'actions' => $actionRepository->findAll(),
-            'users' => $user->findAll(),
+            'users' => $userRepository->findAll(),
         ]);
     }
 }
