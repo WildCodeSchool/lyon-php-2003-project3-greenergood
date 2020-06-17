@@ -860,7 +860,7 @@ nav {
     }
 }
 
-/* NEW METHOD FORM */
+/* METHOD FORMS (new, edit, duplicate) */
 
 .methodLinks-fields-list {
     list-style-type: none;
@@ -878,6 +878,10 @@ nav {
     font-family: $textfont;
     font-size: 13px;
     color: $secondarycolor;
+}
+
+.btn-delete {
+    margin-top: 10px
 }
 
 

@@ -11,7 +11,7 @@
         data-widget-counter="{{ form.methodLinks|length }}">
         {% for methodLink in form.methodLinks %}
                 <li class="remove-link">
-                    {{ form_widget(methodLinksField) }}
+                {{ form_widget(methodLink) }}
                 </li>
         {% endfor %}
     </ul>

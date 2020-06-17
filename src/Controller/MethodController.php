@@ -108,7 +108,7 @@ class MethodController extends AbstractController
             return $this->redirectToRoute('method_index');
         }
 
-        return $this->render('action/duplicate.html.twig', [
+        return $this->render('method/duplicate.html.twig', [
             'method' => $method,
             'form' => $form->createView(),
         ]);
