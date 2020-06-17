@@ -45,7 +45,7 @@ class ActionController extends AbstractController
             $entityManager->flush();
 
             // When the SHOW method is coded, delete this line and uncomment the next two lines
-            return $this->redirectToRoute("action_new");
+            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
             // Redirect to the page of the Action
             // return $this->redirectToRoute("action_show");
         }

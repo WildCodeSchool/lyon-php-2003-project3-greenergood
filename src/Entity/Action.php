@@ -26,8 +26,8 @@ class Action
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotNull(message="Le numéro d'édition ne devrait pas être nul",)
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive(message="Le numéro d'édition doit être supérieur à 0")
      */
     private $editionNumber;
 
@@ -50,7 +50,6 @@ class Action
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="La description ne devrait pas être vide")
-     * @Assert\Length(max="255", maxMessage="La description ne devrait pas dépasser {{ limit }} caractères")
      */
     private $description;
 
@@ -82,7 +81,7 @@ class Action
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Choice(
-     *     choices = { "En cours", "Terminé", "Annulé" }
+     *     choices = { "started", "ended", "cancelled" }
      * )
      */
     private $status = 'En cours';
