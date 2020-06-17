@@ -39,9 +39,10 @@ class AppController extends AbstractController
      * @return Response
      */
     public function index(
-        ActionRepository $actionRepository, MethodRepository $methodRepository, UserRepository $userRepository
-    )
-    {
+        ActionRepository $actionRepository,
+        MethodRepository $methodRepository,
+        UserRepository $userRepository
+    ) {
         return $this->render('index.html.twig', [
             'methods' => $methodRepository->findAll(),
             'actions' => $actionRepository->findAll(),
