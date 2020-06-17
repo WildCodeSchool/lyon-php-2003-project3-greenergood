@@ -594,24 +594,20 @@ nav {
 
 @media only screen and (min-width: 768px) {
     .footer {
-
         flex-direction: row;
         justify-content: space-between;
 
         .footerLink {
-
             flex: 1;
         }
 
         .footerImgContainer {
-
             flex: 1;
             display: flex;
             justify-content: center;
         }
 
         .footerMessage {
-
             flex: 1;
             display: flex;
             justify-content: flex-end;
