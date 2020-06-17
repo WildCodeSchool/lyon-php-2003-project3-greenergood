@@ -5,17 +5,13 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Service\SendPassword;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
-use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 class RegistrationController extends AbstractController
@@ -35,16 +31,28 @@ class RegistrationController extends AbstractController
      * @param Request $request
      * @param SendPassword $sendPassword
      * @param MailerInterface $mailer
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
+     * @throws \Exception
      */
-    public function register(Request $request, SendPassword $sendPassword, MailerInterface $mailer): Response
-    {
+    public function register(
+        Request $request,
+        SendPassword $sendPassword,
+        MailerInterface $mailer,
+        UserPasswordEncoderInterface $passwordEncoder
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword('test');
+            $randomPass = random_bytes(10);
+
+            $user->setPassword($passwordEncoder->encodePassword(
+                $user,
+                $randomPass
+            ));
+
             $user->setStatus(1);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
