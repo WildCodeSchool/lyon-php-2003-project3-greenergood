@@ -7,22 +7,31 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
-class UserType extends AbstractType
+class RegistrationFormType extends AbstractType
 {
-    public function emailForm(FormBuilderInterface $builder, array  $options)
-    {
-        $builder
-            ->add('email', EmailType::class, ['label' => "E-mail *"]);
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('email', EmailType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner un email',
+                    ]),
+                ],
+                'label' => "E-mail *"
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom *'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom de famille *'
+            ])
+
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
@@ -30,21 +39,7 @@ class UserType extends AbstractType
                     'Super admin' => 'ROLE_SUPER_ADMIN',
                 ],
                 'label' => "Role *"
-            ])
-            ->add('firstname', TextType::class, ['label' => "Prénom *"])
-            ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
-            ->add('fonction', TextType::class, ['label' => "Fonction"])
-            ->add('entry_date', null, ['label' => "Date d'arrivée"])
-            ->add('address', TextType::class, ['label' => "Adresse"])
-            ->add('description', TextType::class, ['label' => "Description"])
-            ->add('user_picture', TextType::class, ['label' => "Photo de profil"])
-            ->add('linkedin', TextType::class, ['label' => "LinkedIn"])
-            ->add('facebook', TextType::class, ['label' => "Facebook"])
-            ->add('status', ChoiceType::class, [
-                    'choices' => [
-                        'Actif' => 1,
-                        'Inactif' => 0,
-                    ]]);
+            ]);
 
         $builder->get('roles')
             ->addModelTransformer(new CallbackTransformer(
