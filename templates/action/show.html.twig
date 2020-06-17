@@ -11,7 +11,7 @@
             <div class="action-menu menu">
                 <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
                 <span class="action">|</span>
-                <a href="#">Dupliquer</a>
+                <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
                 <span class="action">|</span>
                 <a href="{{ path('action_delete', {'id': action.id}) }}">Supprimer</a>
             </div>
