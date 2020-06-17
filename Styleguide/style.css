@@ -117,8 +117,7 @@ h2 {
   font-weight: bold;
   color: #5AAFAA;
   opacity: 50%;
-  margin: 15px;
-  padding-bottom: 15px;
+  margin: 0 15px;
 }
 .cardmethod a {
   text-decoration: none;

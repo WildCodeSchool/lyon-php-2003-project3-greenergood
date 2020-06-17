@@ -45,10 +45,7 @@ class MethodController extends AbstractController
             $entityManager->persist($method);
             $entityManager->flush();
 
-            // When the SHOW method is coded, delete this line and uncomment the next two lines
-            return $this->redirectToRoute("method_new");
-            // Redirect to the page of the new method
-            // return $this->redirectToRoute("method_show");
+            return $this->redirectToRoute("method_index");
         }
 
         return $this->render('method/new.html.twig', [
