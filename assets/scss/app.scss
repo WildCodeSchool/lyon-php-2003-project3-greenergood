@@ -856,3 +856,26 @@ nav {
         border-left: 1px solid white;
     }
 }
+
+/* NEW METHOD FORM */
+
+.methodLinks-fields-list {
+    list-style-type: none;
+}
+
+.methodLinks {
+    color: $tertiarycolor;
+    font-family: $textfont;
+    font-size: $textsize;
+}
+
+.btn-removeMethodLink {
+    background-color: $tertiarycolor;
+    margin-bottom: 20px;
+    font-family: $textfont;
+    font-size: 13px;
+    color: $secondarycolor;
+}
+
+
+

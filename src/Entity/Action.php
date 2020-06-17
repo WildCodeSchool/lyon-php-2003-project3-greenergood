@@ -32,13 +32,6 @@ class Action
     private $editionNumber;
 
     /**
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", nullable=true)
-     * @Assert\Positive()
-     */
-    private $number;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max="255",
@@ -213,18 +206,6 @@ class Action
     public function setProjectProgress(?string $projectProgress): self
     {
         $this->projectProgress = $projectProgress;
-
-        return $this;
-    }
-
-    public function getNumber(): ?int
-    {
-        return $this->number;
-    }
-
-    public function setNumber(int $number): self
-    {
-        $this->number = $number;
 
         return $this;
     }
