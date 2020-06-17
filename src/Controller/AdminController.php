@@ -25,7 +25,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="admin_index")
      */
     public function index(): Response
     {
@@ -54,7 +54,7 @@ class AdminController extends AbstractController
             5 /*limit per page*/
         );
 
-        return $this->render('user/index.html.twig', [
+        return $this->render('admin/user/index.html.twig', [
             'users' => $users,
             'pagination' => $pagination
         ]);
@@ -67,7 +67,7 @@ class AdminController extends AbstractController
      */
     public function showUser(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('admin/user/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -113,7 +113,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_user_index');
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('admin/user/edit.html.twig', [
             'user' => $user,
             'emailForm' => $emailForm->createView(),
             'passForm' => $passForm->createView(),

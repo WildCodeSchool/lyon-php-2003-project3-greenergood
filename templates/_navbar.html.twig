@@ -15,8 +15,9 @@
                 <a class="dropdown-item" href="">Mon profil</a>
                 <a class="dropdown-item" href="#">Mes favoris</a>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="dropdown-item" href="{{ path('admin_user_index') }}">Administration</a>
+                    <a class="dropdown-item" href="{{ path('admin_index') }}">Administration</a>
                 {% endif %}
+                <hr>
                 <a class="dropdown-item" href="/logout">Déconnexion</a>
             </div>
         </div>
@@ -74,8 +75,9 @@
                     <a class="dropdown-item" href="">Mon profil</a>
                     <a class="dropdown-item" href="#">Mes favoris</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="dropdown-item" href="{{ path('admin_user_index') }}">Administration</a>
+                        <a class="dropdown-item" href="{{ path('admin_index') }}">Administration</a>
                     {% endif %}
+                    <hr>
                     <a class="dropdown-item" href="/logout">Déconnexion</a>
                 </div>
             </div>

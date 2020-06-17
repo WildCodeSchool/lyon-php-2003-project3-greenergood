@@ -18,18 +18,14 @@
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.roles|first|replace({'ROLE' : "", '_' : " "}) }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
+                <th>Prénom</th>
                 <td>{{ user.firstname }}</td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Nom de famille</th>
                 <td>{{ user.lastname }}</td>
             </tr>
             <tr>
@@ -37,11 +33,11 @@
                 <td>{{ user.fonction }}</td>
             </tr>
             <tr>
-                <th>Entry_date</th>
+                <th>Date d'entrée</th>
                 <td>{{ user.entryDate ? user.entryDate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Address</th>
+                <th>Addresse</th>
                 <td>{{ user.address }}</td>
             </tr>
             <tr>
@@ -49,11 +45,11 @@
                 <td>{{ user.description }}</td>
             </tr>
             <tr>
-                <th>User_picture</th>
+                <th>Photo de profil</th>
                 <td>{{ user.userPicture }}</td>
             </tr>
             <tr>
-                <th>Linkedin</th>
+                <th>LinkedIn</th>
                 <td>{{ user.linkedin }}</td>
             </tr>
             <tr>
@@ -67,9 +63,9 @@
             </tbody>
         </table>
 
-        <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Editer') }}</button></a><br>
+        <a href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Editer') }}</button></a><br>
 
-        {{ include('user/_delete_form.html.twig') }}
+        {{ include('admin/user/_delete_form.html.twig') }}
 
         <a href="{{ path('admin_user_index') }}">Retour à la liste</a>
 
