@@ -401,7 +401,7 @@ nav {
             display: flex;
             color: white;
             font-family: $titlefont;
-          }
+        }
     }
 
     .action-edition-style {
@@ -493,7 +493,7 @@ nav {
                 color: $secondarycolor;
             }
         }
-  }
+    }
 
     .organisation-button-plus {
         color: $tertiarycolor;
@@ -503,8 +503,8 @@ nav {
         a:hover {
             color: $secondarycolor;
         }
-      }
-  }
+    }
+}
 
 
 .action-subtitles {
@@ -857,5 +857,102 @@ nav {
     .pipe-link-method {
         border-right: 1px solid white;
         border-left: 1px solid white;
+    }
+}
+
+//INDEX MOBILE VIEW
+.index ul {
+    list-style-type: none;
+}
+.bloc_page {
+    position: relative;
+}
+
+h4 {
+    font-family: $titlefont;
+    color: $primarycolor;
+    opacity: 85%;
+}
+
+.img-leaf-palm {
+    height: 150px;
+    position: absolute;
+    right: 0;
+    top: -60px;
+}
+
+.img-leaf-palm-tall {
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    left: -25px;
+}
+
+.img-leaf-blue {
+    height: 150px;
+    position: absolute;
+    left: -20px;
+}
+
+.img-leaf-green {
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    right: -25px;
+}
+
+.rotation110 {
+    -webkit-transform: rotate(110deg);
+    -moz-transform: rotate(110deg);
+    -ms-transform: rotate(110deg);
+    -o-transform: rotate(110deg);
+    transform: rotate(110deg);
+}
+
+//INDEX DESKTOP VIEW
+@media all and (min-width: 769px) {
+
+    .img-leaf-palm {
+        height: 350px;
+        position: absolute;
+        right: 0;
+        top: -140px;
+    }
+
+    .img-leaf-palm-tall {
+        height: 300px;
+        position: absolute;
+        bottom: -40px;
+        left: -57px;
+    }
+
+    .img-leaf-blue {
+        height: 300px;
+        position: absolute;
+        left: -42px;
+        top: -45px;
+    }
+
+    .img-leaf-green {
+        height: 300px;
+        position: absolute;
+        bottom: -50px;
+        right: -40px;
+    }
+
+    .rotation110 {
+        -webkit-transform: rotate(110deg);
+        -moz-transform: rotate(110deg);
+        -ms-transform: rotate(110deg);
+        -o-transform: rotate(110deg);
+        transform: rotate(110deg);
+    }
+
+    .bloc_page {
+        position: relative;
+        width: 1000px;
+        margin: auto;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
     }
 }
