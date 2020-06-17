@@ -292,6 +292,18 @@ a:hover {
     }
 }
 
+// ADMIN
+
+.actions-listing{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+tr{
+    text-align: center;
+}
+
+
 // NAVBAR
 
 nav {

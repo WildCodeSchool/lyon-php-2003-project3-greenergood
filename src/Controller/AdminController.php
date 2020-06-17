@@ -48,15 +48,15 @@ class AdminController extends AbstractController
     ): Response {
         $users = $userRepository->findAll();
 
-        $pagination = $paginator->paginate(
-            $userRepository->findAll(), /* query NOT result */
+        $allUsers = $paginator->paginate(
+            $users, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             5 /*limit per page*/
         );
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users,
-            'pagination' => $pagination
+            'allUsers' => $allUsers
         ]);
     }
 

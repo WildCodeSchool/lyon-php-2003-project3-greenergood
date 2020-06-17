@@ -58,16 +58,24 @@
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ user.status }}</td>
+                <td>
+                    {% if user.status == 1 %}
+                        Actif
+                    {% else %}
+                        Inactif
+                    {% endif %}
+                </td>
             </tr>
             </tbody>
         </table>
 
-        <a href="{{ path('admin_user_edit', {'id': user.id}) }}"><button class="btn form-button">{{ button_label|default('Editer') }}</button></a><br>
+        <a href="{{ path('admin_user_edit', {'id': user.id}) }}">
+            <button class="btn form-button">{{ button_label|default('Editer') }}</button>
+        </a><br>
 
         {{ include('admin/user/_delete_form.html.twig') }}
 
-        <a href="{{ path('admin_user_index') }}">Retour à la liste</a>
+        <a href="{{ path('admin_user_index') }}"><button class="btn form-button">Retour à la liste</button></a>
 
     </div>
 {% endblock %}
