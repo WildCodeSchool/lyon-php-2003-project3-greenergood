@@ -24,9 +24,17 @@
             <div class="action-center-left"></div>
 
             <div class="action-center-header">
-                <h1>{{ action.name }}</h1>
+                <h1>
+                    {{ action.name }}
 
-                {# add {{ action.status here }} #}
+                    {% if action.status=="started" %}
+                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}" title="En cours" alt="En cours">
+                    {% elseif action.status=="ended" %}
+                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}" title="Terminée" alt="Terminée">
+                    {% elseif action.status=="cancelled" %}
+                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}" title="Annulée" alt="Annulée">
+                    {% endif %}
+                </h1>
 
                 {# Display edition Number is it is set #}
                 {% if action.editionNumber %}
