@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="{{ path('app_index') }}"><img src="{{ asset('images/logo.png') }}"></a>
+    <a class="navbar-brand" href="{{ path('app_homeIndex') }}"><img src="{{ asset('images/logo.png') }}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,9 +42,16 @@
                     Mon compte
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Mon profil</a>
-                    <a class="dropdown-item" href="#">Mes favoris</a>
-                    <a class="dropdown-item" href="#">Déconnexion</a>
+                    {% if app.user %}
+                        <a class="dropdown-item" href="/logout">Déconnexion</a>
+                        <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id}) }}">Mon profil</a>
+                        <a class="dropdown-item" href="#">Mes favoris</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="dropdown-item" href="{{ path('user_index') }}">Administration</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="dropdown-item" href="/login">Connexion</a>
+                    {% endif %}
                 </div>
             </li>
         </ul>
