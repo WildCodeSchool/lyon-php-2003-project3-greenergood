@@ -6,11 +6,13 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use DateTime;
 
 class UserType extends AbstractType
 {
@@ -34,7 +36,12 @@ class UserType extends AbstractType
             ->add('firstname', TextType::class, ['label' => "Prénom *"])
             ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
             ->add('fonction', TextType::class, ['label' => "Fonction", 'required'   => false])
-            ->add('entry_date', null, ['label' => "Date d'arrivée", 'required'   => false])
+            ->add('entry_date', DateType::class, [
+                'label' => "Date de début",
+                'format' => 'dd MM yyyy',
+                "data" => new DateTime(),
+                'required' => false
+            ])
             ->add('address', TextType::class, ['label' => "Adresse", 'required'   => false])
             ->add('description', TextType::class, ['label' => "Description", 'required'   => false])
             ->add('user_picture', TextType::class, ['label' => "Photo de profil", 'required'   => false])
@@ -50,7 +57,7 @@ class UserType extends AbstractType
             ->addModelTransformer(new CallbackTransformer(
                 function ($rolesAsArray) {
                     // transform the array to a string
-                    return implode(', ', $rolesAsArray);
+                    return $rolesAsArray[0];
                 },
                 function ($rolesAsString) {
                     // transform the string back to an array
