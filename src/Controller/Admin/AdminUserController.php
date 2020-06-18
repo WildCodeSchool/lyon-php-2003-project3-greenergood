@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\EditEmailType;
@@ -17,29 +17,55 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/user")
+ * @Route("/admin/users")
  */
-class UserController extends AbstractController
+class AdminUserController extends AbstractController
 {
     /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
+     * @Route("/", name="admin_user_index", methods={"GET"})
+     * @param UserRepository $userRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     */
+    public function indexUsers(
+        UserRepository $userRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response {
+        $users = $userRepository->findAll();
+
+        $allUsers = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+
+        return $this->render('admin/user/index.html.twig', [
+            'users' => $users,
+            'allUsers' => $allUsers
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="admin_user_show", methods={"GET"})
      * @param User $user
      * @return Response
      */
-    public function show(User $user): Response
+    public function showUser(User $user): Response
     {
-        return $this->render('user/show.html.twig', [
+        return $this->render('admin/user/show.html.twig', [
             'user' => $user,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="admin_user_edit", methods={"GET","POST"})
      * @param Request $request
      * @param User $user
      * @return Response
      */
-    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function editUser(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -59,22 +85,22 @@ class UserController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('admin_user_index');
         }
 
-        return $this->render('user/edit.html.twig', [
+        return $this->render('admin/user/edit.html.twig', [
             'user' => $user,
             'emailForm' => $emailForm->createView(),
             'passForm' => $passForm->createView(),
@@ -83,16 +109,16 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @Route("/{id}", name="admin_user_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, User $user): Response
+    public function deleteUser(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('admin_user_index');
     }
 }

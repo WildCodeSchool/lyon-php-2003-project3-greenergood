@@ -4,7 +4,7 @@ security:
             algorithm: auto
 
     role_hierarchy:
-        ROLE_USER: ROLE_USER
+        ROLE_USER: [ROLE_USER]
         ROLE_ADMIN: [ROLE_USER, ROLE_ALLOWED_TO_SWITCH]
         ROLE_SUPER_ADMIN : [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -42,5 +42,7 @@ security:
     access_control:
         - { path: ^/reset-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/actions/.+/edit, role: ROLE_USER }
+        - { path: ^/admin/actions/.+/duplicate, role: ROLE_USER }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_USER }

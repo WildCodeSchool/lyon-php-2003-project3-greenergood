@@ -24,15 +24,15 @@
         <div class="action-mini-menu">
             <div class="action-three-dots threeDots"></div>
             <div class="action-menu menu">
-                <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
-                <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
+                <a href="{{ path('admin_actions_edit', {'id': action.id}) }}">Modifier</a>
+                <a href="{{ path('admin_actions_duplicate', {'id': action.id}) }}">Dupliquer</a>
 
                 {% if is_granted('ROLE_ADMIN') %}
 
                     {% if action.activated == true %}
-                        <a>{{ include('action/_delete_form.html.twig') }}</a>
+                        <a>{{ include('admin/action/_delete_form.html.twig') }}</a>
                     {% elseif action.activated == false %}
-                        <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
+                        <a href="{{ path('admin_actions_activate', {'id': action.id}) }}">Activer</a>
                     {% endif %}
 
                 {% endif %}
