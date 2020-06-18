@@ -24,6 +24,7 @@ h1 {
     color: $primarycolor;
     text-align: center;
     padding: 20px 0 20px 0;
+
 }
 
 h2 {
@@ -739,6 +740,10 @@ nav {
 }
 
 // Action show page
+.deactivated {
+    color: red;
+}
+
 .action-mini-menu {
     display: flex;
     align-items: center;
@@ -759,7 +764,7 @@ nav {
     align-items: center;
     top: 100%;
 
-    a {
+    a,  .action-three-dots-button {
         list-style-type: none;
         padding: 6px 12px;
         margin-right: -0.56em;
@@ -769,6 +774,22 @@ nav {
         font-size: 12px;
         text-decoration: none;
         background-color: #5F5F5F;
+    }
+
+    .action-three-dots-button {
+        background: none;
+        border: none;
+        padding: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        &:hover {
+            color: $secondarycolor;
+        }
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
