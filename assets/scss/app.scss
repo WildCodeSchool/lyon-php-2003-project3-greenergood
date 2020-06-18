@@ -378,11 +378,16 @@ nav {
 
     .action-center-header {
         flex: 3;
+
+        .status-dot {
+            height: 40px;
+        }
     }
 
     .action-center-right {
         flex: 1;
     }
+
 
     .edition-box {
         position: relative;
