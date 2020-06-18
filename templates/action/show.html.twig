@@ -1,19 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fiche Action - {{ action.name }}{% endblock %}
+{% block title %}
+    Fiche Action - {{ action.name }}
+
+    {% if action.activated == false %}
+         - Désactivée
+    {% endif %}
+
+{% endblock %}
 
 {% block body %}
     <div class="horizontal">
-        <div>Fiche ACTION n°{{ action.id }}</div>
+        <div {% if action.activated == false %} class="deactivated" {% endif %}>
+            Fiche ACTION n°{{ action.id }}
+
+            {% if action.activated == false %}
+                - Désactivée
+            {% endif %}
+
+        </div>
+
         <!-- Menu three dots -->
         <div class="action-mini-menu">
             <div class="action-three-dots threeDots"></div>
             <div class="action-menu menu">
                 <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
-                <span class="action">|</span>
                 <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
-                <span class="action">|</span>
-                <a href="{{ path('action_delete', {'id': action.id}) }}">Supprimer</a>
+
+                {% if is_granted('ROLE_ADMIN') %}
+
+                    {% if action.activated == true %}
+                        <a>{{ include('action/_delete_form.html.twig') }}</a>
+                    {% elseif action.activated == false %}
+                        <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
+                    {% endif %}
+
+                {% endif %}
+
             </div>
         </div>
     </div>
