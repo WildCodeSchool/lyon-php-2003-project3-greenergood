@@ -35,8 +35,8 @@ class ActionType extends AbstractType
             ->add('status', ChoiceType::class, [
                 'choices'  => [
                     'En cours' => 'started',
-                    'Terminé' => 'ended',
-                    'Annulé' => 'cancelled',
+                    'Terminée' => 'ended',
+                    'Annulée' => 'cancelled',
                 ],
             ])
             ->add('projectProgress', null, ['label' => "Avancement du projet"])

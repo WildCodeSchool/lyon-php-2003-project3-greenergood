@@ -84,6 +84,12 @@ class Action
      */
     private $projectProgress;
 
+    /**
+     * Used for soft delete of action pages
+     * @ORM\Column(type="boolean")
+     */
+    private $activated = true;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,6 +211,18 @@ class Action
     public function setProjectProgress(?string $projectProgress): self
     {
         $this->projectProgress = $projectProgress;
+
+        return $this;
+    }
+
+    public function getActivated(): ?bool
+    {
+        return $this->activated;
+    }
+
+    public function setActivated(bool $activated): self
+    {
+        $this->activated = $activated;
 
         return $this;
     }

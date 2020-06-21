@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/action", name="action_")
@@ -88,16 +89,28 @@ class ActionController extends AbstractController
 
     /**
      * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Action $action): Response
     {
         if ($this->isCsrfTokenValid('delete'.$action->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($action);
-            $entityManager->flush();
+            $action->setActivated(false);
+            $this->getDoctrine()->getManager()->flush();
         }
 
-        return $this->redirectToRoute('action_index');
+        return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
+    }
+
+    /**
+     * @Route("/activate/{id}", name="activate")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function activate(Action $action): Response
+    {
+        $action->setActivated(true);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
     }
 
     // Duplicate action sheet
