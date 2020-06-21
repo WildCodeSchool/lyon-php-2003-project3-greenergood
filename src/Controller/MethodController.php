@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Method;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -113,19 +114,28 @@ class MethodController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="method_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Method $method
-     * @return Response
+     * @Route("/{id}", name="method_deactivate")
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Method $method): Response
+    public function deactivate(Request $request, Method $method): Response
     {
         if ($this->isCsrfTokenValid('delete'.$method->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($method);
-            $entityManager->flush();
+            $method->setActivated(false);
+            $this->getDoctrine()->getManager()->flush();
         }
 
-        return $this->redirectToRoute('method_index');
+        return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
+    }
+
+    /**
+     * @Route("/activate/{id}", name="method_activate")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function activate(Method $method): Response
+    {
+        $method->setActivated(true);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
 }
