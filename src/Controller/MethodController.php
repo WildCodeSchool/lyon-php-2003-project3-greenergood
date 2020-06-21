@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Action;
 use App\Entity\Method;
-use App\Form\ActionType;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

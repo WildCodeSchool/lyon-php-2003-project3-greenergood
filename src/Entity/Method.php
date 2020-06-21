@@ -50,14 +50,21 @@ class Method
     private $objectives;
 
     /**
-     * @ORM\OneToMany(targetEntity=MethodLink::class, mappedBy="method", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(
+     *     targetEntity=MethodLink::class,
+     *     mappedBy="method",
+     *     fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
+     * @Assert\Valid()
      */
     private $methodLinks;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $status;
+    private $activated = true;
 
     public function __construct()
     {
@@ -160,14 +167,14 @@ class Method
         return $this;
     }
 
-    public function getStatus(): ?bool
+    public function getActivated(): ?bool
     {
-        return $this->status;
+        return $this->activated;
     }
 
-    public function setStatus(bool $status): self
+    public function setActivated(bool $activated): self
     {
-        $this->status = $status;
+        $this->activated = $activated;
 
         return $this;
     }

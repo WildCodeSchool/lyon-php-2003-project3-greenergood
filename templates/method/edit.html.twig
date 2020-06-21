@@ -8,11 +8,6 @@
 
         {{ include('method/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-        <a href="{{ path('method_index') }}">Back to list</a>
         {{ include('method/_delete_form.html.twig') }}
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    {% include 'method/_methodjs.html.twig'%}
 {% endblock %}

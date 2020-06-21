@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200617144959 extends AbstractMigration
+final class Version20200618080626 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20200617144959 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE method ADD status TINYINT(1) NOT NULL');
-        $this->addSql('ALTER TABLE action CHANGE edition_number edition_number INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE action DROP number');
     }
 
     public function down(Schema $schema) : void
@@ -31,8 +30,6 @@ final class Version20200617144959 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('DROP TABLE user');
-        $this->addSql('ALTER TABLE action CHANGE edition_number edition_number INT NOT NULL');
-        $this->addSql('ALTER TABLE method DROP status');
+        $this->addSql('ALTER TABLE action ADD number INT DEFAULT NULL');
     }
 }

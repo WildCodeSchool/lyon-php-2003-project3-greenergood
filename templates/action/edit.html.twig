@@ -11,3 +11,22 @@
 
     {{ include('action/_delete_form.html.twig') }}
 {% endblock %}
+
+{% block javascripts %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            jQuery(document).ready(function() {
+                var $wrapper = $('.js-methodLink-wrapper');
+                $wrapper.on('click', '.js-remove-methodLink', function(e) {
+                    e.preventDefault();
+
+                    $(this).closest('.js-methodLink-item')
+                        .fadeOut()
+                        .remove();
+                });
+
+                });
+        </script>
+    {% endblock %}
+{% endblock %}

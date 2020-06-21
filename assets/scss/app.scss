@@ -862,27 +862,40 @@ nav {
 
 /* METHOD FORMS (new, edit, duplicate) */
 
-.methodLinks-fields-list {
-    list-style-type: none;
-}
-
-.methodLinks {
+.methodForm-container {
     color: $tertiarycolor;
     font-family: $textfont;
     font-size: $textsize;
+    margin-bottom: 10px;
+}
+.methodLinks, .methodLinks-container {
+    color: $tertiarycolor;
+    font-family: $textfont;
+    font-size: $textsize;
+    margin-bottom: 10px;
 }
 
-.btn-removeMethodLink {
-    background-color: $tertiarycolor;
-    margin-bottom: 20px;
-    font-family: $textfont;
-    font-size: 13px;
-    color: $secondarycolor;
+.methodLinks-container {
+    padding: 50px 20px;
 }
 
 .btn-delete {
     margin-top: 10px
 }
 
+.link-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-button {
+    margin-bottom: 30px;
+    button {
+        background-color: $tertiarycolor;
+        color: $secondarycolor;
+        font-family: $textfont;
+        font-size: 10px;
+    }
+}
 
 
