@@ -28,9 +28,9 @@
                                     {% if is_granted('ROLE_ADMIN') %}
 
                                         {% if method.activated == true %}
-                                            <a>{{ include('method/_delete_form.html.twig') }}</a>
-                                        {% elseif action.activated == false %}
-                                            <a href="{{ path('method_activate', {'id': action.id}) }}">Activer</a>
+                                            {{ include('method/_delete_form.html.twig') }}
+                                        {% elseif method.activated == false %}
+                                            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                                         {% endif %}
 
                                     {% endif %}

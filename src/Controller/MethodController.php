@@ -114,7 +114,7 @@ class MethodController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="method_deactivate")
+     * @Route("/{id}/deactivate", name="method_deactivate")
      * @IsGranted("ROLE_ADMIN")
      */
     public function deactivate(Request $request, Method $method): Response
@@ -128,7 +128,7 @@ class MethodController extends AbstractController
     }
 
     /**
-     * @Route("/activate/{id}", name="method_activate")
+     * @Route("/{id}/activate", name="method_activate")
      * @IsGranted("ROLE_ADMIN")
      */
     public function activate(Method $method): Response
