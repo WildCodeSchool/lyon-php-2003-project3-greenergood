@@ -15,7 +15,8 @@ const $ = require('jquery');
 global.jQuery = $;
 global.$ = $;
 
-function addTagFormDeleteLink($tagFormLi) {
+function addTagFormDeleteLink($tagFormLi)
+{
     var $removeFormButton = $('<div class="delete-button">\n' +
         '                           <a href="#" class="js-remove-methodLink">\n' +
         '                               <button type="button" class="btn btn-secondary btn-sm">Supprimer</button>\n' +
@@ -40,7 +41,7 @@ $(document).ready(() => {
     // method forms
     const $wrapper = $('.js-methodLink-wrapper');
 
-    $wrapper.find('.js-methodLink-item').each(function() {
+    $wrapper.find('.js-methodLink-item').each(function () {
         addTagFormDeleteLink($(this));
     });
 
