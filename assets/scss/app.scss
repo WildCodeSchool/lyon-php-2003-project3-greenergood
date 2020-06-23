@@ -398,6 +398,68 @@ nav {
     }
 }
 
+/* METHOD */
+
+.method-header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-arrow{
+    width: 200px;
+}
+
+.method-title{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    figcaption {
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        color: white;
+        font-family: $titlefont;
+    }
+}
+
+.method-image{
+    height: 125px;
+    Width: 125px;
+    border-radius: 50%;
+}
+
+.method-cat-img{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-infos{
+    background-color: $primarycolor;
+    display: flex;
+    flex-direction: row;
+}
+
+.method-name{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-bloc-infos{
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 768px) {
+    .method-infos{
+        flex-direction: column;
+    }
+}
+
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
