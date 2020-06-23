@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Method;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,10 +46,7 @@ class MethodController extends AbstractController
             $entityManager->persist($method);
             $entityManager->flush();
 
-            // When the SHOW method is coded, delete this line and uncomment the next two lines
-            return $this->redirectToRoute("method_new");
-            // Redirect to the page of the new method
-            // return $this->redirectToRoute("method_show");
+            return $this->redirectToRoute("method_index");
         }
 
         return $this->render('method/new.html.twig', [
@@ -93,19 +91,51 @@ class MethodController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="method_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Method $method
-     * @return Response
+     * @Route("/{id}/duplicate", name="method_duplicate", methods={"GET","POST"})
      */
-    public function delete(Request $request, Method $method): Response
+    public function duplicate(Request $request, Method $method): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$method->getId(), $request->request->get('_token'))) {
+        $newMethod = clone $method;
+        $form = $this->createForm(MethodType::class, $newMethod);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($method);
+            $entityManager->persist($newMethod);
             $entityManager->flush();
+
+            return $this->redirectToRoute('method_index');
         }
 
-        return $this->redirectToRoute('method_index');
+        return $this->render('method/duplicate.html.twig', [
+            'method' => $method,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/deactivate", name="method_deactivate")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deactivate(Request $request, Method $method): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$method->getId(), $request->request->get('_token'))) {
+            $method->setActivated(false);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
+    }
+
+    /**
+     * @Route("/{id}/activate", name="method_activate")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function activate(Method $method): Response
+    {
+        $method->setActivated(true);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
 }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dupliquer une fiche méthode fiche méthode{% endblock %}
+
+{% block body %}
+    <div class="action-form">
+        <h1>Nouvelle fiche méthode</h1>
+
+        {{ include('method/_form.html.twig', {'button_label': 'Créer la nouvelle fiche action'}) }}
+
+        <a href="{{ path('method_index') }}">Retour à la liste</a>
+        {{ include('method/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
