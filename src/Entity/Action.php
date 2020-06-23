@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -89,6 +91,23 @@ class Action
      * @ORM\Column(type="boolean")
      */
     private $activated = true;
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity=ActionDeliverable::class,
+     *     mappedBy="action",
+     *     fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
+     * @Assert\Valid()
+     */
+    private $actionDeliverable;
+
+    public function __construct()
+    {
+        $this->actionDeliverable = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -223,6 +242,37 @@ class Action
     public function setActivated(bool $activated): self
     {
         $this->activated = $activated;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ActionDeliverable[]
+     */
+    public function getActionDeliverable(): Collection
+    {
+        return $this->actionDeliverable;
+    }
+
+    public function addActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if (!$this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable[] = $actionDeliverable;
+            $actionDeliverable->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if ($this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable->removeElement($actionDeliverable);
+            // set the owning side to null (unless already changed)
+            if ($actionDeliverable->getAction() === $this) {
+                $actionDeliverable->setAction(null);
+            }
+        }
 
         return $this;
     }
