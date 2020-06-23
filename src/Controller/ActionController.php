@@ -62,8 +62,10 @@ class ActionController extends AbstractController
      */
     public function show(Action $action): Response
     {
+        $deliverables = $action->getActionDeliverable();
         return $this->render('action/show.html.twig', [
             'action' => $action,
+            'deliverables' => $deliverables,
         ]);
     }
 
