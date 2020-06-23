@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Action;
 use DateTime;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,7 @@ class ActionType extends AbstractType
             ->add('name', null, ['label' => "Nom de l'action *"])
             ->add('editionNumber', null, ['label' => "N° de l'édition"])
             ->add('actionPicture', null, ['label' => "Lien vers une photo"])
-            ->add('description', null, ['label' => "Description *"])
+            ->add('description', CKEditorType::class, ['label' => "Description *"])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd-MM--yyyy',

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Method;
 use App\Entity\MethodLink;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,8 +16,8 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
-            ->add('prerequisites', null, ['label' => "Données *"])
-            ->add('content', null, ['label' => "Procédure *"])
+            ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
+            ->add('content', CKEditorType::class, ['label' => "Procédure *"])
             ->add('objectives', null, ['label' => "Objectifs"])
             ->add('methodLinks', CollectionType::class, [
                 'entry_type' => MethodLinkType::class,
