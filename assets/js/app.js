@@ -15,7 +15,20 @@ const $ = require('jquery');
 global.jQuery = $;
 global.$ = $;
 
-// JS threeDots action sheet.
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormButton = $('<div class="delete-button">\n' +
+        '                           <a href="#" class="js-remove-methodLink">\n' +
+        '                               <button type="button" class="btn btn-secondary btn-sm">Supprimer</button>\n' +
+        '                           </a>\n' +
+        '                   </div>');
+    $tagFormLi.append($removeFormButton);
+
+    $removeFormButton.on('click', (e) => {
+        // remove the li for the tag form
+        $tagFormLi.fadeOut().remove();
+    });
+}
+
 $(document).ready(() => {
 // JS threeDots action sheet.
     $('.menu').hide();
@@ -23,20 +36,17 @@ $(document).ready(() => {
         $('.menu').toggle();
     });
 
+
     // method forms
     const $wrapper = $('.js-methodLink-wrapper');
 
-    $wrapper.on('click', '.js-remove-methodLink', (e) => {
-        e.preventDefault();
-
-        $(this).closest('.js-methodLink-item')
-            .fadeOut()
-            .remove();
+    $wrapper.find('.js-methodLink-item').each(function() {
+        addTagFormDeleteLink($(this));
     });
 
-    $wrapper.on('click', '.js-add-methodLink', (e) => {
-        e.preventDefault();
 
+    $('.js-add-methodLink').on('click', (e) => {
+        e.preventDefault();
         // Get the data-prototype explained earlier
         const prototype = $wrapper.data('prototype');
 
@@ -45,13 +55,15 @@ $(document).ready(() => {
 
         // Replace '__name__' in the prototype's HTML to
         // instead be a number based on how many items we have
-        const newForm = prototype.replace(/__name__/g, index);
+        let newForm = prototype.replace(/__name__/g, index);
 
         // increase the index with one for the next item
         $wrapper.data('index', index + 1);
 
+        newForm = $(newForm);
+        addTagFormDeleteLink(newForm);
         // Display the form in the page before the "new" link
-        $(this).before(newForm);
+        newForm.appendTo($wrapper);
     });
 });
 
