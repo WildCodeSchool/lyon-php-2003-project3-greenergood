@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -89,6 +91,16 @@ class Action
      * @ORM\Column(type="boolean")
      */
     private $activated = true;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Method::class)
+     */
+    private $methods;
+
+    public function __construct()
+    {
+        $this->methods = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -223,6 +235,32 @@ class Action
     public function setActivated(bool $activated): self
     {
         $this->activated = $activated;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+        }
+
+        return $this;
+    }
+
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+        }
 
         return $this;
     }

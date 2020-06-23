@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Action;
+use App\Entity\Method;
 use DateTime;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,6 +43,14 @@ class ActionType extends AbstractType
                 ],
             ])
             ->add('projectProgress', null, ['label' => "Avancement du projet"])
+            ->add('methods', EntityType::class, [
+                'label' => 'Fiche(s) Méthode',
+                'class' => Method::class,
+                'choice_label' => 'id',
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference'=> false,
+            ]);
         ;
     }
 
