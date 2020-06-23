@@ -15,9 +15,8 @@ const $ = require('jquery');
 global.jQuery = $;
 global.$ = $;
 
-function addTagFormDeleteLink($tagFormLi)
-{
-    var $removeFormButton = $('<div class="delete-button">\n' +
+function addTagFormDeleteLink($tagFormLi) {
+    const $removeFormButton = $('<div class="delete-button">\n' +
         '                           <a href="#" class="js-remove-methodLink">\n' +
         '                               <button type="button" class="btn btn-secondary btn-sm">Supprimer</button>\n' +
         '                           </a>\n' +
