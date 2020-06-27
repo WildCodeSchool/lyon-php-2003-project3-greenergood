@@ -6,6 +6,11 @@
 
     <div class="bloc_page_profile">
         <div class="container-profile">
+            <img class="profile-img-white-paint-mobile"
+                 src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
+            <div class="profile-name-mobile">
+                <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            </div>
             <div class="container-profile-img">
                 <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                      alt="Morceau de scotch">
@@ -20,13 +25,11 @@
                      alt="Morceau de scotch">
             </div>
             <div class="container-profile-infos">
-
-                <img class="profile-img-white-paint"
+                <img class="profile-img-white-paint-desktop"
                      src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
-                <div class="profile-name">
+                <div class="profile-name-desktop">
                     <h1>{{ user.firstname }} {{ user.lastname }}</h1>
                 </div>
-
                 <div class="profile-function">
                     <h3 class="text-center">VOLONTAIRE EN SERVICE CIVIQUE</h3>
                 </div>
