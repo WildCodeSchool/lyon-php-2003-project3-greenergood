@@ -72,7 +72,7 @@
                     </svg>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="">Mon profil</a>
+                    <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id }) }}">Mon profil</a>
                     <a class="dropdown-item" href="#">Mes favoris</a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a class="dropdown-item" href="{{ path('admin_index') }}">Administration</a>
