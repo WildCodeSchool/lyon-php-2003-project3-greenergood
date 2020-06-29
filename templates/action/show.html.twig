@@ -142,6 +142,7 @@
         <div class="action-methods">
             <ul>
                 {% for method in action.methods %}
+                    {# add method show link #}
                     <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
                 {% endfor %}
             </ul>
