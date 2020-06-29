@@ -55,8 +55,7 @@ class ActionType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference'=> false,
-            ]);
-        ;
+            ])
             ->add('actionDeliverable', CollectionType::class, [
                 'entry_type' => ActionDeliverableType::class,
                 'label' => false,
