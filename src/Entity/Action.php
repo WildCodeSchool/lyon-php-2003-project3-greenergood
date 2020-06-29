@@ -96,10 +96,23 @@ class Action
      * @ORM\ManyToMany(targetEntity=Method::class)
      */
     private $methods;
+  
+     /**
+     * @ORM\OneToMany(
+     *     targetEntity=ActionDeliverable::class,
+     *     mappedBy="action",
+     *     fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
+     * @Assert\Valid()
+     */
+    private $actionDeliverable;
 
     public function __construct()
     {
         $this->methods = new ArrayCollection();
+        $this->actionDeliverable = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -251,15 +264,47 @@ class Action
     {
         if (!$this->methods->contains($method)) {
             $this->methods[] = $method;
+          }
+
+        return $this;
+    }
+  
+    public function removeMethod(Method $method): self
+      {
+          if ($this->methods->contains($method)) {
+              $this->methods->removeElement($method);
+          }
+
+          return $this;
+      }
+      
+     /**
+     * @return Collection|ActionDeliverable[]
+     */
+    public function getActionDeliverable(): Collection
+    {
+        return $this->actionDeliverable;
+    }
+
+    public function addActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if (!$this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable[] = $actionDeliverable;
+            $actionDeliverable->setAction($this);
         }
 
         return $this;
     }
 
-    public function removeMethod(Method $method): self
+    public function removeActionDeliverable(ActionDeliverable $actionDeliverable): self
     {
-        if ($this->methods->contains($method)) {
-            $this->methods->removeElement($method);
+        if ($this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable->removeElement($actionDeliverable);
+            // set the owning side to null (unless already changed)
+            if ($actionDeliverable->getAction() === $this) {
+                $actionDeliverable->setAction(null);
+            }
+
         }
 
         return $this;

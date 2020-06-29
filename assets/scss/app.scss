@@ -40,6 +40,11 @@ h2 {
     color: $primarycolor;
 }
 
+.greenOnYellow {
+    color: $primarycolor;
+    background-color: $secondarycolor;
+}
+
 .whiteOnGreen {
     color: white;
     background-color: $primarycolor;
@@ -64,9 +69,16 @@ h2 {
     font-size: 4em;
 }
 
+.card {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .cardaction {
     border: none;
     margin: 10px;
+    display: flex;
+    justify-content: flex-end;
 
     a:hover {
         text-decoration: none;
@@ -97,7 +109,7 @@ h2 {
         right: 16px;
     }
 
-    .canceled {
+    .cancelled {
         background-color: blueviolet;
     }
 
@@ -105,14 +117,13 @@ h2 {
         background-color: $primarycolor;
     }
 
-    .past {
+    .over {
         background-color: cornflowerblue;
     }
 }
 
 /* Glow */
 .hvr-glow {
-    display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -764,7 +775,7 @@ nav {
     align-items: center;
     top: 100%;
 
-    a,  .action-three-dots-button {
+    a, .action-three-dots-button {
         list-style-type: none;
         padding: 6px 12px;
         margin-right: -0.56em;
@@ -777,6 +788,7 @@ nav {
     }
 
     .action-three-dots-button {
+        background: none;
         background-color: $tertiarycolor;
         border: none;
         padding: 6px 12px;
@@ -868,6 +880,19 @@ nav {
     }
 }
 
+/* ACTION INDEX */
+.create-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: $titlefont;
+    font-size: 1.1em;
+    border-radius: 10px;
+    padding: 6px 36px;
+    height: 75px;
+}
+
 /* CSS CARD METHODS */
 .method-btn {
     a {
@@ -900,6 +925,10 @@ nav {
         text-decoration: none;
         margin-left: 3em;
     }
+}
+
+.subtitle {
+    text-align: center;
 }
 
 /* CSS CARD METHODS DESKTOP VIEW */
