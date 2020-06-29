@@ -140,10 +140,11 @@
 
         <div class="action-subtitles">Fiches METHODE</div>
         <div class="action-methods">
-            {# Dynamicaly display list of methods associated with the action when implemented #}
-            <li><a href="#">Nom de la fiche méthode n°1</a></li>
-            <li><a href="#">Nom de la fiche méthode n°2</a></li>
-            <li><a href="#">Nom de la fiche méthode n°3</a></li>
+            <ul>
+                {% for method in action.methods %}
+                    <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
 
         <div class="action-subtitles">LIVRABLES</div>
