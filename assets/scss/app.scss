@@ -764,7 +764,7 @@ nav {
     align-items: center;
     top: 100%;
 
-    a,  .action-three-dots-button {
+    a, .action-three-dots-button {
         list-style-type: none;
         padding: 6px 12px;
         margin-right: -0.56em;
@@ -777,6 +777,7 @@ nav {
     }
 
     .action-three-dots-button {
+        background: none;
         background-color: $tertiarycolor;
         border: none;
         padding: 6px 12px;
