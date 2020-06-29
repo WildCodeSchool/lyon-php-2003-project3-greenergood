@@ -45,7 +45,7 @@
                 <div class="method-title col-6">
                     <div>
                         <figure class="col-12 method-cat-img">
-                            <img class="method-arrow" src="{{ asset('../img/method/fiche_methode_catégorie.png') }}"
+                            <img class="method-arrow" src="{{ asset('../img/method/fiche_methode_categorie.png') }}"
                                  alt="Fond vert du titre">
                             <figcaption>
                                 Catégorie de la méthode
@@ -59,17 +59,54 @@
                 <img class="method-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
             </div>
         </div>
+        <div class="row method-infos p-2">
+            <div class="method-bloc-infos col-12 col-xl-6">
+                <span>Fiche rédigée par :  </span>
+                <span>Le : {{ method.createdAt|date("d/m/Y") }}</span>
+                <span>Fiche validée par : </span>
+            </div>
+            <div class="method-bloc-infos col-12 col-xl-6 mt-xl-0 mt-2">
+                <span>Objectif 1 : {{ method.objectives }}</span>
+            </div>
+        </div>
         <div class="row">
-            <div class="method-infos col-12 col-xl-11 justify-content-between">
-                <div class="method-bloc-infos col-12 col-xl-5 offset-xl-1">
-                    <span>Fiche rédigée par :</span>
-                    <span>Le : dd/mm/YY</span>
-                    <span>Fiche validée par : </span>
+            <div class="col-12 col-xl-6 d-flex flex-column align-items-center mt-3">
+                <h3>Liens utiles</h3>
+                <ul>
+                    {% for methodlink in method.methodLinks %}
+                        <li><a href="{{ methodlink.url }}">{{ methodlink.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-xl-6 d-flex flex-column align-items-center mt-3">
+                <h3>Données d'entrée</h3>
+                    {{ method.prerequisites|raw }}
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row d-flex flex-column align-items-center">
+                <h3>Procédure</h3>
+                {{ method.content|raw }}
+            </div>
+        </div>
+        <div class="row method-infos d-flex flex-column align-items-center p-2">
+            <h3>Contacts utiles</h3>
+            <p>Personnes référentes / expérimentées sur le sujet au sein de l'association</p>
+            <div class="d-flex flex-row">
+                <div class="col-12 col-xl-4">
+                    <img class="method-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+                    <p class="my-2">Lucas MARGUIRON</p>
+                    <p class="my-2">Fonction</p>
                 </div>
-                <div class="method-bloc-infos col-12">
-                    <span>Objectif 1 :</span>
-                    <span>Objectif 2 :</span>
-                    <span>Objectif 3 :</span>
+                <div class="col-12 col-xl-4">
+                    <img class="method-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+                    <p class="my-2">Lucas MARGUIRON</p>
+                    <p class="my-2">Fonction</p>
+                </div>
+                <div class="col-12 col-xl-4">
+                    <img class="method-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+                    <p class="my-2">Lucas MARGUIRON</p>
+                    <p class="my-2">Fonction</p>
                 </div>
             </div>
         </div>
