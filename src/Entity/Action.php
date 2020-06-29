@@ -263,20 +263,20 @@ class Action
     public function addMethod(Method $method): self
     {
         if (!$this->methods->contains($method)) {
-            $this->methods[] = $method;
-          }
+            $this->methods[] = $method
+        }
 
         return $this;
     }
   
     public function removeMethod(Method $method): self
-      {
-          if ($this->methods->contains($method)) {
-              $this->methods->removeElement($method);
-          }
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+        }
 
-          return $this;
-      }
+        return $this;
+    }
       
      /**
      * @return Collection|ActionDeliverable[]
@@ -304,7 +304,6 @@ class Action
             if ($actionDeliverable->getAction() === $this) {
                 $actionDeliverable->setAction(null);
             }
-
         }
 
         return $this;
