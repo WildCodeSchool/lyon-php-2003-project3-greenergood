@@ -263,7 +263,7 @@ class Action
     public function addMethod(Method $method): self
     {
         if (!$this->methods->contains($method)) {
-            $this->methods[] = $method
+            $this->methods[] = $method;
         }
 
         return $this;
