@@ -3,5 +3,20 @@
 {% block title %}Trombinoscope{% endblock %}
 
 {% block body %}
-    <h1>Trombinoscope</h1>
+    <div class="trombi-background">
+        <h1 class="whiteOnGreen trombi-title">L'équipe</h1>
+
+        {% for user in users %}
+            <div class="polaroids-container">
+                <img class="rope-mobile" src="{{ asset("/img/trombinoscope/corde.png") }}">
+                <img class="clip" src="{{ asset("/img/trombinoscope/clip.png") }}">
+                <li>
+                    <a class="polaroid-frame" href="{{ path('user_show', {'id': user.id}) }}">
+                        <img class="polaroid-picture" src="{{ asset(user.userPicture) }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
+                        <div>{{ user.firstname }} {{ user.lastname }}, {{ user.fonction }}</div>
+                    </a>
+                </li>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

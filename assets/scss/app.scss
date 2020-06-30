@@ -791,6 +791,65 @@ nav {
     }
 }
 
+/* TROMBINOSCOPE PAGE */
+.trombi-background {
+    background-color: darkgrey;
+
+    li  {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .polaroids-container {
+        position: relative;
+
+        .rope-mobile {
+            width: 400px;
+            position: relative;
+        }
+
+        .clip {
+            height: 50px;
+            position: absolute;
+            top: 20px;
+            left: 230px;
+            z-index: 2;
+        }
+
+        .trombi-title {
+            margin-top: 15px;
+        }
+
+        .polaroid-frame {
+            background-color: white;
+            height: 100%;
+            padding: 15px 15px 50px 15px;
+            text-align: center;
+            text-decoration: none;
+            display:inline-block;
+            margin: 0 15px 15px 15px;
+            -webkit-transform: rotate(-2deg);
+            -moz-transform: rotate(-2deg);
+
+            .polaroid-picture {
+                width: 300px;
+                height: 300px;
+            }
+
+            div {
+                margin-top: 20px;
+            }
+        }
+
+        .trombi-background:nth-child(even) .polaroid-frame {
+            -webkit-transform: rotate(2deg);
+            -moz-transform: rotate(2deg);
+        }
+    }
+}
+
 /* DESKTOP VIEW LARGE */
 @media all and (min-width: 769px) {
 
