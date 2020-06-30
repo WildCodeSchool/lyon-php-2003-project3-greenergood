@@ -3,9 +3,30 @@
 {% block title %}Modifier fiche action{% endblock %}
 
 {% block body %}
-    <h1>Modifier fiche action</h1>
+    <div class="container-fluid">
+        <h1>Modifier fiche action</h1>
 
-    {{ include('action/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        {{ include('action/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('action_index') }}">Retour à la liste</a>
+        <a href="{{ path('action_index') }}">Retour à la liste</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            jQuery(document).ready(function() {
+                var $wrapper = $('.js-methodLink-wrapper');
+                $wrapper.on('click', '.js-remove-methodLink', function(e) {
+                    e.preventDefault();
+
+                    $(this).closest('.js-methodLink-item')
+                        .fadeOut()
+                        .remove();
+                });
+
+                });
+        </script>
+    {% endblock %}
 {% endblock %}

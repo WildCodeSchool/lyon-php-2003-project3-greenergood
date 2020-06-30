@@ -1,9 +1,44 @@
 {# Generate a form from the $form variable in the ActionController.php method "new" #}
+<div class="methodForm-container">
 
 {{ form_start(form) }}
     {{ form_errors(form) }}
-    {{ form_widget(form) }}
-        <div class="col-12 text-center">
-            <button class="btn form-button">{{ button_label|default('Créer la fiche action') }}</button>
+    {{ form_row(form.name) }}
+    {{ form_row(form.status) }}
+    {{ form_row(form.editionNumber) }}
+    {{ form_row(form.actionPicture) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.startDate) }}
+    {{ form_row(form.endDate) }}
+    {{ form_row(form.location) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.projectProgress) }}
+
+    <div class="methodLinks-container">
+        <h6 class="methodLinks">Livrables</h6>
+        <div class="js-methodLink-wrapper"
+             data-prototype="{{ form_widget(form.actionDeliverable.vars.prototype)|e('html_attr') }}"
+             data-index="{{ form.actionDeliverable|length }}">
+            {% for actionDeliverable in form.actionDeliverable %}
+                <div class="js-methodLink-item">
+                    {{ form_errors(actionDeliverable) }}
+                    {{ form_row(actionDeliverable.url) }}
+                    {{ form_row(actionDeliverable.title) }}
+                </div>
+            {% endfor %}
         </div>
+        <a href="#" class="js-add-methodLink">
+                        <span><svg class="bi bi-plus-circle-fill" width="1em" height="1em" viewBox="0 0 16 16"
+                                   fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+                        </svg></span>
+            Ajouter un lien
+        </a>
+    </div>
+
+    <div class="col-12 text-center">
+        <button class="btn form-button">{{ button_label|default('Créer la fiche action') }}</button>
+    </div>
 {{ form_end(form) }}
+</div>

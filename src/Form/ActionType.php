@@ -3,12 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Action;
+use App\Entity\ActionDeliverable;
 use DateTime;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ActionType extends AbstractType
 {
@@ -18,7 +21,7 @@ class ActionType extends AbstractType
             ->add('name', null, ['label' => "Nom de l'action *"])
             ->add('editionNumber', null, ['label' => "N° de l'édition"])
             ->add('actionPicture', null, ['label' => "Lien vers une photo"])
-            ->add('description', null, ['label' => "Description *"])
+            ->add('description', CKEditorType::class, ['label' => "Description *"])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd-MM--yyyy',
@@ -40,7 +43,17 @@ class ActionType extends AbstractType
                 ],
             ])
             ->add('projectProgress', null, ['label' => "Avancement du projet"])
-        ;
+            ->add('actionDeliverable', CollectionType::class, [
+                'entry_type' => ActionDeliverableType::class,
+                'label' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'delete_empty' => function (ActionDeliverable $actionDeliverable = null) {
+                    return null === $actionDeliverable || empty($actionDeliverable->getLink());
+                }
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

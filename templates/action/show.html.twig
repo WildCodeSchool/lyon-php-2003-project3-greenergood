@@ -30,7 +30,7 @@
                 {% if is_granted('ROLE_ADMIN') %}
 
                     {% if action.activated == true %}
-                        <a>{{ include('action/_delete_form.html.twig') }}</a>
+                        {{ include('action/_delete_form.html.twig') }}
                     {% elseif action.activated == false %}
                         <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
                     {% endif %}
@@ -97,7 +97,7 @@
             </div>
             <hr class="action-separator">
             <div class="text-center">
-                {{ action.description }}
+                {{ action.description|raw }}
             </div>
         </div>
 
@@ -141,19 +141,24 @@
         <div class="action-subtitles">Fiches METHODE</div>
         <div class="action-methods">
             {# Dynamicaly display list of methods associated with the action when implemented #}
-            <li><a href="#">Nom de la fiche méthode n°1</a></li>
-            <li><a href="#">Nom de la fiche méthode n°2</a></li>
-            <li><a href="#">Nom de la fiche méthode n°3</a></li>
+            <ul>
+                <li><a href="#">Nom de la fiche méthode n°1</a></li>
+                <li><a href="#">Nom de la fiche méthode n°2</a></li>
+                <li><a href="#">Nom de la fiche méthode n°3</a></li>
+            </ul>
         </div>
 
         <div class="action-subtitles">LIVRABLES</div>
 
         <div class="deliverable-box">
             <div class="action-methods">
-                {# Dynamicaly display list of livrables associated with the action when implemented #}
-                <li><a href="#">Livrable 1</a></li>
-                <li><a href="#">Livrable 2</a></li>
-                <li><a href="#">TEXTE LIBRE</a></li>
+                <ul>
+                    {# Dynamicaly display list of livrables associated with the action when implemented #}
+                    {% for deliverable in deliverables %}
+                        <li><a href="{{ deliverable.link }}">{{ deliverable.name }}</a></li>
+                    {% endfor %}
+
+                </ul>
             </div>
             <div class="important-link-center">
                     <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}" alt="Lien vers les images"></a>

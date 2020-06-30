@@ -61,6 +61,11 @@ h2 {
     color: $primarycolor;
 }
 
+.greenOnYellow {
+    color: $primarycolor;
+    background-color: $secondarycolor;
+}
+
 .whiteOnGreen {
     color: white;
     background-color: $primarycolor;
@@ -85,9 +90,16 @@ h2 {
     font-size: 4em;
 }
 
+.card {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .cardaction {
     border: none;
     margin: 10px;
+    display: flex;
+    justify-content: flex-end;
 
     a:hover {
         text-decoration: none;
@@ -118,7 +130,7 @@ h2 {
         right: 16px;
     }
 
-    .canceled {
+    .cancelled {
         background-color: blueviolet;
     }
 
@@ -126,14 +138,13 @@ h2 {
         background-color: $primarycolor;
     }
 
-    .past {
+    .over {
         background-color: cornflowerblue;
     }
 }
 
 /* Glow */
 .hvr-glow {
-    display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -794,15 +805,14 @@ nav {
         font-family: $textfont;
         font-size: 12px;
         text-decoration: none;
-        background-color: #5F5F5F;
+        background-color: $tertiarycolor;
     }
 
     .action-three-dots-button {
         background: none;
+        background-color: $tertiarycolor;
         border: none;
-        padding: 0;
-        padding-left: 12px;
-        padding-right: 12px;
+        padding: 6px 12px;
 
         &:hover {
             color: $secondarycolor;
@@ -891,6 +901,19 @@ nav {
     }
 }
 
+/* ACTION INDEX */
+.create-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: $titlefont;
+    font-size: 1.1em;
+    border-radius: 10px;
+    padding: 6px 36px;
+    height: 75px;
+}
+
 /* CSS CARD METHODS */
 .method-btn {
     a {
@@ -923,6 +946,10 @@ nav {
         text-decoration: none;
         margin-left: 3em;
     }
+}
+
+.subtitle {
+    text-align: center;
 }
 
 /* CSS CARD METHODS DESKTOP VIEW */
@@ -1098,24 +1125,28 @@ nav {
     }
 }
 
-/* NEW METHOD FORM */
+/* METHOD FORMS */
 
-.methodLinks-fields-list {
-    list-style-type: none;
-}
-
-.methodLinks {
+.methodForm-container {
     color: $tertiarycolor;
     font-family: $textfont;
     font-size: $textsize;
+    margin-bottom: 10px;
 }
 
-.btn-removeMethodLink {
-    background-color: $tertiarycolor;
-    margin-bottom: 20px;
+.methodLinks, .methodLinks-container {
+    color: $tertiarycolor;
     font-family: $textfont;
-    font-size: 13px;
-    color: $secondarycolor;
+    font-size: $textsize;
+    margin-bottom: 10px;
+}
+
+.methodLinks-container {
+    padding: 50px 20px;
+}
+
+.btn-delete {
+    margin-top: 10px
 }
 
 //PROFILE PAGE MOBILE VIEW
@@ -1859,5 +1890,21 @@ nav {
                 }
             }
         }
+    }
+}
+
+.link-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-button {
+    margin-bottom: 30px;
+
+    button {
+        background-color: $tertiarycolor;
+        color: $secondarycolor;
+        font-family: $textfont;
+        font-size: 10px;
     }
 }
