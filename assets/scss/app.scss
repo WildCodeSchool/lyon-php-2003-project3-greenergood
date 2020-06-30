@@ -32,6 +32,26 @@ h2 {
     font-family: $titlefont;
 }
 
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: var(--primary-color);
+}
+
 .greyOnWhite {
     color: $tertiarycolor;
 }
@@ -1199,7 +1219,7 @@ nav {
                         font-family: $textfont;
                         color: $primary;
                         padding: 10px;
-                        font-size: 1.5rem;
+                        font-size: 1.4rem;
                     }
                 }
 
@@ -1585,6 +1605,7 @@ nav {
                             font-family: $textfont;
                             color: $primary;
                             padding: 10px;
+                            font-size: 1.6rem;
                         }
                     }
 
