@@ -1097,14 +1097,14 @@ nav {
     color: $secondarycolor;
 }
 
-//PROFILE MOBILE VIEW
+//PROFILE PAGE MOBILE VIEW
 .bloc_page_profile {
     width: 100%;
 
     .profile-img-white-paint-mobile {
         height: 75px;
         position: relative;
-        margin: 10px 0 25px 0;
+        margin: 10px 10px 25px 10px;
     }
 
     .profile-name-mobile {
@@ -1119,168 +1119,43 @@ nav {
         height: auto;
         width: auto;
         background-color: rgb(186, 222, 219);
-        padding: 10px 10px 0 10px;
 
-        .container-profile-img {
-            background-color: white;
-            height: auto;
-            padding: 10px;
-            position: relative;
-
-            .profile-img-scotch-top {
-              display: none;
-            }
-
-            .container-img-frame {
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-
-                .profile-img {
-                    width: 70%;
-                }
-
-                .profile-yellow-frame-bottom {
-                    height: 50px;
-                    position: absolute;
-                    bottom: 15px;
-                    right: 65px;
-                }
-
-                .profile-yellow-frame-top {
-                    height: 50px;
-                    position: absolute;
-                    top: 15px;
-                    left: 65px;
-                }
-
-                .rotation180 {
-                    -webkit-transform: rotate(180deg);
-                    -moz-transform: rotate(180deg);
-                    -ms-transform: rotate(180deg);
-                    -o-transform: rotate(180deg);
-                    transform: rotate(180deg);
-                }
-            }
-
-            .profile-img-scotch-bottom {
-                display: none;
-            }
-        }
-
-        .container-profile-infos {
-            background-color: $primary;
-            height: auto;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .profile-img-white-paint-desktop {
-                display: none;
-            }
-
-            .profile-name-desktop {
-                display: none;
-            }
-
-            .profile-function {
-                width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: white;
-                margin-top: 15px;
-
-                h3 {
-                    font-family: $textfont;
-                    color: $primary;
-                    padding: 10px;
-                    font-size: 1.5rem;
-                }
-            }
-
-            .container-profile-contact-detail {
-                width: 90%;
-                background-color: $secondarycolor;
-                padding: 15px;
-                margin: 20px auto 15px;
-
-                .profile-details {
-                    border-radius: 15px;
-                    background-color: white;
-
-                    .details {
-                        h3 {
-                            font-family: $textfont;
-                            font-size: 1.5rem;
-                        }
-
-                        p {
-                            font-size: 1rem;
-                            text-align: center;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-// PROFILE DESKTOP VIEW
-@media all and (min-width: 769px) {
-
-    .bloc_page_profile {
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-
-        .container-profile {
-            display: flex;
-            flex-direction: row;
-            height: auto;
-            width: auto;
-            background-color: rgb(186, 222, 219);
-            margin-top: 15px;
-            padding: 200px 10px 0 10px;
+        .container-card-img-infos {
+            padding: 15px;
 
             .container-profile-img {
                 background-color: white;
                 height: auto;
-                width: 30%;
-                padding: 30px;
+                padding: 10px;
                 position: relative;
 
                 .profile-img-scotch-top {
-                    height: 130px;
-                    position: absolute;
-                    top: -75px;
-                    left: 90px;
-                    display: block;
+                    display: none;
                 }
 
                 .container-img-frame {
                     height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     position: relative;
 
                     .profile-img {
-                        width: 100%;
-                        height: 100%;
+                        width: 70%;
                     }
 
                     .profile-yellow-frame-bottom {
-                        height: 75px;
+                        height: 50px;
                         position: absolute;
                         bottom: 15px;
-                        right: 15px;
+                        right: 65px;
                     }
 
                     .profile-yellow-frame-top {
-                        height: 75px;
+                        height: 50px;
                         position: absolute;
                         top: 15px;
-                        left: 15px;
+                        left: 65px;
                     }
 
                     .rotation180 {
@@ -1293,58 +1168,43 @@ nav {
                 }
 
                 .profile-img-scotch-bottom {
-                    height: 130px;
-                    position: absolute;
-                    bottom: -75px;
-                    right: 90px;
-                    display: block;
+                    display: none;
                 }
-            }
-
-            .profile-name-mobile {
-                display: none;
-            }
-
-            .profile-img-white-paint-mobile {
-                display: none;
             }
 
             .container-profile-infos {
                 background-color: $primary;
                 height: auto;
-                width: 70%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
 
                 .profile-img-white-paint-desktop {
-                    height: 90px;
-                    position: relative;
-                    margin: 10px 0 40px 0;
-                    display: block;
+                    display: none;
                 }
 
                 .profile-name-desktop {
-                    position: absolute;
-                    z-index: 1;
-                    display: block;
+                    display: none;
                 }
 
                 .profile-function {
-                    width: 75%;
+                    width: 90%;
                     margin-left: auto;
                     margin-right: auto;
                     background-color: white;
+                    margin-top: 15px;
 
                     h3 {
                         font-family: $textfont;
                         color: $primary;
                         padding: 10px;
+                        font-size: 1.5rem;
                     }
                 }
 
                 .container-profile-contact-detail {
-                    width: 75%;
+                    width: 90%;
                     background-color: $secondarycolor;
                     padding: 15px;
                     margin: 20px auto 15px;
@@ -1356,16 +1216,624 @@ nav {
                         .details {
                             h3 {
                                 font-family: $textfont;
+                                font-size: 1.5rem;
                             }
 
                             p {
-                                font-size: 1.3rem;
+                                font-size: 1rem;
+                                text-align: center;
+                                font-family: $textfont;
+
+                                span {
+                                    text-decoration: underline;
+                                    font-family: $textfont;
+                                }
                             }
                         }
                     }
                 }
             }
         }
+
+        .container-infos-bio-work {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: auto;
+            padding: 15px;
+
+            .container-infos-bio {
+                height: auto;
+                width: 100%;
+                position: relative;
+                background-color: white;
+
+                .bio-text {
+                    padding: 15px;
+                    max-width: 100%;
+                    height: 85%;
+                    overflow: auto;
+
+                    p {
+                        font-size: 1rem;
+                        text-align: center;
+                        word-break: break-word;
+                        margin-top: 1rem;
+                        font-family: $textfont;
+                    }
+                }
+
+                .green-line-top {
+                    position: absolute;
+                    height: 15px;
+                    width: 100%;
+                    top: 0;
+                    background-color: $primarycolor;
+                }
+
+                .green-line-bottom {
+                    position: absolute;
+                    height: 15px;
+                    width: 100%;
+                    bottom: 0;
+                    background-color: $primarycolor;
+                }
+            }
+
+            .container-infos-work {
+                border-top: 2px solid $primarycolor;
+                height: auto;
+                width: 100%;
+
+                .title-infos-work {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    position: relative;
+
+                    h1 {
+                        position: absolute;
+                        color: white;
+                        font-size: 2.1rem;
+                    }
+
+                    .profile-img-green-paint-desktop {
+                        width: 100%;
+                        margin-top: 15px;
+                    }
+                }
+
+                .container-work-on {
+
+                    .list-work-on {
+                        list-style-type: none;
+                        padding-inline-start: 0;
+                        margin-top: 35px;
+
+                        li {
+                            width: 100%;
+                            border-radius: 30px;
+                            background-color: white;
+                            padding: 10px;
+                        }
+
+                        h1 {
+                            padding: 0;
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        .container-green-skills {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            height: auto;
+            width: 100%;
+
+            .green-skills-left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                .title-green-skills {
+                    margin-top: -15px;
+
+                    h3 {
+                        font-family: $textfont;
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .circles {
+                    height: auto;
+                    margin-top: 30px;
+
+                    .container-circle-green-1 {
+                        display: flex;
+                        flex-direction: row;
+                        text-align: center;
+                        align-items: center;
+
+                        .circle-green-1 {
+                            height: 50px;
+                            width: 50px;
+                            min-width: 50px;
+                            background-color: $primarycolor;
+                            border-radius: 50%;
+                        }
+
+                        h5 {
+                            font-family: $textfont;
+                            font-size: 1.1rem;
+                        }
+                    }
+
+                    .container-circle-yellow {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        text-align: center;
+
+                        .circle-yellow {
+                            height: 50px;
+                            width: 50px;
+                            min-width: 50px;
+                            background-color: $secondarycolor;
+                            border-radius: 50%;
+                            margin: 8px 0 8px 0;
+                        }
+
+                        h5 {
+                            font-family: $textfont;
+                            font-size: 1.1rem;
+                        }
+                    }
+
+                    .yellow-line {
+                        background-color: #fef9cd;
+                        width: 100%;
+
+                        .container-circle-green-2 {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-align: center;
+                            width: 100%;
+
+                            .circle-green-2 {
+                                height: 50px;
+                                width: 50px;
+                                min-width: 50px;
+                                background-color: $primarycolor;
+                                border-radius: 50%;
+                            }
+
+                            h5 {
+                                font-family: $textfont;
+                                font-size: 1.1rem;
+                                z-index: 2;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .vertical-green-line-bottom {
+                height: 600px;
+                width: 1%;
+                background-color: $primarycolor;
+                opacity: 50%;
+                margin-top: -280px;
+                display: none;
+            }
+
+            .green-skills-right {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+
+                .img-lemon {
+                    height: 150px;
+                    z-index: 1;
+                }
+            }
+        }
+
     }
 }
 
+// PROFILE PAGE DESKTOP VIEW
+@media all and (min-width: 769px) {
+
+    .bloc_page_profile {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .container-profile {
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: auto;
+            background-color: rgb(186, 222, 219);
+            margin-top: 15px;
+            padding-top: 80px;
+
+            .profile-name-mobile {
+                display: none;
+            }
+
+            .profile-img-white-paint-mobile {
+                display: none;
+            }
+
+            .container-vertical-green-line-top {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .vertical-green-line-top {
+                    height: 115px;
+                    width: 1%;
+                    background-color: $primarycolor;
+                    opacity: 50%;
+                    margin-bottom: -15px;
+                }
+            }
+
+            .container-card-img-infos {
+                display: flex;
+                flex-direction: row;
+                padding: 15px;
+
+                .container-profile-img {
+                    background-color: white;
+                    height: auto;
+                    width: auto;
+                    padding: 30px;
+                    position: relative;
+
+                    .profile-img-scotch-top {
+                        height: 130px;
+                        position: absolute;
+                        top: -75px;
+                        left: 90px;
+                        display: block;
+                        max-width: 100%;
+                    }
+
+                    .container-img-frame {
+                        height: 100%;
+                        position: relative;
+
+                        .profile-img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+
+                        .profile-yellow-frame-bottom {
+                            height: 75px;
+                            position: absolute;
+                            bottom: 15px;
+                            right: 15px;
+                            max-width: 65%;
+                        }
+
+                        .profile-yellow-frame-top {
+                            height: 75px;
+                            position: absolute;
+                            top: 15px;
+                            left: 15px;
+                            max-width: 65%;
+                        }
+
+                        .rotation180 {
+                            -webkit-transform: rotate(180deg);
+                            -moz-transform: rotate(180deg);
+                            -ms-transform: rotate(180deg);
+                            -o-transform: rotate(180deg);
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    .profile-img-scotch-bottom {
+                        height: 130px;
+                        max-width: 100%;
+                        position: absolute;
+                        bottom: -75px;
+                        right: 90px;
+                        display: block;
+                    }
+                }
+
+                .container-profile-infos {
+                    background-color: $primary;
+                    height: auto;
+                    width: 70%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .profile-img-white-paint-desktop {
+                        height: 90px;
+                        position: relative;
+                        max-width: 80%;
+                        margin: 10px 0 40px 0;
+                        display: block;
+                    }
+
+                    .profile-name-desktop {
+                        position: absolute;
+                        z-index: 1;
+                        display: block;
+                    }
+
+                    .profile-function {
+                        width: 75%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        background-color: white;
+
+                        h3 {
+                            font-family: $textfont;
+                            color: $primary;
+                            padding: 10px;
+                        }
+                    }
+
+                    .container-profile-contact-detail {
+                        width: 75%;
+                        background-color: $secondarycolor;
+                        padding: 15px;
+                        margin: 20px auto 15px;
+
+                        .profile-details {
+                            border-radius: 15px;
+                            background-color: white;
+
+                            .details {
+                                h3 {
+                                    font-family: $textfont;
+                                }
+
+                                p {
+                                    font-size: 1.3rem;
+                                    font-family: $textfont;
+                                    word-break: break-word;
+
+                                    span {
+                                        text-decoration: underline;
+                                        font-family: $textfont;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .container-infos-bio-work {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+                padding: 80px 15px 50px 15px;
+                height: auto;
+
+                .container-infos-bio {
+                    height: auto;
+                    width: 50%;
+                    position: relative;
+                    background-color: white;
+                    margin-right: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .bio-text {
+                        padding: 15px;
+                        max-width: 100%;
+                        height: 85%;
+                        overflow: auto;
+
+                        p {
+                            font-size: 1.3rem;
+                            text-align: center;
+                            word-break: break-word;
+                            font-family: $textfont;
+                        }
+                    }
+
+                    .green-line-top {
+                        position: absolute;
+                        height: 15px;
+                        width: 100%;
+                        top: 0;
+                        background-color: $primarycolor;
+                    }
+
+                    .green-line-bottom {
+                        position: absolute;
+                        height: 15px;
+                        width: 100%;
+                        bottom: 0;
+                        background-color: $primarycolor;
+                    }
+                }
+
+                .container-infos-work {
+                    border-top: 2px solid $primarycolor;
+                    height: auto;
+                    width: 50%;
+                    margin-left: 50px;
+
+                    .title-infos-work {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        position: relative;
+
+                        h1 {
+                            position: absolute;
+                            color: white;
+                            font-size: 2.5rem;
+                        }
+
+                        .profile-img-green-paint-desktop {
+                            width: 100%;
+                            height: 75px;
+                            margin-top: 15px;
+                        }
+                    }
+
+                    .container-work-on {
+
+
+                        .list-work-on {
+                            list-style-type: none;
+                            padding-inline-start: 0;
+                            margin-top: 35px;
+
+                            li {
+                                width: 100%;
+                                border-radius: 30px;
+                                background-color: white;
+                                padding: 10px;
+                            }
+
+                            h1 {
+                                padding: 0;
+                                font-size: 2.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .container-green-skills {
+                display: flex;
+                flex-direction: row;
+                background-color: white;
+                height: auto;
+                width: 100%;
+
+                .green-skills-left {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 50%;
+                    height: 100%;
+
+                    .title-green-skills {
+                        margin-top: -20px;
+
+                        h3 {
+                            font-family: $textfont;
+                            font-size: 2rem;
+                        }
+                    }
+
+                    .circles {
+                        height: auto;
+                        margin-top: 30px;
+
+                        .container-circle-green-1 {
+                            display: flex;
+                            flex-direction: row;
+                            text-align: center;
+                            align-items: center;
+
+                            .circle-green-1 {
+                                height: 75px;
+                                width: 75px;
+                                min-width: 75px;
+                                background-color: $primarycolor;
+                                border-radius: 50%;
+                            }
+
+                            h5 {
+                                font-family: $textfont;
+                                font-size: 1.25rem;
+                            }
+                        }
+
+                        .container-circle-yellow {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-align: center;
+
+                            .circle-yellow {
+                                height: 75px;
+                                width: 75px;
+                                min-width: 75px;
+                                background-color: $secondarycolor;
+                                border-radius: 50%;
+                                margin: 8px 0 8px 0;
+                            }
+
+                            h5 {
+                                font-family: $textfont;
+                                font-size: 1.25rem;
+                            }
+                        }
+
+                        .yellow-line {
+                            background-color: #fef9cd;
+                            width: 200%;
+
+                            .container-circle-green-2 {
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                text-align: center;
+                                width: 50%;
+
+                                .circle-green-2 {
+                                    height: 75px;
+                                    width: 75px;
+                                    min-width: 75px;
+                                    background-color: $primarycolor;
+                                    border-radius: 50%;
+                                }
+
+                                h5 {
+                                    font-family: $textfont;
+                                    font-size: 1.25rem;
+                                    z-index: 2;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .vertical-green-line-bottom {
+                    height: 600px;
+                    width: 1%;
+                    background-color: $primarycolor;
+                    opacity: 50%;
+                    margin-top: -280px;
+                    display: block;
+                }
+
+                .green-skills-right {
+                    width: 50%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    .img-lemon {
+                        height: 325px;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+}
