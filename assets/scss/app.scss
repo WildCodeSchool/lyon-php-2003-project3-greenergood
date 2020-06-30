@@ -40,14 +40,15 @@ h2 {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--primary-color);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
 ::-webkit-scrollbar-thumb:window-inactive {
     background: var(--primary-color);
 }
@@ -1576,7 +1577,7 @@ nav {
                 .container-profile-infos {
                     background-color: $primary;
                     height: auto;
-                    width: 70%;
+                    width: 75%;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -1606,6 +1607,7 @@ nav {
                             color: $primary;
                             padding: 10px;
                             font-size: 1.6rem;
+                            word-break: break-all;
                         }
                     }
 
@@ -1622,6 +1624,7 @@ nav {
                             .details {
                                 h3 {
                                     font-family: $textfont;
+                                    word-break: break-all;
                                 }
 
                                 p {
