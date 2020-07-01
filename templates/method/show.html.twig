@@ -26,17 +26,18 @@
                 <div class="action-three-dots threeDots"></div>
                 <div class="action-menu menu">
                     <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                    <a href="{{ path('method_deactivate', {'id': method.id}) }}">Dupliquer</a>
+                    <a href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
 
                     {% if is_granted('ROLE_ADMIN') %}
 
                         {% if method.activated == true %}
                             <a>{{ include('method/_delete_form.html.twig') }}</a>
-                        {% elseif method.activated == false %}
+                        {% elseif mehtod.activated == false %}
                             <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                         {% endif %}
 
                     {% endif %}
+
                 </div>
             </div>
         </div>
