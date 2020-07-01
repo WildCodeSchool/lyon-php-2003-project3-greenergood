@@ -93,6 +93,11 @@ class Action
     private $activated = true;
 
     /**
+     * @ORM\ManyToMany(targetEntity=Method::class)
+     */
+    private $methods;
+  
+     /**
      * @ORM\OneToMany(
      *     targetEntity=ActionDeliverable::class,
      *     mappedBy="action",
@@ -106,6 +111,7 @@ class Action
 
     public function __construct()
     {
+        $this->methods = new ArrayCollection();
         $this->actionDeliverable = new ArrayCollection();
     }
 
@@ -247,6 +253,32 @@ class Action
     }
 
     /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+        }
+
+        return $this;
+    }
+  
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+        }
+
+        return $this;
+    }
+      
+     /**
      * @return Collection|ActionDeliverable[]
      */
     public function getActionDeliverable(): Collection
