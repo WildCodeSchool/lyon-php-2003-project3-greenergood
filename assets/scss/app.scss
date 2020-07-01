@@ -298,12 +298,12 @@ a:hover {
 
 // ADMIN
 
-.actions-listing{
+.actions-listing {
     display: flex;
     justify-content: space-evenly;
 }
 
-tr{
+tr {
     text-align: center;
 }
 
@@ -400,16 +400,16 @@ nav {
 
 /* METHOD */
 
-.method-header{
+.method-header {
     display: flex;
     justify-content: flex-end;
 }
 
-.method-arrow{
+.method-arrow {
     width: 200px;
 }
 
-.method-title{
+.method-title {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -427,47 +427,49 @@ nav {
     }
 }
 
-.method-image{
+.method-image {
     height: 125px;
     Width: 125px;
     border-radius: 50%;
 }
 
-.method-cat-img{
+.method-cat-img {
     display: flex;
     justify-content: flex-end;
 }
 
-.method-infos{
+.method-infos {
     background-color: $primarycolor;
     display: flex;
     flex-direction: row;
 }
 
-.method-name{
+.method-name {
     display: flex;
     justify-content: flex-end;
 }
 
-.method-bloc-infos{
+.method-bloc-infos {
     display: flex;
     flex-direction: column;
 }
 
-.menu-method{
+.menu-method {
     background: $tertiarycolor none;
     border: none;
     padding: 6px 12px;
+
     &:hover {
         color: $secondarycolor;
     }
+
     &:focus {
         outline: none;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .method-infos{
+    .method-infos {
         flex-direction: column;
     }
 }
@@ -488,6 +490,7 @@ nav {
     &:hover {
         color: $secondarycolor;
     }
+
 }
 
 .col-form-label {
@@ -838,7 +841,7 @@ nav {
     align-items: center;
     top: 100%;
 
-    a,  .action-three-dots-button {
+    a, .action-three-dots-button {
         list-style-type: none;
         padding: 6px 12px;
         margin-right: -0.56em;
