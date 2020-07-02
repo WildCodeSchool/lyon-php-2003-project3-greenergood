@@ -1547,7 +1547,7 @@ nav {
                 .container-profile-img {
                     background-color: white;
                     height: auto;
-                    width: auto;
+                    width: 30%;
                     padding: 30px;
                     position: relative;
 
@@ -1906,5 +1906,57 @@ nav {
         color: $secondarycolor;
         font-family: $textfont;
         font-size: 10px;
+    }
+}
+
+.livret-accueil {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin: 5px auto 30px auto;
+    #block {
+        position: absolute;
+        background-color: $primarycolor;
+        opacity: 0.6;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+    #text {
+        text-align: center;
+        position: absolute;
+        color: $tertiarycolor;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.green-text {
+    color: $primarycolor;
+}
+
+.contact-accueil {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 30px auto 30px auto;
+    #block {
+        position: absolute;
+        background-color: $primarycolor;
+        opacity: 0.6;
+        height: 100%;
+        width: 100%;
+    }
+    #text {
+        padding: 15px;
+        text-align: center;
+        position: absolute;
+        color: $tertiarycolor;
+        height: 100%;
+        width: 100%;
     }
 }
