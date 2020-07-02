@@ -62,7 +62,8 @@
                 {# Display edition Number is it is set #}
                 {% if action.editionNumber %}
                     <figure class="col-6 offset-3 edition-box">
-                        <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}" alt="Fond vert du titre">
+                        <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}"
+                             alt="Fond vert du titre">
                         <figcaption>
                             {% if action.editionNumber > 1 %}
                                 {{ action.editionNumber }}ème édition
@@ -102,45 +103,49 @@
         </div>
 
         <div class="action-progress-box">{{ action.projectProgress }}</div>
-
-        <div>
-            {# Generate as many teams as teams associated with action when set up#}
-            <div class="col-6 team-title">Equipe logistique</div>
-
-            {# Generate as many pictures as User associated with action when set up#}
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
-
-            {# Add link to button when functionality is set #}
-            <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter un membre">
-        </div>
-
-        <div>
-            {# Generate as many teams as teams associated with action when set up#}
-            <div class="col-6 team-title">Equipe de coordination</div>
-
-            {# Generate as many pictures as User associated with action when set up#}
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
-            <img class="action-member-image" src="{{ asset('../img/action/image_placeholder.jpg') }}" alt="Nom de la personne">
-
-            {# Add link to button when functionality is set #}
-            <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter un membre">
-        </div>
-
-
-        <div class="action-subtitles">Organisation interne</div>
-        <div class="row action-list-item">
-            <div class="col-sm-2 organisation-button"><a href="#">Organigramme</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Comptes rendus</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Calendrier</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
-            <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
-        </div>
-
-        <div class="action-subtitles">Fiches METHODE</div>
-        <div class="action-methods">
         
+        <button class="action-add-Team" title="Ajouter une équipe">
+            <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
+        </button>
+        <div>
+            {# Generate as many teams as teams associated with action when set up#}
+            {% for team in teams %}
+                <div class="col-6 team-title"> {{ team.name }} </div>
+                {# Generate as many pictures as User associated with action when set up#}
+                {% for user in team.users %}
+                    <img class="action-member-image" src="{{ user.userPicture }}" alt="Nom de la personne">
+                {% endfor %}
+
+                {# Add link to button when functionality is set #}
+                <a href="{{ path('team_edit', {'id': team.id}) }}"><img class="action-plus-image"
+                                                                         src="{{ asset('../img/action/button_plus.png') }}"
+                                                                         alt="Ajouter un membre" title="Ajouter un membre à l'équipe"></a>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="action-subtitles">Organisation interne</div>
+    <div class="row action-list-item">
+        <div class="col-sm-2 organisation-button"><a href="#">Organigramme</a></div>
+        <div class="col-sm-2 organisation-button"><a href="#">Comptes rendus</a></div>
+        <div class="col-sm-2 organisation-button"><a href="#">Calendrier</a></div>
+        <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
+        <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
+    </div>
+
+    <div class="action-subtitles">Fiches METHODE</div>
+    <div class="action-methods">
+        {# Dynamicaly display list of methods associated with the action when implemented #}
+        <li><a href="#">Nom de la fiche méthode n°1</a></li>
+        <li><a href="#">Nom de la fiche méthode n°2</a></li>
+        <li><a href="#">Nom de la fiche méthode n°3</a></li>
+    </div>
+
+    <div class="action-subtitles">LIVRABLES</div>
+
+    <div class="deliverable-box">
+        <div class="action-methods">
             <ul>
                 {% for method in action.methods %}
                     {# add method show link #}
@@ -158,7 +163,6 @@
                     {% for deliverable in deliverables %}
                         <li><a href="{{ deliverable.link }}">{{ deliverable.name }}</a></li>
                     {% endfor %}
-
                 </ul>
             </div>
             <div class="important-link-center">
@@ -166,5 +170,6 @@
                     <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}

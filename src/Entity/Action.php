@@ -87,6 +87,18 @@ class Action
     private $projectProgress;
 
     /**
+     * @ORM\OneToMany(targetEntity=Team::class, mappedBy="action")
+     */
+    private $teams;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+        $this->methods = new ArrayCollection();
+        $this->actionDeliverable = new ArrayCollection();
+    }
+
+    /**
      * Used for soft delete of action pages
      * @ORM\Column(type="boolean")
      */
@@ -108,12 +120,6 @@ class Action
      * @Assert\Valid()
      */
     private $actionDeliverable;
-
-    public function __construct()
-    {
-        $this->methods = new ArrayCollection();
-        $this->actionDeliverable = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -303,6 +309,38 @@ class Action
             // set the owning side to null (unless already changed)
             if ($actionDeliverable->getAction() === $this) {
                 $actionDeliverable->setAction(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->contains($team)) {
+            $this->teams->removeElement($team);
+            // set the owning side to null (unless already changed)
+            if ($team->getAction() === $this) {
+                $team->setAction(null);
             }
         }
 

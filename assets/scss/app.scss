@@ -220,6 +220,14 @@ h2 {
     top: 15px;
 }
 
+// Button Modal
+.btn {
+    background-color: $primarycolor;
+    font-family: $titlefont;
+    color: white;
+}
+
+
 //Box containing the links in the homepage
 .container-center {
     @include flexCenter(column);
@@ -517,6 +525,22 @@ nav {
     }
 }
 
+.action-add-Team {
+    margin-top: 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: $primarycolor;
+    border-radius: 5px;
+    border: none;
+
+    a {
+        color: white;
+    }
+}
+
 .action-image {
     height: 125px;
     Width: 125px;
@@ -541,8 +565,13 @@ nav {
 
 .action-member-image, .action-plus-image {
     height: 75px;
-    Width: auto;
+    width: 75px;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.action-plus-image:hover {
+    cursor: grab;
 }
 
 .deliverable-box {
