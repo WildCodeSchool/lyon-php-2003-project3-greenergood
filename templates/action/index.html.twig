@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Action index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <h1>Nos actions</h1>
+            <p class="subtitle">Retrouve ici les différentes initiatives de l'association : événements, outils, etc...</p>
+
+        <div class="container">
+            <div class="row">
+                <a href="{{ path('action_new') }}">
+                    <img class="col action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter une fiche action">
+                </a>
+                <div class="col-6 create-action greenOnYellow">Créer une fiche ACTION</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for action in actions %}
+                <div class="card cardaction hvr-glow" style="width: 18rem;">
+                    <a href="{{ path('action_show', {'id': action.id}) }}">
+                        <img class="card-img-top"
+                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../img/action/action_placeholder.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
+                            {% if action.status == "started" %}
+                                <span class="badge badge-pill badge-primary ongoing">En cours</span>
+                            {% elseif action.status == "cancelled" %}
+                                <span class="badge badge-pill badge-primary cancelled">Annulé</span>
+                            {% elseif action.status == "ended" %}
+                                <span class="badge badge-pill badge-primary over">Terminé</span>
+                            {% endif %}
+                        <div class="card-body">
+                            <p class="card-title">
+                                {{ action.startDate ? action.startDate|date('d M Y') : '' }}
+                                {% if action.endDate %}
+                                    - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                                {% endif %}
+                            </p>
+                            <h2 class="greyOnWhite">{{ action.name }}</h2>
+                            <p class="card-text">
+                                {% if action.editionNumber > 1 %}
+                                    {{ action.editionNumber }}ème édition
+                                {% elseif action.editionNumber == 1 %}
+                                    {{ action.editionNumber }}ère édition
+                                {% endif %}
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}

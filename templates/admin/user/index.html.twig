@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="greenOnWhite">Liste des utilisateurs</h1>
+
+        <div class="count">
+            Nombre total d'utilisateurs : {{ allUsers.getTotalItemCount }}
+        </div>
+        <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>E-mail</th>
+                <th>Prénom</th>
+                <th>Nom de famille</th>
+                <th>Roles</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in allUsers %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.roles|first|replace({'ROLE' : "", '_' : " "}) }}</td>
+                    <td>
+                        {% if user.status == 1 %}
+                            Actif
+                        {% else %}
+                            Inactif
+                        {% endif %}
+                    </td>
+                    <td class="actions-listing">
+                        <a href="{{ path('admin_user_show', {'id': user.id}) }}">
+                            <button class="btn form-button">{{ button_label|default('Voir') }}</button>
+                        </a>
+                        <a href="{{ path('admin_user_edit', {'id': user.id}) }}">
+                            <button class="btn form-button">{{ button_label|default('Editer') }}</button>
+                        </a>
+                        {{ include('admin/user/_delete_form.html.twig', {'button_label': 'X'}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation">
+            {{ knp_pagination_render(allUsers) }}
+        </div>
+
+        <a href="{{ path('app_register') }}">
+            <button class="btn form-button">{{ button_label|default('Créer') }}</button>
+        </a>
+    </div>
+{% endblock %}

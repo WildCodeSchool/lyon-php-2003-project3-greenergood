@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une fiche méthode{% endblock %}
+
+{% block body %}
+    <div class="action-form">
+        <h1>Fiche méthode n°{{ method.id }} - {{ method.name }}</h1>
+
+        {{ include('method/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        {{ include('method/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
