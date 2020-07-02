@@ -22,8 +22,8 @@
             {% for actionDeliverable in form.actionDeliverable %}
                 <div class="js-methodLink-item">
                     {{ form_errors(actionDeliverable) }}
-                    {{ form_row(actionDeliverable.url) }}
-                    {{ form_row(actionDeliverable.title) }}
+                    {{ form_row(actionDeliverable.link) }}
+                    {{ form_row(actionDeliverable.name) }}
                 </div>
             {% endfor %}
         </div>

@@ -138,16 +138,16 @@ class ActionController extends AbstractController
      */
     public function duplicate(Request $request, Action $action): Response
     {
-        $newaction = clone $action;
-        $form = $this->createForm(ActionType::class, $newaction);
+        $newAction = $action->clone();
+        $form = $this->createForm(ActionType::class, $newAction);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($newaction);
+            $entityManager->persist($newAction);
             $entityManager->flush();
 
-            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
+            return $this->redirectToRoute('action_show', ['id' => $newAction->getId()]);
         }
 
         return $this->render('action/duplicate.html.twig', [

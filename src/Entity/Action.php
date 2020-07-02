@@ -108,8 +108,8 @@ class Action
      * @ORM\ManyToMany(targetEntity=Method::class)
      */
     private $methods;
-  
-     /**
+
+    /**
      * @ORM\OneToMany(
      *     targetEntity=ActionDeliverable::class,
      *     mappedBy="action",
@@ -131,7 +131,7 @@ class Action
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -143,7 +143,7 @@ class Action
         return $this->editionNumber;
     }
 
-    public function setEditionNumber(int $editionNumber): self
+    public function setEditionNumber(?int $editionNumber): self
     {
         $this->editionNumber = $editionNumber;
 
@@ -167,7 +167,7 @@ class Action
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -179,7 +179,7 @@ class Action
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTimeInterface $startDate): self
+    public function setStartDate(?\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 
@@ -227,7 +227,7 @@ class Action
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
@@ -251,7 +251,7 @@ class Action
         return $this->activated;
     }
 
-    public function setActivated(bool $activated): self
+    public function setActivated(?bool $activated): self
     {
         $this->activated = $activated;
 
@@ -274,7 +274,7 @@ class Action
 
         return $this;
     }
-  
+
     public function removeMethod(Method $method): self
     {
         if ($this->methods->contains($method)) {
@@ -283,8 +283,8 @@ class Action
 
         return $this;
     }
-      
-     /**
+
+    /**
      * @return Collection|ActionDeliverable[]
      */
     public function getActionDeliverable(): Collection
@@ -315,6 +315,7 @@ class Action
         return $this;
     }
 
+
     /**
      * @return Collection|Team[]
      */
@@ -344,5 +345,32 @@ class Action
         }
 
         return $this;
+
+    public function clone(): Action
+    {
+        $action = new Action();
+        $action->setName($this->getName());
+        $action->setEditionNumber($this->getEditionNumber());
+        $action->setActionPicture($this->getActionPicture());
+
+        if ($this->getDescription()) {
+            $action->setDescription($this->getDescription());
+        }
+        $action->setStartDate($this->getStartDate());
+
+        if ($this->getEndDate()) {
+            $action->setEndDate($this->getEndDate());
+        }
+        $action->setLocation($this->getLocation());
+        $action->setContent($this->getContent());
+        $action->setStatus($this->getStatus());
+        $action->setProjectProgress($this->getProjectProgress());
+        $action->setActivated($this->getActivated());
+
+        foreach ($this->getActionDeliverable() as $actionDeliverable) {
+            $action->addActionDeliverable(clone $actionDeliverable);
+        }
+
+        return $action;
     }
 }

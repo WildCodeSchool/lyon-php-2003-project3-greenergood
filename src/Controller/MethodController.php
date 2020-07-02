@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Method;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,7 +96,8 @@ class MethodController extends AbstractController
      */
     public function duplicate(Request $request, Method $method): Response
     {
-        $newMethod = clone $method;
+        $newMethod = $method->clone();
+
         $form = $this->createForm(MethodType::class, $newMethod);
         $form->handleRequest($request);
 
