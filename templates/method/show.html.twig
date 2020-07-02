@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Method{% endblock %}
+{% block title %}
+    Fiche Méthode - {{ method.name }}
+
+    {% if method.activated == false %}
+        - Désactivée
+    {% endif %}
+
+{% endblock %}
 
 {% block body %}
-    <h1>Method</h1>
+<div {% if method.activated == false %} class="deactivated" {% endif %}>
+    <h1>Fiche Méthode n°{{ method.id }}</h1>
+
+    {% if method.activated == false %}
+        - Désactivée
+    {% endif %}
+
 
     <table class="table">
         <tbody>
@@ -16,20 +29,16 @@
                 <td>{{ method.name }}</td>
             </tr>
             <tr>
-                <th>CardNumber</th>
-                <td>{{ method.cardNumber }}</td>
-            </tr>
-            <tr>
                 <th>CreatedAt</th>
                 <td>{{ method.createdAt ? method.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Prerequisites</th>
-                <td>{{ method.prerequisites }}</td>
+                <td>{{ method.prerequisites|raw }}</td>
             </tr>
             <tr>
                 <th>Content</th>
-                <td>{{ method.content }}</td>
+                <td>{{ method.content|raw }}</td>
             </tr>
             <tr>
                 <th>Objectives</th>
@@ -42,5 +51,13 @@
 
     <a href="{{ path('method_edit', {'id': method.id}) }}">edit</a>
 
-    {{ include('method/_delete_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+
+        {% if method.activated == true %}
+            <a>{{ include('method/_delete_form.html.twig') }}</a>
+        {% elseif method.activated == false %}
+            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+        {% endif %}
+
+    {% endif %}
 {% endblock %}

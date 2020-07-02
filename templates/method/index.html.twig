@@ -23,9 +23,17 @@
                                      aria-haspopup="true" aria-expanded="false">
                                 </div>
                                 <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
-                                    <a href="#">Modifier</a>
-                                    <a class="pipe-link-method" href="#">Dupliquer</a>
-                                    <a href="#">Supprimer</a>
+                                    <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                    <a class="pipe-link-method" href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+
+                                        {% if method.activated == true %}
+                                            {{ include('method/_delete_form.html.twig') }}
+                                        {% elseif method.activated == false %}
+                                            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+                                        {% endif %}
+
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

@@ -21,6 +21,7 @@ class MethodFixtures extends Fixture
             $method->setCreatedAt($faker->dateTime);
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);
+            $method->setActivated(true);
             $manager->persist($method);
         }
         $manager->flush();

@@ -1,5 +1,6 @@
 // Colors
 $primarycolor :#5AAFAA;
+$primary: #5AAFAA;
 $secondarycolor : #FDEE6E;
 $tertiarycolor : #5F5F5F;
 
@@ -11,3 +12,8 @@ $textfont : 'Montserrat', sans-serif;
 $h1size : 40px;
 $h2size : 24px;
 $textsize : 16px;
+
+//Color for the scroll bar
+:root {
+    --primary-color: #5AAFAA; /* Green */
+}

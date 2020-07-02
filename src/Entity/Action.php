@@ -28,17 +28,10 @@ class Action
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotNull(message="Le numéro d'édition ne devrait pas être nul",)
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive(message="Le numéro d'édition doit être supérieur à 0")
      */
     private $editionNumber;
-
-    /**
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", nullable=true)
-     * @Assert\Positive()
-     */
-    private $number;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -52,7 +45,6 @@ class Action
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="La description ne devrait pas être vide")
-     * @Assert\Length(max="255", maxMessage="La description ne devrait pas dépasser {{ limit }} caractères")
      */
     private $description;
 
@@ -84,7 +76,7 @@ class Action
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Choice(
-     *     choices = { "En cours", "Terminé", "Annulé" }
+     *     choices = { "started", "ended", "cancelled" }
      * )
      */
     private $status = 'En cours';
@@ -95,6 +87,7 @@ class Action
     private $projectProgress;
 
     /**
+
      * @ORM\OneToMany(targetEntity=Team::class, mappedBy="action")
      */
     private $teams;
@@ -102,7 +95,30 @@ class Action
     public function __construct()
     {
         $this->teams = new ArrayCollection();
-    }
+      $this->methods = new ArrayCollection();
+        $this->actionDeliverable = new ArrayCollection();
+          
+     * Used for soft delete of action pages
+     * @ORM\Column(type="boolean")
+     */
+    private $activated = true;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Method::class)
+     */
+    private $methods;
+  
+     /**
+     * @ORM\OneToMany(
+     *     targetEntity=ActionDeliverable::class,
+     *     mappedBy="action",
+     *     fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
+     * @Assert\Valid()
+     */
+    private $actionDeliverable;
 
     public function getId(): ?int
     {
@@ -229,14 +245,71 @@ class Action
         return $this;
     }
 
-    public function getNumber(): ?int
+    public function getActivated(): ?bool
     {
-        return $this->number;
+        return $this->activated;
     }
 
-    public function setNumber(int $number): self
+    public function setActivated(bool $activated): self
     {
-        $this->number = $number;
+        $this->activated = $activated;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+        }
+
+        return $this;
+    }
+  
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+        }
+
+        return $this;
+    }
+      
+     /**
+     * @return Collection|ActionDeliverable[]
+     */
+    public function getActionDeliverable(): Collection
+    {
+        return $this->actionDeliverable;
+    }
+
+    public function addActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if (!$this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable[] = $actionDeliverable;
+            $actionDeliverable->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if ($this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable->removeElement($actionDeliverable);
+            // set the owning side to null (unless already changed)
+            if ($actionDeliverable->getAction() === $this) {
+                $actionDeliverable->setAction(null);
+            }
+        }
 
         return $this;
     }
