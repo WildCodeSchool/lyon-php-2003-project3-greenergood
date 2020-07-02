@@ -87,7 +87,6 @@ class Action
     private $projectProgress;
 
     /**
-
      * @ORM\OneToMany(targetEntity=Team::class, mappedBy="action")
      */
     private $teams;
@@ -95,9 +94,11 @@ class Action
     public function __construct()
     {
         $this->teams = new ArrayCollection();
-      $this->methods = new ArrayCollection();
+        $this->methods = new ArrayCollection();
         $this->actionDeliverable = new ArrayCollection();
-          
+    }
+
+    /**
      * Used for soft delete of action pages
      * @ORM\Column(type="boolean")
      */

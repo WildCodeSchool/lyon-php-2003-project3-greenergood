@@ -77,7 +77,7 @@ class ActionController extends AbstractController
         $deliverables = $action->getActionDeliverable();
         return $this->render('action/show.html.twig', [
             'action' => $action,
-            'teams' => $teamRepository->findby(['action' => $action])
+            'teams' => $teamRepository->findby(['action' => $action]),
             'deliverables' => $deliverables,
         ]);
     }
