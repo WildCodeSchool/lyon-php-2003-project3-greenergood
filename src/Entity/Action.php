@@ -345,6 +345,7 @@ class Action
         }
 
         return $this;
+    }
 
     public function clone(): Action
     {
