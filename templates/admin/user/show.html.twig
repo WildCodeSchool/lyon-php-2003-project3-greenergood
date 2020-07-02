@@ -15,6 +15,7 @@
             </div>
             <div class="container-card-img-infos">
                 <div class="container-profile-img">
+                    <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
                     <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
@@ -29,6 +30,7 @@
                          alt="Morceau de scotch">
                 </div>
                 <div class="container-profile-infos">
+                    <img class="img-pen-desktop" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
                     <img class="profile-img-white-paint-desktop"
                          src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
                     <div class="profile-name-desktop">
@@ -37,6 +39,7 @@
                     <div class="profile-function">
                         <h3 class="text-center">{{ user.fonction }}</h3>
                     </div>
+                    <div class="entry-date">depuis le {{ user.entryDate|date('d/m/Y') }}</div>
                     <div class="container-profile-contact-detail">
                         <div class="profile-details">
                             <div class="details container-center">

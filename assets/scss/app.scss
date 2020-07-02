@@ -220,6 +220,14 @@ h2 {
     top: 15px;
 }
 
+// Button Modal
+.btn {
+    background-color: $primarycolor;
+    font-family: $titlefont;
+    color: white;
+}
+
+
 //Box containing the links in the homepage
 .container-center {
     @include flexCenter(column);
@@ -517,6 +525,22 @@ nav {
     }
 }
 
+.action-add-Team {
+    margin-top: 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: $primarycolor;
+    border-radius: 5px;
+    border: none;
+
+    a {
+        color: white;
+    }
+}
+
 .action-image {
     height: 125px;
     Width: 125px;
@@ -541,8 +565,13 @@ nav {
 
 .action-member-image, .action-plus-image {
     height: 75px;
-    Width: auto;
+    width: 75px;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.action-plus-image:hover {
+    cursor: grab;
 }
 
 .deliverable-box {
@@ -1232,6 +1261,14 @@ nav {
                 padding: 10px;
                 position: relative;
 
+                .img-pen-mobile {
+                    height: 55px;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    display: block;
+                }
+
                 .profile-img-scotch-top {
                     display: none;
                 }
@@ -1283,6 +1320,22 @@ nav {
                 flex-direction: column;
                 align-items: center;
 
+                .img-pen-desktop {
+                    display: none;
+                }
+
+                .entry-date {
+                    height: 50px;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    font-size: 1.1rem;
+                }
+
                 .profile-img-white-paint-desktop {
                     display: none;
                 }
@@ -1310,7 +1363,7 @@ nav {
                     width: 90%;
                     background-color: $secondarycolor;
                     padding: 15px;
-                    margin: 20px auto 15px;
+                    margin: 0 auto 15px;
 
                     .profile-details {
                         border-radius: 15px;
@@ -1602,6 +1655,10 @@ nav {
                     padding: 30px;
                     position: relative;
 
+                    .img-pen-mobile {
+                        display: none;
+                    }
+
                     .profile-img-scotch-top {
                         height: 130px;
                         position: absolute;
@@ -1657,6 +1714,7 @@ nav {
                 }
 
                 .container-profile-infos {
+                    position: relative;
                     background-color: $primary;
                     height: auto;
                     width: 75%;
@@ -1664,11 +1722,32 @@ nav {
                     flex-direction: column;
                     align-items: center;
 
+                    .img-pen-desktop {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        height: 70px;
+                        display: block;
+                    }
+
+                    .entry-date {
+                        height: 50px;
+                        width: 75%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        font-size: 1.3rem;
+                        font-family: $textfont;
+                    }
+
                     .profile-img-white-paint-desktop {
                         height: 90px;
                         position: relative;
                         max-width: 80%;
-                        margin: 10px 0 40px 0;
+                        margin: 10px 0 20px 0;
                         display: block;
                     }
 
@@ -1697,7 +1776,7 @@ nav {
                         width: 75%;
                         background-color: $secondarycolor;
                         padding: 15px;
-                        margin: 20px auto 15px;
+                        margin: 0 auto 15px;
 
                         .profile-details {
                             border-radius: 15px;
