@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('method_deactivate', {'id': method.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette fiche');">
+<form method="post" action="{{ path('method_deactivate', {'id': method.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir désactiver cette fiche');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ method.id) }}">
     <button class="action-three-dots-button">Désactiver</button>

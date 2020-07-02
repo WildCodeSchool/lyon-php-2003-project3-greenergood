@@ -46,7 +46,7 @@ class AppController extends AbstractController
         return $this->render('index.html.twig', [
             'methods' => $methodRepository->findAll(),
             'actions' => $actionRepository->findAll(),
-            'users' => $userRepository->findAll(),
+            'users' => $userRepository->findBy(['status' => 1]),
         ]);
     }
 }
