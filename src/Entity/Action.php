@@ -276,4 +276,35 @@ class Action
 
         return $this;
     }
+
+    public function clone(): Action
+    {
+        $action = new Action();
+        $action->setName($this->getName());
+        $action->setEditionNumber($this->getEditionNumber());
+        $action->setActionPicture($this->getActionPicture());
+
+        if ($this->getDescription())
+        {
+            $action->setDescription($this->getDescription());
+        }
+        $action->setStartDate($this->getStartDate());
+
+        if ($this->getEndDate())
+        {
+            $action->setEndDate($this->getEndDate());
+        }
+        $action->setLocation($this->getLocation());
+        $action->setContent($this->getContent());
+        $action->setStatus($this->getStatus());
+        $action->setProjectProgress($this->getProjectProgress());
+        $action->setActivated($this->getActivated());
+
+        foreach ($this->getActionDeliverable() as $actionDeliverable)
+        {
+            $action->addActionDeliverable(clone $actionDeliverable);
+        }
+
+        return $action;
+    }
 }

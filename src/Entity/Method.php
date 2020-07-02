@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MethodRepository", repositoryClass=MethodRepository::class)
@@ -177,5 +178,22 @@ class Method
         $this->activated = $activated;
 
         return $this;
+    }
+
+    public function clone(): Method
+    {
+        $method = new Method();
+        $method->setName($this->getName());
+        $method->setCreatedAt(new DateTime('now'));
+        $method->setPrerequisites($this->getPrerequisites());
+        $method->setContent($this->getContent());
+        $method->setObjectives($this->getObjectives());
+
+        foreach ($this->getMethodLinks() as $methodLink)
+        {
+            $method->addMethodLink(clone $methodLink);
+        }
+
+        return $method;
     }
 }
