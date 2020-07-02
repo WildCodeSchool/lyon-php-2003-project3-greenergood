@@ -915,6 +915,27 @@ nav {
 }
 
 /* CSS CARD METHODS */
+
+.btn-desactive {
+
+    background: none;
+    background-color: $tertiarycolor;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    margin-top: 1px;
+
+    &:hover {
+        color: $secondarycolor;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
 .method-btn {
     a {
         color: white;
@@ -924,6 +945,12 @@ nav {
     span {
         font-weight: bold;
     }
+}
+
+.container-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-card-method {
@@ -944,7 +971,6 @@ nav {
         font-family: $textfont;
         font-size: 12px;
         text-decoration: none;
-        margin-left: 3em;
     }
 }
 
@@ -954,6 +980,26 @@ nav {
 
 /* CSS CARD METHODS DESKTOP VIEW */
 @media all and (min-width: 769px) {
+
+    .btn-desactive {
+
+        background: none;
+        background-color: $tertiarycolor;
+        border: none;
+        padding: 6px 12px;
+        color: white;
+        font-size: 12px;
+        text-decoration: none;
+        margin-top: 1px;
+
+        &:hover {
+            color: $secondarycolor;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
 
     .container-card-method {
         display: flex;
@@ -975,6 +1021,11 @@ nav {
 
     .container-color-method {
         background-color: $primarycolor;
+    }
+
+    .container-drop {
+        display: flex;
+        flex-direction: row;
     }
 
     .method {
@@ -1547,7 +1598,7 @@ nav {
                 .container-profile-img {
                     background-color: white;
                     height: auto;
-                    width: auto;
+                    width: 30%;
                     padding: 30px;
                     position: relative;
 
