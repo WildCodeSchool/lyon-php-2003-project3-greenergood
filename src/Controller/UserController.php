@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Action;
+use App\Entity\Team;
 use App\Entity\User;
 use App\Form\EditEmailType;
 use App\Form\EditPasswordType;
 use App\Form\UserType;
 use App\Repository\ActionRepository;
+use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -26,14 +28,14 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      * @param User $user
-     * @param ActionRepository $actionRepository
      * @return Response
      */
-    public function show(User $user, ActionRepository $actionRepository): Response
+    public function show(User $user, TeamRepository $teamRepository) : Response
     {
+        dump($teamRepository);
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
-            'actions' => $actionRepository->findAll()
+            //'teams' => $teamRepository->findBy(['users'=> $user->getId()])
         ]);
     }
 

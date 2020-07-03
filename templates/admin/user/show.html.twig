@@ -46,8 +46,8 @@
                                 <h3>COORDONNÉES</h3>
                                 <p>{{ user.email }}</p>
                                 <p>
-                                    Facebook: <span>{{ user.facebook }}</span> | Linkedin:
-                                    <span>{{ user.linkedin }}</span>
+                                    Facebook: <a href="#">{{ user.facebook }}</a> | Linkedin:
+                                    <a href="#">{{ user.linkedin }}</a>
                                 </p>
                             </div>
                         </div>
@@ -70,13 +70,13 @@
                     </div>
                     <div class="container-work-on">
                         <ul class="list-work-on">
-                            {% for action in actions %}
+                            <!--
                                 <li>
                                     <h1>
-                                        {{ action.name }}<br/>
+                                        <br/>
                                     </h1>
                                 </li>
-                            {% endfor %}
+                            -->
                         </ul>
                     </div>
                 </div>

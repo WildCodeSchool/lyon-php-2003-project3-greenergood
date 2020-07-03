@@ -1380,9 +1380,10 @@ nav {
                                 text-align: center;
                                 font-family: $textfont;
 
-                                span {
+                                a {
                                     text-decoration: underline;
                                     font-family: $textfont;
+                                    color: black;
                                 }
                             }
                         }
@@ -1793,9 +1794,10 @@ nav {
                                     font-family: $textfont;
                                     word-break: break-word;
 
-                                    span {
+                                    a {
                                         text-decoration: underline;
                                         font-family: $textfont;
+                                        color: black;
                                     }
                                 }
                             }
