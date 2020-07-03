@@ -1934,6 +1934,24 @@ nav {
             transform: translate(-50%, -50%);
         }
     }
+    .titres-bienvenue {
+        position: relative;
+        text-align: left;
+        margin: 20px auto;
+        line-height: 54px;
+        vertical-align: center;
+        img {
+            width: 360px;
+            height: auto;
+        }
+        h3 {
+            color: white;
+            font-size: 16px;
+            position: absolute;
+            top: 17px;
+            left: 10px;
+        }
+    }
 }
 
 
