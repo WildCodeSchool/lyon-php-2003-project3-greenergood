@@ -1909,31 +1909,34 @@ nav {
     }
 }
 
-.livret-accueil {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    margin: 5px auto 30px auto;
-    #block {
-        position: absolute;
-        background-color: $primarycolor;
-        opacity: 0.6;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
-    #text {
+.bienvenue {
+    font-family: "Montserrat", sans-serif;
+    h2 {
         text-align: center;
-        position: absolute;
         color: $tertiarycolor;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
+        margin-top: 20px;
+        font-size: 24px;
+    }
+    .livret-accueil {
+        position: relative;
+        text-align: center;
+        margin: 20px auto;
+        img {
+            width: 360px;
+            height: auto;
+        }
+        #text {
+            color: $tertiarycolor;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 }
+
+
 
 .green-text {
     color: $primarycolor;
