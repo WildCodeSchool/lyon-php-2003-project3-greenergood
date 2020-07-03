@@ -30,9 +30,13 @@ class UserController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function show(User $user, TeamRepository $teamRepository) : Response
+    public function show(User $user): Response
     {
-        dump($teamRepository);
+        /*$team = $this->getDoctrine()
+            ->getRepository(Team::class)
+            ->findOneBy(['users' => $user->getId()]);
+
+        dump($team);*/
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
             //'teams' => $teamRepository->findBy(['users'=> $user->getId()])
@@ -93,7 +97,7 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
