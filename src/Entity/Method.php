@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MethodRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -81,7 +82,7 @@ class Method
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -105,7 +106,7 @@ class Method
         return $this->prerequisites;
     }
 
-    public function setPrerequisites(string $prerequisites): self
+    public function setPrerequisites(?string $prerequisites): self
     {
         $this->prerequisites = $prerequisites;
 
@@ -117,7 +118,7 @@ class Method
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
@@ -177,5 +178,21 @@ class Method
         $this->activated = $activated;
 
         return $this;
+    }
+
+    public function clone(): Method
+    {
+        $method = new Method();
+        $method->setName($this->getName());
+        $method->setCreatedAt(new DateTime('now'));
+        $method->setPrerequisites($this->getPrerequisites());
+        $method->setContent($this->getContent());
+        $method->setObjectives($this->getObjectives());
+
+        foreach ($this->getMethodLinks() as $methodLink) {
+            $method->addMethodLink(clone $methodLink);
+        }
+
+        return $method;
     }
 }

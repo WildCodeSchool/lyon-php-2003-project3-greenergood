@@ -3,79 +3,109 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h1>User</h1>
+    <div class="bloc_page_profile">
+        <div class="container-profile">
+            <img class="profile-img-white-paint-mobile"
+                 src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
+            <div class="profile-name-mobile">
+                <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+            </div>
+            <div class="container-vertical-green-line-top">
+                <div class="vertical-green-line-top"></div>
+            </div>
+            <div class="container-card-img-infos">
+                <div class="container-profile-img">
+                    <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
+                         alt="Morceau de scotch">
+                    <div class="container-img-frame">
+                        <img class="profile-img" src="{{ user.userPicture }}" alt="Image utilisateur">
+                        <img class="profile-yellow-frame-bottom"
+                             src="{{ asset('img/profile/fiche_benevole_cadre.png') }}"
+                             alt="cadre jaune">
+                        <img class="profile-yellow-frame-top rotation180"
+                             src="{{ asset('img/profile/fiche_benevole_cadre.png') }}" alt="cadre jaune">
+                    </div>
+                    <img class="profile-img-scotch-bottom" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
+                         alt="Morceau de scotch">
+                </div>
+                <div class="container-profile-infos">
+                    <img class="profile-img-white-paint-desktop"
+                         src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
+                    <div class="profile-name-desktop">
+                        <h1>{{ user.firstname }} {{ user.lastname }}</h1>
+                    </div>
+                    <div class="profile-function">
+                        <h3 class="text-center">{{ user.fonction }}</h3>
+                    </div>
+                    <div class="container-profile-contact-detail">
+                        <div class="profile-details">
+                            <div class="details container-center">
+                                <h3>COORDONNÉES</h3>
+                                <p>{{ user.email }}</p>
+                                <p>
+                                    Facebook: <span>{{ user.facebook }}</span> | Linkedin:
+                                    <span>{{ user.linkedin }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-infos-bio-work">
+                <div class="container-infos-bio">
+                    <span class="green-line-top"></span>
+                    <div class="bio-text">
+                        <p>{{ user.description }}</p>
+                    </div>
+                    <span class="green-line-bottom"></span>
+                </div>
+                <div class="container-infos-work">
+                    <div class="title-infos-work">
+                        <img class="profile-img-green-paint-desktop"
+                             src="{{ asset('img/profile/fiche_benevole_peinture.png') }}" alt="Peinture verte">
+                        <h1>A travaillé sur</h1>
+                    </div>
+                    <div class="container-work-on">
+                        <ul class="list-work-on">
+                            {% for action in actions %}
+                                <li>
+                                    <h1>
+                                        {{ action.name }}<br/>
+                                    </h1>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles|first|replace({'ROLE' : "", '_' : " "}) }}</td>
-            </tr>
-            <tr>
-                <th>Prénom</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Nom de famille</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Fonction</th>
-                <td>{{ user.fonction }}</td>
-            </tr>
-            <tr>
-                <th>Date d'entrée</th>
-                <td>{{ user.entryDate ? user.entryDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Addresse</th>
-                <td>{{ user.address }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ user.description }}</td>
-            </tr>
-            <tr>
-                <th>Photo de profil</th>
-                <td>{{ user.userPicture }}</td>
-            </tr>
-            <tr>
-                <th>LinkedIn</th>
-                <td>{{ user.linkedin }}</td>
-            </tr>
-            <tr>
-                <th>Facebook</th>
-                <td>{{ user.facebook }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>
-                    {% if user.status == 1 %}
-                        Actif
-                    {% else %}
-                        Inactif
-                    {% endif %}
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <a href="{{ path('admin_user_edit', {'id': user.id}) }}">
-            <button class="btn form-button">{{ button_label|default('Editer') }}</button>
-        </a><br>
-
-        {{ include('admin/user/_delete_form.html.twig') }}
-
-        <a href="{{ path('admin_user_index') }}"><button class="btn form-button">Retour à la liste</button></a>
-
+            <div class="container-green-skills">
+                <div class="green-skills-left">
+                    <div class="title-green-skills"><h3>GREEN SKILLS</h3></div>
+                    <div class="circles">
+                        <div class="container-circle-green-1">
+                            <div class="circle-green-1"></div>
+                            <h5>DIY lessive, produit vaisselle et dentifrice</h5>
+                        </div>
+                        <div class="container-circle-yellow">
+                            <div class="circle-yellow"></div>
+                            <h5>Minimaliste - professionnelle du rangement</h5>
+                        </div>
+                        <div class="yellow-line">
+                            <div class="container-circle-green-2">
+                                <div class="circle-green-2"></div>
+                                <h5>Troisième exemple de green skills que je n'ai pas ?</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-green-line-bottom"></div>
+                <div class="green-skills-right">
+                    <img class="img-lemon"
+                         src="{{ asset('img/profile/fiche_benevole_citron.png') }}" alt="Citron jaune">
+                </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %}
