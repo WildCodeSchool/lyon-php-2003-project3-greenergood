@@ -794,7 +794,7 @@ nav {
 .trombi-background {
     background-color: darkgrey;
 
-    li  {
+    li {
         display: flex;
         margin-left: auto;
         margin-right: auto;
@@ -815,22 +815,22 @@ nav {
         .clip {
             left: 200px;
         }
+
         .polaroid-frame {
             -webkit-transform: rotate(-4deg);
             -moz-transform: rotate(-4deg);
         }
     }
 
-    .tilt-3 {
-        .clip {
-            left: 140px;
-        }
+    .tilt-3  .clip {
+        left: 140px;
     }
 
     .tilt-4 {
         .clip {
             left: 150px;
         }
+
         .polaroid-frame {
             -webkit-transform: rotate(4deg);
             -moz-transform: rotate(4deg);
@@ -841,6 +841,7 @@ nav {
         .clip {
             left: 130px;
         }
+
         .polaroid-frame {
             -webkit-transform: rotate(8deg);
             -moz-transform: rotate(8deg);
