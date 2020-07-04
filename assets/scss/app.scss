@@ -868,7 +868,7 @@ nav {
         .trombi-title {
             margin-top: 15px;
         }
-
+        
         .polaroid-frame {
             background-color: white;
             flex-direction: column;
@@ -883,6 +883,7 @@ nav {
             &:hover  {
                 color: $tertiarycolor;
             }
+            
             .polaroid-picture {
                 width: 300px;
                 height: 300px;
@@ -899,7 +900,7 @@ nav {
     .container-center {
         @include flexCenter(column);
     }
-
+    
     .link-box {
         border-radius: 30px;
         width: 35%;
@@ -1249,4 +1250,3 @@ nav {
         font-size: 10px;
     }
 }
-
