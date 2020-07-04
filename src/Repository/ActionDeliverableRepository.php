@@ -2,26 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Action;
+use App\Entity\ActionDeliverable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Action|null find($id, $lockMode = null, $lockVersion = null)
- * @method Action|null findOneBy(array $criteria, array $orderBy = null)
- * @method Action[]    findAll()
- * @method Action[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ActionDeliverable|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ActionDeliverable|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ActionDeliverable[]    findAll()
+ * @method ActionDeliverable[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ActionRepository extends ServiceEntityRepository
+class ActionDeliverableRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Action::class);
+        parent::__construct($registry, ActionDeliverable::class);
     }
 
-
     // /**
-    //  * @return Action[] Returns an array of Action objects
+    //  * @return ActionDeliverable[] Returns an array of ActionDeliverable objects
     //  */
     /*
     public function findByExampleField($value)
@@ -38,7 +37,7 @@ class ActionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Action
+    public function findOneBySomeField($value): ?ActionDeliverable
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

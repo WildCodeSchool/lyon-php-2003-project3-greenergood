@@ -3,8 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Action;
+use App\Entity\Team;
+use App\Entity\User;
+use App\Entity\UserTeam;
 use App\Form\ActionType;
+use App\Form\UserTeamType;
 use App\Repository\ActionRepository;
+use App\Repository\TeamRepository;
+use App\Repository\UserRepository;
+use App\Repository\UserTeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +25,8 @@ class ActionController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
+     * @param ActionRepository $actionRepository
+     * @return Response
      */
     public function index(ActionRepository $actionRepository): Response
     {
@@ -58,17 +67,26 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET","POST"})
+     * @param Action $action
+     * @param TeamRepository $teamRepository
+     * @return Response
      */
-    public function show(Action $action): Response
+    public function show(Action $action, TeamRepository $teamRepository): Response
     {
+        $deliverables = $action->getActionDeliverable();
         return $this->render('action/show.html.twig', [
             'action' => $action,
+            'teams' => $teamRepository->findby(['action' => $action]),
+            'deliverables' => $deliverables,
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Action $action
+     * @return Response
      */
     public function edit(Request $request, Action $action): Response
     {
@@ -120,16 +138,16 @@ class ActionController extends AbstractController
      */
     public function duplicate(Request $request, Action $action): Response
     {
-        $newaction = clone $action;
-        $form = $this->createForm(ActionType::class, $newaction);
+        $newAction = $action->clone();
+        $form = $this->createForm(ActionType::class, $newAction);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($newaction);
+            $entityManager->persist($newAction);
             $entityManager->flush();
 
-            return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
+            return $this->redirectToRoute('action_show', ['id' => $newAction->getId()]);
         }
 
         return $this->render('action/duplicate.html.twig', [

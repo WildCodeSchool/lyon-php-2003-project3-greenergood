@@ -22,7 +22,9 @@
                                 <div class="threeDots" data-toggle="dropdown"
                                      aria-haspopup="true" aria-expanded="false">
                                 </div>
+
                                 <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
+                                    <div class="container-drop">
                                     <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
                                     <a class="pipe-link-method" href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
                                     {% if is_granted('ROLE_ADMIN') %}
@@ -34,6 +36,7 @@
                                         {% endif %}
 
                                     {% endif %}
+                                </div>
                                 </div>
                             </div>
                         </div>
