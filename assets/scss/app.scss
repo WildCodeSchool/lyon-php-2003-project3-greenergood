@@ -797,49 +797,68 @@ nav {
 
     li  {
         display: flex;
-        flex-direction: column;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .polaroids-container {
+    .polaroid-container {
         position: relative;
 
-        .rope-mobile {
-            width: 400px;
-            position: relative;
+        .rope-container {
+            display: flex;
+            justify-content: center;
+
+            .rope-mobile {
+                width: 350px;
+                position: relative;
+            }
         }
 
         .clip {
             height: 50px;
             position: absolute;
             top: 20px;
-            left: 230px;
             z-index: 2;
+        }
+
+        .clip-left {
+            left: 230px;
+        }
+
+        .clip-right {
+            left: 130px;
         }
 
         .trombi-title {
             margin-top: 15px;
         }
 
+        .tilt-left {
+            -webkit-transform: rotate(-2deg);
+            -moz-transform: rotate(-2deg);
+        }
+
+        .tilt-right {
+            -webkit-transform: rotate(2deg);
+            -moz-transform: rotate(2deg);
+        }
         .polaroid-frame {
             background-color: white;
+            flex-direction: column;
             height: 100%;
-            padding: 15px 15px 50px 15px;
+            padding: 15px 15px 30px 15px;
             text-align: center;
             text-decoration: none;
             display:inline-block;
-            margin: 0 15px 15px 15px;
-            -webkit-transform: rotate(-2deg);
-            -moz-transform: rotate(-2deg);
+            margin: 0 auto 15px auto;
 
+            &:hover  {
+                color: $tertiarycolor;
+            }
             .polaroid-picture {
                 width: 300px;
                 height: 300px;
-            }
-
-            div {
-                margin-top: 20px;
+                margin-bottom: 20px;
             }
         }
 
@@ -1073,9 +1092,9 @@ nav {
     transform: rotate(110deg);
 }
 
-//INDEX DESKTOP VIEW
 @media all and (min-width: 769px) {
 
+    //INDEX DESKTOP VIEW
     .bloc_page {
         position: relative;
         width: 1000px;
@@ -1132,6 +1151,38 @@ nav {
             }
         }
     }
+    // TROMBINOSCOPE DESKTOP VIEW
+    .trombi-title {
+        width: 100%;
+    }
+    .polaroids-display {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 900px;
+        white-space: nowrap;
+
+        .polaroid-container {
+        }
+        .rope-mobile {
+            -webkit-transform: rotate(-1deg);
+            -moz-transform: rotate(-1deg);
+        };
+    }
+
+    .trombi-background {
+             .polaroid-container {
+                 .polaroid-frame {
+                     .polaroid-picture {
+                         width: 250px;
+                         height: 250px;
+                     }
+                 }
+             }
+         }
+
 }
 
 /* METHOD FORMS */

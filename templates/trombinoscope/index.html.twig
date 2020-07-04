@@ -6,17 +6,33 @@
     <div class="trombi-background">
         <h1 class="whiteOnGreen trombi-title">L'équipe</h1>
 
-        {% for user in users %}
-            <div class="polaroids-container">
-                <img class="rope-mobile" src="{{ asset("/img/trombinoscope/corde.png") }}">
-                <img class="clip" src="{{ asset("/img/trombinoscope/clip.png") }}">
-                <li>
-                    <a class="polaroid-frame" href="{{ path('user_show', {'id': user.id}) }}">
-                        <img class="polaroid-picture" src="{{ asset(user.userPicture) }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
-                        <div>{{ user.firstname }} {{ user.lastname }}, {{ user.fonction }}</div>
-                    </a>
-                </li>
-            </div>
-        {% endfor %}
+        <div class="polaroids-display">
+            {% for user in users %}
+
+                {# Define class variable for tilt position of the polaroid frame and position of the clip #}
+                {% if loop.index is even %}
+                    {% set tilt = "tilt-right" %}
+                    {% set clipTilt = "clip-right" %}
+                {% else %}
+                    {% set tilt = "tilt-left" %}
+                    {% set clipTilt = "clip-left" %}
+                {% endif %}
+
+                <div class="polaroid-container">
+                    <div class="rope-container">
+                        <img class="rope-mobile" src="{{ asset("/img/trombinoscope/corde.png") }}">
+                    </div>
+                    <img class="clip {{ clipTilt }}" src="{{ asset("/img/trombinoscope/clip.png") }}">
+                    <li>
+                        <a class="polaroid-frame {{ tilt }}" href="{{ path('user_show', {'id': user.id}) }}">
+                            <img class="polaroid-picture" src="{{ asset(user.userPicture) }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
+                            <div>{{ user.firstname }} {{ user.lastname }},</div>
+                            <div>{{ user.fonction }}</div>
+                        </a>
+                    </li>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}
