@@ -894,8 +894,8 @@ nav {
 }
 
 /* DESKTOP VIEW LARGE */
-@media all and (min-width: 769px) {
 //Box containing the links in the homepage
+@media all and (min-width: 769px) {
     .container-center {
         @include flexCenter(column);
     }
@@ -1211,7 +1211,6 @@ nav {
 }
 
 /* METHOD FORMS */
-
 .methodForm-container {
     color: $tertiarycolor;
     font-family: $textfont;
