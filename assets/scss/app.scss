@@ -868,7 +868,7 @@ nav {
         .trombi-title {
             margin-top: 15px;
         }
-
+        
         .polaroid-frame {
             background-color: white;
             flex-direction: column;
@@ -899,7 +899,7 @@ nav {
     .container-center {
         @include flexCenter(column);
     }
-
+    
     .link-box {
         border-radius: 30px;
         width: 35%;
@@ -946,7 +946,7 @@ nav {
             padding: 0px 50px 0px 50px;
         }
     }
-
+    
     /*  Action display page  */
     .action-center-left {
         display: block;
@@ -957,7 +957,7 @@ nav {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
-
+        
         .action-methods {
             flex: 3;
         }
