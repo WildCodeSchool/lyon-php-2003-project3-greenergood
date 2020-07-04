@@ -800,18 +800,17 @@ nav {
         margin-right: auto;
     }
 
-    /* test with random numbers next to class and sass function */
     .tilt-1 {
         .clip {
             left: 150px;
         }
-        
+
         .polaroid-frame {
             -webkit-transform: rotate(-8deg);
             -moz-transform: rotate(-8deg);
         }
     }
-    
+
     .tilt-2 {
         .clip {
             left: 200px;
@@ -821,13 +820,13 @@ nav {
             -moz-transform: rotate(-4deg);
         }
     }
-    
+
     .tilt-3 {
         .clip {
             left: 140px;
         }
     }
-    
+
     .tilt-4 {
         .clip {
             left: 150px;
@@ -837,7 +836,7 @@ nav {
             -moz-transform: rotate(4deg);
         }
     }
-    
+
     .tilt-5 {
         .clip {
             left: 130px;
@@ -848,7 +847,6 @@ nav {
         }
     }
 
-    /* end of test */
     .polaroid-container {
         position: relative;
 
@@ -868,11 +866,11 @@ nav {
             top: 20px;
             z-index: 2;
         }
-        
+
         .trombi-title {
             margin-top: 15px;
         }
-        
+
         .polaroid-frame {
             background-color: white;
             flex-direction: column;
@@ -887,7 +885,7 @@ nav {
             &:hover {
                 color: $tertiarycolor;
             }
-            
+
             .polaroid-picture {
                 width: 300px;
                 height: 300px;
@@ -903,7 +901,7 @@ nav {
     .container-center {
         @include flexCenter(column);
     }
-    
+
     .link-box {
         border-radius: 30px;
         width: 35%;
@@ -950,7 +948,7 @@ nav {
             padding: 0px 50px 0px 50px;
         }
     }
-    
+
     /*  Action display page  */
     .action-center-left {
         display: block;
@@ -961,7 +959,7 @@ nav {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
-        
+
         .action-methods {
             flex: 3;
         }
@@ -1125,7 +1123,7 @@ nav {
     .trombi-title {
         width: 100%;
     }
-    
+
     .polaroids-display {
         overflow-x: scroll;
         overflow-y: hidden;
