@@ -868,7 +868,7 @@ nav {
         .trombi-title {
             margin-top: 15px;
         }
-        
+
         .polaroid-frame {
             background-color: white;
             flex-direction: column;
@@ -880,7 +880,7 @@ nav {
             margin: 0 auto 15px auto;
             border: 1px solid $tertiarycolor;
 
-            &:hover  {
+            &:hover {
                 color: $tertiarycolor;
             }
             
@@ -895,12 +895,11 @@ nav {
 
 /* DESKTOP VIEW LARGE */
 @media all and (min-width: 769px) {
-
-    //Box containing the links in the homepage
+//Box containing the links in the homepage
     .container-center {
         @include flexCenter(column);
     }
-    
+
     .link-box {
         border-radius: 30px;
         width: 35%;
