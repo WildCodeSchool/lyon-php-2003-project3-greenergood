@@ -801,6 +801,50 @@ nav {
         margin-right: auto;
     }
 
+    /* test with random numbers next to class and sass function */
+    .tilt-1 {
+        .clip {
+            left: 150px;
+        }
+        .polaroid-frame {
+            -webkit-transform: rotate(-8deg);
+            -moz-transform: rotate(-8deg);
+        }
+    }
+    .tilt-2 {
+        .clip {
+            left: 200px;
+        }
+        .polaroid-frame {
+            -webkit-transform: rotate(-4deg);
+            -moz-transform: rotate(-4deg);
+        }
+    }
+    .tilt-3 {
+        .clip {
+            left: 140px;
+        }
+    }
+    .tilt-4 {
+        .clip {
+            left: 150px;
+        }
+        .polaroid-frame {
+            -webkit-transform: rotate(4deg);
+            -moz-transform: rotate(4deg);
+        }
+    }
+    .tilt-5 {
+        .clip {
+            left: 130px;
+        }
+        .polaroid-frame {
+            -webkit-transform: rotate(8deg);
+            -moz-transform: rotate(8deg);
+        }
+    }
+
+    /* end of test */
     .polaroid-container {
         position: relative;
 
@@ -808,7 +852,7 @@ nav {
             display: flex;
             justify-content: center;
 
-            .rope-mobile {
+            .rope {
                 width: 350px;
                 position: relative;
             }
@@ -821,27 +865,10 @@ nav {
             z-index: 2;
         }
 
-        .clip-left {
-            left: 230px;
-        }
-
-        .clip-right {
-            left: 130px;
-        }
-
         .trombi-title {
             margin-top: 15px;
         }
 
-        .tilt-left {
-            -webkit-transform: rotate(-2deg);
-            -moz-transform: rotate(-2deg);
-        }
-
-        .tilt-right {
-            -webkit-transform: rotate(2deg);
-            -moz-transform: rotate(2deg);
-        }
         .polaroid-frame {
             background-color: white;
             flex-direction: column;
@@ -851,6 +878,7 @@ nav {
             text-decoration: none;
             display:inline-block;
             margin: 0 auto 15px auto;
+            border: 1px solid $tertiarycolor;
 
             &:hover  {
                 color: $tertiarycolor;
@@ -860,11 +888,6 @@ nav {
                 height: 300px;
                 margin-bottom: 20px;
             }
-        }
-
-        .trombi-background:nth-child(even) .polaroid-frame {
-            -webkit-transform: rotate(2deg);
-            -moz-transform: rotate(2deg);
         }
     }
 }
@@ -1092,6 +1115,40 @@ nav {
     transform: rotate(110deg);
 }
 
+/* Display over 450px of trombinoscope page */
+@media all and (min-width: 450px) {
+    // TROMBINOSCOPE DESKTOP VIEW
+    .trombi-title {
+        width: 100%;
+    }
+    .polaroids-display {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 900px;
+        white-space: nowrap;
+
+        .polaroid-container .rope-container .rope {
+            width: 290px;
+            -webkit-transform: rotate(-1deg);
+            -moz-transform: rotate(-1deg);
+        };
+    }
+
+    .trombi-background {
+        .polaroid-container {
+            .polaroid-frame {
+                .polaroid-picture {
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+        }
+    }
+}
+
 @media all and (min-width: 769px) {
 
     //INDEX DESKTOP VIEW
@@ -1151,38 +1208,6 @@ nav {
             }
         }
     }
-    // TROMBINOSCOPE DESKTOP VIEW
-    .trombi-title {
-        width: 100%;
-    }
-    .polaroids-display {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        height: 900px;
-        white-space: nowrap;
-
-        .polaroid-container {
-        }
-        .rope-mobile {
-            -webkit-transform: rotate(-1deg);
-            -moz-transform: rotate(-1deg);
-        };
-    }
-
-    .trombi-background {
-             .polaroid-container {
-                 .polaroid-frame {
-                     .polaroid-picture {
-                         width: 250px;
-                         height: 250px;
-                     }
-                 }
-             }
-         }
-
 }
 
 /* METHOD FORMS */
