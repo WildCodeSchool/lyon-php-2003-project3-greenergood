@@ -806,11 +806,13 @@ nav {
         .clip {
             left: 150px;
         }
+        
         .polaroid-frame {
             -webkit-transform: rotate(-8deg);
             -moz-transform: rotate(-8deg);
         }
     }
+    
     .tilt-2 {
         .clip {
             left: 200px;
@@ -820,11 +822,13 @@ nav {
             -moz-transform: rotate(-4deg);
         }
     }
+    
     .tilt-3 {
         .clip {
             left: 140px;
         }
     }
+    
     .tilt-4 {
         .clip {
             left: 150px;
@@ -834,6 +838,7 @@ nav {
             -moz-transform: rotate(4deg);
         }
     }
+    
     .tilt-5 {
         .clip {
             left: 130px;
@@ -1121,6 +1126,7 @@ nav {
     .trombi-title {
         width: 100%;
     }
+    
     .polaroids-display {
         overflow-x: scroll;
         overflow-y: hidden;
