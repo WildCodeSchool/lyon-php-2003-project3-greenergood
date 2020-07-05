@@ -1911,6 +1911,9 @@ nav {
 
 .bienvenue {
     font-family: "Montserrat", sans-serif;
+    h2, .livret-accueil, p, ul, .links {
+        margin: 0 30px;
+    }
     h2 {
         text-align: center;
         color: $tertiarycolor;
@@ -1934,6 +1937,47 @@ nav {
             transform: translate(-50%, -50%);
         }
     }
+    .arrows {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 60px;
+        .left-arrow, .right-arrow {
+            width: 48px;
+            height: auto;
+        }
+        .right-arrow {
+            transform: scaleX(-1);
+        }
+    }
+    .adhesion {
+        p, li {
+            text-align: justify;
+        }
+        p {
+            font-size: smaller;
+        }
+        .flower {
+            position: relative;
+            text-align: center;
+            margin: -50px auto 10px auto;
+
+            .flower-img {
+                width: 180px;
+                height: auto;
+            }
+
+            a {
+                font-family: $titlefont;
+                color: $tertiarycolor;
+                font-size: 24px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
     .titres-bienvenue {
         position: relative;
         text-align: left;
@@ -1952,32 +1996,89 @@ nav {
             left: 10px;
         }
     }
-}
-
-
-
-.green-text {
-    color: $primarycolor;
-}
-
-.contact-accueil {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    margin: 30px auto 30px auto;
-    #block {
-        position: absolute;
-        background-color: $primarycolor;
-        opacity: 0.6;
-        height: 100%;
-        width: 100%;
+    .green-text {
+        color: $primarycolor;
     }
-    #text {
-        padding: 15px;
-        text-align: center;
-        position: absolute;
-        color: $tertiarycolor;
-        height: 100%;
+
+    .contact-accueil {
+        position: relative;
         width: 100%;
+        height: 300px;
+        margin: 30px auto 30px auto;
+        #block {
+            position: absolute;
+            background-color: $primarycolor;
+            opacity: 0.6;
+            height: 100%;
+            width: 100%;
+        }
+        #text {
+            padding: 15px;
+            text-align: center;
+            position: absolute;
+            color: $tertiarycolor;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .bienvenue {
+        .arrows {
+            .left-arrow, .right-arrow {
+                width: 98px;
+            }
+        }
+        .adhesion {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            margin-top: -50px;
+            .adh-1 {
+                flex:2;
+                .flower {
+                    margin: -70px auto 10px auto;
+                    .flower-img {
+                        width: 240px;
+                    }
+                    a {
+                        font-size: 36px;
+                    }
+                }
+            }
+            .adh-2 {
+                display: flex;
+                align-items: center;
+                flex: 4;
+            }
+        }
+        .contact-accueil {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 30px auto 30px auto;
+            #block {
+                position: absolute;
+                background-color: $primarycolor;
+                opacity: 0.6;
+                height: 100%;
+                width: 100%;
+            }
+            #text {
+                padding: 15px;
+                text-align: center;
+                position: absolute;
+                color: $tertiarycolor;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (min-width: 720px) {
+    .subtitles-accueil {
+        margin-top : -70px;
     }
 }
