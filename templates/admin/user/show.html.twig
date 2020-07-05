@@ -10,12 +10,14 @@
             <div class="profile-name-mobile">
                 <h1>{{ user.firstname }} {{ user.lastname }}</h1>
             </div>
+            <div class="container-pen-mobile">
+            <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
+            </div>
             <div class="container-vertical-green-line-top">
                 <div class="vertical-green-line-top"></div>
             </div>
             <div class="container-card-img-infos">
                 <div class="container-profile-img">
-                    <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
                     <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
@@ -70,13 +72,13 @@
                     </div>
                     <div class="container-work-on">
                         <ul class="list-work-on">
-                            <!--
+                            {% for team in user.teams %}
                                 <li>
                                     <h1>
-                                        <br/>
+                                        {{ team.action.name }}
                                     </h1>
                                 </li>
-                            -->
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

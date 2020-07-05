@@ -1236,13 +1236,22 @@ nav {
     .profile-img-white-paint-mobile {
         height: 75px;
         position: relative;
-        margin: 10px 10px 25px 10px;
+        margin: 10px 10px 0 10px;
     }
 
     .profile-name-mobile {
         position: absolute;
         z-index: 1;
         align-self: center;
+    }
+
+    .container-pen-mobile {
+        @include flexCenter(row);
+
+        .img-pen-mobile {
+            height: 55px;
+            display: block;
+        }
     }
 
     .container-profile {
@@ -1253,21 +1262,13 @@ nav {
         background-color: rgb(186, 222, 219);
 
         .container-card-img-infos {
-            padding: 15px;
+            padding: 0 15px 15px 15px;
 
             .container-profile-img {
                 background-color: white;
                 height: auto;
                 padding: 10px;
                 position: relative;
-
-                .img-pen-mobile {
-                    height: 55px;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    display: block;
-                }
 
                 .profile-img-scotch-top {
                     display: none;
@@ -1630,6 +1631,10 @@ nav {
                 display: none;
             }
 
+            .img-pen-mobile {
+                display: none;
+            }
+
             .container-vertical-green-line-top {
                 display: flex;
                 justify-content: center;
@@ -1655,10 +1660,6 @@ nav {
                     width: 30%;
                     padding: 30px;
                     position: relative;
-
-                    .img-pen-mobile {
-                        display: none;
-                    }
 
                     .profile-img-scotch-top {
                         height: 130px;

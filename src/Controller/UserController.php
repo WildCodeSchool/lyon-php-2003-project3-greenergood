@@ -32,14 +32,8 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        /*$team = $this->getDoctrine()
-            ->getRepository(Team::class)
-            ->findOneBy(['users' => $user->getId()]);
-
-        dump($team);*/
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
-            //'teams' => $teamRepository->findBy(['users'=> $user->getId()])
         ]);
     }
 
