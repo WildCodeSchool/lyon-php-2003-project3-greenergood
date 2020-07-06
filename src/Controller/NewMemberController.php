@@ -16,4 +16,6 @@ class NewMemberController extends AbstractController
     {
         return $this->render("welcome.html.twig");
     }
+
+
 }
