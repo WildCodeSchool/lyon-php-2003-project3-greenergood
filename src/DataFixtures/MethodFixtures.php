@@ -4,12 +4,19 @@
 namespace App\DataFixtures;
 
 use App\Entity\Method;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
 
-class MethodFixtures extends Fixture
+class MethodFixtures extends Fixture implements DependentFixtureInterface
 {
+
+    public function getDependencies()
+    {
+        return [UserFixtures::class];
+    }
 
     public function load(ObjectManager $manager)
     {
@@ -24,6 +31,7 @@ class MethodFixtures extends Fixture
             $method->setActivated(true);
             $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
             $manager->persist($method);
+            $method->setAuthor($this->getReference("Lucas"));
         }
         $manager->flush();
     }
