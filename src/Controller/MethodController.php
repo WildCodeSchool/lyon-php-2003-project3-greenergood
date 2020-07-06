@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Method;
 use App\Entity\User;
+use App\Form\ContactType;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
 use DateTime;
@@ -92,7 +94,7 @@ class MethodController extends AbstractController
 
         return $this->render('method/edit.html.twig', [
             'method' => $method,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
