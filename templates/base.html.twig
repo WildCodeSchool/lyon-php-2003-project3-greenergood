@@ -15,7 +15,23 @@
     <header>
         {{ include('_navbar.html.twig') }}
     </header>
-        {% block body %}{% endblock %}
+
+    {# FLASH MESSAGES DISPLAY ON TOP OF EACH PAGE #}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% for category, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

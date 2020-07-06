@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use DateTime;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class UserType extends AbstractType
 {
@@ -39,12 +40,18 @@ class UserType extends AbstractType
             ->add('entry_date', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd MM yyyy',
-                "data" => new DateTime(),
+                'data' => new DateTime(),
                 'required' => false
             ])
             ->add('address', TextType::class, ['label' => "Adresse", 'required'   => false])
             ->add('description', TextType::class, ['label' => "Description", 'required'   => false])
-            ->add('user_picture', TextType::class, ['label' => "Photo de profil", 'required'   => false])
+            ->add('pictureFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => false, // True to display a delete checkbox
+                'download_uri' => false, // True to display a link of the picture
+                'label' => "Photo de profil",
+                'attr'=>['placeholder'=>'Ajoutez votre photo ici']
+            ])
             ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required'   => false])
             ->add('facebook', TextType::class, ['label' => "Facebook", 'required'   => false])
             ->add('status', ChoiceType::class, [
