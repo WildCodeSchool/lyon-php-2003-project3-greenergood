@@ -63,6 +63,8 @@ class RegistrationController extends AbstractController
                 $mailer
             );
 
+            $this->addFlash('success', "L'utilisateur a été créée avec succès");
+
             return $this->redirectToRoute("admin_user_index");
         }
 

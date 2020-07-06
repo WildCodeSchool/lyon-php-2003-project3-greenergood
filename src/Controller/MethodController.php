@@ -54,6 +54,8 @@ class MethodController extends AbstractController
             $entityManager->persist($method);
             $entityManager->flush();
 
+            $this->addFlash('success', "La fiche méthode a été créée avec succès");
+
             return $this->redirectToRoute("method_index");
         }
 
@@ -89,6 +91,8 @@ class MethodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "La fiche méthode a été modifiée avec succès");
+
             return $this->redirectToRoute('method_index');
         }
 
@@ -113,6 +117,8 @@ class MethodController extends AbstractController
             $entityManager->persist($newMethod);
             $entityManager->flush();
 
+            $this->addFlash('success', "La fiche méthode a été créée avec succès");
+
             return $this->redirectToRoute('method_index');
         }
 
@@ -131,6 +137,8 @@ class MethodController extends AbstractController
         $method->setActivated(false);
         $this->getDoctrine()->getManager()->flush();
 
+        $this->addFlash('danger', "La fiche méthode a été désactivée avec succès");
+
         return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
 
@@ -142,6 +150,8 @@ class MethodController extends AbstractController
     {
         $method->setActivated(true);
         $this->getDoctrine()->getManager()->flush();
+
+        $this->addFlash('success', "La fiche méthode a été activée avec succès");
 
         return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
