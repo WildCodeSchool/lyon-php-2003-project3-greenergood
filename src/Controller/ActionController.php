@@ -54,6 +54,8 @@ class ActionController extends AbstractController
             $entityManager->persist($action);
             $entityManager->flush();
 
+            $this->addFlash('success', "La fiche action a été créée avec succès");
+
             // When the SHOW method is coded, delete this line and uncomment the next two lines
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
             // Redirect to the page of the Action
@@ -96,6 +98,8 @@ class ActionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "La fiche action a été modifiée avec succès");
+
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
         }
 
@@ -116,6 +120,8 @@ class ActionController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
         }
 
+        $this->addFlash('danger', "La fiche action a été désactivée avec succès");
+
         return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
     }
 
@@ -128,10 +134,10 @@ class ActionController extends AbstractController
         $action->setActivated(true);
         $this->getDoctrine()->getManager()->flush();
 
+        $this->addFlash('success', "La fiche action a été activée avec succès");
+
         return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
     }
-
-    // Duplicate action sheet
 
     /**
      * @Route("/{id}/duplicate", name="duplicate", methods={"GET","POST"})
@@ -146,6 +152,8 @@ class ActionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newAction);
             $entityManager->flush();
+
+            $this->addFlash('success', "La fiche action a été créée avec succès");
 
             return $this->redirectToRoute('action_show', ['id' => $newAction->getId()]);
         }

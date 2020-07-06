@@ -63,6 +63,8 @@ class UserController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "Votre profil a été modifié avec succès");
+
             return $this->redirectToRoute('user_index');
         }
 
@@ -96,6 +98,8 @@ class UserController extends AbstractController
             $entityManager->remove($user);
             $entityManager->flush();
         }
+
+        $this->addFlash('Danger', "Le profil a été supprimé avec succès");
 
         return $this->redirectToRoute('user_index');
     }
