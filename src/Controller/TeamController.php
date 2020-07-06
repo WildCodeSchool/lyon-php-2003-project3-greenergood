@@ -44,6 +44,8 @@ class TeamController extends AbstractController
             $entityManager->persist($team);
             $entityManager->flush();
 
+            $this->addFlash('success', "La team a été créée avec succès");
+
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
         }
 
@@ -98,6 +100,8 @@ class TeamController extends AbstractController
             $entityManager->remove($team);
             $entityManager->flush();
         }
+
+        $this->addFlash('danger', "La team a été supprimée avec succès");
 
         return $this->redirectToRoute('team_index');
     }

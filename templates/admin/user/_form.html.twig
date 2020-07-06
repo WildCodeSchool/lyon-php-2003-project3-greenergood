@@ -1,5 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.lastname) }}
+    {{ form_row(form.fonction) }}
+    {{ form_row(form.entry_date) }}
+    {{ form_row(form.address) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.pictureFile) }}
+    {{ form_row(form.linkedin) }}
+    {{ form_row(form.facebook) }}
+    {{ form_row(form.status) }}
+
 <div class="col-12 text-center">
     <button class="btn form-button">{{ button_label|default('Créer') }}</button>
 </div>

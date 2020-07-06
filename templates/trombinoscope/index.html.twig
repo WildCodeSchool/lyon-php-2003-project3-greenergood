@@ -3,5 +3,27 @@
 {% block title %}Trombinoscope{% endblock %}
 
 {% block body %}
-    <h1>Trombinoscope</h1>
+    <div class="trombi-background">
+        <h1 class="whiteOnGreen trombi-title">L'équipe</h1>
+
+        <div class="polaroids-display">
+            {% for user in users %}
+
+                <div class="polaroid-container tilt-{{ random(1, 5) }}">
+                    <div class="rope-container">
+                        <img class="rope" src="{{ asset("/img/trombinoscope/corde.png") }}">
+                    </div>
+                    <img class="clip" src="{{ asset("/img/trombinoscope/clip.png") }}">
+                    <li>
+                        <a class="polaroid-frame" href="{{ path('user_show', {'id': user.id}) }}">
+                            <img class="polaroid-picture" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('trombi_square') }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
+                            <div>{{ user.firstname }} {{ user.lastname }},</div>
+                            <div>{{ user.fonction }}</div>
+                        </a>
+                    </li>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
 {% endblock %}

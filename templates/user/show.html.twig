@@ -23,7 +23,11 @@
                     <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
-                        <img class="profile-img" src="{{ user.userPicture }}" alt="Image utilisateur">
+                        {% if user.userPicture %}
+                            <img class="profile-img"
+                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"
+                                 alt="Image utilisateur">
+                        {% endif %}
                         <img class="profile-yellow-frame-bottom"
                              src="{{ asset('img/profile/fiche_benevole_cadre.png') }}"
                              alt="cadre jaune">

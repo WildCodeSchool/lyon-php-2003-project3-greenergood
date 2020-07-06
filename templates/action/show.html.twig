@@ -109,7 +109,6 @@
         </div>
 
         <div class="action-progress-box">{{ action.projectProgress }}</div>
-
         <button class="action-add-Team" title="Ajouter une équipe">
             <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
         </button>
@@ -141,7 +140,6 @@
         <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
         <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
     </div>
-
     <div class="action-subtitles">Fiches METHODE</div>
     <div class="action-methods">
         {# Dynamicaly display list of methods associated with the action when implemented #}
@@ -160,7 +158,11 @@
                 <ul>
                     {# Dynamicaly display list of livrables associated with the action when implemented #}
                     {% for deliverable in deliverables %}
-                        <li><a href="{{ deliverable.link }}">{{ deliverable.name }}</a></li>
+                        <li>
+                            <a href="{{ deliverable.link }}" onclick="window.open(this.href); return false;">
+                                {{ deliverable.name }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -171,6 +173,5 @@
                                 alt="Lien vers les vidéos"></a>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}

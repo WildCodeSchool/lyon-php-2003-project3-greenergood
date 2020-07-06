@@ -3,15 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Action;
-use App\Entity\Team;
-use App\Entity\User;
-use App\Entity\UserTeam;
 use App\Form\ActionType;
-use App\Form\UserTeamType;
 use App\Repository\ActionRepository;
 use App\Repository\TeamRepository;
-use App\Repository\UserRepository;
-use App\Repository\UserTeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +32,7 @@ class ActionController extends AbstractController
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
-    public function new(Request $request) :Response
+    public function new(Request $request): Response
     {
         // Create a new Action instance
         $action = new Action();
@@ -53,6 +47,8 @@ class ActionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($action);
             $entityManager->flush();
+
+            $this->addFlash('success', "La fiche action a été créée avec succès");
 
             // When the SHOW method is coded, delete this line and uncomment the next two lines
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
@@ -96,6 +92,8 @@ class ActionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "La fiche action a été modifiée avec succès");
+
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
         }
 
@@ -111,10 +109,12 @@ class ActionController extends AbstractController
      */
     public function delete(Request $request, Action $action): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$action->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $action->getId(), $request->request->get('_token'))) {
             $action->setActivated(false);
             $this->getDoctrine()->getManager()->flush();
         }
+
+        $this->addFlash('danger', "La fiche action a été désactivée avec succès");
 
         return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
     }
@@ -128,10 +128,10 @@ class ActionController extends AbstractController
         $action->setActivated(true);
         $this->getDoctrine()->getManager()->flush();
 
+        $this->addFlash('success', "La fiche action a été activée avec succès");
+
         return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
     }
-
-    // Duplicate action sheet
 
     /**
      * @Route("/{id}/duplicate", name="duplicate", methods={"GET","POST"})
@@ -146,6 +146,8 @@ class ActionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newAction);
             $entityManager->flush();
+
+            $this->addFlash('success', "La fiche action a été créée avec succès");
 
             return $this->redirectToRoute('action_show', ['id' => $newAction->getId()]);
         }

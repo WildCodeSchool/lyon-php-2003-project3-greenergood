@@ -8,6 +8,8 @@
 
         {{ include('user/_emailForm.html.twig') }}
 
+        {{ include('user/_passForm.html.twig') }}
+
         {{ include('user/_form.html.twig', {'button_label': 'Editer'}) }}
 
         <a href="{{ path('user_show', {'id':user.id}) }}"><button class="btn form-button">Retour au profil</button></a>
