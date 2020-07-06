@@ -76,7 +76,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $userPicture = "default_avatar.png";
+    private $userPicture;
 
     /**
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="userPicture")
@@ -86,7 +86,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedAt;
 

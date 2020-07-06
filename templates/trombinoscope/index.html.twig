@@ -16,7 +16,7 @@
                     <img class="clip" src="{{ asset("/img/trombinoscope/clip.png") }}">
                     <li>
                         <a class="polaroid-frame" href="{{ path('user_show', {'id': user.id}) }}">
-                            <img class="polaroid-picture" src="{{ asset(user.userPicture) }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
+                            <img class="polaroid-picture" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('trombi_square') }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
                             <div>{{ user.firstname }} {{ user.lastname }},</div>
                             <div>{{ user.fonction }}</div>
                         </a>

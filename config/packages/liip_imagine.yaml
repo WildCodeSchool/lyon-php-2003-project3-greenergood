@@ -7,16 +7,15 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail:
-                  {
-                      size: [200, 400]
-                      mode: outbound
-                  }
+                    {
+                        size: [200, 400]
+                        mode: outbound
+                    }
 
         trombi_square:
             quality: 75
             filters:
-                fixed:
-                  {
-                      size: [300, 300]
-                      mode: outbound
-                  }
+                scale:
+                    {
+                        dim: [300, 300]
+                    }

@@ -19,7 +19,7 @@
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
                         {% if user.userPicture %}
-                            <img class="profile-img" src="{{ vich_uploader_asset(user, 'pictureFile') | imagine_filter('thumb') }}" alt="Image utilisateur">
+                            <img class="profile-img" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}" alt="Image utilisateur">
                         {% endif %}
                         <img class="profile-yellow-frame-bottom"
                              src="{{ asset('img/profile/fiche_benevole_cadre.png') }}"
