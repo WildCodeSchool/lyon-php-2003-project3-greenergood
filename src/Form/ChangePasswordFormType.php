@@ -9,11 +9,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ChangePasswordFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $user = $builder->getData();
+        $firstName = $user->getFirstname();
+        $lastName = $user->getLastname();
+
         $builder
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -27,6 +32,12 @@ class ChangePasswordFormType extends AbstractType
                             'minMessage' => 'Votre mot de passe doit faire minimum {{ limit }} caractères',
                             // max length allowed by Symfony for security reasons
                             'max' => 4096,
+                        ]),
+                        new Regex('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/'),
+                        new Regex([
+                            'match' => false,
+                            'pattern' => "/($lastName|$firstName)/i",
+                            'message' => "Votre mot de passe ne peut contenir ni votre nom, ni votre prénom"
                         ]),
                     ],
                     'label' => 'Mot de passe',
