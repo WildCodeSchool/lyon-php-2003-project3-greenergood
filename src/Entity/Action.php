@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -85,10 +87,39 @@ class Action
     private $projectProgress;
 
     /**
+     * @ORM\OneToMany(targetEntity=Team::class, mappedBy="action")
+     */
+    private $teams;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection();
+        $this->methods = new ArrayCollection();
+        $this->actionDeliverable = new ArrayCollection();
+    }
+
+    /**
      * Used for soft delete of action pages
      * @ORM\Column(type="boolean")
      */
     private $activated = true;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Method::class)
+     */
+    private $methods;
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity=ActionDeliverable::class,
+     *     mappedBy="action",
+     *     fetch="EXTRA_LAZY",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     *     )
+     * @Assert\Valid()
+     */
+    private $actionDeliverable;
 
     public function getId(): ?int
     {
@@ -100,7 +131,7 @@ class Action
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -112,7 +143,7 @@ class Action
         return $this->editionNumber;
     }
 
-    public function setEditionNumber(int $editionNumber): self
+    public function setEditionNumber(?int $editionNumber): self
     {
         $this->editionNumber = $editionNumber;
 
@@ -136,7 +167,7 @@ class Action
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -148,7 +179,7 @@ class Action
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTimeInterface $startDate): self
+    public function setStartDate(?\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 
@@ -196,7 +227,7 @@ class Action
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
@@ -220,10 +251,127 @@ class Action
         return $this->activated;
     }
 
-    public function setActivated(bool $activated): self
+    public function setActivated(?bool $activated): self
     {
         $this->activated = $activated;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+        }
+
+        return $this;
+    }
+
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ActionDeliverable[]
+     */
+    public function getActionDeliverable(): Collection
+    {
+        return $this->actionDeliverable;
+    }
+
+    public function addActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if (!$this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable[] = $actionDeliverable;
+            $actionDeliverable->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActionDeliverable(ActionDeliverable $actionDeliverable): self
+    {
+        if ($this->actionDeliverable->contains($actionDeliverable)) {
+            $this->actionDeliverable->removeElement($actionDeliverable);
+            // set the owning side to null (unless already changed)
+            if ($actionDeliverable->getAction() === $this) {
+                $actionDeliverable->setAction(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Team[]
+     */
+    public function getTeams(): Collection
+    {
+        return $this->teams;
+    }
+
+    public function addTeam(Team $team): self
+    {
+        if (!$this->teams->contains($team)) {
+            $this->teams[] = $team;
+            $team->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTeam(Team $team): self
+    {
+        if ($this->teams->contains($team)) {
+            $this->teams->removeElement($team);
+            // set the owning side to null (unless already changed)
+            if ($team->getAction() === $this) {
+                $team->setAction(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function clone(): Action
+    {
+        $action = new Action();
+        $action->setName($this->getName());
+        $action->setEditionNumber($this->getEditionNumber());
+        $action->setActionPicture($this->getActionPicture());
+
+        if ($this->getDescription()) {
+            $action->setDescription($this->getDescription());
+        }
+        $action->setStartDate($this->getStartDate());
+
+        if ($this->getEndDate()) {
+            $action->setEndDate($this->getEndDate());
+        }
+        $action->setLocation($this->getLocation());
+        $action->setContent($this->getContent());
+        $action->setStatus($this->getStatus());
+        $action->setProjectProgress($this->getProjectProgress());
+        $action->setActivated($this->getActivated());
+
+        foreach ($this->getActionDeliverable() as $actionDeliverable) {
+            $action->addActionDeliverable(clone $actionDeliverable);
+        }
+
+        return $action;
     }
 }

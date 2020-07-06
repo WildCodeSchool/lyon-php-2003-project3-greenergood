@@ -101,7 +101,8 @@ class MethodController extends AbstractController
      */
     public function duplicate(Request $request, Method $method): Response
     {
-        $newMethod = clone $method;
+        $newMethod = $method->clone();
+
         $form = $this->createForm(MethodType::class, $newMethod);
         $form->handleRequest($request);
 
