@@ -1,12 +1,15 @@
 <div class="methodForm-container">
 {{ form_start(form) }}
     {{ form_row(form.name) }}
+    {{ form_row(form.picture) }}
     {{ form_row(form.prerequisites) }}
     {{ form_row(form.content) }}
-    {{ form_row(form.objectives) }}
+    {{ form_row(form.objective1) }}
+    {{ form_row(form.objective2) }}
+    {{ form_row(form.objective3) }}
 
 <div class="methodLinks-container">
-    <h6 class="methodLinks">Liens utiles</h6>
+    <label class="col-form-label">Liens utiles</label>
     <div class="js-methodLink-wrapper"
          data-prototype="{{ form_widget(form.methodLinks.vars.prototype)|e('html_attr') }}"
          data-index="{{ form.methodLinks|length }}">
@@ -22,7 +25,7 @@
                     <span><svg class="bi bi-plus-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
                     </svg></span>
-        Ajouter un lien
+        <label class="col-form-label">Ajouter un lien</label>
     </a>
 </div>
     <div class="col-12 text-center">

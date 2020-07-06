@@ -18,7 +18,6 @@
                 {% if method.activated == false %}
                     - Désactivée
                 {% endif %}
-
             </div>
 
             <!-- Menu three dots -->
@@ -31,8 +30,8 @@
                     {% if is_granted('ROLE_ADMIN') %}
 
                         {% if method.activated == true %}
-                            <a>{{ include('method/_delete_form.html.twig') }}</a>
-                        {% elseif mehtod.activated == false %}
+                            <a href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
+                        {% elseif method.activated == false %}
                             <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                         {% endif %}
 
@@ -41,6 +40,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-12 col-xl-11 method-header">
                 <div class="method-title col-6">
@@ -57,17 +57,19 @@
                         <h1>{{ method.name }}</h1>
                     </div>
                 </div>
-                <img class="method-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+                <img class="method-image" src="{{ method.picture }}">
             </div>
         </div>
         <div class="row method-infos p-2">
             <div class="method-bloc-infos col-12 col-xl-6">
-                <span>Fiche rédigée par :  </span>
+                <span>Fiche rédigée par : {% if method.author %}{{ method.author.firstname }} {{ method.author.lastname }}{% endif %}</span>
                 <span>Le : {{ method.createdAt|date("d/m/Y") }}</span>
-                <span>Fiche validée par : </span>
+                <!-- <span>Fiche validée par : </span> -->
             </div>
             <div class="method-bloc-infos col-12 col-xl-6 mt-xl-0 mt-2">
-                <span>Objectif 1 : {{ method.objectives }}</span>
+                <span>{% if method.objective1 %}Objectif 1 : {{ method.objective1 }} </span>{% endif %}
+                <span>{% if method.objective2 %}Objectif 2 : {{ method.objective2 }} </span>{% endif %}
+                <span>{% if method.objective3 %}Objectif 3 : {{ method.objective3 }} </span>{% endif %}
             </div>
         </div>
         <div class="row">
@@ -81,7 +83,7 @@
             </div>
             <div class="col-12 col-xl-6 d-flex flex-column align-items-center mt-3">
                 <h3>Données d'entrée</h3>
-                    {{ method.prerequisites|raw }}
+                {{ method.prerequisites|raw }}
             </div>
         </div>
         <div class="container-fluid">

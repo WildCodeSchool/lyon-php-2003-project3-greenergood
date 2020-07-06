@@ -7,6 +7,7 @@ use App\Entity\MethodLink;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,9 +17,12 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
+            ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
             ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
             ->add('content', CKEditorType::class, ['label' => "Procédure *"])
-            ->add('objectives', null, ['label' => "Objectifs"])
+            ->add('objective1', null, ['label' => "Objectif 1 :"])
+            ->add('objective2', null, ['label' => "Objectif 2 :"])
+            ->add('objective3', null, ['label' => "Objectif 3 :"])
             ->add('methodLinks', CollectionType::class, [
                 'entry_type' => MethodLinkType::class,
                 'label' => false,

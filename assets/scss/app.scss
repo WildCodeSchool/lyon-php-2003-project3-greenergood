@@ -1,5 +1,5 @@
 @import "vars";
-@import "~bootstrap/scss/bootstrap";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 //Function to center block
 @mixin flexCenter($direction) {
@@ -179,6 +179,7 @@ h2 {
         height: 100px;
         width: 100px;
         margin-bottom: 10px;
+        object-fit: cover;
     }
 }
 
@@ -431,6 +432,7 @@ nav {
     height: 125px;
     Width: 125px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .method-cat-img {
@@ -840,6 +842,7 @@ nav {
     display: flex;
     align-items: center;
     top: 100%;
+    z-index: 1;
 
     a, .action-three-dots-button {
         list-style-type: none;
@@ -1010,7 +1013,7 @@ nav {
     }
 
     .menu-method {
-        width: 261px;
+        width: 282px;
         margin-left: -110px;
 
         a {
@@ -1166,10 +1169,6 @@ nav {
     font-family: $textfont;
     font-size: $textsize;
     margin-bottom: 10px;
-}
-
-.methodLinks-container {
-    padding: 50px 20px;
 }
 
 .btn-delete {

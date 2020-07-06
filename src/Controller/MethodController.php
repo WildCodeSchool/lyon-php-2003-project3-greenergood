@@ -3,14 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Method;
+use App\Entity\User;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
+use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use DateTime;
 
 /**
  * @Route("/method")
@@ -42,6 +43,11 @@ class MethodController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $method->setAuthor($this->getUser());
+
+            if (!$method->getPicture()) {
+                $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($method);
             $entityManager->flush();
@@ -119,10 +125,8 @@ class MethodController extends AbstractController
      */
     public function deactivate(Request $request, Method $method): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$method->getId(), $request->request->get('_token'))) {
-            $method->setActivated(false);
-            $this->getDoctrine()->getManager()->flush();
-        }
+        $method->setActivated(false);
+        $this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }

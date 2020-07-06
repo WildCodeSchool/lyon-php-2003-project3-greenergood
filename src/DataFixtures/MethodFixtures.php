@@ -22,6 +22,7 @@ class MethodFixtures extends Fixture
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);
             $method->setActivated(true);
+            $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
             $manager->persist($method);
         }
         $manager->flush();
