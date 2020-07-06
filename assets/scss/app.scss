@@ -17,7 +17,6 @@ body {
     padding-top: 80px;
 }
 
-
 h1 {
     font-size: $h1size;
     font-family: $titlefont;
@@ -853,10 +852,115 @@ nav {
     }
 }
 
-/* DESKTOP VIEW LARGE */
-@media all and (min-width: 769px) {
+/* TROMBINOSCOPE PAGE */
+.trombi-background {
+    background-color: darkgrey;
 
-    //Box containing the links in the homepage
+    li {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tilt-1 {
+        .clip {
+            left: 150px;
+        }
+
+        .polaroid-frame {
+            -webkit-transform: rotate(-8deg);
+            -moz-transform: rotate(-8deg);
+        }
+    }
+
+    .tilt-2 {
+        .clip {
+            left: 200px;
+        }
+
+        .polaroid-frame {
+            -webkit-transform: rotate(-4deg);
+            -moz-transform: rotate(-4deg);
+        }
+    }
+
+    .tilt-3  .clip {
+        left: 140px;
+    }
+
+    .tilt-4 {
+        .clip {
+            left: 150px;
+        }
+
+        .polaroid-frame {
+            -webkit-transform: rotate(4deg);
+            -moz-transform: rotate(4deg);
+        }
+    }
+
+    .tilt-5 {
+        .clip {
+            left: 130px;
+        }
+
+        .polaroid-frame {
+            -webkit-transform: rotate(8deg);
+            -moz-transform: rotate(8deg);
+        }
+    }
+
+    .polaroid-container {
+        position: relative;
+
+        .rope-container {
+            display: flex;
+            justify-content: center;
+
+            .rope {
+                width: 350px;
+                position: relative;
+            }
+        }
+
+        .clip {
+            height: 50px;
+            position: absolute;
+            top: 20px;
+            z-index: 2;
+        }
+
+        .trombi-title {
+            margin-top: 15px;
+        }
+
+        .polaroid-frame {
+            background-color: white;
+            flex-direction: column;
+            height: 100%;
+            padding: 15px 15px 30px 15px;
+            text-align: center;
+            text-decoration: none;
+            display:inline-block;
+            margin: 0 auto 15px auto;
+            border: 1px solid $tertiarycolor;
+
+            &:hover {
+                color: $tertiarycolor;
+            }
+
+            .polaroid-picture {
+                width: 300px;
+                height: 300px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+/* DESKTOP VIEW LARGE */
+//Box containing the links in the homepage
+@media all and (min-width: 769px) {
     .container-center {
         @include flexCenter(column);
     }
@@ -1144,9 +1248,44 @@ nav {
     transform: rotate(110deg);
 }
 
-//INDEX DESKTOP VIEW
+/* Display over 450px of trombinoscope page */
+@media all and (min-width: 450px) {
+    // TROMBINOSCOPE DESKTOP VIEW
+    .trombi-title {
+        width: 100%;
+    }
+
+    .polaroids-display {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 900px;
+        white-space: nowrap;
+
+        .polaroid-container .rope-container .rope {
+            width: 290px;
+            -webkit-transform: rotate(-1deg);
+            -moz-transform: rotate(-1deg);
+        };
+    }
+
+    .trombi-background {
+        .polaroid-container {
+            .polaroid-frame {
+                .polaroid-picture {
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+        }
+    }
+}
+
 @media all and (min-width: 769px) {
 
+    //INDEX DESKTOP VIEW
     .bloc_page {
         position: relative;
         width: 1000px;
@@ -1206,7 +1345,6 @@ nav {
 }
 
 /* METHOD FORMS */
-
 .methodForm-container {
     color: $tertiarycolor;
     font-family: $textfont;
