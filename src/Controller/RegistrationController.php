@@ -28,6 +28,7 @@ class RegistrationController extends AbstractController
 
     /**
      * @Route("/register", name="app_register")
+
      * @param Request $request
      * @param SendPassword $sendPassword
      * @param MailerInterface $mailer
