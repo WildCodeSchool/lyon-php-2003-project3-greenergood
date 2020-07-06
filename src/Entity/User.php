@@ -8,10 +8,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use \DateTime;
+use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -72,6 +77,18 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $userPicture;
+
+    /**
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="userPicture")
+     * @var File | null
+     */
+    private $pictureFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -253,11 +270,25 @@ class User implements UserInterface
         return $this->userPicture;
     }
 
-    public function setUserPicture(string $userPicture): self
+    public function setUserPicture(?string $userPicture): self
     {
         $this->userPicture = $userPicture;
 
         return $this;
+    }
+
+    public function setPictureFile(File $picture = null): User
+    {
+        $this->pictureFile = $picture;
+        if ($picture) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 
     public function getLinkedin(): ?string
@@ -320,6 +351,18 @@ class User implements UserInterface
             $this->teams->removeElement($team);
             $team->removeUser($this);
         }
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
