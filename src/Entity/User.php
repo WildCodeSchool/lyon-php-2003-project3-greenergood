@@ -385,7 +385,10 @@ class User implements UserInterface
             $this->methods->removeElement($method);
             $method->removeContact($this);
         }
-  
+
+        return $this;
+    }
+
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
