@@ -964,7 +964,7 @@ nav {
         }
     }
 
-    .tilt-3  .clip {
+    .tilt-3 .clip {
         left: 140px;
     }
 
@@ -1021,7 +1021,7 @@ nav {
             padding: 15px 15px 30px 15px;
             text-align: center;
             text-decoration: none;
-            display:inline-block;
+            display: inline-block;
             margin: 0 auto 15px auto;
             border: 1px solid $tertiarycolor;
 
@@ -1349,7 +1349,8 @@ nav {
             width: 290px;
             -webkit-transform: rotate(-1deg);
             -moz-transform: rotate(-1deg);
-        };
+        }
+    ;
     }
 
     .trombi-background {
@@ -2206,23 +2207,28 @@ nav {
 
 .bienvenue {
     font-family: "Montserrat", sans-serif;
+
     h2, .livret-accueil, p, ul, .links {
         margin: 0 30px;
     }
+
     h2 {
         text-align: center;
         color: $tertiarycolor;
         margin-top: 20px;
         font-size: 24px;
     }
+
     .livret-accueil {
         position: relative;
         text-align: center;
         margin: 20px auto;
+
         img {
             width: 360px;
             height: auto;
         }
+
         #text {
             color: $tertiarycolor;
             font-size: 24px;
@@ -2232,26 +2238,32 @@ nav {
             transform: translate(-50%, -50%);
         }
     }
+
     .arrows {
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding: 10px 60px;
+
         .left-arrow, .right-arrow {
             width: 48px;
             height: auto;
         }
+
         .right-arrow {
             transform: scaleX(-1);
         }
     }
+
     .adhesion {
         p, li {
             text-align: justify;
         }
+
         p {
             font-size: smaller;
         }
+
         .flower {
             position: relative;
             text-align: center;
@@ -2273,16 +2285,19 @@ nav {
             }
         }
     }
+
     .titres-bienvenue {
         position: relative;
         text-align: left;
         margin: 20px auto;
         line-height: 54px;
         vertical-align: center;
+
         img {
             width: 360px;
             height: auto;
         }
+
         h3 {
             color: white;
             font-size: 16px;
@@ -2291,6 +2306,7 @@ nav {
             left: 10px;
         }
     }
+
     .green-text {
         color: $primarycolor;
     }
@@ -2300,6 +2316,7 @@ nav {
         width: 100%;
         height: 300px;
         margin: 30px auto 30px auto;
+
         #block {
             position: absolute;
             background-color: $primarycolor;
@@ -2307,6 +2324,7 @@ nav {
             height: 100%;
             width: 100%;
         }
+
         #text {
             padding: 15px;
             text-align: center;
@@ -2315,31 +2333,38 @@ nav {
             height: 100%;
             width: 100%;
         }
+
         .contacts {
             display: flex;
             flex-direction: row;
             justify-content: center;
         }
+
         .contact-plus {
             margin: 30px 10px;
             padding: 10px;
+
             img {
                 width: 80px;
                 height: auto;
             }
         }
+
         .contact {
             display: flex;
             flex-direction: column;
             margin: 30px 10px;
             padding: 10px;
+
             p {
                 margin-top: 50px;
                 font-size: 14px;
             }
+
             .contact-img {
                 position: relative;
                 margin: 30px auto 30px auto;
+
                 .photo {
                     position: absolute;
                     top: 50%;
@@ -2348,6 +2373,7 @@ nav {
                     width: 100px;
                     border-radius: 200px;
                 }
+
                 .circle {
                     position: absolute;
                     top: 50%;
@@ -2401,6 +2427,6 @@ nav {
 
 @media (min-width: 720px) {
     .subtitles-accueil {
-        margin-top : -70px;
+        margin-top: -70px;
     }
 }
