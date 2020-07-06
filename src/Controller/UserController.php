@@ -35,6 +35,10 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
+        if ($user != $this->getUser()) {
+            throw $this->createAccessDeniedException('Access denied');
+        }
+
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
 
