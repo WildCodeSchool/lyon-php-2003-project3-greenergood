@@ -11,9 +11,9 @@
                 <h1>{{ user.firstname }} {{ user.lastname }}</h1>
             </div>
             {% if app.user.id == user.id and is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div class="container-pen-mobile">
-                <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
-            </div>
+                <div class="container-pen-mobile">
+                    <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
+                </div>
             {% endif %}
             <div class="container-vertical-green-line-top">
                 <div class="vertical-green-line-top"></div>
@@ -94,23 +94,22 @@
                     </div>
                 </div>
             </div>
-
             <div class="container-green-skills">
                 <div class="green-skills-left">
                     <div class="title-green-skills text-center"><h3>GREEN SKILLS</h3></div>
                     <div class="circles">
                         <div class="container-circle-green-1">
                             <div class="circle-green-1"></div>
-                            <h5>DIY lessive, produit vaisselle et dentifrice</h5>
+                            <h5>{{ user.greenSkills1 }}</h5>
                         </div>
                         <div class="container-circle-yellow">
                             <div class="circle-yellow"></div>
-                            <h5>Minimaliste - professionnelle du rangement</h5>
+                            <h5>{{ user.greenSkills2 }}</h5>
                         </div>
                         <div class="yellow-line">
                             <div class="container-circle-green-2">
                                 <div class="circle-green-2"></div>
-                                <h5>Troisième exemple de green skills que je n'ai pas ?</h5>
+                                <h5>{{ user.greenSkills3 }}</h5>
                             </div>
                         </div>
                     </div>
@@ -125,3 +124,4 @@
     </div>
 
 {% endblock %}
+

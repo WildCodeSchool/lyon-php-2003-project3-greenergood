@@ -22,7 +22,10 @@ class ProfileType extends AbstractType
             ->add('description', TextareaType::class, ['label' => "Description", 'required' => false])
             ->add('user_picture', TextType::class, ['label' => "Photo de profil", 'required' => false])
             ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required' => false])
-            ->add('facebook', TextType::class, ['label' => "Facebook", 'required' => false]);
+            ->add('facebook', TextType::class, ['label' => "Facebook", 'required' => false])
+            ->add('greenSkills1', TextType::class, ['label' => "Green skills 1", 'required' => false])
+            ->add('greenSkills2', TextType::class, ['label' => "Green skills 2", 'required' => false])
+            ->add('greenSkills3', TextType::class, ['label' => "Green skills 3", 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
