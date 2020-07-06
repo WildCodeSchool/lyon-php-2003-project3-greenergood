@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,74 +18,40 @@ class Contact
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class)
+     * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Method::class)
+     * @ORM\ManyToOne(targetEntity=Method::class)
      */
     private $methods;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-        $this->methods = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function addUser(User $user): self
+    public function setUsers(?User $users): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-        }
+        $this->users = $users;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Method[]
-     */
-    public function getMethods(): Collection
+    public function getMethods(): ?Method
     {
         return $this->methods;
     }
 
-    public function addMethod(Method $method): self
+    public function setMethods(?Method $methods): self
     {
-        if (!$this->methods->contains($method)) {
-            $this->methods[] = $method;
-        }
-
-        return $this;
-    }
-
-    public function removeMethod(Method $method): self
-    {
-        if ($this->methods->contains($method)) {
-            $this->methods->removeElement($method);
-        }
+        $this->methods = $methods;
 
         return $this;
     }
