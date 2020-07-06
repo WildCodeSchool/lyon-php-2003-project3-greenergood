@@ -88,9 +88,15 @@ class Method
      */
     private $objective3;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="methods")
+     */
+    private $contact;
+
     public function __construct()
     {
         $this->methodLinks = new ArrayCollection();
+        $this->contact = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -265,5 +271,31 @@ class Method
         }
 
         return $method;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getContact(): Collection
+    {
+        return $this->contact;
+    }
+
+    public function addContact(User $contact): self
+    {
+        if (!$this->contact->contains($contact)) {
+            $this->contact[] = $contact;
+        }
+
+        return $this;
+    }
+
+    public function removeContact(User $contact): self
+    {
+        if ($this->contact->contains($contact)) {
+            $this->contact->removeElement($contact);
+        }
+
+        return $this;
     }
 }

@@ -93,9 +93,15 @@ class User implements UserInterface
      */
     private $teams;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Method::class, mappedBy="contact")
+     */
+    private $methods;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $this->methods = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -319,6 +325,34 @@ class User implements UserInterface
         if ($this->teams->contains($team)) {
             $this->teams->removeElement($team);
             $team->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+            $method->addContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+            $method->removeContact($this);
         }
 
         return $this;
