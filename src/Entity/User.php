@@ -115,6 +115,20 @@ class User implements UserInterface
      */
     private $methods;
 
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills3;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -375,9 +389,20 @@ class User implements UserInterface
             $this->methods[] = $method;
             $method->addContact($this);
         }
+    }
+
+    public function getGreenSkills1(): ?string
+    {
+        return $this->greenSkills1;
+    }
+
+    public function setGreenSkills1(?string $greenSkills1): self
+    {
+        $this->greenSkills1 = $greenSkills1;
 
         return $this;
     }
+
 
     public function removeMethod(Method $method): self
     {
@@ -385,8 +410,28 @@ class User implements UserInterface
             $this->methods->removeElement($method);
             $method->removeContact($this);
         }
+    }
+
+    public function getGreenSkills2(): ?string
+    {
+        return $this->greenSkills2;
+    }
+
+    public function setGreenSkills2(?string $greenSkills2): self
+    {
+        $this->greenSkills2 = $greenSkills2;
 
         return $this;
+    }
+
+    public function getGreenSkills3(): ?string
+    {
+        return $this->greenSkills3;
+    }
+
+    public function setGreenSkills3(?string $greenSkills3): self
+    {
+        $this->greenSkills3 = $greenSkills3;
     }
 
     public function getUpdatedAt(): ?\DateTime
@@ -397,7 +442,6 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
 }
