@@ -372,6 +372,10 @@ class Action
             $action->addActionDeliverable(clone $actionDeliverable);
         }
 
+        foreach ($this->getMethods() as $method) {
+            $action->addMethod($method);
+        }
+
         return $action;
     }
 }
