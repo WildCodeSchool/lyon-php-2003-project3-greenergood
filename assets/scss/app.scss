@@ -564,7 +564,7 @@ nav {
 
 .action-member-image, .action-plus-image {
     height: 75px;
-    width: 75px;
+    width: auto;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -1023,6 +1023,7 @@ nav {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
+        width: 100%;
 
         .action-methods {
             flex: 3;
@@ -1375,13 +1376,22 @@ nav {
     .profile-img-white-paint-mobile {
         height: 75px;
         position: relative;
-        margin: 10px 10px 25px 10px;
+        margin: 10px 10px 0 10px;
     }
 
     .profile-name-mobile {
         position: absolute;
         z-index: 1;
         align-self: center;
+    }
+
+    .container-pen-mobile {
+        @include flexCenter(row);
+
+        .img-pen-mobile {
+            height: 55px;
+            display: block;
+        }
     }
 
     .container-profile {
@@ -1392,7 +1402,7 @@ nav {
         background-color: rgb(186, 222, 219);
 
         .container-card-img-infos {
-            padding: 15px;
+            padding: 0 15px 15px 15px;
 
             .container-profile-img {
                 background-color: white;
@@ -1451,6 +1461,22 @@ nav {
                 flex-direction: column;
                 align-items: center;
 
+                .img-pen-desktop {
+                    display: none;
+                }
+
+                .entry-date {
+                    height: 50px;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    font-size: 1.1rem;
+                }
+
                 .profile-img-white-paint-desktop {
                     display: none;
                 }
@@ -1478,7 +1504,7 @@ nav {
                     width: 90%;
                     background-color: $secondarycolor;
                     padding: 15px;
-                    margin: 20px auto 15px;
+                    margin: 0 auto 15px;
 
                     .profile-details {
                         border-radius: 15px;
@@ -1495,9 +1521,10 @@ nav {
                                 text-align: center;
                                 font-family: $textfont;
 
-                                span {
+                                a {
                                     text-decoration: underline;
                                     font-family: $textfont;
+                                    color: black;
                                 }
                             }
                         }
@@ -1607,7 +1634,6 @@ nav {
             .green-skills-left {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 width: 100%;
                 height: 100%;
 
@@ -1744,6 +1770,10 @@ nav {
                 display: none;
             }
 
+            .img-pen-mobile {
+                display: none;
+            }
+
             .container-vertical-green-line-top {
                 display: flex;
                 justify-content: center;
@@ -1825,6 +1855,7 @@ nav {
                 }
 
                 .container-profile-infos {
+                    position: relative;
                     background-color: $primary;
                     height: auto;
                     width: 75%;
@@ -1832,11 +1863,32 @@ nav {
                     flex-direction: column;
                     align-items: center;
 
+                    .img-pen-desktop {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        height: 70px;
+                        display: block;
+                    }
+
+                    .entry-date {
+                        height: 50px;
+                        width: 75%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        font-size: 1.3rem;
+                        font-family: $textfont;
+                    }
+
                     .profile-img-white-paint-desktop {
                         height: 90px;
                         position: relative;
                         max-width: 80%;
-                        margin: 10px 0 40px 0;
+                        margin: 10px 0 20px 0;
                         display: block;
                     }
 
@@ -1865,7 +1917,7 @@ nav {
                         width: 75%;
                         background-color: $secondarycolor;
                         padding: 15px;
-                        margin: 20px auto 15px;
+                        margin: 0 auto 15px;
 
                         .profile-details {
                             border-radius: 15px;
@@ -1882,9 +1934,10 @@ nav {
                                     font-family: $textfont;
                                     word-break: break-word;
 
-                                    span {
+                                    a {
                                         text-decoration: underline;
                                         font-family: $textfont;
+                                        color: black;
                                     }
                                 }
                             }
@@ -2000,7 +2053,6 @@ nav {
                 .green-skills-left {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
                     width: 50%;
                     height: 100%;
 
