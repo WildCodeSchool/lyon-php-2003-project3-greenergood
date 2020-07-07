@@ -73,7 +73,7 @@ class Method
     private $picture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="methods")
+     * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumn(nullable=true)
      */
     private $author;
