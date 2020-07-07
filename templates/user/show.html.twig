@@ -10,6 +10,11 @@
             <div class="profile-name-mobile">
                 <h1>{{ user.firstname }} {{ user.lastname }}</h1>
             </div>
+            {% if app.user.id == user.id and is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="container-pen-mobile">
+                    <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
+                </div>
+            {% endif %}
             <div class="container-vertical-green-line-top">
                 <div class="vertical-green-line-top"></div>
             </div>
@@ -18,7 +23,11 @@
                     <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
-                        <img class="profile-img" src="{{ user.userPicture }}" alt="Image utilisateur">
+                        {% if user.userPicture %}
+                            <img class="profile-img"
+                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"
+                                 alt="Image utilisateur">
+                        {% endif %}
                         <img class="profile-yellow-frame-bottom"
                              src="{{ asset('img/profile/fiche_benevole_cadre.png') }}"
                              alt="cadre jaune">
@@ -29,6 +38,11 @@
                          alt="Morceau de scotch">
                 </div>
                 <div class="container-profile-infos">
+                    {% if app.user.id == user.id and is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('user_edit', {'id':user.id}) }}">
+                            <img class="img-pen-desktop" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
+                        </a>
+                    {% endif %}
                     <img class="profile-img-white-paint-desktop"
                          src="{{ asset('img/profile/fiche_benevole_peinture_blanche.png') }}" alt="Peinture blanche">
                     <div class="profile-name-desktop">
@@ -37,14 +51,20 @@
                     <div class="profile-function">
                         <h3 class="text-center">{{ user.fonction }}</h3>
                     </div>
+                    <div class="entry-date">depuis le {{ user.entryDate|date('d/m/Y') }}</div>
                     <div class="container-profile-contact-detail">
                         <div class="profile-details">
                             <div class="details container-center">
                                 <h3>COORDONNÉES</h3>
                                 <p>{{ user.email }}</p>
                                 <p>
-                                    Facebook: <span>{{ user.facebook }}</span> | Linkedin:
-                                    <span>{{ user.linkedin }}</span>
+                                    Facebook:
+                                    <a href="{{ user.facebook }}" onclick="window.open(this.href); return false;">
+                                        {{ user.firstname }} {{ user.lastname }}
+                                    </a> | Linkedin:
+                                    <a href="{{ user.linkedin }}" onclick="window.open(this.href); return false;">
+                                        {{ user.firstname }} {{ user.lastname }}
+                                    </a>
                                 </p>
                             </div>
                         </div>
@@ -67,10 +87,10 @@
                     </div>
                     <div class="container-work-on">
                         <ul class="list-work-on">
-                            {% for action in actions %}
+                            {% for team in user.teams %}
                                 <li>
                                     <h1>
-                                        {{ action.name }}<br/>
+                                        {{ team.action.name }}
                                     </h1>
                                 </li>
                             {% endfor %}
@@ -78,23 +98,22 @@
                     </div>
                 </div>
             </div>
-
             <div class="container-green-skills">
                 <div class="green-skills-left">
-                    <div class="title-green-skills"><h3>GREEN SKILLS</h3></div>
+                    <div class="title-green-skills text-center"><h3>GREEN SKILLS</h3></div>
                     <div class="circles">
                         <div class="container-circle-green-1">
                             <div class="circle-green-1"></div>
-                            <h5>DIY lessive, produit vaisselle et dentifrice</h5>
+                            <h5>{{ user.greenSkills1 }}</h5>
                         </div>
                         <div class="container-circle-yellow">
                             <div class="circle-yellow"></div>
-                            <h5>Minimaliste - professionnelle du rangement</h5>
+                            <h5>{{ user.greenSkills2 }}</h5>
                         </div>
                         <div class="yellow-line">
                             <div class="container-circle-green-2">
                                 <div class="circle-green-2"></div>
-                                <h5>Troisième exemple de green skills que je n'ai pas ?</h5>
+                                <h5>{{ user.greenSkills3 }}</h5>
                             </div>
                         </div>
                     </div>
@@ -109,3 +128,4 @@
     </div>
 
 {% endblock %}
+

@@ -56,6 +56,8 @@ class UserFixtures extends Fixture
         $user->setStatus(1);
         $manager->persist($user);
 
+        $this->addReference('Lucas', $user);
+
         $manager->flush();
     }
 }

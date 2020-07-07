@@ -8,10 +8,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use \DateTime;
+use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -74,6 +79,18 @@ class User implements UserInterface
     private $userPicture;
 
     /**
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="userPicture")
+     * @var File | null
+     */
+    private $pictureFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $updatedAt;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkedin;
@@ -93,9 +110,30 @@ class User implements UserInterface
      */
     private $teams;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Method::class, mappedBy="contact")
+     */
+    private $methods;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $greenSkills3;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $this->methods = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -253,11 +291,25 @@ class User implements UserInterface
         return $this->userPicture;
     }
 
-    public function setUserPicture(string $userPicture): self
+    public function setUserPicture(?string $userPicture): self
     {
         $this->userPicture = $userPicture;
 
         return $this;
+    }
+
+    public function setPictureFile(File $picture = null): User
+    {
+        $this->pictureFile = $picture;
+        if ($picture) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 
     public function getLinkedin(): ?string
@@ -321,6 +373,76 @@ class User implements UserInterface
             $team->removeUser($this);
         }
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+            $method->addContact($this);
+        }
+    }
+
+    public function getGreenSkills1(): ?string
+    {
+        return $this->greenSkills1;
+    }
+
+    public function setGreenSkills1(?string $greenSkills1): self
+    {
+        $this->greenSkills1 = $greenSkills1;
+
+        return $this;
+    }
+
+
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+            $method->removeContact($this);
+        }
+    }
+
+    public function getGreenSkills2(): ?string
+    {
+        return $this->greenSkills2;
+    }
+
+    public function setGreenSkills2(?string $greenSkills2): self
+    {
+        $this->greenSkills2 = $greenSkills2;
+
+        return $this;
+    }
+
+    public function getGreenSkills3(): ?string
+    {
+        return $this->greenSkills3;
+    }
+
+    public function setGreenSkills3(?string $greenSkills3): self
+    {
+        $this->greenSkills3 = $greenSkills3;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 }

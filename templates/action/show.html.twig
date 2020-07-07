@@ -4,7 +4,7 @@
     Fiche Action - {{ action.name }}
 
     {% if action.activated == false %}
-         - Désactivée
+        - Désactivée
     {% endif %}
 
 {% endblock %}
@@ -51,11 +51,17 @@
                     {{ action.name }}
 
                     {% if action.status=="started" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}" title="En cours" alt="En cours">
+                        <img class="status-dot"
+                             src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}"
+                             title="En cours" alt="En cours">
                     {% elseif action.status=="ended" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}" title="Terminée" alt="Terminée">
+                        <img class="status-dot"
+                             src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}"
+                             title="Terminée" alt="Terminée">
                     {% elseif action.status=="cancelled" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}" title="Annulée" alt="Annulée">
+                        <img class="status-dot"
+                             src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}"
+                             title="Annulée" alt="Annulée">
                     {% endif %}
                 </h1>
 
@@ -103,7 +109,6 @@
         </div>
 
         <div class="action-progress-box">{{ action.projectProgress }}</div>
-        
         <button class="action-add-Team" title="Ajouter une équipe">
             <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
         </button>
@@ -113,15 +118,17 @@
                 <div class="col-6 team-title"> {{ team.name }} </div>
                 {# Generate as many pictures as User associated with action when set up#}
                 {% for user in team.users %}
-                    <img class="action-member-image" src="{{ user.userPicture }}" alt="Nom de la personne">
+                    <a href="{{ path('user_show', {'id':user.id}) }}">
+                        <img class="action-member-image" src="{{ user.userPicture }}" alt="Nom de la personne">
+                    </a>
                 {% endfor %}
 
                 {# Add link to button when functionality is set #}
-                <a href="{{ path('team_edit', {'id': team.id}) }}"><img class="action-plus-image"
-                                                                         src="{{ asset('../img/action/button_plus.png') }}"
-                                                                         alt="Ajouter un membre" title="Ajouter un membre à l'équipe"></a>
+                <a href="{{ path('team_edit', {'id': team.id}) }}">
+                    <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}"
+                         alt="Ajouter un membre" title="Ajouter un membre à l'équipe">
+                </a>
             {% endfor %}
-
         </div>
     </div>
 
@@ -133,43 +140,38 @@
         <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
         <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
     </div>
-
     <div class="action-subtitles">Fiches METHODE</div>
     <div class="action-methods">
         {# Dynamicaly display list of methods associated with the action when implemented #}
-        <li><a href="#">Nom de la fiche méthode n°1</a></li>
-        <li><a href="#">Nom de la fiche méthode n°2</a></li>
-        <li><a href="#">Nom de la fiche méthode n°3</a></li>
+        <ul>
+            {% for method in action.methods %}
+                {# add method show link #}
+                <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div class="action-subtitles">LIVRABLES</div>
-
     <div class="deliverable-box">
-        <div class="action-methods">
-            <ul>
-                {% for method in action.methods %}
-                    {# add method show link #}
-                    <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-
-        <div class="action-subtitles">LIVRABLES</div>
-
         <div class="deliverable-box">
             <div class="action-methods">
                 <ul>
                     {# Dynamicaly display list of livrables associated with the action when implemented #}
                     {% for deliverable in deliverables %}
-                        <li><a href="{{ deliverable.link }}">{{ deliverable.name }}</a></li>
+                        <li>
+                            <a href="{{ deliverable.link }}" onclick="window.open(this.href); return false;">
+                                {{ deliverable.name }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
             <div class="important-link-center">
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}" alt="Lien vers les images"></a>
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
+                <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}"
+                                alt="Lien vers les images"></a>
+                <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}"
+                                alt="Lien vers les vidéos"></a>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}

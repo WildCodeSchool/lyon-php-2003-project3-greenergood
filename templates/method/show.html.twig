@@ -10,54 +10,103 @@
 {% endblock %}
 
 {% block body %}
-<div {% if method.activated == false %} class="deactivated" {% endif %}>
-    <h1>Fiche Méthode n°{{ method.id }}</h1>
 
-    {% if method.activated == false %}
-        - Désactivée
-    {% endif %}
+    <div class="container-fluid">
+        <div class="horizontal">
+            <div {% if method.activated == false %} class="deactivated" {% endif %}>
+                Fiche METHODE n°{{ method.id }}
 
+                {% if method.activated == false %}
+                    - Désactivée
+                {% endif %}
+            </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ method.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ method.name }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ method.createdAt ? method.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Prerequisites</th>
-                <td>{{ method.prerequisites|raw }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ method.content|raw }}</td>
-            </tr>
-            <tr>
-                <th>Objectives</th>
-                <td>{{ method.objectives }}</td>
-            </tr>
-        </tbody>
-    </table>
+            <!-- Menu three dots -->
+            <div class="action-mini-menu">
+                <div class="action-three-dots threeDots"></div>
+                <div class="action-menu menu">
+                    <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                    <a href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
 
-    <a href="{{ path('method_index') }}">back to list</a>
+                    {% if is_granted('ROLE_ADMIN') %}
 
-    <a href="{{ path('method_edit', {'id': method.id}) }}">edit</a>
+                        {% if method.activated == true %}
+                            <a href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
+                        {% elseif method.activated == false %}
+                            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+                        {% endif %}
 
-    {% if is_granted('ROLE_ADMIN') %}
+                    {% endif %}
 
-        {% if method.activated == true %}
-            <a>{{ include('method/_delete_form.html.twig') }}</a>
-        {% elseif method.activated == false %}
-            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
-        {% endif %}
+                </div>
+            </div>
+        </div>
 
-    {% endif %}
+        <div class="row">
+            <div class="col-12 col-xl-11 method-header">
+                <div class="method-title col-6">
+                    <div>
+                        <figure class="col-12 method-cat-img">
+                            <img class="method-arrow" src="{{ asset('../img/method/fiche_methode_categorie.png') }}"
+                                 alt="Fond vert du titre">
+                            <figcaption>
+                                Catégorie de la méthode
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="method-name">
+                        <h1>{{ method.name }}</h1>
+                    </div>
+                </div>
+                <img class="method-image" src="{{ method.picture }}">
+            </div>
+        </div>
+        <div class="row method-infos p-2">
+            <div class="method-bloc-infos col-12 col-xl-6">
+                <span>Fiche rédigée par : {% if method.author %}{{ method.author.firstname }} {{ method.author.lastname }}{% endif %}</span>
+                <span>Le : {{ method.createdAt|date("d/m/Y") }}</span>
+                <!-- <span>Fiche validée par : </span> -->
+            </div>
+            <div class="method-bloc-infos col-12 col-xl-6 mt-xl-0 mt-2">
+                <span>{% if method.objective1 %}Objectif 1 : {{ method.objective1 }} </span>{% endif %}
+                <span>{% if method.objective2 %}Objectif 2 : {{ method.objective2 }} </span>{% endif %}
+                <span>{% if method.objective3 %}Objectif 3 : {{ method.objective3 }} </span>{% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xl-6 d-flex flex-column align-items-center mt-3">
+                <h3>Liens utiles</h3>
+                <ul>
+                    {% for methodlink in method.methodLinks %}
+                        <li><a href="{{ methodlink.url }}">{{ methodlink.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-xl-6 d-flex flex-column align-items-center mt-3">
+                <h3>Données d'entrée</h3>
+                {{ method.prerequisites|raw }}
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row d-flex flex-column align-items-center my-3">
+                <h3>Procédure</h3>
+                {{ method.content|raw }}
+            </div>
+        </div>
+        <div class="row method-infos d-flex flex-xl-column align-items-center p-2">
+            <h3>Contacts utiles</h3>
+            <p>Personnes référentes / expérimentées sur le sujet au sein de l'association</p>
+            <div class="d-flex flex-column flex-xl-row">
+                {% for methodContact in method.contact %}
+                <div class="col-12 col-xl-{{ 12/method.contact|length }} d-flex flex-column align-items-center">
+                    <img class="method-image" src="{{ methodContact.userPicture}}">
+                    <p class="my-2">{{ methodContact.firstname }} {{ methodContact.lastname }}</p>
+                    {% if methodContact.fonction %}
+                        <p class="my-2">{{ methodContact.fonction }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

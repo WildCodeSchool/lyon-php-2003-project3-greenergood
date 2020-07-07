@@ -1,5 +1,5 @@
 @import "vars";
-@import "~bootstrap/scss/bootstrap";
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 //Function to center block
 @mixin flexCenter($direction) {
@@ -210,6 +210,7 @@ h2 {
         height: 100px;
         width: 100px;
         margin-bottom: 10px;
+        object-fit: cover;
     }
 }
 
@@ -437,6 +438,83 @@ nav {
     }
 }
 
+/* METHOD */
+
+.method-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-arrow {
+    width: 200px;
+}
+
+.method-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    figcaption {
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        color: white;
+        font-family: $titlefont;
+    }
+}
+
+.method-image {
+    height: 125px;
+    Width: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.method-cat-img {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-infos {
+    background-color: $primarycolor;
+    display: flex;
+    flex-direction: row;
+}
+
+.method-name {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.method-bloc-infos {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-method {
+    background: $tertiarycolor none;
+    border: none;
+    padding: 6px 12px;
+
+    &:hover {
+        color: $secondarycolor;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .method-infos {
+        flex-direction: column;
+    }
+}
+
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
@@ -453,6 +531,7 @@ nav {
     &:hover {
         color: $secondarycolor;
     }
+
 }
 
 .col-form-label {
@@ -564,7 +643,7 @@ nav {
 
 .action-member-image, .action-plus-image {
     height: 75px;
-    width: 75px;
+    width: auto;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -823,6 +902,7 @@ nav {
     display: flex;
     align-items: center;
     top: 100%;
+    z-index: 1;
 
     a, .action-three-dots-button {
         list-style-type: none;
@@ -884,7 +964,7 @@ nav {
         }
     }
 
-    .tilt-3  .clip {
+    .tilt-3 .clip {
         left: 140px;
     }
 
@@ -941,7 +1021,7 @@ nav {
             padding: 15px 15px 30px 15px;
             text-align: center;
             text-decoration: none;
-            display:inline-block;
+            display: inline-block;
             margin: 0 auto 15px auto;
             border: 1px solid $tertiarycolor;
 
@@ -953,6 +1033,7 @@ nav {
                 width: 300px;
                 height: 300px;
                 margin-bottom: 20px;
+                background-color: $tertiarycolor;
             }
         }
     }
@@ -1022,6 +1103,7 @@ nav {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
+        width: 100%;
 
         .action-methods {
             flex: 3;
@@ -1167,7 +1249,7 @@ nav {
     }
 
     .menu-method {
-        width: 261px;
+        width: 282px;
         margin-left: -110px;
 
         a {
@@ -1268,7 +1350,7 @@ nav {
             width: 290px;
             -webkit-transform: rotate(-1deg);
             -moz-transform: rotate(-1deg);
-        };
+        }
     }
 
     .trombi-background {
@@ -1359,10 +1441,6 @@ nav {
     margin-bottom: 10px;
 }
 
-.methodLinks-container {
-    padding: 50px 20px;
-}
-
 .btn-delete {
     margin-top: 10px
 }
@@ -1374,13 +1452,22 @@ nav {
     .profile-img-white-paint-mobile {
         height: 75px;
         position: relative;
-        margin: 10px 10px 25px 10px;
+        margin: 10px 10px 0 10px;
     }
 
     .profile-name-mobile {
         position: absolute;
         z-index: 1;
         align-self: center;
+    }
+
+    .container-pen-mobile {
+        @include flexCenter(row);
+
+        .img-pen-mobile {
+            height: 55px;
+            display: block;
+        }
     }
 
     .container-profile {
@@ -1391,7 +1478,7 @@ nav {
         background-color: rgb(186, 222, 219);
 
         .container-card-img-infos {
-            padding: 15px;
+            padding: 0 15px 15px 15px;
 
             .container-profile-img {
                 background-color: white;
@@ -1450,6 +1537,22 @@ nav {
                 flex-direction: column;
                 align-items: center;
 
+                .img-pen-desktop {
+                    display: none;
+                }
+
+                .entry-date {
+                    height: 50px;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    font-size: 1.1rem;
+                }
+
                 .profile-img-white-paint-desktop {
                     display: none;
                 }
@@ -1477,7 +1580,7 @@ nav {
                     width: 90%;
                     background-color: $secondarycolor;
                     padding: 15px;
-                    margin: 20px auto 15px;
+                    margin: 0 auto 15px;
 
                     .profile-details {
                         border-radius: 15px;
@@ -1494,9 +1597,10 @@ nav {
                                 text-align: center;
                                 font-family: $textfont;
 
-                                span {
+                                a {
                                     text-decoration: underline;
                                     font-family: $textfont;
+                                    color: black;
                                 }
                             }
                         }
@@ -1606,7 +1710,6 @@ nav {
             .green-skills-left {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 width: 100%;
                 height: 100%;
 
@@ -1743,6 +1846,10 @@ nav {
                 display: none;
             }
 
+            .img-pen-mobile {
+                display: none;
+            }
+
             .container-vertical-green-line-top {
                 display: flex;
                 justify-content: center;
@@ -1824,6 +1931,7 @@ nav {
                 }
 
                 .container-profile-infos {
+                    position: relative;
                     background-color: $primary;
                     height: auto;
                     width: 75%;
@@ -1831,11 +1939,32 @@ nav {
                     flex-direction: column;
                     align-items: center;
 
+                    .img-pen-desktop {
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                        height: 70px;
+                        display: block;
+                    }
+
+                    .entry-date {
+                        height: 50px;
+                        width: 75%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        font-size: 1.3rem;
+                        font-family: $textfont;
+                    }
+
                     .profile-img-white-paint-desktop {
                         height: 90px;
                         position: relative;
                         max-width: 80%;
-                        margin: 10px 0 40px 0;
+                        margin: 10px 0 20px 0;
                         display: block;
                     }
 
@@ -1864,7 +1993,7 @@ nav {
                         width: 75%;
                         background-color: $secondarycolor;
                         padding: 15px;
-                        margin: 20px auto 15px;
+                        margin: 0 auto 15px;
 
                         .profile-details {
                             border-radius: 15px;
@@ -1881,9 +2010,10 @@ nav {
                                     font-family: $textfont;
                                     word-break: break-word;
 
-                                    span {
+                                    a {
                                         text-decoration: underline;
                                         font-family: $textfont;
+                                        color: black;
                                     }
                                 }
                             }
@@ -1999,7 +2129,6 @@ nav {
                 .green-skills-left {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
                     width: 50%;
                     height: 100%;
 
@@ -2129,23 +2258,28 @@ nav {
 
 .bienvenue {
     font-family: "Montserrat", sans-serif;
+
     h2, .livret-accueil, p, ul, .links {
         margin: 0 30px;
     }
+
     h2 {
         text-align: center;
         color: $tertiarycolor;
         margin-top: 20px;
         font-size: 24px;
     }
+
     .livret-accueil {
         position: relative;
         text-align: center;
         margin: 20px auto;
+
         img {
             width: 360px;
             height: auto;
         }
+
         #text {
             color: $tertiarycolor;
             font-size: 24px;
@@ -2155,26 +2289,32 @@ nav {
             transform: translate(-50%, -50%);
         }
     }
+
     .arrows {
         display: flex;
         justify-content: space-around;
         align-items: center;
         padding: 10px 60px;
+
         .left-arrow, .right-arrow {
             width: 48px;
             height: auto;
         }
+
         .right-arrow {
             transform: scaleX(-1);
         }
     }
+
     .adhesion {
         p, li {
             text-align: justify;
         }
+
         p {
             font-size: smaller;
         }
+
         .flower {
             position: relative;
             text-align: center;
@@ -2196,16 +2336,19 @@ nav {
             }
         }
     }
+
     .titres-bienvenue {
         position: relative;
         text-align: left;
         margin: 20px auto;
         line-height: 54px;
         vertical-align: center;
+
         img {
             width: 360px;
             height: auto;
         }
+
         h3 {
             color: white;
             font-size: 16px;
@@ -2214,6 +2357,7 @@ nav {
             left: 10px;
         }
     }
+
     .green-text {
         color: $primarycolor;
     }
@@ -2223,6 +2367,7 @@ nav {
         width: 100%;
         height: 300px;
         margin: 30px auto 30px auto;
+
         #block {
             position: absolute;
             background-color: $primarycolor;
@@ -2230,6 +2375,7 @@ nav {
             height: 100%;
             width: 100%;
         }
+
         #text {
             padding: 15px;
             text-align: center;
@@ -2238,31 +2384,38 @@ nav {
             height: 100%;
             width: 100%;
         }
+
         .contacts {
             display: flex;
             flex-direction: row;
             justify-content: center;
         }
+
         .contact-plus {
             margin: 30px 10px;
             padding: 10px;
+
             img {
                 width: 80px;
                 height: auto;
             }
         }
+
         .contact {
             display: flex;
             flex-direction: column;
             margin: 30px 10px;
             padding: 10px;
+
             p {
                 margin-top: 50px;
                 font-size: 14px;
             }
+
             .contact-img {
                 position: relative;
                 margin: 30px auto 30px auto;
+
                 .photo {
                     position: absolute;
                     top: 50%;
@@ -2271,6 +2424,7 @@ nav {
                     width: 100px;
                     border-radius: 200px;
                 }
+
                 .circle {
                     position: absolute;
                     top: 50%;
@@ -2324,6 +2478,6 @@ nav {
 
 @media (min-width: 720px) {
     .subtitles-accueil {
-        margin-top : -70px;
+        margin-top: -70px;
     }
 }

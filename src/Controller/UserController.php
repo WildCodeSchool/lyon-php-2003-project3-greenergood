@@ -2,17 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Action;
 use App\Entity\User;
 use App\Form\EditEmailType;
 use App\Form\EditPasswordType;
-use App\Form\UserType;
-use App\Repository\ActionRepository;
-use App\Repository\UserRepository;
-use Knp\Component\Pager\PaginatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use App\Form\ProfileType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,14 +20,12 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      * @param User $user
-     * @param ActionRepository $actionRepository
      * @return Response
      */
-    public function show(User $user, ActionRepository $actionRepository): Response
+    public function show(User $user): Response
     {
-        return $this->render('admin/user/show.html.twig', [
+        return $this->render('user/show.html.twig', [
             'user' => $user,
-            'actions' => $actionRepository->findAll()
         ]);
     }
 
@@ -41,11 +33,16 @@ class UserController extends AbstractController
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      * @param Request $request
      * @param User $user
+     * @param UserPasswordEncoderInterface $passwordEncoder
      * @return Response
      */
     public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        if ($user != $this->getUser()) {
+            throw $this->createAccessDeniedException('Access denied');
+        }
+
+        $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
 
         $emailForm = $this->createForm(EditEmailType::class, $user);
@@ -63,39 +60,53 @@ class UserController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            $this->addFlash('success', "Votre mot de passe a été modifié avec succès");
+
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            $this->addFlash('success', "Votre email a été modifié avec succès");
+
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_index');
+            // Set the pictureFile property to null to avoid serialization error
+            $user->setPictureFile(null);
+
+            $this->addFlash('success', "Votre profil a été modifié avec succès");
+
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
-            'emailForm' => $emailForm->createView(),
             'passForm' => $passForm->createView(),
+            'emailForm' => $emailForm->createView(),
             'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param User $user
+     * @return Response
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
+
+        $this->addFlash('Danger', "Le profil a été supprimé avec succès");
 
         return $this->redirectToRoute('user_index');
     }
