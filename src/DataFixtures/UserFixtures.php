@@ -28,8 +28,34 @@ class UserFixtures extends Fixture
             'userpassword'
         ));
         $user->setStatus(1);
-
         $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('elodie.girandier@thegreenergood.fr');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setFirstname('Elodie');
+        $user->setLastname('Girandier');
+        $user->setUserPicture('img/bienvenue/profile-2.jpg');
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user,
+            'elodie'
+        ));
+        $user->setStatus(1);
+        $manager->persist($user);
+
+        $user = new User();
+        $user->setEmail('hello@thegreenergood.fr');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setFirstname('Clémentine');
+        $user->setLastname('Mossé');
+        $user->setUserPicture('img/bienvenue/profile-2.jpg');
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user,
+            'clementine'
+        ));
+        $user->setStatus(1);
+        $manager->persist($user);
+
         $manager->flush();
     }
 }
