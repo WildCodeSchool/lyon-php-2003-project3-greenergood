@@ -10,3 +10,4 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - '#Call to an undefined method object::.*\(\)#'
+        - '#Parameter \#\d+ $.* of method [a-zA-Z0-9\\_]+::.*\(\) expects App\Entity\User|null, object|null given.#'

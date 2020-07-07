@@ -14,35 +14,35 @@
     </div>
     <div class="container-card-method">
         {% for method in methods %}
-                <div class="card cardmethod">
-                    <div class="card-body">
-                        <div class="card-head">
+            <div class="card cardmethod">
+                <div class="card-body">
+                    <div class="card-head">
+                        <a href="{{ path('method_show', {'id': method.id}) }}">
                             <h5 class="card-title">{{ method.name }}</h5>
-                            <div class="dropup dropup-method">
-                                <div class="threeDots" data-toggle="dropdown"
-                                     aria-haspopup="true" aria-expanded="false">
-                                </div>
+                        </a>
+                        <div class="dropup dropup-method">
+                            <div class="threeDots" data-toggle="dropdown"
+                                 aria-haspopup="true" aria-expanded="false">
+                            </div>
+                            <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
+                                <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                <a class="pipe-link-method"
+                                   href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+                                {% if is_granted('ROLE_ADMIN') %}
 
-                                <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
-                                    <div class="container-drop">
-                                    <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                                    <a class="pipe-link-method" href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
-                                    {% if is_granted('ROLE_ADMIN') %}
-
-                                        {% if method.activated == true %}
-                                            {{ include('method/_delete_form.html.twig') }}
-                                        {% elseif method.activated == false %}
-                                            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
-                                        {% endif %}
-
+                                    {% if method.activated == true %}
+                                        <a href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
+                                    {% elseif method.activated == false %}
+                                        <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                                     {% endif %}
-                                </div>
-                                </div>
+
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-                    <img class="card-img" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
                 </div>
+                <img class="card-img" src="{{ method.picture }}" alt="Card image cap">
+            </div>
         {% endfor %}
     </div>
 
