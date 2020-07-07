@@ -60,7 +60,7 @@ class UserController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', "Votre profil a été modifié avec succès");
+            $this->addFlash('success', "Votre mot de passe a été modifié avec succès");
 
             return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
@@ -68,11 +68,18 @@ class UserController extends AbstractController
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "Votre email a été modifié avec succès");
+
             return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            // Set the pictureFile property to null to avoid serialization error
+            $user->setPictureFile(null);
+
+            $this->addFlash('success', "Votre profil a été modifié avec succès");
 
             return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
