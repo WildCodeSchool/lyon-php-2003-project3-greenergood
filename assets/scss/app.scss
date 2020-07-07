@@ -679,6 +679,7 @@ nav {
 }
 
 .action-list-item {
+    margin-right: 0;
     padding: 0 15px 0 15px;
     display: flex;
     align-items: center;
@@ -881,6 +882,10 @@ nav {
 // Action show page
 .deactivated {
     color: red;
+}
+
+.fiche-action {
+    padding: 20px;
 }
 
 .action-mini-menu {
