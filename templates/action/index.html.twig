@@ -25,7 +25,7 @@
                 <div class="card cardaction hvr-glow" style="width: 18rem;">
                     <a href="{{ path('action_show', {'id': action.id}) }}">
                         <img class="card-img-top"
-                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../img/action/action_placeholder.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
+                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
                             {% if action.status == "started" %}
                                 <span class="badge badge-pill badge-primary ongoing">En cours</span>
                             {% elseif action.status == "cancelled" %}

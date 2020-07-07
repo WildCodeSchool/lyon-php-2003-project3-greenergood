@@ -78,12 +78,12 @@
                     <div class="contact">
                         <div class="contact-img">
                             <img class="photo" src="{{ asset('img/bienvenue/profile-2.jpg') }}">
-                            <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                            <img class="circle" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}">
                         </div>
                         <p>Clémentine Mossé</p>
                     </div>
                     <div class="contact-plus">
-                        <img class="photo" src="{{ asset('img/bienvenue/nouveau_membre_plus.png') }}">
+                        <img class="photo" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}">
                     </div>
                 </div>
             </div>

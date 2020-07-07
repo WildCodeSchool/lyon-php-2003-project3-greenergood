@@ -83,7 +83,7 @@
             </div>
 
             <div class="action-center-right">
-                <img class="action-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
+                <img class="action-image" src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}">
             </div>
 
         </div>
@@ -119,7 +119,7 @@
                 {# Generate as many pictures as User associated with action when set up#}
                 {% for user in team.users %}
                     <a href="{{ path('user_show', {'id':user.id}) }}">
-                        <img class="action-member-image" src="{{ user.userPicture }}" alt="Nom de la personne">
+                        <img class="action-member-image" src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png")  }}" alt="Nom de la personne">
                     </a>
                 {% endfor %}
 
