@@ -93,6 +93,11 @@ class Method
      */
     private $contact;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->methodLinks = new ArrayCollection();
@@ -295,6 +300,17 @@ class Method
         if ($this->contact->contains($contact)) {
             $this->contact->removeElement($contact);
         }
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

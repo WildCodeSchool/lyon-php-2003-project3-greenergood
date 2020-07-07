@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Entity\MethodLink;
 use App\Entity\User;
@@ -20,6 +21,16 @@ class MethodType extends AbstractType
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
             ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
+            ->add('category', EntityType::class, [
+                'label' => "Catégorie *",
+                'class' => Category::class,
+                'choice_label' => function (Category $category) {
+                    return $category->getId() . ' - ' . $category->getName();
+                },
+                'expanded' => false,
+                'multiple' => false,
+                'by_reference'=> true,
+                ])
             ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
             ->add('content', CKEditorType::class, ['label' => "Procédure *"])
             ->add('objective1', null, ['label' => "Objectif 1 :"])
