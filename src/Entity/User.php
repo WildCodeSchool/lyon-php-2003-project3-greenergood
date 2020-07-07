@@ -115,6 +115,7 @@ class User implements UserInterface
      */
     private $methods;
 
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $greenSkills1;

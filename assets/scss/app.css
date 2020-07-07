@@ -10489,7 +10489,7 @@ nav {
 
 .action-member-image, .action-plus-image {
   height: 75px;
-  width: 75px;
+  width: auto;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -10890,6 +10890,7 @@ nav {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    width: 100%;
   }
   .deliverable-box .action-methods {
     flex: 3;
@@ -11195,12 +11196,22 @@ nav {
 .bloc_page_profile .profile-img-white-paint-mobile {
   height: 75px;
   position: relative;
-  margin: 10px 10px 25px 10px;
+  margin: 10px 10px 0 10px;
 }
 .bloc_page_profile .profile-name-mobile {
   position: absolute;
   z-index: 1;
   align-self: center;
+}
+.bloc_page_profile .container-pen-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.bloc_page_profile .container-pen-mobile .img-pen-mobile {
+  height: 55px;
+  display: block;
 }
 .bloc_page_profile .container-profile {
   display: flex;
@@ -11210,7 +11221,7 @@ nav {
   background-color: #badedb;
 }
 .bloc_page_profile .container-profile .container-card-img-infos {
-  padding: 15px;
+  padding: 0 15px 15px 15px;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img {
   background-color: white;
@@ -11261,6 +11272,20 @@ nav {
   flex-direction: column;
   align-items: center;
 }
+.bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .img-pen-desktop {
+  display: none;
+}
+.bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .entry-date {
+  height: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.1rem;
+}
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .profile-img-white-paint-desktop {
   display: none;
 }
@@ -11284,7 +11309,7 @@ nav {
   width: 90%;
   background-color: #FDEE6E;
   padding: 15px;
-  margin: 20px auto 15px;
+  margin: 0 auto 15px;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details {
   border-radius: 15px;
@@ -11299,9 +11324,10 @@ nav {
   text-align: center;
   font-family: "Montserrat", sans-serif;
 }
-.bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details .details p span {
+.bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details .details p a {
   text-decoration: underline;
   font-family: "Montserrat", sans-serif;
+  color: black;
 }
 .bloc_page_profile .container-profile .container-infos-bio-work {
   display: flex;
@@ -11388,7 +11414,6 @@ nav {
 .bloc_page_profile .container-profile .container-green-skills .green-skills-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -11501,6 +11526,9 @@ nav {
   .bloc_page_profile .container-profile .profile-img-white-paint-mobile {
     display: none;
   }
+  .bloc_page_profile .container-profile .img-pen-mobile {
+    display: none;
+  }
   .bloc_page_profile .container-profile .container-vertical-green-line-top {
     display: flex;
     justify-content: center;
@@ -11572,6 +11600,7 @@ nav {
     display: block;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos {
+    position: relative;
     background-color: #5AAFAA;
     height: auto;
     width: 75%;
@@ -11579,11 +11608,30 @@ nav {
     flex-direction: column;
     align-items: center;
   }
+  .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .img-pen-desktop {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 70px;
+    display: block;
+  }
+  .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .entry-date {
+    height: 50px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.3rem;
+    font-family: "Montserrat", sans-serif;
+  }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .profile-img-white-paint-desktop {
     height: 90px;
     position: relative;
     max-width: 80%;
-    margin: 10px 0 40px 0;
+    margin: 10px 0 20px 0;
     display: block;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .profile-name-desktop {
@@ -11608,7 +11656,7 @@ nav {
     width: 75%;
     background-color: #FDEE6E;
     padding: 15px;
-    margin: 20px auto 15px;
+    margin: 0 auto 15px;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details {
     border-radius: 15px;
@@ -11623,9 +11671,10 @@ nav {
     font-family: "Montserrat", sans-serif;
     word-break: break-word;
   }
-  .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details .details p span {
+  .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .container-profile-contact-detail .profile-details .details p a {
     text-decoration: underline;
     font-family: "Montserrat", sans-serif;
+    color: black;
   }
   .bloc_page_profile .container-profile .container-infos-bio-work {
     display: flex;
@@ -11717,7 +11766,6 @@ nav {
   .bloc_page_profile .container-profile .container-green-skills .green-skills-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     height: 100%;
   }
