@@ -82,6 +82,11 @@
                 </div>
             </div>
         {% endif %}
+        <div>
+            {{ render(controller(
+                'App\\Controller\\SearchController::searchBar'
+            )) }}
+        </div>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
