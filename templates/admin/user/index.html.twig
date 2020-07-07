@@ -38,7 +38,7 @@
                         {% endif %}
                     </td>
                     <td class="actions-listing">
-                        <a href="{{ path('admin_user_show', {'id': user.id}) }}">
+                        <a href="{{ path('user_show', {'id': user.id}) }}">
                             <button class="btn form-button">{{ button_label|default('Voir') }}</button>
                         </a>
                         <a href="{{ path('admin_user_edit', {'id': user.id}) }}">

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="bienvenue">
+        <h2>Bienvenue parmi nous ! Pour bien démarrer, découvre le</h2>
+            <div class="livret-accueil">
+                <img src="{{ asset('img/bienvenue/nouveau_membre_bandereau.png') }}">
+                <a id="text" href="https://docs.google.com/presentation/d/1HRxcR8REN2-eUBweVfz2qTLL7_SI4cEfjrsI4L0Te4Y/edit#slide=id.p"><strong>Livret d’accueil</strong></a>
+            </div>
+        <div class="adhesion">
+            <div class="adh-1">
+                <h2>Tu souhaites adhérer à l’association ?</h2>
+                <div class="arrows">
+                    <img class="left-arrow" src="{{ asset('img/bienvenue/nouveau_membre_fleche.png') }}">
+                    <img class="right-arrow" src="{{ asset('img/bienvenue/nouveau_membre_fleche.png') }}">
+                </div>
+                <div class="flower">
+                    <img class="flower-img" src="{{ asset('img/bienvenue/nouveau_membre_fleur.png') }}">
+                    <a href="https://www.helloasso.com/associations/the-greener-good/adhesions/adhesion-devenez-adherent-e-2020-de-l-association-the-greener-good">C’est par ici !</a>
+                </div>
+            </div>
+            <div class="adh-2">
+                <p>Si tu souhaites apporter un soutien supplémentaire à l’association, il est possible d’adhérer. Cette adhésion n’est en rien obligatoire et plusieurs niveaux de cotisation sont proposés pour te permettre de devenir membre peu importe tes moyens. Cette adhésion te permettra un accès aux Assemblées Générales annuelles. <br>
+                À savoir : un nombre d’adhérents important apporte de la crédibilité à The Greener Good.</p>
+            </div>
+        </div>
+        <div class="subtitles-accueil">
+            <div class="titres-bienvenue">
+                <img src="{{ asset('img/bienvenue/nouveau_membre_etiquette.png') }}">
+                <h3>La Gare Centrale de The Greener Good</h3>
+            </div>
+                <ul>
+                    <li>L’<a href="#">historique</a> contient tous les <strong>événements internes</strong> marquants de l’association, mais aussi les <strong>événements grand public</strong> comme la première édition du Greener Festival, la sortie de notre carte interactive…</li>
+                    <li>Le <a href="{{ path('trombinoscope_index') }}">trombinoscope</a> présente l’<strong>équipe de The Greener Good</strong>. Il suffit ensuite de cliquer sur la photo ou les infos d’un membre de l’équipe pour découvrir sa fiche.</li>
+                    <li>La <span class="green-text">fiche membre</span> recense toutes les <strong>informations d’un membre</strong> : son nom, son année d’entrée dans l’association, son implication dans les différents projets, ses compétences et ses coordonnées. Tu peux modifier les informations de ta fiche via ton profil.</li>
+                    <li>Les <a href="{{ path('action_index') }}">fiches actions</a> reprennent les <strong>projets en cours et passés</strong>.</li>
+                    <li>Les <a href="{{ path('method_index') }}">fiches méthodes</a> expliquent comment procéder pour écrire un communiqué de presse, poster un article sur le site internet, pour organiser un événement...</li>
+                    <li>L’<a href="#">agenda</a> contient les <strong>prochains événements</strong> de l’association, mais aussi les réunions en interne.</li>
+                    <li>La section <a href="#">Mes Favoris</a> te permet de retrouver toutes les fiches que tu as décidé de sauvegarder.</li>
+                </ul>
+
+            <div class="titres-bienvenue">
+                <img src="{{ asset('img/bienvenue/nouveau_membre_etiquette.png') }}">
+                <h3>Les outils de communication interne</h3>
+            </div>
+                <ul>
+                    <li><span class="green-text">Slack</span> : outil de communication organisé avec des chaînes, selon les sujets abordés : partenariats, logistique du Festival, carte interactive… Tu peux également envoyer des messages privés aux membres faisant partie de la plateforme de travail.
+                    </li>
+                    <div class="slack-accueil">Une formation pour Slack est disponible <a href="#">ici</a>.</div>
+
+                    <li><span class="green-text">Whatsapp</span> : application de messagerie instantanée. Elle sert surtout pour rappeler les réunions ou pour communiquer lors d’un événement. Deux groupes existent : un pour les bénévoles permanents et un pour les bénévoles ponctuels, présents lors des événements.</li>
+                </ul>
+
+            <div class="titres-bienvenue">
+                <img src="{{ asset('img/bienvenue/nouveau_membre_etiquette.png') }}">
+                <h3>Liens utiles</h3>
+            </div>
+                <div class="row links">
+                    <a class="col-md-3 pb-2" href="https://www.thegreenergood.fr/">Site The Greener Good</a>
+                    <a class="col-md-3 pb-2" href="https://map.thegreenergood.fr/">Carte interactive The Greener Map</a>
+                    <a class="col-md-3 pb-2" href="https://calendar.google.com/calendar/embed?src=ueo9f8qeb772n2cd497ig1isd8%40group.calendar.google.com&ctz=Europe%2FParis">Calendrier partagé</a>
+                    <a class="col-md-3 pb-2" href="https://www.thegreenergood.fr/index.php/comment-se-procurer-le-guide/">Se procurer le Guide</a>
+                </div>
+        </div>
+        <div class="contact-accueil">
+            <div id="block"></div>
+            <div id="text">
+                <p><u>Contacts utiles</u></p>
+                <p><em>Si tu as des questions, tu peux contacter :</em></p>
+                <div class="contacts">
+                    <div class="contact">
+                        <div class="contact-img">
+                            <img class="photo" src="{{ asset('img/bienvenue/profile-2.jpg') }}">
+                            <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                        </div>
+                        <p>Elodie Girandier</p>
+                    </div>
+                    <div class="contact">
+                        <div class="contact-img">
+                            <img class="photo" src="{{ asset('img/bienvenue/profile-2.jpg') }}">
+                            <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                        </div>
+                        <p>Clémentine Mossé</p>
+                    </div>
+                    <div class="contact-plus">
+                        <img class="photo" src="{{ asset('img/bienvenue/nouveau_membre_plus.png') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
