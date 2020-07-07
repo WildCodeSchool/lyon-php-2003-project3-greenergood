@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Entity\MethodLink;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +18,16 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
+            ->add('category', EntityType::class, [
+                'label' => "Catégorie *",
+                'class' => Category::class,
+                'choice_label' => function (Category $category) {
+                    return $category->getId() . ' - ' . $category->getName();
+                },
+                'expanded' => false,
+                'multiple' => false,
+                'by_reference'=> true,
+                ])
             ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
             ->add('content', CKEditorType::class, ['label' => "Procédure *"])
             ->add('objectives', null, ['label' => "Objectifs"])

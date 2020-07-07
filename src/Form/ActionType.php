@@ -49,8 +49,7 @@ class ActionType extends AbstractType
                 'label' => 'Fiche(s) Méthode',
                 'class' => Method::class,
                 'choice_label' => function (Method $method) {
-                    $label = $method->getId() . ' - ' . $method->getName();
-                    return $label;
+                    return $method->getId() . ' - ' . $method->getName();
                 },
                 'expanded' => true,
                 'multiple' => true,

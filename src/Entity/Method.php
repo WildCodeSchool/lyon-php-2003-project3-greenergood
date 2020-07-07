@@ -67,6 +67,11 @@ class Method
      */
     private $activated = true;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->methodLinks = new ArrayCollection();
@@ -194,5 +199,17 @@ class Method
         }
 
         return $method;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

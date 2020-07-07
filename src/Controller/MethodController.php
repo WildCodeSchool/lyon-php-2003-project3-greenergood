@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
@@ -65,8 +66,10 @@ class MethodController extends AbstractController
      */
     public function show(Method $method): Response
     {
+        $category = $method->getCategory();
         return $this->render('method/show.html.twig', [
             'method' => $method,
+            'category' => $category,
         ]);
     }
 
