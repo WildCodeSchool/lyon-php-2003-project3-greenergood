@@ -30,11 +30,11 @@
 
                     {% if is_granted('ROLE_ADMIN') %}
 
-                    {% if action.activated == true %}
-                        <a href="{{ path('action_delete', {'id' : action.id}) }}">Désactiver</a>
-                    {% elseif action.activated == false %}
-                        <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
-                    {% endif %}
+                        {% if action.activated == true %}
+                            <a href="{{ path('action_delete', {'id' : action.id}) }}">Désactiver</a>
+                        {% elseif action.activated == false %}
+                            <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
+                        {% endif %}
 
 
                     {% endif %}
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="">
+        <div>
             <div class="action-header">
 
                 <div class="action-center-left"></div>
@@ -84,8 +84,10 @@
 
                 </div>
 
-            <div class="action-center-right">
-                <img class="action-image" src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}">
+                <div class="action-center-right">
+                    <img class="action-image"
+                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}">
+                </div>
             </div>
 
             <div class="action-yellow-box">
@@ -134,11 +136,11 @@
 
         <div class="action-subtitles">Organisation interne</div>
         <div class="row action-list-item">
-            <div class="col-sm-2 organisation-button"><a href="#">Organigramme</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Comptes rendus</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Calendrier</a></div>
-            <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
-            <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
+            <a class="col-sm-2 organisation-button" href="#">Organigramme</a>
+            <a class="col-sm-2 organisation-button" href="#">Comptes rendus</a>
+            <a class="col-sm-2 organisation-button" href="#">Calendrier</a>
+            <a class="col-sm-2 organisation-button" href="#">Drive</a>
+            <a class="col-sm-2 organisation-button-plus" href="#">+</a>
         </div>
         <div class="action-subtitles">Fiches METHODE</div>
         <div class="action-methods">
@@ -146,7 +148,7 @@
             <ul>
                 {% for method in action.methods %}
                     {# add method show link #}
-                    <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
+                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.id }} - {{ method.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
