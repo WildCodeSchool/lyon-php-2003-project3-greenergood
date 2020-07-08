@@ -90,14 +90,14 @@
                             {% for team in user.teams %}
                                 <li>
                                     <h1>
-                                        {{ team.action.name }}
+                                        <a href="{{ path('action_show', {'id': team.action.id}) }}">{{ team.action.name }}</a>
                                     </h1>
                                 </li>
                             {% endfor %}
                             {% for method in user.methods %}
                                 <li>
                                     <h1>
-                                        {{ method.name }}
+                                        <a href="{{ path('method_show', {'id': method.id}) }}">{{ method.name }}</a>
                                     </h1>
                                 </li>
                             {% endfor %}
