@@ -150,7 +150,7 @@
             <ul>
                 {% for method in action.methods %}
                     {# add method show link #}
-                    <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
+                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.id }} - {{ method.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
