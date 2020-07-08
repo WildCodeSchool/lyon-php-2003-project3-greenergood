@@ -94,6 +94,13 @@
                                     </h1>
                                 </li>
                             {% endfor %}
+                            {% for method in user.methods %}
+                                <li>
+                                    <h1>
+                                        {{ method.name }}
+                                    </h1>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
