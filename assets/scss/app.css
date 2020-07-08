@@ -10522,6 +10522,7 @@ nav {
 }
 
 .action-list-item {
+  margin-right: 0;
   padding: 0 15px 0 15px;
   display: flex;
   align-items: center;
@@ -10713,6 +10714,7 @@ nav {
 
 .action-three-dots {
   display: flex;
+  cursor: pointer;
 }
 
 .action-menu {
