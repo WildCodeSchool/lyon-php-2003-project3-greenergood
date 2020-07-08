@@ -48,7 +48,7 @@ class Method
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $objectives;
+    private $objective1;
 
     /**
      * @ORM\OneToMany(
@@ -67,9 +67,36 @@ class Method
      */
     private $activated = true;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $objective2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $objective3;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="methods")
+     */
+    private $contact;
+
     public function __construct()
     {
         $this->methodLinks = new ArrayCollection();
+        $this->contact = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,14 +152,14 @@ class Method
         return $this;
     }
 
-    public function getObjectives(): ?string
+    public function getObjective1(): ?string
     {
-        return $this->objectives;
+        return $this->objective1;
     }
 
-    public function setObjectives(?string $objectives): self
+    public function setObjective1(?string $objective1): self
     {
-        $this->objectives = $objectives;
+        $this->objective1 = $objective1;
 
         return $this;
     }
@@ -180,6 +207,54 @@ class Method
         return $this;
     }
 
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getAuthor(): User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getObjective2(): ?string
+    {
+        return $this->objective2;
+    }
+
+    public function setObjective2(?string $objective2): self
+    {
+        $this->objective2 = $objective2;
+
+        return $this;
+    }
+
+    public function getObjective3(): ?string
+    {
+        return $this->objective3;
+    }
+
+    public function setObjective3(?string $objective3): self
+    {
+        $this->objective3 = $objective3;
+
+        return $this;
+    }
+
     public function clone(): Method
     {
         $method = new Method();
@@ -187,12 +262,42 @@ class Method
         $method->setCreatedAt(new DateTime('now'));
         $method->setPrerequisites($this->getPrerequisites());
         $method->setContent($this->getContent());
-        $method->setObjectives($this->getObjectives());
+        $method->setObjective1($this->getObjective1());
+        $method->setObjective2($this->getObjective2());
+        $method->setObjective3($this->getObjective3());
+        $method->setAuthor($this->getAuthor());
+        $method->setPicture($this->getPicture());
 
         foreach ($this->getMethodLinks() as $methodLink) {
             $method->addMethodLink(clone $methodLink);
         }
 
         return $method;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getContact(): Collection
+    {
+        return $this->contact;
+    }
+
+    public function addContact(User $contact): self
+    {
+        if (!$this->contact->contains($contact)) {
+            $this->contact[] = $contact;
+        }
+
+        return $this;
+    }
+
+    public function removeContact(User $contact): self
+    {
+        if ($this->contact->contains($contact)) {
+            $this->contact->removeElement($contact);
+        }
+
+        return $this;
     }
 }

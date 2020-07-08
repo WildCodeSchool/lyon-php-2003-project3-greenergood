@@ -83,7 +83,7 @@ class AdminController extends AbstractController
      */
     public function showUser(User $user): Response
     {
-        return $this->render('admin/user/show.html.twig', [
+        return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -114,17 +114,26 @@ class AdminController extends AbstractController
             );
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "Votre mot de passe a été modifié avec succès");
+
             return $this->redirectToRoute('admin_user_index');
         }
 
         if ($emailForm->isSubmitted() && $emailForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "Votre email a été modifié avec succès");
+
             return $this->redirectToRoute('admin_user_index');
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            // Set the pictureFile property to null to avoid serialization error
+            $user->setPictureFile(null);
+
+            $this->addFlash('success', "Votre profil a été modifié avec succès");
 
             return $this->redirectToRoute('admin_user_index');
         }

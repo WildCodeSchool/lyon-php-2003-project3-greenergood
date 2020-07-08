@@ -4,172 +4,179 @@
     Fiche Action - {{ action.name }}
 
     {% if action.activated == false %}
-         - Désactivée
-    {% endif %}
+        - Désactivée
+    {% endif %}e
 
 {% endblock %}
 
 {% block body %}
-    <div class="horizontal">
-        <div {% if action.activated == false %} class="deactivated" {% endif %}>
-            Fiche ACTION n°{{ action.id }}
+    <main class="container-fluid">
+        <div class="horizontal fiche-action">
+            <div {% if action.activated == false %} class="deactivated" {% endif %}>
+                Fiche ACTION n°{{ action.id }}
 
-            {% if action.activated == false %}
-                - Désactivée
-            {% endif %}
+                {% if action.activated == false %}
+                    - Désactivée
+                {% endif %}
 
-        </div>
+            </div>
 
-        <!-- Menu three dots -->
-        <div class="action-mini-menu">
-            <div class="action-three-dots threeDots"></div>
-            <div class="action-menu menu">
-                <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
-                <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
+            <!-- Menu three dots -->
+            <div class="action-mini-menu">
+                <div class="action-three-dots threeDots"></div>
+                <div class="action-menu menu">
+                    <a href="{{ path('action_edit', {'id': action.id}) }}">Modifier</a>
+                    <a href="{{ path('action_duplicate', {'id': action.id}) }}">Dupliquer</a>
 
-                {% if is_granted('ROLE_ADMIN') %}
+                    {% if is_granted('ROLE_ADMIN') %}
 
-                    {% if action.activated == true %}
-                        {{ include('action/_delete_form.html.twig') }}
-                    {% elseif action.activated == false %}
-                        <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
+                        {% if action.activated == true %}
+                            <a href="{{ path('action_delete', {'id' : action.id}) }}">Désactiver</a>
+                        {% elseif action.activated == false %}
+                            <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
+                        {% endif %}
+
+
                     {% endif %}
 
-                {% endif %}
-
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="action-header">
-
-            <div class="action-center-left"></div>
-
-            <div class="action-center-header">
-                <h1>
-                    {{ action.name }}
-
-                    {% if action.status=="started" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}" title="En cours" alt="En cours">
-                    {% elseif action.status=="ended" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}" title="Terminée" alt="Terminée">
-                    {% elseif action.status=="cancelled" %}
-                        <img class="status-dot" src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}" title="Annulée" alt="Annulée">
-                    {% endif %}
-                </h1>
-
-                {# Display edition Number is it is set #}
-                {% if action.editionNumber %}
-                    <figure class="col-6 offset-3 edition-box">
-                        <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}"
-                             alt="Fond vert du titre">
-                        <figcaption>
-                            {% if action.editionNumber > 1 %}
-                                {{ action.editionNumber }}ème édition
-                            {% elseif action.editionNumber == 1 %}
-                                {{ action.editionNumber }}ère édition
-                            {% endif %}
-                        </figcaption>
-                    </figure>
-                {% endif %}
-
-            </div>
-
-            <div class="action-center-right">
-                <img class="action-image" src="{{ asset('../img/action/image_placeholder.jpg') }}">
-            </div>
-
-        </div>
-
-        <div class="action-yellow-box">
-            <div class="text-center">{{ action.content }}</div>
-            <hr class="action-separator">
-
-            <div class="text-center">
-                {{ action.startDate ? action.startDate|date('d M Y') : '' }}
-                {% if action.endDate %}
-                    - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
-                {% endif %}
-            </div>
-            <hr class="action-separator">
-            <div class="text-center">
-                Lieu : {{ action.location }}
-            </div>
-            <hr class="action-separator">
-            <div class="text-center">
-                {{ action.description|raw }}
+                </div>
             </div>
         </div>
 
-        <div class="action-progress-box">{{ action.projectProgress }}</div>
-        
-        <button class="action-add-Team" title="Ajouter une équipe">
-            <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
-        </button>
         <div>
-            {# Generate as many teams as teams associated with action when set up#}
-            {% for team in teams %}
-                <div class="col-6 team-title"> {{ team.name }} </div>
-                {# Generate as many pictures as User associated with action when set up#}
-                {% for user in team.users %}
-                    <img class="action-member-image" src="{{ user.userPicture }}" alt="Nom de la personne">
+            <div class="action-header">
+
+                <div class="action-center-left"></div>
+
+                <div class="action-center-header">
+                    <h1>
+                        {{ action.name }}
+
+                        {% if action.status=="started" %}
+                            <img class="status-dot"
+                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}"
+                                 title="En cours" alt="En cours">
+                        {% elseif action.status=="ended" %}
+                            <img class="status-dot"
+                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}"
+                                 title="Terminée" alt="Terminée">
+                        {% elseif action.status=="cancelled" %}
+                            <img class="status-dot"
+                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}"
+                                 title="Annulée" alt="Annulée">
+                        {% endif %}
+                    </h1>
+
+                    {# Display edition Number is it is set #}
+                    {% if action.editionNumber %}
+                        <figure class="col-6 offset-3 edition-box">
+                            <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}"
+                                 alt="Fond vert du titre">
+                            <figcaption>
+                                {% if action.editionNumber > 1 %}
+                                    {{ action.editionNumber }}ème édition
+                                {% elseif action.editionNumber == 1 %}
+                                    {{ action.editionNumber }}ère édition
+                                {% endif %}
+                            </figcaption>
+                        </figure>
+                    {% endif %}
+
+                </div>
+
+                <div class="action-center-right">
+                    <img class="action-image"
+                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}">
+                </div>
+            </div>
+
+            <div class="action-yellow-box">
+                <div class="text-center">{{ action.content }}</div>
+                <hr class="action-separator">
+
+                <div class="text-center">
+                    {{ action.startDate ? action.startDate|date('d M Y') : '' }}
+                    {% if action.endDate %}
+                        - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                    {% endif %}
+                </div>
+                <hr class="action-separator">
+                <div class="text-center">
+                    Lieu : {{ action.location }}
+                </div>
+                <hr class="action-separator">
+                <div class="text-center">
+                    {{ action.description|raw }}
+                </div>
+            </div>
+
+            <div class="action-progress-box">{{ action.projectProgress }}</div>
+            <button class="action-add-Team" title="Ajouter une équipe">
+                <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
+            </button>
+            <div>
+                {# Generate as many teams as teams associated with action when set up#}
+                {% for team in teams %}
+                    <div class="col-6 team-title"> {{ team.name }} </div>
+                    {# Generate as many pictures as User associated with action when set up#}
+                    {% for user in team.users %}
+                        <a href="{{ path('user_show', {'id':user.id}) }}">
+                            <img class="action-member-image"
+                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png") }}"
+                                 alt="Nom de la personne">
+                        </a>
+                    {% endfor %}
+
+                    {# Add link to button when functionality is set #}
+                    <a href="{{ path('team_edit', {'id': team.id}) }}">
+                        <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}"
+                             alt="Ajouter un membre" title="Ajouter un membre à l'équipe">
+                    </a>
                 {% endfor %}
-
-                {# Add link to button when functionality is set #}
-                <a href="{{ path('team_edit', {'id': team.id}) }}"><img class="action-plus-image"
-                                                                         src="{{ asset('../img/action/button_plus.png') }}"
-                                                                         alt="Ajouter un membre" title="Ajouter un membre à l'équipe"></a>
-            {% endfor %}
-
+            </div>
         </div>
-    </div>
 
-    <div class="action-subtitles">Organisation interne</div>
-    <div class="row action-list-item">
-        <div class="col-sm-2 organisation-button"><a href="#">Organigramme</a></div>
-        <div class="col-sm-2 organisation-button"><a href="#">Comptes rendus</a></div>
-        <div class="col-sm-2 organisation-button"><a href="#">Calendrier</a></div>
-        <div class="col-sm-2 organisation-button"><a href="#">Drive</a></div>
-        <div class="col-sm-2 organisation-button-plus"><a href="#">+</a></div>
-    </div>
-
-    <div class="action-subtitles">Fiches METHODE</div>
-    <div class="action-methods">
-        {# Dynamicaly display list of methods associated with the action when implemented #}
-        <li><a href="#">Nom de la fiche méthode n°1</a></li>
-        <li><a href="#">Nom de la fiche méthode n°2</a></li>
-        <li><a href="#">Nom de la fiche méthode n°3</a></li>
-    </div>
-
-    <div class="action-subtitles">LIVRABLES</div>
-
-    <div class="deliverable-box">
+        <div class="action-subtitles">Organisation interne</div>
+        <div class="row action-list-item">
+            <a class="col-sm-2 organisation-button" href="#">Organigramme</a>
+            <a class="col-sm-2 organisation-button" href="#">Comptes rendus</a>
+            <a class="col-sm-2 organisation-button" href="#">Calendrier</a>
+            <a class="col-sm-2 organisation-button" href="#">Drive</a>
+            <a class="col-sm-2 organisation-button-plus" href="#">+</a>
+        </div>
+        <div class="action-subtitles">Fiches METHODE</div>
         <div class="action-methods">
+            {# Dynamicaly display list of methods associated with the action when implemented #}
             <ul>
                 {% for method in action.methods %}
                     {# add method show link #}
-                    <li><a href="#">{{ method.id }} - {{ method.name }}</a></li>
+                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.id }} - {{ method.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
 
         <div class="action-subtitles">LIVRABLES</div>
-
         <div class="deliverable-box">
-            <div class="action-methods">
-                <ul>
-                    {# Dynamicaly display list of livrables associated with the action when implemented #}
-                    {% for deliverable in deliverables %}
-                        <li><a href="{{ deliverable.link }}">{{ deliverable.name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="important-link-center">
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}" alt="Lien vers les images"></a>
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}" alt="Lien vers les vidéos"></a>
+            <div class="deliverable-box">
+                <div class="action-methods">
+                    <ul>
+                        {# Dynamicaly display list of livrables associated with the action when implemented #}
+                        {% for deliverable in deliverables %}
+                            <li>
+                                <a href="{{ deliverable.link }}" onclick="window.open(this.href); return false;">
+                                    {{ deliverable.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="important-link-center">
+                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}"
+                                    alt="Lien vers les images"></a>
+                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}"
+                                    alt="Lien vers les vidéos"></a>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+    </main>
 {% endblock %}

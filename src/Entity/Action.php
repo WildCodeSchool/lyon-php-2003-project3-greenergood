@@ -57,6 +57,10 @@ class Action
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
+     * @Assert\GreaterThan(
+     *     propertyPath="startDate",
+     *     message="La date de fin ne peut pas être antérieure à la date de début"
+     * )
      */
     private $endDate;
 
@@ -370,6 +374,10 @@ class Action
 
         foreach ($this->getActionDeliverable() as $actionDeliverable) {
             $action->addActionDeliverable(clone $actionDeliverable);
+        }
+
+        foreach ($this->getMethods() as $method) {
+            $action->addMethod($method);
         }
 
         return $action;

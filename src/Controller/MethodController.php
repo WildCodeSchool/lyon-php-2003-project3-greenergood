@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Method;
+use App\Entity\User;
+use App\Form\ContactType;
 use App\Form\MethodType;
 use App\Repository\MethodRepository;
-use Doctrine\Common\Collections\ArrayCollection;
+use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use DateTime;
 
 /**
  * @Route("/method")
@@ -43,9 +45,16 @@ class MethodController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $method->setAuthor($this->getUser());
+
+            if (!$method->getPicture()) {
+                $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($method);
             $entityManager->flush();
+
+            $this->addFlash('success', "La fiche méthode a été créée avec succès");
 
             return $this->redirectToRoute("method_index");
         }
@@ -82,12 +91,14 @@ class MethodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', "La fiche méthode a été modifiée avec succès");
+
             return $this->redirectToRoute('method_index');
         }
 
         return $this->render('method/edit.html.twig', [
             'method' => $method,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -106,6 +117,8 @@ class MethodController extends AbstractController
             $entityManager->persist($newMethod);
             $entityManager->flush();
 
+            $this->addFlash('success', "La fiche méthode a été créée avec succès");
+
             return $this->redirectToRoute('method_index');
         }
 
@@ -121,10 +134,10 @@ class MethodController extends AbstractController
      */
     public function deactivate(Request $request, Method $method): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$method->getId(), $request->request->get('_token'))) {
-            $method->setActivated(false);
-            $this->getDoctrine()->getManager()->flush();
-        }
+        $method->setActivated(false);
+        $this->getDoctrine()->getManager()->flush();
+
+        $this->addFlash('danger', "La fiche méthode a été désactivée avec succès");
 
         return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
@@ -137,6 +150,8 @@ class MethodController extends AbstractController
     {
         $method->setActivated(true);
         $this->getDoctrine()->getManager()->flush();
+
+        $this->addFlash('success', "La fiche méthode a été activée avec succès");
 
         return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
     }
