@@ -265,6 +265,8 @@ class Method
         $method->setObjective1($this->getObjective1());
         $method->setObjective2($this->getObjective2());
         $method->setObjective3($this->getObjective3());
+        $method->setAuthor($this->getAuthor());
+        $method->setPicture($this->getPicture());
 
         foreach ($this->getMethodLinks() as $methodLink) {
             $method->addMethodLink(clone $methodLink);
