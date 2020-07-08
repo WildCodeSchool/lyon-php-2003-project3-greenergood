@@ -18,20 +18,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class ActionController extends AbstractController
 {
     /**
-     * @Route("/{filter}", name="index", methods={"GET"}, defaults={"filter" = null})
+     * @Route("/", name="index", methods={"GET"})
+     * @param ActionRepository $actionRepository
+     * @return Response
+     */
+    public function index(ActionRepository $actionRepository): Response
+    {
+        return $this->render('action/index.html.twig', [
+            'actions' => $actionRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * Show all action cards filtered
+     * @Route("/filter/{filter}", name="filter", methods={"GET"}, requirements={"filter"="name|startdate|status"})
      * @param ActionRepository $actionRepository
      * @param string $filter
      * @return Response
      */
-    public function index(ActionRepository $actionRepository, ?string $filter): Response
+    public function filter(ActionRepository $actionRepository, string $filter): Response
     {
-        if ($filter) {
-            $actions = $actionRepository->findByFilter($filter);
-        } else {
-            $actions = $actionRepository->findAll();
-        }
         return $this->render('action/index.html.twig', [
-            'actions' => $actions,
+            'actions' => $actionRepository->findByFilter($filter),
         ]);
     }
 
