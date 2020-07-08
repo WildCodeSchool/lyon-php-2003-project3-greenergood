@@ -433,6 +433,8 @@ class User implements UserInterface
     public function setGreenSkills3(?string $greenSkills3): self
     {
         $this->greenSkills3 = $greenSkills3;
+
+        return $this;
     }
 
     public function getUpdatedAt(): ?\DateTime
