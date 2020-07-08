@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique de The Greener Good{% endblock %}
+
+{% block body %}
+
+    <div class="event-green-background">
+        <figure class="event-title-container">
+            <img class="event-paint" src="{{ asset("../img/timeline/historique_peinture.png") }}">
+            <figcaption>Historique de The Greener Good</figcaption>
+        </figure>
+
+        <div class="event-white-background">
+            <div id="accordion" class="event-accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0 d-flex justify-content-end">
+                            <button class="btn btn-link event-button-plus" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <img class="event-plus" src="{{ asset("../img/timeline/historique_plus.png") }}">
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            {# add form here #}
+                            {{ include('event/_form.html.twig') }}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </figure>
+
+
+
+    <!-- A supprimer -->
+        {% for event in events %}
+            <tr>
+                <td>{{ event.id }}</td>
+                <td>{{ event.name }}</td>
+                <td>{{ event.startDate ? event.startDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.endDate ? event.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.target }}</td>
+                <td>
+                    <a href="{{ path('event_show', {'id': event.id}) }}">show</a>
+                    <a href="{{ path('event_edit', {'id': event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.startDate) }}
+    {{ form_row(form.endDate) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.target) }}
+
+    <div class="d-flex justify-content-center">
+        <button class="btn">{{ button_label|default('Ajouter') }}</button>
+    </div>
+{{ form_end(form) }}

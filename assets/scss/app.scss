@@ -2444,6 +2444,64 @@ nav {
     }
 }
 
+// TIMELINE PAGE
+.event-green-background {
+    background-color: #badedb;
+
+    .event-title-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+
+        .event-paint {
+            width: 18em;
+            position: absolute;
+            left: 50px;
+            top: 65px;
+            z-index: 10;
+        }
+
+        figcaption {
+            position: absolute;
+            font-family: $titlefont;
+            color: $tertiarycolor;
+            font-size: 1.2em;
+            left: 80px;
+            top: 80px;
+            z-index: 20;
+        }
+
+    }
+
+    .event-white-background {
+        background-color: white;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .event-accordion {
+            background-color: white;
+
+            .card-header {
+                background-color: white;
+
+                .event-button-plus {
+                    background-color: white;
+
+                    .event-plus {
+                        width: 60px;
+                        height: 60px;
+                        margin-top: 10px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: 576px) {
     .bienvenue {
         .arrows {
