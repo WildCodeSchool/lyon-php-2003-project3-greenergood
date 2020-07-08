@@ -13,10 +13,22 @@
     </rule>
     <rule ref="rulesets/codesize.xml" >
         <exclude name="TooManyFields" />
+        <exclude name="ExcessivePublicCount" />
+        <exclude name="ExcessiveClassComplexity" />
     </rule>
     <rule ref="rulesets/codesize.xml/TooManyFields" >
         <properties>
-            <property name="maxfields" value="20" />
+            <property name="maxfields" value="30" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessivePublicCount" >
+        <properties>
+            <property name="minimum" value="55" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity" >
+        <properties>
+            <property name="maximum" value="60" />
         </properties>
     </rule>
     <rule ref="rulesets/controversial.xml" >

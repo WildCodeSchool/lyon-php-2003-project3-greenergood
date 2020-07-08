@@ -36,8 +36,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Historique</a>
-                    <a class="dropdown-item" href="#">Trombinoscope</a>
-                    <a class="dropdown-item" href="#">Fiches bénévoles</a>
+                    <a class="dropdown-item" href="{{ path('trombinoscope_index') }}">Trombinoscope</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -49,7 +48,7 @@
                     Ressources
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Nouveau membre</a>
+                    <a class="dropdown-item" href="{{ path('welcome') }}">Nouveau membre</a>
                     <a class="dropdown-item" href="#">Tutoriel gare centrale</a>
                     <a class="dropdown-item" href="{{ path('method_index') }}">Liste des fiches méthodes</a>
                     <a class="dropdown-item" href="{{ path('app_index') }}">Index</a>

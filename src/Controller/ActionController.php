@@ -110,7 +110,7 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/deactivate", name="delete", methods={"DELETE"})
+     * @Route("/{id}/deactivate", name="delete")
      * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Action $action): Response

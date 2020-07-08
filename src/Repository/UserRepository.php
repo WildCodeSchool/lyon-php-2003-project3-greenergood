@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -34,6 +36,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    public function findWelcomeContacts()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        return $qb
+                ->where($qb->expr()->orX(
+                    $qb->expr()->eq('u.lastname', ':name1'),
+                    $qb->expr()->eq('u.lastname', ':name2')
+                ))
+            ->setParameters(['name1' => "Mossé", 'name2' => 'Girandier'])
+            ->getQuery()->getResult();
     }
 
     // /**

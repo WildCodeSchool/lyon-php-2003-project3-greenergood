@@ -111,6 +111,11 @@ class User implements UserInterface
     private $teams;
 
     /**
+     * @ORM\ManyToMany(targetEntity=Method::class, mappedBy="contact")
+     */
+    private $methods;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $greenSkills1;
@@ -128,6 +133,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $this->methods = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -370,6 +376,22 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
+    }
+
+    public function addMethod(Method $method): self
+    {
+        if (!$this->methods->contains($method)) {
+            $this->methods[] = $method;
+            $method->addContact($this);
+        }
+    }
+
     public function getGreenSkills1(): ?string
     {
         return $this->greenSkills1;
@@ -380,6 +402,15 @@ class User implements UserInterface
         $this->greenSkills1 = $greenSkills1;
 
         return $this;
+    }
+
+
+    public function removeMethod(Method $method): self
+    {
+        if ($this->methods->contains($method)) {
+            $this->methods->removeElement($method);
+            $method->removeContact($this);
+        }
     }
 
     public function getGreenSkills2(): ?string

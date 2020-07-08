@@ -33,7 +33,11 @@ class ChangePasswordFormType extends AbstractType
                             // max length allowed by Symfony for security reasons
                             'max' => 4096,
                         ]),
-                        new Regex('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/'),
+                        new Regex([
+                            'pattern' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/",
+                            'message' => "Votre mot de passe doit contenir 1 majuscule, 1 minuscule, 1 chiffre, 
+                        1 caractère spécial et au moins 6 caractères."
+                        ]),
                         new Regex([
                             'match' => false,
                             'pattern' => "/($lastName|$firstName)/i",

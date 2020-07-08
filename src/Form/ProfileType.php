@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProfileType extends AbstractType
 {
@@ -20,7 +21,13 @@ class ProfileType extends AbstractType
             ->add('fonction', TextType::class, ['label' => "Fonction", 'required' => false])
             ->add('address', TextType::class, ['label' => "Adresse", 'required' => false])
             ->add('description', TextareaType::class, ['label' => "Description", 'required' => false])
-            ->add('user_picture', TextType::class, ['label' => "Photo de profil", 'required' => false])
+            ->add('pictureFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => false, // True to display a delete checkbox
+                'download_uri' => false, // True to display a link of the picture
+                'label' => "Photo de profil",
+                'attr'=>['placeholder'=>'Ajoutez votre photo ici']
+            ])
             ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required' => false])
             ->add('facebook', TextType::class, ['label' => "Facebook", 'required' => false])
             ->add('greenSkills1', TextType::class, ['label' => "Green skills 1", 'required' => false])
