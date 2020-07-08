@@ -621,9 +621,10 @@ nav {
 
 .action-image {
     height: 125px;
-    Width: 125px;
+    width: 125px;
     border-radius: 50%;
     flex: 1;
+    object-fit: cover;
 }
 
 .action-yellow-box {
