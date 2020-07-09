@@ -14,6 +14,18 @@
                     <img class="col action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter une fiche action">
                 </a>
                 <div class="col-6 create-action greenOnYellow">Créer une fiche ACTION</div>
+
+                <div class="col-sm-4 col-md-2 dropdown ml-auto d-flex align-items-end justify-content-end">
+                    <button class="btn btn-secondary dropdown-toggle action-filter-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Trier
+                    </button>
+                    <div class="dropdown-menu menu-filter" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'name'}) }}">De A à Z</a>
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'startdate'}) }}">Par date</a>
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'status'}) }}">Par état</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -24,8 +36,9 @@
             {% for action in actions %}
                 <div class="card cardaction hvr-glow" style="width: 18rem;">
                     <a href="{{ path('action_show', {'id': action.id}) }}">
-                        <img class="card-img-top"
-                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../img/action/image_defaut_fiche_action.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
+
+                        <img class="card-img-top action-image-index"
+                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
                             {% if action.status == "started" %}
                                 <span class="badge badge-pill badge-primary ongoing">En cours</span>
                             {% elseif action.status == "cancelled" %}
