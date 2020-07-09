@@ -28,7 +28,7 @@ class EventType extends AbstractType
                 'format' => 'dd-MM--yyyy',
                 'required'   => false,
             ])
-            ->add('description', CKEditorType::class, ['label' => "Description *"])
+            ->add('description', null, ['label' => "Description"])
             ->add('target', ChoiceType::class, [
                 'choices' => [
                     'Evènement grand public' => 'external',

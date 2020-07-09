@@ -2472,12 +2472,11 @@ nav {
             top: 80px;
             z-index: 20;
         }
-
     }
 
     .event-white-background {
         background-color: white;
-        width: 80%;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
 
@@ -2495,6 +2494,84 @@ nav {
                         height: 60px;
                         margin-top: 10px;
                         border-radius: 50%;
+                    }
+                }
+            }
+        }
+
+        // Display of the timeline and the events
+        .timeline {
+            position: relative;
+
+            // Ruler
+            &::after {
+                content: '';
+                position: absolute;
+                width: 11px;
+                background-color: $tertiarycolor;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                margin-left: -5px;
+            }
+
+            .timeline-right, .timeline-left {
+                padding: 10px 15px;
+                position: relative;
+                width: 50%;
+
+                .timeline-internal, .timeline-external {
+                    text-align: center;
+                    margin: 15px 0;
+                    border-radius: 8px;
+                }
+
+                .timeline-external {
+                    background-color: $primarycolor;
+                }
+
+                .timeline-internal {
+                    background-color: $secondarycolor;
+                }
+            }
+            .timeline-right {
+                left: 25%;
+
+                .event-right {
+                    position: relative;
+
+                    // Display of the circles ont the timeline
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        left: -27px;
+                        background-color: $tertiarycolor;
+                        top: 12px;
+                        border-radius: 50%;
+                        z-index: 1;
+                    }
+
+                }
+            }
+            .timeline-left {
+                right: 25%;
+
+                // Display of the circles on the timeline
+                .event-left {
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        right: -28px;
+                        background-color: $tertiarycolor;
+                        top: 12px;
+                        border-radius: 50%;
+                        z-index: 1;
                     }
                 }
             }

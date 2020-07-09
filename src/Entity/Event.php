@@ -28,20 +28,21 @@ class Event
     /**
      * @ORM\Column(type="datetime")
      * @Assert\DateTime()
-     * @Assert\GreaterThan(
-     *      propertyPath="startDate",
-     *      message="La date de fin ne peut pas être antérieure à la date de début"
-     * )
      */
     private $startDate;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime()
+     * @Assert\GreaterThan(
+     *      propertyPath="startDate",
+     *      message="La date de fin ne peut pas être antérieure à la date de début"
+     * )
      */
     private $endDate;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 

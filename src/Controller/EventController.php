@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="event_index", methods={"GET"})
+     * @Route("/", name="event_index", methods={"GET","POST"})
      */
     public function index(EventRepository $eventRepository, Request $request): Response
     {
@@ -34,7 +34,7 @@ class EventController extends AbstractController
 
 
         return $this->render('event/index.html.twig', [
-            'events' => $eventRepository->findAll(),
+            'events' => $eventRepository->findBy([], ['startDate' => 'ASC']),
             'form' => $form->createView(),
         ]);
     }
