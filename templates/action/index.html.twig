@@ -36,6 +36,7 @@
             {% for action in actions %}
                 <div class="card cardaction hvr-glow" style="width: 18rem;">
                     <a href="{{ path('action_show', {'id': action.id}) }}">
+
                         <img class="card-img-top action-image-index"
                              src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
                             {% if action.status == "started" %}
