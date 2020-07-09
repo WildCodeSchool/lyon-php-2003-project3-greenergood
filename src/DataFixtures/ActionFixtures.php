@@ -28,7 +28,7 @@ class ActionFixtures extends Fixture implements DependentFixtureInterface
             $action->setEditionNumber($faker->randomDigitNotNull);
             $action->setDescription($faker->paragraph(3, true));
             $action->setStartDate(
-                $faker->dateTimeBetween('-5 years', 'now', ull)
+                $faker->dateTimeBetween('-5 years', 'now', null)
             );
             $manager->persist($action);
         }

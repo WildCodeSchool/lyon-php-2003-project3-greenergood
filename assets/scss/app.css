@@ -10002,7 +10002,7 @@ h2 {
   border: none;
   margin: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .cardaction a:hover {
   text-decoration: none;
@@ -10753,6 +10753,11 @@ nav {
 }
 
 /* TROMBINOSCOPE PAGE */
+.trombi-grey-line {
+  background-color: darkgrey;
+  height: 8px;
+}
+
 .trombi-background {
   background-color: darkgrey;
 }
@@ -10920,6 +10925,20 @@ nav {
   height: 75px;
 }
 
+.action-filter-button {
+  border: none;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+  padding: 0 5px;
+}
+
+.action-image-index {
+  background-color: white;
+  height: 288px;
+  display: flex;
+}
+
 /* CSS CARD METHODS */
 .btn-desactive {
   background: none;
@@ -10959,11 +10978,11 @@ nav {
   flex-direction: column;
 }
 
-.menu-method {
+.menu-method, .menu-filter {
   background-color: #5F5F5F;
   margin-left: -70px;
 }
-.menu-method a {
+.menu-method a, .menu-filter a {
   list-style-type: none;
   padding: 6px 12px;
   color: white;
