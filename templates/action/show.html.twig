@@ -110,22 +110,20 @@
                 </div>
             </div>
 
-            <div class="action-progress-box">{{ action.projectProgress }}</div>
-            <button class="action-add-Team" title="Ajouter une équipe">
-                <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
-            </button>
-            <div>
-                {# Generate as many teams as teams associated with action when set up#}
-                {% for team in teams %}
-                    <div class="col-6 team-title"> {{ team.name }} </div>
-                    {# Generate as many pictures as User associated with action when set up#}
-                    {% for user in team.users %}
-                        <a href="{{ path('user_show', {'id':user.id}) }}">
-                            <img class="action-member-image"
-                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png") }}"
-                                 alt="Nom de la personne">
-                        </a>
-                    {% endfor %}
+        <div class="action-progress-box">{{ action.projectProgress }}</div>
+        <button class="action-add-Team" title="Ajouter une équipe">
+            <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
+        </button>
+        <div>
+            {# Generate as many teams as teams associated with action when set up#}
+            {% for team in teams %}
+                <div class="col-6 team-title"> {{ team.name }} </div>
+                {# Generate as many pictures as User associated with action when set up#}
+                {% for user in team.users %}
+                    <a href="{{ path('user_show', {'id':user.id}) }}">
+                        <img class="action-member-image" src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png")  }}" alt="{{ user.firstname }} {{ user.lastname }}" title="{{ user.firstname }} {{ user.lastname }}">
+                    </a>
+                {% endfor %}
 
                     {# Add link to button when functionality is set #}
                     <a href="{{ path('team_edit', {'id': team.id}) }}">
