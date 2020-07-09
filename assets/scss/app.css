@@ -12094,7 +12094,7 @@ nav {
   display: none;
 }
 
-@media all and (min-width: 769px) {
+@media all and (min-width: 1500px) {
   .cal {
     display: flex;
     flex-direction: column;
