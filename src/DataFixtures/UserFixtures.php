@@ -29,6 +29,7 @@ class UserFixtures extends Fixture
             'userpassword'
         ));
         $user->setStatus(1);
+        $user->setPhone("0000000000");
         $manager->persist($user);
 
         $user = new User();
@@ -41,6 +42,7 @@ class UserFixtures extends Fixture
             'elodie'
         ));
         $user->setStatus(1);
+        $user->setPhone("0000000000");
         $manager->persist($user);
 
         $user = new User();
@@ -53,6 +55,7 @@ class UserFixtures extends Fixture
             'clementine'
         ));
         $user->setStatus(1);
+        $user->setPhone("0000000000");
         $manager->persist($user);
 
         $this->addReference('Lucas', $user);
@@ -69,6 +72,7 @@ class UserFixtures extends Fixture
                 'userpassword'
             ));
             $user->setStatus(1);
+            $user->setPhone("0000000000");
             $manager->persist($user);
             $manager->flush();
         }

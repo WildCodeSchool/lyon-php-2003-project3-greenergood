@@ -19,7 +19,7 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *"])
-            ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
+            ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required' => false])
             ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
             ->add('content', CKEditorType::class, ['label' => "Procédure *"])
             ->add('objective1', null, ['label' => "Objectif 1 :"])
@@ -45,8 +45,7 @@ class MethodType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -66,7 +66,9 @@ class ActionType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference'=> false,
-            ]);
+            ])
+        ->add('photoBook', null, ['label' => "Album photo"])
+        ->add('video', null, ['label' => "Vidéo"]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
