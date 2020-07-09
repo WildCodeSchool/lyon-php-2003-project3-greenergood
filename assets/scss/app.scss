@@ -2518,12 +2518,13 @@ nav {
     }
 }
 
-@media (min-width: 576px) {
+@media all and (min-width: 769px) {
     .cal {
         display: flex;
         flex-direction: column;
         align-items: center;
         .cal-leaf-container {
+            display: block;
             position: relative;
             margin: -100px auto 0 auto;
             width: 80%;
@@ -2561,6 +2562,7 @@ nav {
             border-right: 1px solid $primarycolor;
         }
         .cal-leaves-line {
+            display: block;
             width: 97%;
         }
         .cal-leaves {
