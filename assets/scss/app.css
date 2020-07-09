@@ -12065,79 +12065,111 @@ nav {
 .cal {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .cal .cal-leaf-container {
-  position: relative;
-  margin: -100px auto 0 auto;
-  width: 80%;
-}
-.cal .cal-green-leaf {
-  margin: -60px;
-  width: 500px;
-  height: auto;
-}
-.cal #right-leaf {
-  transform: rotate(150deg);
-  position: absolute;
-  right: 100px;
-}
-.cal #left-leaf {
-  transform: rotate(210deg) scaleX(-1);
-  position: absolute;
-  left: 100px;
+  display: none;
 }
 .cal .cal-text {
-  margin: 150px 0 100px 0;
-  width: 600px;
+  margin: 20px auto 100px 0;
   height: 100px;
   text-align: center;
 }
 .cal .cal-text p {
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
+  padding: 10px;
 }
 .cal .cal-container {
-  margin: 20px 0;
   border-top: 15px solid #5AAFAA;
   border-bottom: 15px solid #5AAFAA;
   border-left: 1px solid #5AAFAA;
   border-right: 1px solid #5AAFAA;
+  padding: 2px;
 }
 .cal .cal-leaves-line {
-  width: 97%;
+  display: none;
 }
-.cal .cal-leaves {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-.cal .cal-leaves img {
-  width: 100px;
-  height: auto;
-}
-.cal .cal-leaves #left-big-pink {
-  transform: scaleX(-1);
-}
-.cal .cal-leaves #left-small-orange {
-  height: 50px;
-  width: auto;
-}
-.cal .cal-leaves #left-big-green {
-  transform: scaleX(-1);
-}
-.cal .cal-leaves #right-big-orange {
-  transform: scaleX(-1);
-}
-.cal .cal-leaves #right-small-pink {
-  height: 50px;
-  width: auto;
-}
-.cal .cal-yellow-line {
-  background-color: #FDEE6E;
-  width: 100%;
-  height: 60px;
-  margin-top: -30px;
+
+@media (min-width: 576px) {
+  .cal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cal .cal-leaf-container {
+    position: relative;
+    margin: -100px auto 0 auto;
+    width: 80%;
+  }
+  .cal .cal-green-leaf {
+    margin: -60px;
+    width: 500px;
+    height: auto;
+  }
+  .cal #right-leaf {
+    transform: rotate(150deg);
+    position: absolute;
+    right: 100px;
+  }
+  .cal #left-leaf {
+    transform: rotate(210deg) scaleX(-1);
+    position: absolute;
+    left: 100px;
+  }
+  .cal .cal-text {
+    margin: 150px 0 100px 0;
+    width: 600px;
+    height: 100px;
+    text-align: center;
+  }
+  .cal .cal-text p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+  }
+  .cal .cal-container {
+    margin: 20px 0;
+    border-top: 15px solid #5AAFAA;
+    border-bottom: 15px solid #5AAFAA;
+    border-left: 1px solid #5AAFAA;
+    border-right: 1px solid #5AAFAA;
+  }
+  .cal .cal-leaves-line {
+    width: 97%;
+  }
+  .cal .cal-leaves {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .cal .cal-leaves img {
+    width: 100px;
+    height: auto;
+  }
+  .cal .cal-leaves #left-big-pink {
+    transform: scaleX(-1);
+  }
+  .cal .cal-leaves #left-small-orange {
+    height: 50px;
+    width: auto;
+  }
+  .cal .cal-leaves #left-big-green {
+    transform: scaleX(-1);
+  }
+  .cal .cal-leaves #right-big-orange {
+    transform: scaleX(-1);
+  }
+  .cal .cal-leaves #right-small-pink {
+    height: 50px;
+    width: auto;
+  }
+  .cal .cal-yellow-line {
+    background-color: #FDEE6E;
+    width: 100%;
+    height: 60px;
+    margin-top: -30px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
