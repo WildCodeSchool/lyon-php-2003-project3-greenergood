@@ -93,12 +93,12 @@
                 {{ method.content|raw }}
             </div>
         </div>
-        <div class="row method-infos d-flex flex-xl-column align-items-center p-2">
+        <div class="row method-infos d-flex flex-wrap flex-xl-column align-items-center p-2">
             <h3>Contacts utiles</h3>
             <p>Personnes référentes / expérimentées sur le sujet au sein de l'association</p>
-            <div class="d-flex flex-column flex-xl-row">
+            <div class="d-flex flex-column flex-wrap flex-xl-row">
                 {% for methodContact in method.contact %}
-                <div class="col-12 col-xl-{{ 12/method.contact|length }} d-flex flex-column align-items-center">
+                <div class="col-12 col-xl-4 d-flex flex-column align-items-center">
                     <a href="{{ path('user_show', {'id': methodContact.id}) }}"><img class="method-image" src="{{ vich_uploader_asset(methodContact, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"></a>
                     <p class="my-2 text-center">{{ methodContact.firstname }} {{ methodContact.lastname }}</p>
                     {% if methodContact.fonction %}
