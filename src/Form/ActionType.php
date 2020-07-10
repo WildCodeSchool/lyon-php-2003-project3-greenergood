@@ -78,3 +78,4 @@ class ActionType extends AbstractType
         ]);
     }
 }
+
