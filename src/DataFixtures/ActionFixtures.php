@@ -4,11 +4,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Action;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Faker;
+use Datetime;
 
 class ActionFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -20,18 +19,27 @@ class ActionFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create('fr_FR');
-
-        for ($i = 0; $i < 15; $i++) {
-            $action = new Action();
-            $action->setName($faker->sentence(2));
-            $action->setEditionNumber($faker->randomDigitNotNull);
-            $action->setDescription($faker->paragraph(3, true));
-            $action->setStartDate(
-                $faker->dateTimeBetween('-5 years', 'now', ull)
-            );
-            $manager->persist($action);
-        }
+        $action = new Action();
+        $action->setName("Balade mode éthique");
+        $action->setEditionNumber(4);
+        $action->setDescription(
+            "Lors des balades mode éthique organisées par The Greener Good, une dizaine de participants 
+            suivent un parcours entre quatre et six boutiques de vêtements et accessoires écoengagées de la Métropole 
+            de Lyon. Cette balade est une manière originale de présenter aux curieux les alternatives durables qui 
+            existent près de chez eux tout en permettant aux boutiques de présenter leur démarche. La balade se termine,
+            pour celles et ceux qui le souhaitent, dans un café engagé pour discuter et échanger autour des alternatives
+            découvertes.<br>
+            Cette 4ème édition a lieu le 11 juillet 2020 de 13h30 à 17h avec un départ Rue de la République, 
+            à proximité du métro “Cordeliers” (ligne A).<br><br>
+            
+            18/06/2020 : Validation du parcours<br>
+            20/06/2020 : Début de la communication sur les réseaux sociaux<br>
+            11/07/2020 : Jour J"
+        );
+        $action->setStartDate(
+            new DateTime('2020-06-18')
+        );
+        $manager->persist($action);
         $manager->flush();
     }
 }

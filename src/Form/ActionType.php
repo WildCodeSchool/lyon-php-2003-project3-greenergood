@@ -44,7 +44,7 @@ class ActionType extends AbstractType
                     'Annulée' => 'cancelled',
                 ],
             ])
-            ->add('projectProgress', null, ['label' => "Avancement du projet"])
+            ->add('projectProgress', CKEditorType::class, ['label' => "Avancement du projet"])
             ->add('actionDeliverable', CollectionType::class, [
                 'entry_type' => ActionDeliverableType::class,
                 'label' => false,

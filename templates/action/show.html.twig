@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-        <div class="action-progress-box">{{ action.projectProgress }}</div>
+        <div class="action-progress-box">{{ action.projectProgress|raw }}</div>
         <button class="action-add-Team" title="Ajouter une équipe">
             <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
         </button>
