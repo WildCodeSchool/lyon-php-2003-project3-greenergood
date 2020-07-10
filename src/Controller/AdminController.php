@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\User;
+use App\Form\CategoryType;
 use App\Form\EditEmailType;
 use App\Form\EditPasswordType;
 use App\Form\RegistrationFormType;
 use App\Form\UserType;
+use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -158,5 +161,71 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_user_index');
+    }
+
+    /** Categories */
+
+    /**
+     * @Route("/category/", name="admin_category_index", methods={"GET"})
+     * @param CategoryRepository $categoryRepository
+     * @return Response
+     */
+    public function indexCategory(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('admin/category/index.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="admin_category_show", methods={"GET"})
+     * @param Category $category
+     * @return Response
+     */
+    public function showCategory(Category $category): Response
+    {
+        return $this->render('admin/category/show.html.twig', [
+            'category' => $category,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
+     */
+    public function editCategory(Request $request, Category $category): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_category_index');
+        }
+
+        return $this->render('admin/category/edit.html.twig', [
+            'category' => $category,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="admin_category_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
+     */
+    public function deleteCategory(Request $request, Category $category): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($category);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_category_index');
     }
 }

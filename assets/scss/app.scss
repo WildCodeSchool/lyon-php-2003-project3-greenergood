@@ -386,6 +386,9 @@ nav {
         color: white;
     }
 
+    button {
+        margin-left: 35px;
+    }
 }
 
 .navbar-collapse {
@@ -513,6 +516,31 @@ nav {
     .method-infos {
         flex-direction: column;
     }
+}
+
+//tab sheet method
+.method-tabs {
+    padding: 10px;
+}
+
+.container-tabs {
+    background-color: $primarycolor;
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;;
+    border-bottom-right-radius: 0.25rem;;
+}
+
+.nav-link-tab {
+    margin-right: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: "Lobster", cursive;
+    background-color: $primarycolor;
+    color: $tertiarycolor;
+}
+
+.nav-link-tab.active {
+    background-color: white;
 }
 
 /* NEW ACTION PAGE STYLING */
@@ -1299,6 +1327,7 @@ nav {
 //INDEX MOBILE VIEW
 .index-container {
     @include flexCenter(column);
+    overflow: auto;
 
     ul {
         list-style-type: none;
@@ -1354,6 +1383,21 @@ nav {
     -ms-transform: rotate(110deg);
     -o-transform: rotate(110deg);
     transform: rotate(110deg);
+}
+
+.search-results {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        color: $primarycolor;
+    }
+
+    a {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Display over 450px of trombinoscope page */
@@ -1438,6 +1482,18 @@ nav {
         }
 
         .index-container {
+            overflow: auto;
+
+            .container-list-index {
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+
+                a:hover {
+                    color: $secondarycolor;
+                }
+            }
+
             h4 {
                 width: 30%;
                 margin-right: auto;
@@ -1445,9 +1501,28 @@ nav {
             }
 
             ul {
-                width: 65%;
+                width: 62%;
                 margin-left: auto;
             }
+        }
+    }
+
+    .search-results {
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            color: $primarycolor;
+        }
+
+        a {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        a:hover {
+            color: $secondarycolor;
         }
     }
 }
@@ -2588,7 +2663,7 @@ nav {
         }
 
         .cal-container {
-            margin: 10px 0;
+            margin: 10px auto;
             width: 60%;
             border-top: 15px solid $primarycolor;
             border-bottom: 15px solid $primarycolor;

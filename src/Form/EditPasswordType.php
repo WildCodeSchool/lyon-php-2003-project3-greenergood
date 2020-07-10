@@ -44,7 +44,7 @@ class EditPasswordType extends AbstractType
                     new Regex([
                         'match' => false,
                         'pattern' => "/($lastName|$firstName)/i",
-                        'message' => "Votre mot de passe ne peut contenir ni votre nom, ni votre prénom"
+                        'message' => "Votre mot de passe ne peut contenir ni votre nom, ni votre prénom."
                     ]),
                 ],
                 'label' => 'Nouveau mot de passe',
