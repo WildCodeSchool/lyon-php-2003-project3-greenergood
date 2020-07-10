@@ -46,11 +46,12 @@ class SearchController extends AbstractController
      * @param MethodRepository $methodRepository
      * @return Response
      */
-    public function results(Request $request,
-                            UserRepository $userRepository,
-                            ActionRepository $actionRepository,
-                            MethodRepository $methodRepository): Response
-    {
+    public function results(
+        Request $request,
+        UserRepository $userRepository,
+        ActionRepository $actionRepository,
+        MethodRepository $methodRepository
+    ): Response {
         $form = $this->createForm(
             SearchType::class,
             null,
