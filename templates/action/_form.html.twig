@@ -36,7 +36,9 @@
             Ajouter un lien
         </a>
     </div>
-
+    {{ form_row(form.methods) }}
+    {{ form_row(form.photoBook) }}
+    {{ form_row(form.video) }}
     <div class="col-12 text-center">
         <button class="btn form-button">{{ button_label|default('Créer la fiche action') }}</button>
     </div>

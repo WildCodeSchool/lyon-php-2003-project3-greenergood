@@ -15,9 +15,11 @@ class ChangePasswordFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $user = $builder->getData();
-        $firstName = $user->getFirstname();
-        $lastName = $user->getLastname();
+        /* $user = $builder->getData();
+        if ($user) {
+            $firstName = $user->getFirstname();
+            $lastName = $user->getLastname();
+        }*/
 
         $builder
             ->add('plainPassword', RepeatedType::class, [
@@ -33,12 +35,16 @@ class ChangePasswordFormType extends AbstractType
                             // max length allowed by Symfony for security reasons
                             'max' => 4096,
                         ]),
-                        new Regex('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/'),
                         new Regex([
+                            'pattern' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/",
+                            'message' => "Votre mot de passe doit contenir 1 majuscule, 1 minuscule, 1 chiffre, 
+                        1 caractère spécial et au moins 6 caractères."
+                        ]),
+                        /* new Regex([
                             'match' => false,
                             'pattern' => "/($lastName|$firstName)/i",
                             'message' => "Votre mot de passe ne peut contenir ni votre nom, ni votre prénom"
-                        ]),
+                        ]),*/
                     ],
                     'label' => 'Mot de passe',
                 ],
@@ -49,8 +55,7 @@ class ChangePasswordFormType extends AbstractType
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

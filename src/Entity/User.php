@@ -130,6 +130,11 @@ class User implements UserInterface
      */
     private $greenSkills3;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $phone;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -433,6 +438,8 @@ class User implements UserInterface
     public function setGreenSkills3(?string $greenSkills3): self
     {
         $this->greenSkills3 = $greenSkills3;
+
+        return $this;
     }
 
     public function getUpdatedAt(): ?\DateTime
@@ -443,6 +450,18 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
         return $this;
     }
 }

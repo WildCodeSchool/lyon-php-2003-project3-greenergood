@@ -57,6 +57,10 @@ class Action
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime()
+     * @Assert\GreaterThan(
+     *     propertyPath="startDate",
+     *     message="La date de fin ne peut pas être antérieure à la date de début"
+     * )
      */
     private $endDate;
 
@@ -120,6 +124,16 @@ class Action
      * @Assert\Valid()
      */
     private $actionDeliverable;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoBook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $video;
 
     public function getId(): ?int
     {
@@ -372,6 +386,34 @@ class Action
             $action->addActionDeliverable(clone $actionDeliverable);
         }
 
+        foreach ($this->getMethods() as $method) {
+            $action->addMethod($method);
+        }
+
         return $action;
+    }
+
+    public function getPhotoBook(): ?string
+    {
+        return $this->photoBook;
+    }
+
+    public function setPhotoBook(?string $photoBook): self
+    {
+        $this->photoBook = $photoBook;
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(?string $video): self
+    {
+        $this->video = $video;
+
+        return $this;
     }
 }

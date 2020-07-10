@@ -44,7 +44,18 @@ class ActionType extends AbstractType
                     'Annulée' => 'cancelled',
                 ],
             ])
-            ->add('projectProgress', null, ['label' => "Avancement du projet"])
+            ->add('projectProgress', CKEditorType::class, ['label' => "Avancement du projet"])
+            ->add('actionDeliverable', CollectionType::class, [
+                'entry_type' => ActionDeliverableType::class,
+                'label' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'delete_empty' => function (ActionDeliverable $actionDeliverable = null) {
+                    return null === $actionDeliverable || empty($actionDeliverable->getLink());
+                }
+            ])
             ->add('methods', EntityType::class, [
                 'label' => 'Fiche(s) Méthode',
                 'class' => Method::class,
@@ -56,17 +67,8 @@ class ActionType extends AbstractType
                 'multiple' => true,
                 'by_reference'=> false,
             ])
-            ->add('actionDeliverable', CollectionType::class, [
-                'entry_type' => ActionDeliverableType::class,
-                'label' => false,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'prototype' => true,
-                'by_reference' => false,
-                'delete_empty' => function (ActionDeliverable $actionDeliverable = null) {
-                    return null === $actionDeliverable || empty($actionDeliverable->getLink());
-                }
-            ]);
+        ->add('photoBook', null, ['label' => "Album photo"])
+        ->add('video', null, ['label' => "Vidéo"]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

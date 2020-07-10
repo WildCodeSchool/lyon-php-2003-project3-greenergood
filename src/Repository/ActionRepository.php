@@ -19,6 +19,32 @@ class ActionRepository extends ServiceEntityRepository
         parent::__construct($registry, Action::class);
     }
 
+    /**
+     * @return Action[] Returns an array of Action objects
+     */
+
+    public function findByFilter($filter)
+    {
+        switch ($filter) {
+            case 'status':
+                $order = 'DESC';
+                break;
+            case 'startdate':
+                $filter = "startDate";
+                $order = 'DESC';
+                break;
+            default:
+                $order = 'ASC';
+                break;
+        }
+
+        return $this->createQueryBuilder('a')
+            ->orderBy("a.$filter", "$order")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function search($search)
     {
         $qb = $this->createQueryBuilder('a');
