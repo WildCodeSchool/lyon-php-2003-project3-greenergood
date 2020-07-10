@@ -30,6 +30,20 @@ class ActionController extends AbstractController
     }
 
     /**
+     * Show all action cards filtered
+     * @Route("/filter/{filter}", name="filter", methods={"GET"}, requirements={"filter"="name|startdate|status"})
+     * @param ActionRepository $actionRepository
+     * @param string $filter
+     * @return Response
+     */
+    public function filter(ActionRepository $actionRepository, string $filter): Response
+    {
+        return $this->render('action/index.html.twig', [
+            'actions' => $actionRepository->findByFilter($filter),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

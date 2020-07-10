@@ -44,7 +44,7 @@ class ActionType extends AbstractType
                     'Annulée' => 'cancelled',
                 ],
             ])
-            ->add('projectProgress', null, ['label' => "Avancement du projet"])
+            ->add('projectProgress', CKEditorType::class, ['label' => "Avancement du projet"])          
             ->add('methods', EntityType::class, [
                 'label' => 'Fiche(s) Méthode',
                 'class' => Method::class,
@@ -76,7 +76,9 @@ class ActionType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference'=> false,
-            ]);
+            ])
+        ->add('photoBook', null, ['label' => "Album photo"])
+        ->add('video', null, ['label' => "Vidéo"]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

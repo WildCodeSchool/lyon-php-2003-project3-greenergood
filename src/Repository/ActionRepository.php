@@ -19,33 +19,41 @@ class ActionRepository extends ServiceEntityRepository
         parent::__construct($registry, Action::class);
     }
 
+    /**
+     * @return Action[] Returns an array of Action objects
+     */
 
-    // /**
-    //  * @return Action[] Returns an array of Action objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByFilter($filter)
     {
+        switch ($filter) {
+            case 'status':
+                $order = 'DESC';
+                break;
+            case 'startdate':
+                $filter = "startDate";
+                $order = 'DESC';
+                break;
+            default:
+                $order = 'ASC';
+                break;
+        }
+
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy("a.$filter", "$order")
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Action
+    public function search($search)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+        $qb = $this->createQueryBuilder('a');
+        return $qb
+            ->where($qb->expr()->orX(
+                $qb->expr()->like('a.name', ':search')
+            ))
+            ->setParameter('search', '%' . $search . '%')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

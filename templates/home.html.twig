@@ -4,14 +4,32 @@
 
 {% block body %}
 
-            <div class="button-new-benevole">
-                <h4>Nouveau.elle ? Commencez ici !<img class="arrow_benevole" src="{{ asset('img/accueil_fleche.png') }}" alt="Fleche"></h4>
-                <a href="{{ path('welcome') }}">
-                    <img class="logo-new" src="{{ asset('img/accueil_new.png') }}" alt="Bouton nouveau bénévole">
-                </a>
-            </div>
+    <div class="button-new-benevole">
+        <h4>Nouveau.elle ? Commencez ici !<img class="arrow_benevole" src="{{ asset('img/accueil_fleche.png') }}"
+                                               alt="Fleche"></h4>
+        <a href="{{ path('welcome') }}">
+            <img class="logo-new" src="{{ asset('img/accueil_new.png') }}" alt="Bouton nouveau bénévole">
+        </a>
+    </div>
 
     <h1 class="greenOnWhite text-center">Qu'est ce que la Gare Centrale ?</h1>
+    <div class="container">
+        <p class="text-justify">La Gare Centrale est une plateforme destinée aux membres de l'association qui contient de
+            nombreuses ressources.
+            Elle est collaborative et participative. En effet, chaque bénévole peut créer ou mettre à jour différents
+            types
+            de fiches.
+            Des fiches méthodologiques, appelées <a href="{{ path('method_index') }}">fiches méthodes</a> expliquent
+            comment
+            utiliser nos outils, comment organiser un événement ou bien comment communiquer. Des fiches
+            de présentation des différents événements, appelées <a href="{{ path('action_index') }}">fiches actions</a>,
+            permettent de présenter nos initiatives et sauvegarder les connaissances acquises à leur sujet. La Gare
+            Centrale
+            présente aussi des outils et ressources développés par l’association. Enfin, des <a
+                    href="{{ path('trombinoscope_index') }}">fiches membres</a> recensent les membres de l’association,
+            leurs compétences et leurs coordonnées.
+        </p>
+    </div>
 
     <div class="container-center">
         <div class="whiteOnGreen text-center link-box">
@@ -20,7 +38,7 @@
 
             <h2><a href="{{ path('method_index') }}" class="link-of-linkbox">Découvrir les fiches méthodes</a></h2>
             <hr class="col-3"/>
-            <h2><a href="#" class="link-of-linkbox">Ouvrir l'agenda</a></h2>
+            <h2><a href="{{ path('calendar') }}" class="link-of-linkbox">Ouvrir l'agenda</a></h2>
             <hr class="col-3"/>
             <h2><a href="{{ path('trombinoscope_index') }}" class="link-of-linkbox">Accéder au trombinoscope</a></h2>
         </div>
