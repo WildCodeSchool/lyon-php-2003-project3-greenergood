@@ -1,7 +1,8 @@
 <div class="form-inline my-2 my-lg-0">
-    {{ form_start(form) }}
-    {{ form_row(form.Recherche) }}
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" name="btnSearch">
+    <div>{{ form_start(form) }}</div>
+    {{ form_row(form.search) }}
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" name="btnSearch"
+            onclick="return validate('search_search',2)">
         <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
              xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
@@ -12,3 +13,19 @@
     </button>
 </div>
 {{ form_end(form) }}
+
+<script>
+    const message = "Vous devez entrer au minimum 2 caractères";
+
+    function validate(search_search, length) {
+
+        let submit = true;
+        let elemLength = document.getElementById('search_search').value.length;
+
+        if (elemLength < length) {
+            submit = false;
+            alert(message);
+        }
+        return submit;
+    }
+</script>

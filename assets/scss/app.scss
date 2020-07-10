@@ -386,6 +386,9 @@ nav {
         color: white;
     }
 
+    button {
+        margin-left: 35px;
+    }
 }
 
 .navbar-collapse {
@@ -1273,6 +1276,7 @@ nav {
 //INDEX MOBILE VIEW
 .index-container {
     @include flexCenter(column);
+    overflow: auto;
 
     ul {
         list-style-type: none;
@@ -1328,6 +1332,21 @@ nav {
     -ms-transform: rotate(110deg);
     -o-transform: rotate(110deg);
     transform: rotate(110deg);
+}
+
+.search-results {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        color: $primarycolor;
+    }
+
+    a {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Display over 450px of trombinoscope page */
@@ -1412,6 +1431,18 @@ nav {
         }
 
         .index-container {
+            overflow: auto;
+
+            .container-list-index {
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+
+                a:hover {
+                    color: $secondarycolor;
+                }
+            }
+
             h4 {
                 width: 30%;
                 margin-right: auto;
@@ -1419,9 +1450,27 @@ nav {
             }
 
             ul {
-                width: 65%;
+                width: 62%;
                 margin-left: auto;
             }
+        }
+    }
+    .search-results {
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            color: $primarycolor;
+        }
+
+        a {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        a:hover {
+            color: $secondarycolor;
         }
     }
 }
