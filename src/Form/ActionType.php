@@ -45,6 +45,16 @@ class ActionType extends AbstractType
                 ],
             ])
             ->add('projectProgress', CKEditorType::class, ['label' => "Avancement du projet"])
+            ->add('methods', EntityType::class, [
+                'label' => 'Fiche(s) Méthode',
+                'class' => Method::class,
+                'choice_label' => function (Method $method) {
+                    return $method->getId() . ' - ' . $method->getName();
+                },
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference'=> false,
+            ])
             ->add('actionDeliverable', CollectionType::class, [
                 'entry_type' => ActionDeliverableType::class,
                 'label' => false,

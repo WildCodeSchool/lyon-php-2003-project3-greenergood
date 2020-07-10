@@ -518,6 +518,31 @@ nav {
     }
 }
 
+//tab sheet method
+.method-tabs {
+    padding: 10px;
+}
+
+.container-tabs {
+    background-color: $primarycolor;
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;;
+    border-bottom-right-radius: 0.25rem;;
+}
+
+.nav-link-tab {
+    margin-right: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: "Lobster", cursive;
+    background-color: $primarycolor;
+    color: $tertiarycolor;
+}
+
+.nav-link-tab.active {
+    background-color: white;
+}
+
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
