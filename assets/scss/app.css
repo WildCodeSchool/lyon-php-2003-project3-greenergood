@@ -12151,7 +12151,8 @@ nav {
     font-size: 20px;
   }
   .cal .cal-container {
-    margin: 20px 0;
+    margin: 10px auto;
+    width: 60%;
     border-top: 15px solid #5AAFAA;
     border-bottom: 15px solid #5AAFAA;
     border-left: 1px solid #5AAFAA;
