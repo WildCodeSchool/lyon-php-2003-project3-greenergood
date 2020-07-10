@@ -1827,6 +1827,151 @@ nav {
 
     }
 }
+// TIMELINE PAGE
+.event-green-background {
+    background-color: #badedb;
+
+    .event-title-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+
+        .event-paint {
+            width: 18em;
+            position: absolute;
+            left: 50px;
+            top: 65px;
+            z-index: 10;
+        }
+
+        figcaption {
+            position: absolute;
+            font-family: $titlefont;
+            color: $tertiarycolor;
+            font-size: 1.2em;
+            left: 80px;
+            top: 80px;
+            z-index: 20;
+        }
+    }
+
+    .event-white-background {
+        background-color: white;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .event-form-label {
+            text-align: center;
+        }
+
+        .event-accordion {
+            background-color: white;
+
+            .card-header {
+                background-color: white;
+
+                .event-button-plus {
+                    background-color: white;
+
+                    .event-plus {
+                        width: 60px;
+                        height: 60px;
+                        margin-top: 10px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+
+        // Display of the timeline and the events
+        .timeline {
+            position: relative;
+
+            // Ruler
+            &::after {
+                content: '';
+                position: absolute;
+                width: 11px;
+                background-color: $tertiarycolor;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                margin-left: -5px;
+            }
+
+            .timeline-right, .timeline-left {
+                padding: 10px 15px;
+                position: relative;
+                width: 50%;
+
+                .dash-left {
+                    width: 10px;
+                    height: 25px;
+                    background-color: $tertiarycolor;
+                }
+
+                .timeline-internal, .timeline-external {
+                    text-align: center;
+                    margin: 15px 0;
+                    border-radius: 8px;
+                }
+
+                .timeline-external {
+                    background-color: $primarycolor;
+                }
+
+                .timeline-internal {
+                    background-color: $secondarycolor;
+                }
+            }
+
+            .timeline-right {
+                left: 25%;
+
+                .event-right {
+                    position: relative;
+
+                    // Display of the circles ont the timeline
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        left: -27px;
+                        background-color: $tertiarycolor;
+                        top: 12px;
+                        border-radius: 50%;
+                        z-index: 1;
+                    }
+
+                }
+            }
+            .timeline-left {
+                right: 25%;
+
+                // Display of the circles on the timeline
+                .event-left {
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        right: -28px;
+                        background-color: $tertiarycolor;
+                        top: 12px;
+                        border-radius: 50%;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // PROFILE PAGE DESKTOP VIEW
 @media all and (min-width: 769px) {
@@ -2245,6 +2390,66 @@ nav {
             }
         }
     }
+
+    /* Desktop display of timeline page */
+    .event-green-background {
+        .event-white-background {
+
+            .timeline {
+                overflow-y: auto;
+                display: flex;
+                height: 500px;
+                width: auto;
+
+                // timeline-left becomes top row
+                .timeline-left {
+                    right: 0;
+
+                    div {
+                        width: 250px;
+                    }
+
+                    .event-left::after {
+                        right: 110px;
+                        top: 218px;
+                    }
+                }
+
+                // timeline-right becomes bottom row
+                .timeline-right {
+                    left: 0;
+                    top: 260px;
+
+                    div {
+                        width: 250px;
+                    }
+
+                    .event-right::before {
+                        top: -42px;
+                        left: 115px;
+                    }
+
+                    &::after {
+                        left: 80px;
+                        top: -32px;
+                    }
+                }
+
+                &::after {
+                    display: inline-block;
+                    width: auto;
+                    height: 11px;
+                    content: '';
+                    position: absolute;
+                    background-color: $tertiarycolor;
+                    top: 250px;
+                    bottom: 0;
+                    left: 5px;
+                    right: 0;
+                }
+            }
+        }
+    }
 }
 
 .link-flex {
@@ -2438,141 +2643,6 @@ nav {
                     left: 50%;
                     transform: translate(-50%, -50%);
                     width: 120px;
-                }
-            }
-        }
-    }
-}
-
-// TIMELINE PAGE
-.event-green-background {
-    background-color: #badedb;
-
-    .event-title-container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80px;
-
-        .event-paint {
-            width: 18em;
-            position: absolute;
-            left: 50px;
-            top: 65px;
-            z-index: 10;
-        }
-
-        figcaption {
-            position: absolute;
-            font-family: $titlefont;
-            color: $tertiarycolor;
-            font-size: 1.2em;
-            left: 80px;
-            top: 80px;
-            z-index: 20;
-        }
-    }
-
-    .event-white-background {
-        background-color: white;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-
-        .event-accordion {
-            background-color: white;
-
-            .card-header {
-                background-color: white;
-
-                .event-button-plus {
-                    background-color: white;
-
-                    .event-plus {
-                        width: 60px;
-                        height: 60px;
-                        margin-top: 10px;
-                        border-radius: 50%;
-                    }
-                }
-            }
-        }
-
-        // Display of the timeline and the events
-        .timeline {
-            position: relative;
-
-            // Ruler
-            &::after {
-                content: '';
-                position: absolute;
-                width: 11px;
-                background-color: $tertiarycolor;
-                top: 0;
-                bottom: 0;
-                left: 50%;
-                margin-left: -5px;
-            }
-
-            .timeline-right, .timeline-left {
-                padding: 10px 15px;
-                position: relative;
-                width: 50%;
-
-                .timeline-internal, .timeline-external {
-                    text-align: center;
-                    margin: 15px 0;
-                    border-radius: 8px;
-                }
-
-                .timeline-external {
-                    background-color: $primarycolor;
-                }
-
-                .timeline-internal {
-                    background-color: $secondarycolor;
-                }
-            }
-            .timeline-right {
-                left: 25%;
-
-                .event-right {
-                    position: relative;
-
-                    // Display of the circles ont the timeline
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        width: 25px;
-                        height: 25px;
-                        left: -27px;
-                        background-color: $tertiarycolor;
-                        top: 12px;
-                        border-radius: 50%;
-                        z-index: 1;
-                    }
-
-                }
-            }
-            .timeline-left {
-                right: 25%;
-
-                // Display of the circles on the timeline
-                .event-left {
-                    position: relative;
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        width: 25px;
-                        height: 25px;
-                        right: -28px;
-                        background-color: $tertiarycolor;
-                        top: 12px;
-                        border-radius: 50%;
-                        z-index: 1;
-                    }
                 }
             }
         }

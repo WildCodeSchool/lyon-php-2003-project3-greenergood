@@ -19,13 +19,13 @@ class EventType extends AbstractType
             ->add('name', null, ['label' => "Nom de l'évènement *"])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
-                'format' => 'dd-MM--yyyy',
+                'format' => 'dd MM yyyy',
                 "data" => new DateTime(),
             ])
             ->add('endDate', DateType::class, [
                 'label' => "Date de fin",
                 'placeholder' => "",
-                'format' => 'dd-MM--yyyy',
+                'format' => 'dd MM yyyy',
                 'required'   => false,
             ])
             ->add('description', null, ['label' => "Description"])
