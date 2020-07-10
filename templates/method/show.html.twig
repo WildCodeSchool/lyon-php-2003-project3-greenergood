@@ -100,7 +100,7 @@
                 {% for methodContact in method.contact %}
                 <div class="col-12 col-xl-{{ 12/method.contact|length }} d-flex flex-column align-items-center">
                     <a href="{{ path('user_show', {'id': methodContact.id}) }}"><img class="method-image" src="{{ vich_uploader_asset(methodContact, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"></a>
-                    <p class="my-2">{{ methodContact.firstname }} {{ methodContact.lastname }}</p>
+                    <p class="my-2 text-center">{{ methodContact.firstname }} {{ methodContact.lastname }}</p>
                     {% if methodContact.fonction %}
                         <p class="my-2">{{ methodContact.fonction }}</p>
                     {% endif %}
