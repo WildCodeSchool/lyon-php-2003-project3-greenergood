@@ -65,6 +65,17 @@ class ActionType extends AbstractType
                 'delete_empty' => function (ActionDeliverable $actionDeliverable = null) {
                     return null === $actionDeliverable || empty($actionDeliverable->getLink());
                 }
+            ])
+            ->add('methods', EntityType::class, [
+                'label' => 'Fiche(s) Méthode',
+                'class' => Method::class,
+                'choice_label' => function (Method $method) {
+                    $label = $method->getId() . ' - ' . $method->getName();
+                    return $label;
+                },
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference'=> false,
             ]);
     }
 

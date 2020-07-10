@@ -634,7 +634,7 @@ nav {
     display: flex;
     align-items: center;
     text-align: center;
-    color: white;
+    color: #ffffff;
     background-color: $primarycolor;
     border-radius: 5px;
     border: none;
@@ -646,9 +646,10 @@ nav {
 
 .action-image {
     height: 125px;
-    Width: 125px;
+    width: 125px;
     border-radius: 50%;
     flex: 1;
+    object-fit: cover;
 }
 
 .action-yellow-box {
@@ -704,6 +705,7 @@ nav {
 }
 
 .action-list-item {
+    margin-right: 0;
     padding: 0 15px 0 15px;
     display: flex;
     align-items: center;
@@ -723,7 +725,7 @@ nav {
     .organisation-button {
         color: white;
         background-color: $primarycolor;
-        font-size: 0.8rem;
+        font-size: 1rem;
 
         a {
             color: white;
@@ -908,6 +910,10 @@ nav {
     color: red;
 }
 
+.fiche-action {
+    padding: 20px;
+}
+
 .action-mini-menu {
     display: flex;
     align-items: center;
@@ -917,6 +923,7 @@ nav {
 
 .action-three-dots {
     display: flex;
+    cursor: pointer;
 }
 
 .action-menu {
