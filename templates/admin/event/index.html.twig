@@ -28,7 +28,7 @@
                 <td>{{ event.description }}</td>
                 <td>{{ event.target }}</td>
                 <td>
-                    <a href="{{ path('admin_event_show', {'id': event.id}) }}">show</a>
+                    {{ include('admin/event/_delete_form.html.twig') }}
                     <a href="{{ path('admin_event_edit', {'id': event.id}) }}">edit</a>
                 </td>
             </tr>

@@ -1945,6 +1945,8 @@ nav {
     // Display of the timeline and the events
     .timeline {
         position: relative;
+        display: flex;
+        flex-direction: column-reverse;
 
         // Ruler of the timeline
         &::after {
@@ -1952,7 +1954,7 @@ nav {
             position: absolute;
             width: 11px;
             background-color: $tertiarycolor;
-            top: 0;
+            top: 10px;
             bottom: 0;
             left: 50%;
             margin-left: -5px;
@@ -1963,14 +1965,14 @@ nav {
             content: " ";
             height: 0;
             position: absolute;
-            bottom: -8px;
+            top: -8px;
             width: 0;
             z-index: 1;
             right: 147px;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
 
-            border-top: 30px solid $tertiarycolor;
+            border-bottom: 30px solid $tertiarycolor;
         }
 
         .timeline-right, .timeline-left {
