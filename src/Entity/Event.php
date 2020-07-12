@@ -19,9 +19,9 @@ class Event
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60)
      * @Assert\NotBlank(message="Le nom ne devrait pas être vide")
-     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
+     * @Assert\Length(max="60", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $name;
 
@@ -42,12 +42,12 @@ class Event
     private $endDate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60)
      * @Assert\Choice(
      *     choices = { "external", "internal" }
      * )

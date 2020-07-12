@@ -6,60 +6,82 @@
 
 <div class="event-green-background">
     <figure class="event-title-container">
+        <div class="external-title">Evénement grand public</div>
+        <div class="internal-title">Evénement interne</div>
         <img class="event-paint" src="{{ asset("../img/timeline/historique_peinture.png") }}">
         <figcaption>Historique de The Greener Good</figcaption>
     </figure>
 
     <div class="event-white-background">
-        {# Display of the form to add a new event #}
-        <div id="accordion" class="event-accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0 d-flex justify-content-end">
-                        <button class="btn btn-link event-button-plus" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                            <img class="event-plus" src="{{ asset("../img/timeline/historique_plus.png") }}">
-                        </button>
-                    </h5>
-                </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            {# Display of the form to add a new event #}
+            <div id="accordion" class="event-accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0 d-flex justify-content-end">
+                            <button class="btn btn-link event-button-plus" data-toggle="collapse"
+                                    data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                <img class="event-plus" id="button-collapse-plus"
+                                     src="{{ asset("../img/timeline/historique_plus.png") }}">
+                                <img class="event-plus hide-button" id="button-collapse-minus"
+                                     src="{{ asset("../img/timeline/historique_moins.png") }}">
+                            </button>
+                        </h5>
+                    </div>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        {# add form here #}
-                        {{ include('event/_form.html.twig') }}
-
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            {{ include('admin/event/_form.html.twig') }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {# else, display empty header #}
+        {% else %}
+             <div class="event-empty-header"></div>
+        {% endif %}
 
         <div class="timeline">
             {% for event in events %}
                 {% if loop.index is odd %}
 
-                    <div class="container timeline-left">
-                                <div class="event-left {% if event.target == 'external' %} timeline-external {% elseif event.target == 'internal' %} timeline-internal {% endif %}">
-                                    <div class="font-weight-bold">{{ event.startDate ? event.startDate|date('d M Y') : '' }}{% if event.endDate %}  - {{ event.endDate|date('d M Y') }}{% endif %}</div>
-                                    <div>{{ event.name }}</div>
-                                    <div>{{ event.description }}</div>
-                                </div>
-                        <div class="dash-left"></div>
+                    <div class="timeline-left">
+                        <div class="{% if event.target == 'external' %} event-left-external timeline-external {% elseif event.target == 'internal' %} event-left-internal timeline-internal {% endif %}">
+                            <div class="font-weight-bold">{{ event.startDate ? event.startDate|date('d M Y') : '' }}{% if event.endDate %}  - {{ event.endDate|date('d M Y') }}{% endif %}</div>
+                            <div>{{ event.name }}</div>
+                            <div>{{ event.description }}</div>
+                        </div>
+                        <div class="dash-left dash-{% if event.target == 'external' %}external{% elseif event.target == 'internal' %}internal{% endif %}"></div>
                     </div>
 
                 {% elseif loop.index is even %}
 
-                    <div class="container timeline-right">
-                        <div class="event-right {% if event.target == 'external' %} timeline-external {% elseif event.target == 'internal' %} timeline-internal {% endif %}">
-                            <div class="font-weight-bold">{{ event.startDate ? event.startDate|date('d M Y') : '' }}{% if event.endDate %}  - {{  event.endDate|date('d M Y') }}{% endif %}</div>
+                    <div class="timeline-right">
+                        <div class="{% if event.target == 'external' %} event-right-external timeline-external {% elseif event.target == 'internal' %} event-right-internal timeline-internal {% endif %}">
+                            <div class="font-weight-bold">{{ event.startDate ? event.startDate|date('d M Y') : '' }}{% if event.endDate %}  - {{ event.endDate|date('d M Y') }}{% endif %}</div>
                             <div>{{ event.name }}</div>
                             <div>{{ event.description }}</div>
                         </div>
+                        <div class="dash-right dash-{% if event.target == 'external' %}external{% elseif event.target == 'internal' %}internal{% endif %}"></div>
                     </div>
 
                 {% endif %}
             {% endfor %}
 
-
         </div>
+{% endblock %}
 
-        {% endblock %}
+{% block javascripts %}
+    <script>
+        $(".collapse").on('show.bs.collapse', function(){
+            $(this).prev(".card-header").find("#button-collapse-plus").addClass("hide-button")
+            $(this).prev(".card-header").find("#button-collapse-minus").removeClass("hide-button");
+
+        }).on('hide.bs.collapse', function(){
+            $(this).prev(".card-header").find("#button-collapse-plus").removeClass("hide-button")
+            $(this).prev(".card-header").find("#button-collapse-minus").addClass("hide-button");
+        });
+</script>
+
+{% endblock %}

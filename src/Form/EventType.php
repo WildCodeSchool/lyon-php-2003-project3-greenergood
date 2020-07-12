@@ -16,7 +16,7 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de l'évènement *"])
+            ->add('name', null, ['label' => "Nom de l'événement *"])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd MM yyyy',
@@ -30,9 +30,10 @@ class EventType extends AbstractType
             ])
             ->add('description', null, ['label' => "Description"])
             ->add('target', ChoiceType::class, [
+                'label' => "Cible",
                 'choices' => [
-                    'Evènement grand public' => 'external',
-                    'Evènement interne' => 'internal',
+                    'Evénement grand public' => 'external',
+                    'Evénement interne' => 'internal',
                     ],
             ]);
     }
