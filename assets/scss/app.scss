@@ -2036,8 +2036,8 @@ nav {
             margin-bottom: 5px;
         }
     }
-    
-    // Display of the timeline and the events
+
+    // Display of the timeline and the event
     .timeline {
         position: relative;
         display: flex;
@@ -2606,7 +2606,7 @@ nav {
         #event_startDate select, #event_endDate select {
             margin-left: 5px;
         }
-        
+
         .event-white-background {
             position: relative;
 
@@ -2689,7 +2689,7 @@ nav {
                         padding: 3px;
                     }
                 }
-           
+
                 // Dots on the timeline
                 .event-left-external:before {
                     content: '';
