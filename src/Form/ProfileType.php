@@ -5,10 +5,12 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProfileType extends AbstractType
@@ -18,6 +20,11 @@ class ProfileType extends AbstractType
         $builder
             ->add('firstname', TextType::class, ['label' => "Prénom *"])
             ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
+            ->add('phone', TelType::class, [
+                'label' => "Numéro de téléphone *",
+                'required' => true,
+                'constraints' => new Length(['min' => 10])
+            ])
             ->add('fonction', TextType::class, ['label' => "Fonction", 'required' => false])
             ->add('address', TextType::class, ['label' => "Adresse", 'required' => false])
             ->add('description', TextareaType::class, ['label' => "Description", 'required' => false])

@@ -71,14 +71,18 @@
                     <div class="contact">
                         <div class="contact-img">
                             <img class="photo" src="{{ contacts.0.userPicture | default("img/default_avatar.png") }}">
-                            <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                            <a href="{{ path('user_show', {'id': contacts.0.id}) }}">
+                                <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                            </a>
                         </div>
                         <p>{{ contacts.0.firstname }} {{ contacts.0.lastname }}</p>
                     </div>
                     <div class="contact">
                         <div class="contact-img">
                             <img class="photo" src="{{ contacts.1.userPicture | default("img/default_avatar.png") }}">
-                            <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                            <a href="{{ path('user_show', {'id': contacts.1.id}) }}">
+                                <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
+                            </a>
                         </div>
                         <p>{{ contacts.1.firstname }} {{ contacts.1.lastname }}</p>
                     </div>

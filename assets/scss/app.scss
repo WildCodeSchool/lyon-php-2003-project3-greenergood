@@ -98,7 +98,7 @@ h2 {
     border: none;
     margin: 10px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     a:hover {
         text-decoration: none;
@@ -386,6 +386,9 @@ nav {
         color: white;
     }
 
+    button {
+        margin-left: 35px;
+    }
 }
 
 .navbar-collapse {
@@ -513,6 +516,31 @@ nav {
     .method-infos {
         flex-direction: column;
     }
+}
+
+//tab sheet method
+.method-tabs {
+    padding: 10px;
+}
+
+.container-tabs {
+    background-color: $primarycolor;
+    border-bottom-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;;
+    border-bottom-right-radius: 0.25rem;;
+}
+
+.nav-link-tab {
+    margin-right: 20px;
+    margin-top: 30px;
+    font-size: 20px;
+    font-family: "Lobster", cursive;
+    background-color: $primarycolor;
+    color: $tertiarycolor;
+}
+
+.nav-link-tab.active {
+    background-color: white;
 }
 
 /* NEW ACTION PAGE STYLING */
@@ -940,6 +968,11 @@ nav {
 }
 
 /* TROMBINOSCOPE PAGE */
+.trombi-grey-line {
+    background-color: darkgrey;
+    height: 8px;
+}
+
 .trombi-background {
     background-color: darkgrey;
 
@@ -1136,6 +1169,20 @@ nav {
     height: 75px;
 }
 
+.action-filter-button {
+    border: none;
+    margin-top: 10px;
+    font-family: $textfont;
+    font-size: 0.8em;
+    padding: 0 5px;
+}
+
+.action-image-index {
+    background-color: white;
+    height: 288px;
+    display: flex;
+}
+
 /* CSS CARD METHODS */
 
 .btn-desactive {
@@ -1182,7 +1229,7 @@ nav {
     flex-direction: column;
 }
 
-.menu-method {
+.menu-method, .menu-filter {
     background-color: #5F5F5F;
     margin-left: -70px;
 
@@ -1280,6 +1327,7 @@ nav {
 //INDEX MOBILE VIEW
 .index-container {
     @include flexCenter(column);
+    overflow: auto;
 
     ul {
         list-style-type: none;
@@ -1335,6 +1383,21 @@ nav {
     -ms-transform: rotate(110deg);
     -o-transform: rotate(110deg);
     transform: rotate(110deg);
+}
+
+.search-results {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        color: $primarycolor;
+    }
+
+    a {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Display over 450px of trombinoscope page */
@@ -1419,6 +1482,18 @@ nav {
         }
 
         .index-container {
+            overflow: auto;
+
+            .container-list-index {
+                margin-left: auto;
+                margin-right: auto;
+                width: 80%;
+
+                a:hover {
+                    color: $secondarycolor;
+                }
+            }
+
             h4 {
                 width: 30%;
                 margin-right: auto;
@@ -1426,9 +1501,28 @@ nav {
             }
 
             ul {
-                width: 65%;
+                width: 62%;
                 margin-left: auto;
             }
+        }
+    }
+
+    .search-results {
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            color: $primarycolor;
+        }
+
+        a {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        a:hover {
+            color: $secondarycolor;
         }
     }
 }
@@ -2930,5 +3024,140 @@ nav {
 @media (min-width: 720px) {
     .subtitles-accueil {
         margin-top: -70px;
+    }
+}
+
+/* CALENDAR PAGE */
+.cal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .cal-leaf-container {
+        display: none;
+    }
+
+    .cal-text {
+        margin: 20px auto 100px 0;
+        height: 100px;
+        text-align: center;
+
+        p {
+            font-family: $textfont;
+            font-size: 16px;
+            padding: 10px;
+        }
+    }
+
+    .cal-container {
+        border-top: 15px solid $primarycolor;
+        border-bottom: 15px solid $primarycolor;
+        border-left: 1px solid $primarycolor;
+        border-right: 1px solid $primarycolor;
+        padding: 2px;
+    }
+
+    .cal-leaves-line {
+        display: none;
+    }
+}
+
+@media all and (min-width: 1500px) {
+    .cal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cal-leaf-container {
+            display: block;
+            position: relative;
+            margin: -100px auto 0 auto;
+            width: 80%;
+        }
+
+        .cal-green-leaf {
+            margin: -60px;
+            width: 500px;
+            height: auto;
+        }
+
+        #right-leaf {
+            transform: rotate(150deg);
+            position: absolute;
+            right: 100px;
+        }
+
+        #left-leaf {
+            transform: rotate(210deg) scaleX(-1);
+            position: absolute;
+            left: 100px;
+        }
+
+        .cal-text {
+            margin: 150px 0 100px 0;
+            width: 600px;
+            height: 100px;
+            text-align: center;
+
+            p {
+                font-family: $textfont;
+                font-size: 20px;
+            }
+        }
+
+        .cal-container {
+            margin: 10px auto;
+            width: 60%;
+            border-top: 15px solid $primarycolor;
+            border-bottom: 15px solid $primarycolor;
+            border-left: 1px solid $primarycolor;
+            border-right: 1px solid $primarycolor;
+        }
+
+        .cal-leaves-line {
+            display: block;
+            width: 97%;
+        }
+
+        .cal-leaves {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+
+            img {
+                width: 100px;
+                height: auto;
+            }
+
+            #left-big-pink {
+                transform: scaleX(-1);
+            }
+
+            #left-small-orange {
+                height: 50px;
+                width: auto;
+            }
+
+            #left-big-green {
+                transform: scaleX(-1);
+            }
+
+            #right-big-orange {
+                transform: scaleX(-1);
+            }
+
+            #right-small-pink {
+                height: 50px;
+                width: auto;
+            }
+        }
+
+        .cal-yellow-line {
+            background-color: $secondarycolor;
+            width: 100%;
+            height: 60px;
+            margin-top: -30px;
+        }
     }
 }

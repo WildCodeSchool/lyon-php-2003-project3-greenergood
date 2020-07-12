@@ -20,6 +20,8 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern: ^/
+            user_checker: App\Security\UserChecker
             anonymous: true
             guard:
                 authenticators:
@@ -43,4 +45,6 @@ security:
         - { path: ^/reset-password, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/efconnect, role: ROLE_USER }
+        - { path: ^/elfinder, role: ROLE_USER }
         - { path: ^/, role: ROLE_USER }

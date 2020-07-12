@@ -86,7 +86,7 @@
 
                 <div class="action-center-right">
                     <img class="action-image"
-                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}">
+                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../img/action/image_defaut_fiche_action.png') }}{% endif %}">
                 </div>
             </div>
 
@@ -110,22 +110,20 @@
                 </div>
             </div>
 
-            <div class="action-progress-box">{{ action.projectProgress }}</div>
-            <button class="action-add-Team" title="Ajouter une équipe">
-                <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
-            </button>
-            <div>
-                {# Generate as many teams as teams associated with action when set up#}
-                {% for team in teams %}
-                    <div class="col-6 team-title"> {{ team.name }} </div>
-                    {# Generate as many pictures as User associated with action when set up#}
-                    {% for user in team.users %}
-                        <a href="{{ path('user_show', {'id':user.id}) }}">
-                            <img class="action-member-image"
-                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png") }}"
-                                 alt="Nom de la personne">
-                        </a>
-                    {% endfor %}
+        <div class="action-progress-box">{{ action.projectProgress|raw }}</div>
+        <button class="action-add-Team" title="Ajouter une équipe">
+            <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
+        </button>
+        <div>
+            {# Generate as many teams as teams associated with action when set up#}
+            {% for team in teams %}
+                <div class="col-6 team-title"> {{ team.name }} </div>
+                {# Generate as many pictures as User associated with action when set up#}
+                {% for user in team.users %}
+                    <a href="{{ path('user_show', {'id':user.id}) }}">
+                        <img class="action-member-image" src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png")  }}" alt="{{ user.firstname }} {{ user.lastname }}" title="{{ user.firstname }} {{ user.lastname }}">
+                    </a>
+                {% endfor %}
 
                     {# Add link to button when functionality is set #}
                     <a href="{{ path('team_edit', {'id': team.id}) }}">
@@ -171,9 +169,9 @@
                     </ul>
                 </div>
                 <div class="important-link-center">
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}"
+                    <a href="{{ action.photoBook }}"><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}"
                                     alt="Lien vers les images"></a>
-                    <a href=""><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}"
+                    <a href="{{ action.video }}"><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}"
                                     alt="Lien vers les vidéos"></a>
                 </div>
             </div>

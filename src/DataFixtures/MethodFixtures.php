@@ -24,7 +24,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 0; $i < 10; $i++) {
             $method = new Method();
-            $method->setName($faker->domainWord);
+            $method->setName($faker->sentence(2));
             $method->setCreatedAt($faker->dateTime);
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);

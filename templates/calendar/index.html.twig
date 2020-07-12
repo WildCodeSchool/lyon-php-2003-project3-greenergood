@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agenda{% endblock %}
+
+{% block body %}
+    <main class="cal">
+        <div class="cal-leaf-container">
+            <img class="cal-green-leaf" id="left-leaf" src="{{ asset('img/calendar/agenda_feuille_verte.png') }}">
+            <img class="cal-green-leaf" id="right-leaf" src="{{ asset('img/calendar/agenda_feuille_verte.png') }}">
+        </div>
+
+        <div class="cal-text">
+            <h1>Agenda</h1>
+            <p>Retrouve ici les dates des prochains événements de l'association ainsi que celles des réunions et autres rencontres.</p>
+        </div>
+
+        <div class="cal-container embed-responsive embed-responsive-4by3">
+            <iframe src="https://calendar.google.com/calendar/embed?src=pignet.justine%40gmail.com&ctz=Europe%2FBerlin" gesture="media"  allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <div class="cal-leaves-line">
+            <div class="cal-leaves">
+                <img id="left-big-pink" src="{{ asset('img/calendar/agenda_feuille_rose.png') }}">
+                <img id="left-small-orange" src="{{ asset('img/calendar/agenda_feuille_orange.png') }}">
+                <img id="left-big-green" src="{{ asset('img/calendar/agenda_feuille_verte.png') }}">
+                <img id="left-big-orange" src="{{ asset('img/calendar/agenda_feuille_orange.png') }}">
+                <img id="double-green" src="{{ asset('img/calendar/agenda_feuille_verte_double.png') }}">
+                <img id="right-big-green" src="{{ asset('img/calendar/agenda_feuille_verte.png') }}">
+                <img id="right-big-orange" src="{{ asset('img/calendar/agenda_feuille_orange.png') }}">
+                <img id="right-small-pink" src="{{ asset('img/calendar/agenda_feuille_rose.png') }}">
+                <img id="right-small-green" src="{{ asset('img/calendar/agenda_feuille_verte.png') }}">
+            </div>
+            <div class="cal-yellow-line"></div>
+        </div>
+    </main>
+{% endblock %}
