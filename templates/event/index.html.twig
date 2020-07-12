@@ -74,11 +74,11 @@
 
 {% block javascripts %}
     <script>
-        $(".collapse").on('show.bs.collapse', function(){
+        $(".collapse").on('show.bs.collapse', function switchButton(){
             $(this).prev(".card-header").find("#button-collapse-plus").addClass("hide-button")
             $(this).prev(".card-header").find("#button-collapse-minus").removeClass("hide-button");
 
-        }).on('hide.bs.collapse', function(){
+        }).on('hide.bs.collapse', function switchButtonBack(){
             $(this).prev(".card-header").find("#button-collapse-plus").removeClass("hide-button")
             $(this).prev(".card-header").find("#button-collapse-minus").addClass("hide-button");
         });
