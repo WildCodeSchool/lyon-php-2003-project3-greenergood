@@ -10531,7 +10531,6 @@ nav {
 .action-member-image, .action-plus-image {
   height: 75px;
   width: auto;
-  border-radius: 50%;
   object-fit: cover;
 }
 

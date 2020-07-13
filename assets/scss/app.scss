@@ -687,7 +687,6 @@ nav {
 .action-member-image, .action-plus-image {
     height: 75px;
     width: auto;
-    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -842,7 +841,7 @@ nav {
             }
         }
     }
-    
+
     //ACTION EDIT FORM
 
     #action_methods {
@@ -2682,7 +2681,7 @@ nav {
 
     /* DESKTOP DISPLAY OF TIMELINE PAGE */
     .event-green-background {
-        
+
         .event-title-container {
             .event-paint {
                 left: 25px;
