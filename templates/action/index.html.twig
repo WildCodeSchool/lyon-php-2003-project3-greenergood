@@ -34,36 +34,38 @@
     <div class="container">
         <div class="row justify-content-center">
             {% for action in actions %}
-                <div class="card cardaction hvr-glow" style="width: 18rem;">
-                    <a href="{{ path('action_show', {'id': action.id}) }}">
+                {% if action.activated == true %}
+                    <div class="card cardaction hvr-glow" style="width: 18rem;">
+                        <a href="{{ path('action_show', {'id': action.id}) }}">
 
-                        <img class="card-img-top action-image-index"
-                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
-                            {% if action.status == "started" %}
-                                <span class="badge badge-pill badge-primary ongoing">En cours</span>
-                            {% elseif action.status == "cancelled" %}
-                                <span class="badge badge-pill badge-primary cancelled">Annulé</span>
-                            {% elseif action.status == "ended" %}
-                                <span class="badge badge-pill badge-primary over">Terminé</span>
-                            {% endif %}
-                        <div class="card-body">
-                            <p class="card-title">
-                                {{ action.startDate ? action.startDate|date('d M Y') : '' }}
-                                {% if action.endDate %}
-                                    - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                            <img class="card-img-top action-image-index"
+                                 src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
+                                {% if action.status == "started" %}
+                                    <span class="badge badge-pill badge-primary ongoing">En cours</span>
+                                {% elseif action.status == "cancelled" %}
+                                    <span class="badge badge-pill badge-primary cancelled">Annulé</span>
+                                {% elseif action.status == "ended" %}
+                                    <span class="badge badge-pill badge-primary over">Terminé</span>
                                 {% endif %}
-                            </p>
-                            <h2 class="greyOnWhite">{{ action.name }}</h2>
-                            <p class="card-text">
-                                {% if action.editionNumber > 1 %}
-                                    {{ action.editionNumber }}ème édition
-                                {% elseif action.editionNumber == 1 %}
-                                    {{ action.editionNumber }}ère édition
-                                {% endif %}
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                            <div class="card-body">
+                                <p class="card-title">
+                                    {{ action.startDate ? action.startDate|date('d M Y') : '' }}
+                                    {% if action.endDate %}
+                                        - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                                    {% endif %}
+                                </p>
+                                <h2 class="greyOnWhite">{{ action.name }}</h2>
+                                <p class="card-text">
+                                    {% if action.editionNumber > 1 %}
+                                        {{ action.editionNumber }}ème édition
+                                    {% elseif action.editionNumber == 1 %}
+                                        {{ action.editionNumber }}ère édition
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
 
