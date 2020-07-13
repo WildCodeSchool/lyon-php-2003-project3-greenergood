@@ -83,7 +83,7 @@ class Action
      *     choices = { "started", "ended", "cancelled" }
      * )
      */
-    private $status = 'En cours';
+    private $status = 'started';
 
     /**
      * @ORM\Column(type="text", nullable=true)
