@@ -13,40 +13,45 @@
         <div class="index-container">
             {% block index %}
             <div class="container-list-index">
-            <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
-            <ul>
-                {% for action in actions %}
-                    {% if action.activated == true %}
+                <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
+                <ul>
+                    {% for action in actions %}
+                        {% if action.activated == true %}
+                            <li>
+                                <a href="{{ path('action_show', {'id':action.id}) }}">
+                                    {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
+                <ul>
+                    {% for category in categories %}
+                        <h3 id="methodTitle">{{ category.name }}</h3>
+                        {% for method in methods %}
+                            {% if method.activated == true %}
+                                {% if method.category.id == category.id %}
+                                    <li>
+                                        <a href="{{ path('method_show', {'id': method.id}) }}">&emsp;&emsp;>
+                                            {{ method.name }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+                <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
+                <ul>
+                    {% for user in users %}
                         <li>
-                            <a href="{{ path('action_show', {'id':action.id}) }}">
-                                {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
-                            </a>
+                            <a href="{{ path('admin_user_show', {'id':user.id}) }}">{{ user.lastname }}  {{ user.firstname }}</a>
                         </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
-            <ul>
-                {% for method in methods %}
-                    {% if method.activated == true %}
-                        <li>
-                            <a href="{{ path('method_show', {'id': method.id}) }}">
-                                {{ method.name }}
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
-            <ul>
-                {% for user in users %}
-                    <li>
-                        <a href="{{ path('admin_user_show', {'id':user.id}) }}">{{ user.lastname }}  {{ user.firstname }}</a>
-                    </li>
-                {% endfor %}
-                {% endblock %}
-            </ul>
+                    {% endfor %}
+                    {% endblock %}
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 {% endblock %}
