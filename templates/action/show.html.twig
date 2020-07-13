@@ -5,7 +5,7 @@
 
     {% if action.activated == false %}
         - Désactivée
-    {% endif %}e
+    {% endif %}
 
 {% endblock %}
 
@@ -31,7 +31,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
 
                         {% if action.activated == true %}
-                            <a href="{{ path('action_delete', {'id' : action.id}) }}">Désactiver</a>
+                            <a href="{{ path('action_deactivate', {'id' : action.id}) }}">Désactiver</a>
                         {% elseif action.activated == false %}
                             <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
                         {% endif %}

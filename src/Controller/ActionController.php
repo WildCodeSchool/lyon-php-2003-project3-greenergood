@@ -118,15 +118,14 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/deactivate", name="delete")
+     * @Route("/{id}/deactivate", name="deactivate")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Action $action): Response
+    public function deactivate(Request $request, Action $action): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $action->getId(), $request->request->get('_token'))) {
-            $action->setActivated(false);
-            $this->getDoctrine()->getManager()->flush();
-        }
+        $action->setActivated(false);
+        $this->getDoctrine()->getManager()->flush();
+
 
         $this->addFlash('danger', "La fiche action a été désactivée avec succès");
 
