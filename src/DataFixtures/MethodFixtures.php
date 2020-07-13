@@ -23,7 +23,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 1; $i < 40; $i++) {
+        for ($i = 1; $i < 25; $i++) {
             $method = new Method();
             $method->setName($faker->sentence(2));
             $method->setCreatedAt($faker->dateTime);
@@ -32,7 +32,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
             $method->setActivated(true);
             $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
             $method->setAuthor($this->getReference("Lucas"));
-            $method->setCategory($this->getReference('category_'.random_int(1, 15)));
+            $method->setCategory($this->getReference('category_'.random_int(0, 5)));
             $manager->persist($method);
         }
         $manager->flush();

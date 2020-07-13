@@ -518,15 +518,18 @@ nav {
     }
 }
 
-//tab sheet method
+// TAB SHEET METHOD DESKTOP VIEW
 .method-tabs {
-    padding: 10px;
+    padding: 0 50px 0 50px;
+
+    .mobile-btn-method {
+        display: none;
+    }
 }
 
 .container-tabs {
     background-color: $primarycolor;
     border-bottom-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;;
     border-bottom-right-radius: 0.25rem;;
 }
 
@@ -535,12 +538,68 @@ nav {
     margin-top: 30px;
     font-size: 20px;
     font-family: "Lobster", cursive;
-    background-color: $primarycolor;
+    background-color: #a9d6d2;
     color: $tertiarycolor;
+    height: 75px;
 }
 
-.nav-link-tab.active {
-    background-color: white;
+#nav-home-tab.active {
+    background-color: #5AAFAA;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.nav-link.nav-link-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px 15px 0 0;
+    width: 160px;
+}
+
+.nav-link.nav-link-tab.plus {
+    font-size: 5rem;
+}
+
+// TAB SHEET METHOD MOBILE VIEW
+
+@media only screen and (max-width: 768px) {
+
+    .method-tabs {
+        padding: 10px;
+
+        .mobile-btn-method {
+            display: flex;
+            margin: 10px;
+            justify-content: center;
+
+            button {
+                display: block;
+                border: none;
+            }
+        }
+    }
+
+    .nav-link-tab-mobile {
+        color: $tertiarycolor;
+    }
+
+    .nav.nav-tabs-desktop {
+        display: none;
+    }
+
+    .nav {
+        display: block;
+
+        .plus-mobile {
+            display: flex;
+            justify-content: center;
+            font-size: 50px;
+        }
+    }
 }
 
 /* NEW ACTION PAGE STYLING */
@@ -841,6 +900,7 @@ nav {
 
         .form-check {
             padding-left: 3.25rem;
+            margin-left: 20px;
         }
     }
 }
@@ -1272,6 +1332,8 @@ nav {
 }
 
 .method-btn {
+    border: none;
+
     a {
         color: white;
         font-family: $textfont;
@@ -1342,6 +1404,7 @@ nav {
         align-items: stretch;
         justify-content: center;
         flex-wrap: wrap;
+        padding: 40px 0 15px 0;
     }
 
     .container-btn-method {
@@ -1351,6 +1414,7 @@ nav {
 
         .method-btn {
             margin-left: 90px;
+            border: none;
         }
     }
 
@@ -1593,7 +1657,7 @@ nav {
     }
 }
 
-/* METHOD FORMS */
+/* METHOD FORMS MOBILE VIEW*/
 .methodForm-container {
     color: $tertiarycolor;
     font-family: $textfont;
@@ -1610,6 +1674,23 @@ nav {
 
 .btn-delete {
     margin-top: 10px
+}
+
+/* METHOD FORMS DESKTOP VIEW*/
+
+@media all and (min-width: 769px) {
+
+    #method_contact {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 240px;
+        overflow: auto;
+
+        .form-check {
+            margin-left: 20px;
+        }
+    }
 }
 
 //PROFILE PAGE MOBILE VIEW
