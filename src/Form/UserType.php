@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use DateTime;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -50,7 +52,7 @@ class UserType extends AbstractType
                 'constraints' => new Length(['min' => 10])
             ])
             ->add('address', TextType::class, ['label' => "Adresse", 'required' => false])
-            ->add('description', TextType::class, ['label' => "Description", 'required' => false])
+            ->add('description', TextareaType::class, ['label' => "Description", 'required' => false])
             ->add('pictureFile', VichFileType::class, [
                 'required' => false,
                 'allow_delete' => false, // True to display a delete checkbox

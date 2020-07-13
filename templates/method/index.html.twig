@@ -13,7 +13,6 @@
         </button>
     </div>
     <div class="method-tabs">
-
         <div class="dropdown mobile-btn-method">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +79,6 @@
                                                         {% elseif method.activated == false %}
                                                             <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                                                         {% endif %}
-
                                                     {% endif %}
                                                 </div>
                                             </div>

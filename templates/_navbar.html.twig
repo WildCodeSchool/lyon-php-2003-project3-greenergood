@@ -35,7 +35,7 @@
                     L'association
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Historique</a>
+                    <a class="dropdown-item" href="{{ path('event_index') }}">Historique</a>
                     <a class="dropdown-item" href="{{ path('trombinoscope_index') }}">Trombinoscope</a>
                 </div>
             </li>
@@ -49,7 +49,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('welcome') }}">Nouveau membre</a>
-                    <a class="dropdown-item" href="#">Tutoriel gare centrale</a>
                     <a class="dropdown-item" href="{{ path('method_index') }}">Liste des fiches méthodes</a>
                     <a class="dropdown-item" href="{{ path('app_index') }}">Index</a>
                 </div>
@@ -72,7 +71,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('user_show', {'id': app.user.id }) }}">Mon profil</a>
-                    <a class="dropdown-item" href="#">Mes favoris</a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a class="dropdown-item" href="{{ path('admin_index') }}">Administration</a>
                     {% endif %}
