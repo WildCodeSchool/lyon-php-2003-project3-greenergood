@@ -1990,6 +1990,255 @@ nav {
     }
 }
 
+// TIMELINE PAGE
+.event-title-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+
+    .external-title {
+        font-size: 0.8em;
+        font-family: $textfont;
+        margin-right: 30px;
+
+        // Display of the circles ont the key
+        &::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: 330px;
+            background-color: $primarycolor;
+            top: 33px;
+            border-radius: 50%;
+        }
+    }
+
+    .internal-title {
+        font-size: 0.8em;
+        font-family: $textfont;
+        margin-right: 10px;
+
+        // Display of the circles ont the key
+        &::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: 138px;
+            background-color: $secondarycolor;
+            top: 33px;
+            border-radius: 50%;
+        }
+    }
+
+    .event-paint {
+        width: 18em;
+        position: absolute;
+        left: 50px;
+        top: 65px;
+        z-index: 10;
+    }
+
+    figcaption {
+        position: absolute;
+        font-family: $titlefont;
+        color: $tertiarycolor;
+        font-size: 1.2em;
+        left: 80px;
+        top: 80px;
+        z-index: 20;
+    }
+}
+
+.event-green-background {
+    background-color: #badedb;
+
+    .event-white-background {
+        background-color: white;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+
+        .event-empty-header {
+            height: 111px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        }
+
+        .event-accordion {
+            background-color: white;
+
+            .card-header {
+                background-color: white;
+
+                .event-button-plus {
+                    background-color: white;
+
+                    &:focus {
+                        box-shadow: none
+                    }
+
+                    .event-plus {
+                        width: 60px;
+                        height: 60px;
+                        margin-top: 10px;
+                        border-radius: 50%;
+                    }
+
+                    .hide-button {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 760px) {
+    .event-form-label {
+        text-align: center;
+
+        #event_startDate select, #event_endDate select {
+            margin-bottom: 5px;
+        }
+    }
+
+    // Display of the timeline and the event
+    .timeline {
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+
+        // Ruler of the timeline
+        &::after {
+            content: '';
+            position: absolute;
+            width: 11px;
+            background-color: $tertiarycolor;
+            top: 10px;
+            bottom: 0;
+            left: 50%;
+            margin-left: -5px;
+        }
+
+        // Arrow of the timeline
+        &::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: -8px;
+            width: 0;
+            z-index: 2;
+            right: 147px;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 30px solid $tertiarycolor;
+        }
+
+        .timeline-right, .timeline-left {
+            padding: 10px 15px;
+            position: relative;
+            width: 50%;
+
+            .timeline-internal, .timeline-external {
+                text-align: center;
+                margin: 15px 0;
+                border-radius: 8px;
+
+                div {
+                    word-break: break-word;
+                    padding: 3px;
+                }
+            }
+
+            .timeline-external {
+                background-color: $primarycolor;
+            }
+
+            .timeline-internal {
+                background-color: $secondarycolor;
+            }
+        }
+
+        .timeline-right {
+            left: 50%;
+
+            .event-right-external {
+                position: relative;
+
+                // Display of the circles ont the timeline
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: -27px;
+                    background-color: $primarycolor;
+                    top: 12px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+
+            .event-right-internal {
+                position: relative;
+
+                // Display of the circles ont the timeline
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: -27px;
+                    background-color: $secondarycolor;
+                    top: 12px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+        }
+
+        .timeline-left {
+            .event-left-external {
+                position: relative;
+
+                // Display of the circles on the timeline
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    right: -28px;
+                    background-color: $primarycolor;
+                    top: 12px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+
+            .event-left-internal {
+                position: relative;
+
+                // Display of the circles on the timeline
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    right: -28px;
+                    background-color: $secondarycolor;
+                    top: 12px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}
+
+
 // PROFILE PAGE DESKTOP VIEW
 @media all and (min-width: 769px) {
 
@@ -2405,6 +2654,203 @@ nav {
                     }
                 }
             }
+        }
+    }
+
+    /* DESKTOP DISPLAY OF TIMELINE PAGE */
+    .event-green-background {
+        
+        .event-title-container {
+            .event-paint {
+                left: 25px;
+            }
+
+            figcaption {
+                left: 50px;
+            }
+        }
+
+        #event_startDate select, #event_endDate select {
+            margin-left: 5px;
+        }
+
+        .event-white-background {
+            position: relative;
+
+            .timeline {
+                overflow-x: auto;
+                display: flex;
+                text-align: center;
+                height: 510px;
+
+                // Timeline's arrow
+                &::before {
+                    content: " ";
+                    height: 0;
+                    position: absolute;
+                    bottom: 326px;
+                    width: 0;
+                    z-index: 1;
+                    right: 0;
+                    border: medium solid $tertiarycolor;
+                    border-width: 30px 0 30px 50px;
+                    border-color: transparent transparent transparent $tertiarycolor;
+                }
+
+                // Line of the timeline
+                &::after {
+                    content: '';
+                    height: 11px;
+                    background-color: $tertiarycolor;
+                    left: 0;
+                    right: 2%;
+                    position: absolute;
+                    bottom: 351px;
+                }
+
+                .dash-external, .dash-internal {
+                    width: 10px;
+                    height: 50px;
+                    margin: auto;
+                    border-radius: 5px;
+                }
+
+                .dash-external {
+                    background-color: $primarycolor;
+                }
+
+                .dash-internal {
+                    background-color: $secondarycolor;
+                }
+
+                .dash-left {
+                    position: absolute;
+                    top: 185px;
+                    left: 50%;
+                }
+
+                .dash-right {
+                    position: absolute;
+                    top: -46px;
+                    left: 50%;
+                }
+
+                .timeline-left, .timeline-right {
+                    height: fit-content;
+                    position: relative;
+                }
+
+                .timeline-right {
+                    margin-top: 320px;
+                }
+
+                .event-left-external, .event-left-internal, .event-right-external, .event-right-internal {
+                    align-self: end;
+                    border-radius: 8px;
+                    width: 250px;
+                    margin: 10px;
+                    position: relative;
+
+                    div {
+                        word-break: break-word;
+                        padding: 3px;
+                    }
+                }
+
+                // Dots on the timeline
+                .event-left-external:before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: 117px;
+                    background-color: $primarycolor;
+                    top: 234px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+
+                // Dots on the timeline
+                .event-left-internal:before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: 117px;
+                    background-color: $secondarycolor;
+                    top: 234px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+
+                // Dots on the timeline
+                .event-right-external:before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: 117px;
+                    background-color: $primarycolor;
+                    top: -87px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+
+                // Dots on the timeline
+                .event-right-internal:before {
+                    content: '';
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    left: 117px;
+                    background-color: $secondarycolor;
+                    top: -87px;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+
+                .timeline-external {
+                    background-color: $primarycolor;
+                }
+
+                .timeline-internal {
+                    background-color: $secondarycolor;
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 1310px) {
+    .event-green-background .event-white-background .timeline {
+        overflow-x: auto;
+        display: flex;
+        text-align: center;
+        height: 510px;
+
+        // Timeline's arrow
+        &::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            bottom: 309px;
+            width: 0;
+            z-index: 1;
+            right: 0;
+            border: medium solid $tertiarycolor;
+            border-width: 30px 0 30px 50px;
+            border-color: transparent transparent transparent $tertiarycolor;
+        }
+
+        // Line of the timeline
+        &::after {
+            content: '';
+            height: 11px;
+            background-color: $tertiarycolor;
+            left: 0;
+            right: 2%;
+            position: absolute;
+            bottom: 333px;
         }
     }
 }
