@@ -10847,17 +10847,17 @@ nav {
 
 /* TROMBINOSCOPE PAGE */
 .trombi-grey-line {
-  background-color: rgba(90, 175, 170, 0.2);
+  background-color: rgba(90, 175, 170, 0.15);
   height: 20px;
 }
 
 .trombi-title {
   padding: 20px 0;
-  background-color: rgba(90, 175, 170, 0.6);
+  background-color: rgba(90, 175, 170, 0.65);
 }
 
 .trombi-background {
-  background-color: rgba(90, 175, 170, 0.2);
+  background-color: rgba(90, 175, 170, 0.15);
 }
 .trombi-background li {
   display: flex;
