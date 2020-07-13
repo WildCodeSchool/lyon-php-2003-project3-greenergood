@@ -22,7 +22,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             $method = new Method();
             $method->setName($faker->sentence(2));
             $method->setCreatedAt($faker->dateTime);

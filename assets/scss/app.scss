@@ -631,19 +631,22 @@ nav {
     }
 }
 
-.action-add-Team {
-    margin-top: 15px;
-    padding: 5px;
+.container-add-team {
     display: flex;
     align-items: center;
-    text-align: center;
-    color: #ffffff;
-    background-color: $primarycolor;
-    border-radius: 5px;
-    border: none;
+    justify-content: center;
 
-    a {
-        color: white;
+    .action-add-Team {
+        margin: 15px;
+        padding: 10px;
+        color: #ffffff;
+        background-color: $primarycolor;
+        border-radius: 5px;
+        border: none;
+
+        a {
+            color: white;
+        }
     }
 }
 
@@ -713,12 +716,13 @@ nav {
     display: flex;
     align-items: center;
     text-align: center;
+    margin-left: 0;
 
     .organisation-button, .organisation-button-plus {
         font-family: $titlefont;
         border-radius: 5px;
         padding: 15px 10px 15px 10px;
-        margin: 10px 5px 0 5px;
+        margin: 10px 5px 10px 5px;
         height: 70px;
         display: flex;
         justify-content: center;
@@ -754,19 +758,22 @@ nav {
 .action-subtitles {
     background-color: $secondarycolor;
     text-align: center;
-    margin-top: 10px;
 }
 
 .action-methods {
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
     padding: 5px;
     border: 10px solid $tertiarycolor;
     display: flex;
     align-items: start;
     flex-direction: column;
 
-    li {
-        margin-left: 20px;
+    ul {
+        list-style-type: none;
+
+        li {
+            margin-left: 20px;
+        }
     }
 }
 
@@ -777,6 +784,67 @@ nav {
     font-size: 12px;
     text-decoration: none;
     background-color: #5F5F5F;
+}
+
+/* DISPLAY ACTION PAGE DESKTOP VIEW */
+
+@media all and (min-width: 769px) {
+
+    .container-add-team {
+        display: flex;
+        justify-content: flex-start;
+
+        .action-add-Team {
+            margin: 15px;
+            padding: 10px;
+            color: #ffffff;
+            background-color: $primarycolor;
+            border-radius: 5px;
+            border: none;
+
+            a {
+                color: white;
+            }
+        }
+    }
+
+    .action-methods {
+        margin: 10px 0 10px 0;
+        padding: 5px;
+        border: 10px solid $tertiarycolor;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        overflow: auto;
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: 270px;
+            margin-bottom: 0;
+            padding: 15px;
+
+            li {
+                margin-left: 20px;
+            }
+        }
+    }
+    
+    //ACTION EDIT FORM
+
+    #action_methods {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 300px;
+        overflow: auto;
+
+        .form-check {
+            padding-left: 3.25rem;
+        }
+    }
 }
 
 /* FOOTER */
