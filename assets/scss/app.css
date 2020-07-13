@@ -10478,18 +10478,20 @@ nav {
   height: 30px;
 }
 
-.action-add-Team {
-  margin-top: 15px;
-  padding: 5px;
+.container-add-team {
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+}
+.container-add-team .action-add-Team {
+  margin: 15px;
+  padding: 10px;
   color: #ffffff;
   background-color: #5AAFAA;
   border-radius: 5px;
   border: none;
 }
-.action-add-Team a {
+.container-add-team .action-add-Team a {
   color: white;
 }
 
@@ -10555,12 +10557,13 @@ nav {
   display: flex;
   align-items: center;
   text-align: center;
+  margin-left: 0;
 }
 .action-list-item .organisation-button, .action-list-item .organisation-button-plus {
   font-family: "Lobster", cursive;
   border-radius: 5px;
   padding: 15px 10px 15px 10px;
-  margin: 10px 5px 0 5px;
+  margin: 10px 5px 10px 5px;
   height: 70px;
   display: flex;
   justify-content: center;
@@ -10589,18 +10592,20 @@ nav {
 .action-subtitles {
   background-color: #FDEE6E;
   text-align: center;
-  margin-top: 10px;
 }
 
 .action-methods {
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
   padding: 5px;
   border: 10px solid #5F5F5F;
   display: flex;
   align-items: start;
   flex-direction: column;
 }
-.action-methods li {
+.action-methods ul {
+  list-style-type: none;
+}
+.action-methods ul li {
   margin-left: 20px;
 }
 
@@ -10613,6 +10618,57 @@ nav {
   background-color: #5F5F5F;
 }
 
+/* DISPLAY ACTION PAGE DESKTOP VIEW */
+@media all and (min-width: 769px) {
+  .container-add-team {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .container-add-team .action-add-Team {
+    margin: 15px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #5AAFAA;
+    border-radius: 5px;
+    border: none;
+  }
+  .container-add-team .action-add-Team a {
+    color: white;
+  }
+
+  .action-methods {
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    border: 10px solid #5F5F5F;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .action-methods ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 270px;
+    margin-bottom: 0;
+    padding: 15px;
+  }
+  .action-methods ul li {
+    margin-left: 20px;
+  }
+
+  #action_methods {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    overflow: auto;
+  }
+  #action_methods .form-check {
+    padding-left: 3.25rem;
+  }
+}
 /* FOOTER */
 .footer {
   font-family: "Montserrat", sans-serif;

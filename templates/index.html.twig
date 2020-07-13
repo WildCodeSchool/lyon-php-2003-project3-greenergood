@@ -16,17 +16,25 @@
             <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
             <ul>
                 {% for action in actions %}
-                    <li>
-                        <a href="{{ path('action_show', {'id':action.id}) }}">
-                            {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
-                        </a>
-                    </li>
+                    {% if action.activated == true %}
+                        <li>
+                            <a href="{{ path('action_show', {'id':action.id}) }}">
+                                {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
+                            </a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
             <ul>
                 {% for method in methods %}
-                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.name }}</a></li>
+                    {% if method.activated == true %}
+                        <li>
+                            <a href="{{ path('method_show', {'id': method.id}) }}">
+                                {{ method.name }}
+                            </a>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
