@@ -31,10 +31,9 @@ h2 {
     font-family: $titlefont;
 }
 
-#methodTitle {
-    font-size: 1rem;
-    font-weight: bold;
-    padding-top: 8px;
+.alert {
+    margin-top: 10px;
+
 }
 
 /* Let's get this party started */
@@ -548,6 +547,12 @@ nav {
     background-color: white;
 }
 
+/*Index Method */
+#methodTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-top: 8px;
+  
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
@@ -696,7 +701,7 @@ nav {
     .important-link-image, {
         background-color: $secondarycolor;
         border-radius: 5px;
-        padding: 15px 30px 15px 30px;
+        padding: 5px;
         margin: 10px 15px 0 15px;
         width: 40%;
         height: auto;
@@ -1152,6 +1157,14 @@ nav {
     }
 }
 
+/* Display of trombinoscope for really small mobiles */
+@media all and (max-width: 390px) {
+    .polaroid-picture {
+        width: 275px;
+        height: 275px;
+    }
+}
+
 /* DESKTOP VIEW LARGE */
 //Box containing the links in the homepage
 @media all and (min-width: 769px) {
@@ -1220,6 +1233,10 @@ nav {
 
         .action-methods {
             flex: 3;
+        }
+
+        .important-link-image, {
+            padding: 10px;
         }
 
         .important-link-center {
@@ -2886,7 +2903,7 @@ nav {
     h2 {
         text-align: center;
         color: $tertiarycolor;
-        margin-top: 20px;
+        margin-top: 30px;
         font-size: 24px;
     }
 
