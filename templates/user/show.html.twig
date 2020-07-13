@@ -59,13 +59,18 @@
                                 <p>{{ user.email }}</p>
                                 <p>{{ user.phone }}</p>
                                 <p>
+                                    {% if user.facebook %}
                                     Facebook:
                                     <a href="{{ user.facebook }}" target="_blank">
                                         {{ user.firstname }} {{ user.lastname }}
-                                    </a> | Linkedin:
+                                    </a>
+                                    {% endif %}
+                                    {% if user.linkedin %}
+                                    <br> Linkedin:
                                     <a href="{{ user.linkedin }}" target="_blank">
                                         {{ user.firstname }} {{ user.lastname }}
                                     </a>
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
