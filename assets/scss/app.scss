@@ -2119,7 +2119,7 @@ nav {
     }
 }
 
-@media all and (max-width: 760px) {
+@media all and (max-width: 768px) {
     .event-form-label {
         text-align: center;
 
@@ -2154,7 +2154,8 @@ nav {
             top: -8px;
             width: 0;
             z-index: 2;
-            right: 147px;
+            left: 50%;
+            margin-left: -20px;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
             border-bottom: 30px solid $tertiarycolor;
