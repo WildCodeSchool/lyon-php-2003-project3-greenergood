@@ -21,11 +21,14 @@
                    aria-selected="true">{{ category.name }}</a>
             </li>
         {% endfor %}
+
+        {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item">
                 <a class="nav-link nav-link-tab" id="nav-home-tab"
                    href="{{ path('category_new') }}" aria-controls="nav-home"
                    aria-selected="true">+</a>
             </li>
+        {% endif %}
     </ul>
     <div class="tab-content" id="nav-tabContent">
         {% for category in categories %}
