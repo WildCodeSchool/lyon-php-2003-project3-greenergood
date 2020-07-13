@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Entity\User;
 use App\Form\ContactType;
 use App\Form\MethodType;
+use App\Repository\CategoryRepository;
 use App\Repository\MethodRepository;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -25,10 +27,11 @@ class MethodController extends AbstractController
      * @param MethodRepository $methodRepository
      * @return Response
      */
-    public function index(MethodRepository $methodRepository): Response
+    public function index(MethodRepository $methodRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('method/index.html.twig', [
             'methods' => $methodRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
@@ -36,6 +39,7 @@ class MethodController extends AbstractController
      * @Route("/new", name="method_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function new(Request $request): Response
     {
@@ -72,8 +76,10 @@ class MethodController extends AbstractController
      */
     public function show(Method $method): Response
     {
+        $category = $method->getCategory();
         return $this->render('method/show.html.twig', [
             'method' => $method,
+            'category' => $category,
         ]);
     }
 

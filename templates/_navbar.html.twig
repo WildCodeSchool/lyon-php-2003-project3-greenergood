@@ -35,7 +35,7 @@
                     L'association
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Historique</a>
+                    <a class="dropdown-item" href="{{ path('event_index') }}">Historique</a>
                     <a class="dropdown-item" href="{{ path('trombinoscope_index') }}">Trombinoscope</a>
                 </div>
             </li>
@@ -54,7 +54,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Agenda</a>
+                <a class="nav-link" href="{{ path('calendar') }}">Agenda</a>
             </li>
         </ul>
         {% if app.user %}
@@ -79,17 +79,10 @@
                 </div>
             </div>
         {% endif %}
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
-                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                          d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                    <path fill-rule="evenodd"
-                          d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                </svg>
-            </button>
-        </form>
+        <div>
+            {{ render(controller(
+                'App\\Controller\\SearchController::searchBar'
+            )) }}
+        </div>
     </div>
 </nav>

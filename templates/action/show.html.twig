@@ -5,7 +5,7 @@
 
     {% if action.activated == false %}
         - Désactivée
-    {% endif %}e
+    {% endif %}
 
 {% endblock %}
 
@@ -31,7 +31,7 @@
                     {% if is_granted('ROLE_ADMIN') %}
 
                         {% if action.activated == true %}
-                            <a href="{{ path('action_delete', {'id' : action.id}) }}">Désactiver</a>
+                            <a href="{{ path('action_deactivate', {'id' : action.id}) }}">Désactiver</a>
                         {% elseif action.activated == false %}
                             <a href="{{ path('action_activate', {'id': action.id}) }}">Activer</a>
                         {% endif %}
@@ -110,20 +110,25 @@
                 </div>
             </div>
 
-        <div class="action-progress-box">{{ action.projectProgress|raw }}</div>
-        <button class="action-add-Team" title="Ajouter une équipe">
-            <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
-        </button>
-        <div>
-            {# Generate as many teams as teams associated with action when set up#}
-            {% for team in teams %}
-                <div class="col-6 team-title"> {{ team.name }} </div>
-                {# Generate as many pictures as User associated with action when set up#}
-                {% for user in team.users %}
-                    <a href="{{ path('user_show', {'id':user.id}) }}">
-                        <img class="action-member-image" src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png")  }}" alt="{{ user.firstname }} {{ user.lastname }}" title="{{ user.firstname }} {{ user.lastname }}">
-                    </a>
-                {% endfor %}
+            <div class="action-progress-box">{{ action.projectProgress|raw }}</div>
+            <div class="container-add-team">
+                <button class="action-add-Team" title="Ajouter une équipe">
+                    <a href=" {{ path('team_new', {'id': action.id}) }}">Ajouter une équipe</a>
+                </button>
+            </div>
+            <div>
+                {# Generate as many teams as teams associated with action when set up#}
+                {% for team in teams %}
+                    <div class="col-6 team-title"> {{ team.name }} </div>
+                    {# Generate as many pictures as User associated with action when set up#}
+                    {% for user in team.users %}
+                        <a href="{{ path('user_show', {'id':user.id}) }}">
+                            <img class="action-member-image"
+                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("/img/default_avatar_small.png") }}"
+                                 alt="{{ user.firstname }} {{ user.lastname }}"
+                                 title="{{ user.firstname }} {{ user.lastname }}">
+                        </a>
+                    {% endfor %}
 
                     {# Add link to button when functionality is set #}
                     <a href="{{ path('team_edit', {'id': team.id}) }}">
@@ -148,7 +153,9 @@
             <ul>
                 {% for method in action.methods %}
                     {# add method show link #}
-                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.id }} - {{ method.name }}</a></li>
+                    <li>
+                        <a href="{{ path('method_show', {'id': method.id}) }}">{{ method.id }} - {{ method.name }}</a>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
@@ -169,10 +176,12 @@
                     </ul>
                 </div>
                 <div class="important-link-center">
-                    <a href="{{ action.photoBook }}"><img class="important-link-image" src="{{ asset('../img/action/pictures_link.png') }}"
-                                    alt="Lien vers les images"></a>
-                    <a href="{{ action.video }}"><img class="important-link-image" src="{{ asset('../img/action/video_link.png') }}"
-                                    alt="Lien vers les vidéos"></a>
+                    <a href="{{ action.photoBook }}"><img class="important-link-image"
+                                                          src="{{ asset('../img/action/pictures_link.png') }}"
+                                                          alt="Lien vers les images"></a>
+                    <a href="{{ action.video }}"><img class="important-link-image"
+                                                      src="{{ asset('../img/action/video_link.png') }}"
+                                                      alt="Lien vers les vidéos"></a>
                 </div>
             </div>
         </div>
