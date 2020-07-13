@@ -34,6 +34,7 @@ h2 {
 .alert {
     margin-top: 10px;
 }
+
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width: 12px;
@@ -1083,10 +1084,10 @@ nav {
 
 /* Display of trombinoscope for really small mobiles */
 @media all and (max-width: 390px) {
-  .polaroid-picture {
-    width: 275px;
-    height: 275px;
-  }
+    .polaroid-picture {
+        width: 275px;
+        height: 275px;
+    }
 }
 
 /* DESKTOP VIEW LARGE */
