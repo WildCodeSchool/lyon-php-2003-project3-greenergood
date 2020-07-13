@@ -10847,12 +10847,17 @@ nav {
 
 /* TROMBINOSCOPE PAGE */
 .trombi-grey-line {
-  background-color: darkgrey;
-  height: 8px;
+  background-color: rgba(90, 175, 170, 0.15);
+  height: 20px;
+}
+
+.trombi-title {
+  padding: 20px 0;
+  background-color: rgba(90, 175, 170, 0.65);
 }
 
 .trombi-background {
-  background-color: darkgrey;
+  background-color: rgba(90, 175, 170, 0.15);
 }
 .trombi-background li {
   display: flex;
@@ -10906,9 +10911,6 @@ nav {
   position: absolute;
   top: 20px;
   z-index: 2;
-}
-.trombi-background .polaroid-container .trombi-title {
-  margin-top: 15px;
 }
 .trombi-background .polaroid-container .polaroid-frame {
   background-color: white;
