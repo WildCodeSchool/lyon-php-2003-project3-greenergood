@@ -10258,6 +10258,9 @@ nav {
 .navbar .hello-user {
   color: white;
 }
+.navbar button {
+  margin-left: 35px;
+}
 
 .navbar-collapse {
   display: flex;
@@ -10373,6 +10376,30 @@ nav {
     flex-direction: column;
   }
 }
+.method-tabs {
+  padding: 10px;
+}
+
+.container-tabs {
+  background-color: #5AAFAA;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.nav-link-tab {
+  margin-right: 20px;
+  margin-top: 30px;
+  font-size: 20px;
+  font-family: "Lobster", cursive;
+  background-color: #5AAFAA;
+  color: #5F5F5F;
+}
+
+.nav-link-tab.active {
+  background-color: white;
+}
+
 /* NEW ACTION PAGE STYLING */
 .action-form {
   width: 90%;
@@ -10451,18 +10478,20 @@ nav {
   height: 30px;
 }
 
-.action-add-Team {
-  margin-top: 15px;
-  padding: 5px;
+.container-add-team {
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+}
+.container-add-team .action-add-Team {
+  margin: 15px;
+  padding: 10px;
   color: #ffffff;
   background-color: #5AAFAA;
   border-radius: 5px;
   border: none;
 }
-.action-add-Team a {
+.container-add-team .action-add-Team a {
   color: white;
 }
 
@@ -10528,12 +10557,13 @@ nav {
   display: flex;
   align-items: center;
   text-align: center;
+  margin-left: 0;
 }
 .action-list-item .organisation-button, .action-list-item .organisation-button-plus {
   font-family: "Lobster", cursive;
   border-radius: 5px;
   padding: 15px 10px 15px 10px;
-  margin: 10px 5px 0 5px;
+  margin: 10px 5px 10px 5px;
   height: 70px;
   display: flex;
   justify-content: center;
@@ -10562,18 +10592,20 @@ nav {
 .action-subtitles {
   background-color: #FDEE6E;
   text-align: center;
-  margin-top: 10px;
 }
 
 .action-methods {
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
   padding: 5px;
   border: 10px solid #5F5F5F;
   display: flex;
   align-items: start;
   flex-direction: column;
 }
-.action-methods li {
+.action-methods ul {
+  list-style-type: none;
+}
+.action-methods ul li {
   margin-left: 20px;
 }
 
@@ -10586,6 +10618,57 @@ nav {
   background-color: #5F5F5F;
 }
 
+/* DISPLAY ACTION PAGE DESKTOP VIEW */
+@media all and (min-width: 769px) {
+  .container-add-team {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .container-add-team .action-add-Team {
+    margin: 15px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #5AAFAA;
+    border-radius: 5px;
+    border: none;
+  }
+  .container-add-team .action-add-Team a {
+    color: white;
+  }
+
+  .action-methods {
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    border: 10px solid #5F5F5F;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .action-methods ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 270px;
+    margin-bottom: 0;
+    padding: 15px;
+  }
+  .action-methods ul li {
+    margin-left: 20px;
+  }
+
+  #action_methods {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    overflow: auto;
+  }
+  #action_methods .form-check {
+    padding-left: 3.25rem;
+  }
+}
 /* FOOTER */
 .footer {
   font-family: "Montserrat", sans-serif;
@@ -11070,6 +11153,7 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: auto;
 }
 .index-container ul {
   list-style-type: none;
@@ -11120,6 +11204,19 @@ nav {
   -ms-transform: rotate(110deg);
   -o-transform: rotate(110deg);
   transform: rotate(110deg);
+}
+
+.search-results {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.search-results h2 {
+  color: #5AAFAA;
+}
+.search-results a {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Display over 450px of trombinoscope page */
@@ -11187,14 +11284,41 @@ nav {
     -o-transform: rotate(110deg);
     transform: rotate(110deg);
   }
+  .bloc_page .index-container {
+    overflow: auto;
+  }
+  .bloc_page .index-container .container-list-index {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+  .bloc_page .index-container .container-list-index a:hover {
+    color: #FDEE6E;
+  }
   .bloc_page .index-container h4 {
     width: 30%;
     margin-right: auto;
     margin-left: auto;
   }
   .bloc_page .index-container ul {
-    width: 65%;
+    width: 62%;
     margin-left: auto;
+  }
+
+  .search-results {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+  .search-results h2 {
+    color: #5AAFAA;
+  }
+  .search-results a {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .search-results a:hover {
+    color: #FDEE6E;
   }
 }
 /* METHOD FORMS */
