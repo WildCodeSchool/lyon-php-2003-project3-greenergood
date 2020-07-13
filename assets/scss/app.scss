@@ -1047,12 +1047,17 @@ nav {
 
 /* TROMBINOSCOPE PAGE */
 .trombi-grey-line {
-    background-color: darkgrey;
-    height: 8px;
+    background-color: rgba(90, 175, 170, 0.2);
+    height: 20px;
+}
+
+.trombi-title {
+    padding: 20px 0;
+    background-color: rgba(90, 175, 170, 0.6);
 }
 
 .trombi-background {
-    background-color: darkgrey;
+    background-color: rgba(90, 175, 170, 0.2);
 
     li {
         display: flex;
@@ -1126,10 +1131,6 @@ nav {
             position: absolute;
             top: 20px;
             z-index: 2;
-        }
-
-        .trombi-title {
-            margin-top: 15px;
         }
 
         .polaroid-frame {
