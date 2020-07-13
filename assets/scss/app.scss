@@ -688,7 +688,7 @@ nav {
     .important-link-image, {
         background-color: $secondarycolor;
         border-radius: 5px;
-        padding: 15px 30px 15px 30px;
+        padding: 5px;
         margin: 10px 15px 0 15px;
         width: 40%;
         height: auto;
@@ -1147,6 +1147,10 @@ nav {
 
         .action-methods {
             flex: 3;
+        }
+
+        .important-link-image, {
+            padding: 10px;
         }
 
         .important-link-center {
