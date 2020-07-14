@@ -6,7 +6,3 @@ vich_uploader:
             uri_prefix: /uploads/profile/picture
             upload_destination: '%upload_directory%/profile/picture'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
-        method_picture:
-            uri_prefix: /uploads/method/picture
-            upload_destination: '%upload_directory%/method/picture'
-            namer: Vich\UploaderBundle\Naming\UniqidNamer

@@ -56,7 +56,12 @@
                         <h1>{{ method.name }}</h1>
                     </div>
                 </div>
-                <img class="method-image" src="{{ method.picture }}">
+                <img class="method-image"
+                        {% if method.picture != null %}
+                     src="{{ method.picture }}"
+                        {% else %}
+                     src="{{ asset('images/logo.png') }}"
+                     {% endif %}>
             </div>
         </div>
         <div class="row method-infos p-2">
