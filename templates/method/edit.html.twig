@@ -8,6 +8,8 @@
 
         {{ include('method/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-        {{ include('method/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {{ include('method/_delete_form.html.twig') }}
+        {% endif %}
     </div>
 {% endblock %}
