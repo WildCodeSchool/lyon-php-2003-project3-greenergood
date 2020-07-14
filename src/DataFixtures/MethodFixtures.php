@@ -30,7 +30,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);
             $method->setActivated(true);
-            $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
+            $method->setPicture("img/logo_TGG_ombre.png");
             $method->setAuthor($this->getReference("Lucas"));
             $method->setCategory($this->getReference('category_'.random_int(1, 15)));
             $manager->persist($method);

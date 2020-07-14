@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <img class="card-img" src="{{ method.picture }}" alt="Card image cap">
+                                    <img class="card-img" src="{{ vich_uploader_asset(method, 'pictureFile') | default("img/logo_TGG_ombre.png") }}" alt="Card image cap">
                                 </div>
                             {% endif %}
                         {% endif %}
