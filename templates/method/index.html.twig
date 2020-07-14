@@ -4,75 +4,86 @@
 
 {% block body %}
 
-<h1 class="greenOnWhite">Fiches méthodes</h1>
-<div class="container-center container-btn-method">
-    <button class="btn btn-secondary method-btn">
-        <a href="{{ path('method_new') }}">
-            <span>+</span> Nouvelle fiche
-        </a>
-    </button>
-</div>
-<div class="method-tabs">
-    <ul class="nav nav-tabs">
-        {% for category in categories %}
-            <li class="nav-item">
-                <a class="nav-link nav-link-tab {{ loop.first ? 'active' }}" id="nav-home-tab" data-toggle="tab"
-                   href="#category_{{ category.id }}" role="tab" aria-controls="nav-home"
-                   aria-selected="true">{{ category.name }}</a>
-            </li>
-        {% endfor %}
+    <h1 class="greenOnWhite">Fiches méthodes</h1>
+    <div class="container-center container-btn-method">
+        <button class="btn btn-secondary method-btn">
+            <a href="{{ path('method_new') }}">
+                <span>+</span> Nouvelle fiche
+            </a>
+        </button>
+    </div>
+    <div class="method-tabs">
+        <ul class="nav nav-tabs">
+            {% for category in categories %}
+                <li class="nav-item">
+                    <a class="nav-link nav-link-tab {{ loop.first ? 'active' }}" id="nav-home-tab" data-toggle="tab"
+                       href="#category_{{ category.id }}" role="tab" aria-controls="nav-home"
+                       aria-selected="true">{{ category.name }}</a>
+                </li>
+            {% endfor %}
 
-        {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item">
-                <a class="nav-link nav-link-tab" id="nav-home-tab"
-                   href="{{ path('category_new') }}" aria-controls="nav-home"
-                   aria-selected="true">+</a>
-            </li>
-        {% endif %}
-    </ul>
-    <div class="tab-content" id="nav-tabContent">
-        {% for category in categories %}
-            <div class="tab-pane fade {{ loop.first ? 'show active' }}" id="category_{{ category.id }}" role="tabpanel"
-                 aria-labelledby="nav-home-tab">
-                <div class="container-card-method container-tabs">
-                    {% for method in methods %}
-                        {% if method.activated == true %}
-                            {% if method.category.id == category.id %}
-                                <div class="card cardmethod">
-                                    <div class="card-body">
-                                        <div class="card-head">
-                                            <a href="{{ path('method_show', {'id': method.id}) }}">
-                                                <h5 class="card-title">{{ method.name }}</h5>
-                                            </a>
-                                            <div class="dropup dropup-method">
-                                                <div class="threeDots" data-toggle="dropdown"
-                                                     aria-haspopup="true" aria-expanded="false">
-                                                </div>
-                                                <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
-                                                    <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                                                    <a class="pipe-link-method"
-                                                       href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link nav-link-tab" id="nav-home-tab"
+                       href="{{ path('category_new') }}" aria-controls="nav-home"
+                       aria-selected="true">+</a>
+                </li>
+            {% endif %}
+        </ul>
+        <div class="tab-content" id="nav-tabContent">
+            {% for category in categories %}
+                <div class="tab-pane fade {{ loop.first ? 'show active' }}" id="category_{{ category.id }}"
+                     role="tabpanel"
+                     aria-labelledby="nav-home-tab">
+                    <div class="container-card-method container-tabs">
+                        {% for method in methods %}
+                            {% if method.activated == true %}
+                                {% if method.category.id == category.id %}
+                                    <div class="card cardmethod">
+                                        <div class="card-body">
+                                            <div class="card-head">
+                                                <a href="{{ path('method_show', {'id': method.id}) }}">
+                                                    <h5 class="card-title">{{ method.name }}</h5>
+                                                </a>
+                                                <div class="dropup dropup-method">
+                                                    <div class="threeDots" data-toggle="dropdown"
+                                                         aria-haspopup="true" aria-expanded="false">
+                                                    </div>
                                                     {% if is_granted('ROLE_ADMIN') %}
-
+                                                    <div class="dropdown-menu menu-method menu-method-admin"
+                                                         aria-labelledby="dropdownMenuButton">
+                                                        <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                                        <a class="pipe-link-method"
+                                                           href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
                                                         {% if method.activated == true %}
-                                                            <a href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
+                                                            <a class="pipe-link-method act-width"
+                                                               href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
                                                         {% elseif method.activated == false %}
-                                                            <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+                                                            <a class="pipe-link-method act-width"
+                                                               href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                                                         {% endif %}
-
-                                                    {% endif %}
+                                                    </div>
+                                                    {% else %}
+                                                        <div class="dropdown-menu menu-method menu-method-user"
+                                                             aria-labelledby="dropdownMenuButton">
+                                                            <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                                            <a class="pipe-link-method"
+                                                               href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+                                                        </div>
+                                                        {% endif %}
                                                 </div>
                                             </div>
                                         </div>
+                                        <img class="card-img"
+                                             src="{{ vich_uploader_asset(method, 'pictureFile') | default("img/logo_TGG_ombre.png") }}"
+                                             alt="Card image cap">
                                     </div>
-                                    <img class="card-img" src="{{ vich_uploader_asset(method, 'pictureFile') | default("img/logo_TGG_ombre.png") }}" alt="Card image cap">
-                                </div>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
-    {% endblock %}
+{% endblock %}
