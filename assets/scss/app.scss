@@ -529,6 +529,16 @@ nav {
     .mobile-btn-method {
         display: none;
     }
+
+    .nav-tabs-desktop {
+        display: flex;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+    }
 }
 
 .container-tabs {
