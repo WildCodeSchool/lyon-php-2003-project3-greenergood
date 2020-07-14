@@ -238,12 +238,10 @@ class Method
         return $this->pictureFile;
     }
 
-    public function setPictureFile(File $picture = null): User
+    public function setPictureFile(File $picture = null): Method
     {
         $this->pictureFile = $picture;
-        if ($picture) {
-            $this->updatedAt = new DateTime('now');
-        }
+
         return $this;
     }
 
