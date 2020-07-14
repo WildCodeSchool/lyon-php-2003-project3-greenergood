@@ -54,15 +54,15 @@
 
                         {% if action.status=="started" %}
                             <img class="status-dot"
-                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_verte.png') }}"
+                                 src="{{ asset('/img/action/status_pastilles/fiche_action_pastille_verte.png') }}"
                                  title="En cours" alt="En cours">
                         {% elseif action.status=="ended" %}
                             <img class="status-dot"
-                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_bleue.png') }}"
+                                 src="{{ asset('/img/action/status_pastilles/fiche_action_pastille_bleue.png') }}"
                                  title="Terminée" alt="Terminée">
                         {% elseif action.status=="cancelled" %}
                             <img class="status-dot"
-                                 src="{{ asset('../img/action/status_pastilles/fiche_action_pastille_violette.png') }}"
+                                 src="{{ asset('/img/action/status_pastilles/fiche_action_pastille_violette.png') }}"
                                  title="Annulée" alt="Annulée">
                         {% endif %}
                     </h1>
@@ -70,7 +70,7 @@
                     {# Display edition Number is it is set #}
                     {% if action.editionNumber %}
                         <figure class="col-6 offset-3 edition-box">
-                            <img class="action-edition-style" src="{{ asset('../img/action/fond_edition.png') }}"
+                            <img class="action-edition-style" src="{{ asset('/img/action/fond_edition.png') }}"
                                  alt="Fond vert du titre">
                             <figcaption>
                                 {% if action.editionNumber > 1 %}
@@ -86,7 +86,7 @@
 
                 <div class="action-center-right">
                     <img class="action-image"
-                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../img/action/image_defaut_fiche_action.png') }}{% endif %}">
+                         src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('/img/action/image_defaut_fiche_action.png') }}{% endif %}">
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
 
                         {# Add link to button when functionality is set #}
                         <a href="{{ path('team_edit', {'id': team.id}) }}">
-                            <img class="action-plus-image" src="{{ asset('../img/action/button_plus.png') }}"
+                            <img class="action-plus-image" src="{{ asset('/img/action/button_plus.png') }}"
                                  alt="Ajouter un membre" title="Ajouter un membre à l'équipe">
                         </a>
                     </div>
@@ -171,10 +171,10 @@
                 </div>
                 <div class="important-link-center">
                     <a href="{{ action.photoBook }}"><img class="important-link-image"
-                                                          src="{{ asset('../img/action/pictures_link.png') }}"
+                                                          src="{{ asset('/img/action/pictures_link.png') }}"
                                                           alt="Lien vers les images"></a>
                     <a href="{{ action.video }}"><img class="important-link-image"
-                                                      src="{{ asset('../img/action/video_link.png') }}"
+                                                      src="{{ asset('/img/action/video_link.png') }}"
                                                       alt="Lien vers les vidéos"></a>
                 </div>
             </div>
