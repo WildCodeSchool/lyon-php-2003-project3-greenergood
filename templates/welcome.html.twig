@@ -71,7 +71,7 @@
                     {% for user in contacts %}
                         <div class="contact">
                             <div class="contact-img">
-                                <img class="photo" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") }}">
+                                <img class="photo" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar_noborder.png") }}">
                                 <a href="{{ path('user_show', {'id': 'id'}) }}">
                                     <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
                                 </a>
