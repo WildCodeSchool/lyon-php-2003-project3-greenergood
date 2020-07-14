@@ -701,6 +701,10 @@ nav {
     }
 }
 
+.team-container {
+    margin-bottom: 10px;
+}
+
 .container-add-team {
     display: flex;
     align-items: center;
@@ -1189,7 +1193,7 @@ nav {
         .clip {
             height: 50px;
             position: absolute;
-            top: 20px;
+            top: 10px;
             z-index: 2;
         }
 
@@ -1318,6 +1322,10 @@ nav {
     border-radius: 10px;
     padding: 6px 36px;
     height: 75px;
+
+    &:hover {
+        color: $tertiarycolor;
+    }
 }
 
 .action-filter-button {
