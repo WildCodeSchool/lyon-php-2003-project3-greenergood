@@ -19,6 +19,26 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $user = new User();
+        $user->setEmail('youpi@thegreenergood.fr');
+        $user->setRoles(['ROLE_USER']);
+        $user->setFirstname('Gus');
+        $user->setLastname('Michel');
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user,
+            'userpassword'
+        ));
+        $user->setStatus(1);
+        $user->setPhone("0612345678");
+        $user->setFonction("Membre bénévole");
+        $user->setDescription("Pour laisser un monde meilleur à ses enfants, 
+        Gus agit tant dans sa vie professionnelle, de par son rôle de référent RSE dans son entreprise, 
+        que dans sa vie personnelle. Passionné de cuisine, il adore partager ses recettes!");
+        $user->setGreenSkills1("Ateliers cuisine végétarienne et vegan");
+        $user->setGreenSkills2("Référent de son quartier pour le composteur");
+        $user->setGreenSkills3("Spécialiste en RSE");
+        $manager->persist($user);
+
+        $user = new User();
         $user->setEmail('lucas.marguiron@gmail.com');
         $user->setRoles(['ROLE_SUPER_ADMIN']);
         $user->setFirstname('Lucas');
