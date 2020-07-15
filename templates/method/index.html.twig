@@ -56,7 +56,7 @@
                      aria-labelledby="nav-home-tab">
                     <div class="container-card-method container-tabs">
                         {% for method in methods %}
-                            {% if method.category.id == category.id and method.activated == true %}
+                            {% if method.category.id == category.id and method.activated == true or method.category.id == category.id and is_granted('ROLE_ADMIN') %}
                                 <div class="card cardmethod">
                                     <div class="card-body">
                                         <div class="card-head">
@@ -84,7 +84,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <img class="card-img" src="{{ method.picture }}" alt="Card image cap">
+                                    <img class="card-img" {% if method.picture %}src="{{ asset(method.picture) }}"
+                                         {% else %}src="{{ asset(img/logo_TGG_ombre.png) }}"{% endif %}
+                                         alt="Card image cap">
                                 </div>
                             {% endif %}
                         {% endfor %}
