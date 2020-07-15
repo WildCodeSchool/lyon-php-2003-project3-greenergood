@@ -1,11 +1,9 @@
 {% extends 'index.html.twig' %}
 
 {% block titleIndex %}
-    {% if results.users|length or results.actions|length or results.methods|length == 1 %}
+    {% if results.users or results.actions or results.methods %}
         <h1>Résultat de votre recherche</h1>
-    {% elseif results.users|length or results.actions|length or results.methods|length > 1 %}
-        <h1>Résultats de votre recherche</h1>
-    {% elseif not results.users or results.actions or results.methods %}
+    {% else %}
         <h1>Aucun Résultat</h1>
     {% endif %}
 {% endblock %}
