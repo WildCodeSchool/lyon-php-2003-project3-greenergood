@@ -16,7 +16,7 @@
         <div class="dropdown mobile-btn-method">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Catégories
+                {% if categories|length <= 1 %}Catégorie{% else %}Catégories{% endif %}
             </button>
             <div class="nav-item dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="nav">

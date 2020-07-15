@@ -25,13 +25,14 @@ class MethodController extends AbstractController
     /**
      * @Route("/", name="method_index", methods={"GET"})
      * @param MethodRepository $methodRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
     public function index(MethodRepository $methodRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('method/index.html.twig', [
             'methods' => $methodRepository->findAll(),
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categoryRepository->findBy([], ['id' => 'asc'])
         ]);
     }
 

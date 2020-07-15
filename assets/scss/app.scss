@@ -529,6 +529,16 @@ nav {
     .mobile-btn-method {
         display: none;
     }
+
+    .nav-tabs-desktop {
+        display: flex;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+    }
 }
 
 .container-tabs {
@@ -611,13 +621,13 @@ nav {
     font-size: 1rem;
     font-weight: bold;
     padding-top: 8px;
-    }
+}
 
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
     margin: auto auto;
-    }
+}
 
 .form-button {
     background-color: $primarycolor;
@@ -1788,21 +1798,21 @@ nav {
                     position: relative;
 
                     .profile-img {
-                        width: 70%;
+                        width: 50%;
                     }
 
                     .profile-yellow-frame-bottom {
                         height: 50px;
                         position: absolute;
-                        bottom: 15px;
-                        right: 65px;
+                        bottom: 10px;
+                        right: 10px;
                     }
 
                     .profile-yellow-frame-top {
                         height: 50px;
                         position: absolute;
-                        top: 15px;
-                        left: 65px;
+                        top: 10px;
+                        left: 10px;
                     }
 
                     .rotation180 {
@@ -2028,6 +2038,7 @@ nav {
                             min-width: 50px;
                             background-color: $primarycolor;
                             border-radius: 50%;
+                            margin-right: 5px;
                         }
 
                         h5 {
@@ -2048,7 +2059,7 @@ nav {
                             min-width: 50px;
                             background-color: $secondarycolor;
                             border-radius: 50%;
-                            margin: 8px 0 8px 0;
+                            margin: 8px 5px 8px 0;
                         }
 
                         h5 {
@@ -2074,6 +2085,7 @@ nav {
                                 min-width: 50px;
                                 background-color: $primarycolor;
                                 border-radius: 50%;
+                                margin-right: 5px;
                             }
 
                             h5 {
@@ -2438,16 +2450,16 @@ nav {
                         .profile-yellow-frame-bottom {
                             height: 75px;
                             position: absolute;
-                            bottom: 15px;
-                            right: 15px;
+                            bottom: -5px;
+                            right: -5px;
                             max-width: 65%;
                         }
 
                         .profile-yellow-frame-top {
                             height: 75px;
                             position: absolute;
-                            top: 15px;
-                            left: 15px;
+                            top: -5px;
+                            left: -5px;
                             max-width: 65%;
                         }
 
@@ -2485,6 +2497,7 @@ nav {
                         top: 10px;
                         height: 70px;
                         display: block;
+                        z-index: 2;
                     }
 
                     .entry-date {
@@ -2697,6 +2710,7 @@ nav {
                                 min-width: 75px;
                                 background-color: $primarycolor;
                                 border-radius: 50%;
+                                margin-right: 5px;
                             }
 
                             h5 {
@@ -2717,7 +2731,7 @@ nav {
                                 min-width: 75px;
                                 background-color: $secondarycolor;
                                 border-radius: 50%;
-                                margin: 8px 0 8px 0;
+                                margin: 8px 5px 8px 0;
                             }
 
                             h5 {
@@ -2743,6 +2757,7 @@ nav {
                                     min-width: 75px;
                                     background-color: $primarycolor;
                                     border-radius: 50%;
+                                    margin-right: 5px;
                                 }
 
                                 h5 {
