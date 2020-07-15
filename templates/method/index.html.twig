@@ -16,7 +16,7 @@
         <div class="dropdown mobile-btn-method">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Catégories
+                {% if categories|length <= 1 %}Catégorie{% else %}Catégories{% endif %}
             </button>
             <div class="nav-item dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="nav">
@@ -56,13 +56,12 @@
                      aria-labelledby="nav-home-tab">
                     <div class="container-card-method container-tabs">
                         {% for method in methods %}
-                            {% if method.activated == true %}
-                              {% if method.category.id == category.id %}
+                            {% if method.category.id == category.id and (method.activated == true) or (is_granted('ROLE_ADMIN')) %}
                                 <div class="card cardmethod">
                                     <div class="card-body">
                                         <div class="card-head">
                                             <a href="{{ path('method_show', {'id': method.id}) }}">
-                                                <h5 class="card-title">{{ method.name }}</h5>
+                                                <h5 class="{% if method.activated == false %} deactivated {% else %} card-title {% endif %}">{{ method.name }} {% if method.activated == false %} - Désactivée {% endif %}</h5>
                                             </a>
                                             <div class="dropup dropup-method">
                                                 <div class="threeDots" data-toggle="dropdown"

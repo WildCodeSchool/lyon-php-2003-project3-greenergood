@@ -529,6 +529,16 @@ nav {
     .mobile-btn-method {
         display: none;
     }
+
+    .nav-tabs-desktop {
+        display: flex;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
+    }
 }
 
 .container-tabs {
@@ -611,13 +621,13 @@ nav {
     font-size: 1rem;
     font-weight: bold;
     padding-top: 8px;
-    }
+}
 
 /* NEW ACTION PAGE STYLING */
 .action-form {
     width: 90%;
     margin: auto auto;
-    }
+}
 
 .form-button {
     background-color: $primarycolor;
@@ -699,6 +709,10 @@ nav {
         max-width: 100%;
         height: 30px;
     }
+}
+
+.team-container {
+    margin-bottom: 10px;
 }
 
 .container-add-team {
@@ -915,6 +929,15 @@ nav {
             margin-left: 20px;
         }
     }
+}
+
+// TEAM EDIT FORM
+#team_users {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    overflow: auto;
 }
 
 /* FOOTER */
@@ -1189,7 +1212,7 @@ nav {
         .clip {
             height: 50px;
             position: absolute;
-            top: 20px;
+            top: 10px;
             z-index: 2;
         }
 
@@ -1318,6 +1341,10 @@ nav {
     border-radius: 10px;
     padding: 6px 36px;
     height: 75px;
+
+    &:hover {
+        color: $tertiarycolor;
+    }
 }
 
 .action-filter-button {
@@ -1777,21 +1804,21 @@ nav {
                     position: relative;
 
                     .profile-img {
-                        width: 70%;
+                        width: 50%;
                     }
 
                     .profile-yellow-frame-bottom {
                         height: 50px;
                         position: absolute;
-                        bottom: 15px;
-                        right: 65px;
+                        bottom: 10px;
+                        right: 10px;
                     }
 
                     .profile-yellow-frame-top {
                         height: 50px;
                         position: absolute;
-                        top: 15px;
-                        left: 65px;
+                        top: 10px;
+                        left: 10px;
                     }
 
                     .rotation180 {
@@ -2017,6 +2044,7 @@ nav {
                             min-width: 50px;
                             background-color: $primarycolor;
                             border-radius: 50%;
+                            margin-right: 5px;
                         }
 
                         h5 {
@@ -2037,7 +2065,7 @@ nav {
                             min-width: 50px;
                             background-color: $secondarycolor;
                             border-radius: 50%;
-                            margin: 8px 0 8px 0;
+                            margin: 8px 5px 8px 0;
                         }
 
                         h5 {
@@ -2063,6 +2091,7 @@ nav {
                                 min-width: 50px;
                                 background-color: $primarycolor;
                                 border-radius: 50%;
+                                margin-right: 5px;
                             }
 
                             h5 {
@@ -2206,7 +2235,7 @@ nav {
     }
 }
 
-@media all and (max-width: 760px) {
+@media all and (max-width: 829px) {
     .event-form-label {
         text-align: center;
 
@@ -2241,7 +2270,8 @@ nav {
             top: -8px;
             width: 0;
             z-index: 2;
-            right: 147px;
+            left: 50%;
+            margin-left: -20px;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
             border-bottom: 30px solid $tertiarycolor;
@@ -2426,16 +2456,16 @@ nav {
                         .profile-yellow-frame-bottom {
                             height: 75px;
                             position: absolute;
-                            bottom: 15px;
-                            right: 15px;
+                            bottom: -5px;
+                            right: -5px;
                             max-width: 65%;
                         }
 
                         .profile-yellow-frame-top {
                             height: 75px;
                             position: absolute;
-                            top: 15px;
-                            left: 15px;
+                            top: -5px;
+                            left: -5px;
                             max-width: 65%;
                         }
 
@@ -2473,6 +2503,7 @@ nav {
                         top: 10px;
                         height: 70px;
                         display: block;
+                        z-index: 2;
                     }
 
                     .entry-date {
@@ -2685,6 +2716,7 @@ nav {
                                 min-width: 75px;
                                 background-color: $primarycolor;
                                 border-radius: 50%;
+                                margin-right: 5px;
                             }
 
                             h5 {
@@ -2705,7 +2737,7 @@ nav {
                                 min-width: 75px;
                                 background-color: $secondarycolor;
                                 border-radius: 50%;
-                                margin: 8px 0 8px 0;
+                                margin: 8px 5px 8px 0;
                             }
 
                             h5 {
@@ -2731,6 +2763,7 @@ nav {
                                     min-width: 75px;
                                     background-color: $primarycolor;
                                     border-radius: 50%;
+                                    margin-right: 5px;
                                 }
 
                                 h5 {
@@ -2766,7 +2799,9 @@ nav {
             }
         }
     }
+}
 
+@media all and (min-width: 830px) {
     /* DESKTOP DISPLAY OF TIMELINE PAGE */
     .event-green-background {
 
@@ -2789,6 +2824,7 @@ nav {
 
             .timeline {
                 overflow-x: auto;
+                overflow-y: hidden;
                 display: flex;
                 text-align: center;
                 height: 510px;
@@ -2800,7 +2836,7 @@ nav {
                     position: absolute;
                     bottom: 326px;
                     width: 0;
-                    z-index: 1;
+                    z-index: 2;
                     right: 0;
                     border: medium solid $tertiarycolor;
                     border-width: 30px 0 30px 50px;
