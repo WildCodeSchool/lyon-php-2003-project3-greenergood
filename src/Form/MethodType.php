@@ -49,7 +49,7 @@ class MethodType extends AbstractType
             ])
             ->add('contact', EntityType::class, [
                 'class' => User::class,
-                'label' => "Membres",
+                'label' => "Contacts utiles",
                 'choice_label' => function ($user) {
                     return $user->getFirstname() . ' ' . $user->getLastname();
                 },
