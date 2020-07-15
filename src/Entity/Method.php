@@ -266,6 +266,7 @@ class Method
         $method->setName($this->getName());
         $method->setCreatedAt(new DateTime('now'));
         $method->setPrerequisites($this->getPrerequisites());
+        $method->setCategory($this->getCategory());
         $method->setContent($this->getContent());
         $method->setObjective1($this->getObjective1());
         $method->setObjective2($this->getObjective2());
