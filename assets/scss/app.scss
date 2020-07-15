@@ -940,6 +940,16 @@ nav {
     overflow: auto;
 }
 
+@media only screen and (max-width: 768px) {
+    #team_users {
+       display: flex;
+       flex-direction: column;
+       flex-wrap: nowrap;
+       height: auto;
+       overflow: hidden;
+    }
+}
+
 /* FOOTER */
 
 .footer {
