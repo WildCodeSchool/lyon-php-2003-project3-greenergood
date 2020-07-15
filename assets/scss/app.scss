@@ -1485,7 +1485,6 @@ nav {
     }
 
     .menu-method {
-        width: 282px;
         margin-left: -110px;
 
         a {
@@ -1500,8 +1499,15 @@ nav {
         }
     }
 
+    .menu-method-user {
+        width: 200px;
+    }
+
+    .menu-method-admin {
+        width: 282px;
+    }
+
     .pipe-link-method {
-        border-right: 1px solid white;
         border-left: 1px solid white;
     }
 }
