@@ -181,7 +181,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_category_show", methods={"GET"})
+     * @Route("/category/{id}", name="admin_category_show", methods={"GET"})
      * @param Category $category
      * @return Response
      */
@@ -193,7 +193,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
+     * @Route("/category/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Category $category
      * @return Response
@@ -216,7 +216,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_category_delete", methods={"DELETE"})
+     * @Route("/category/{id}", name="admin_category_delete", methods={"DELETE"})
      * @param Request $request
      * @param Category $category
      * @return Response

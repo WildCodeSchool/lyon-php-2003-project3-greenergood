@@ -56,7 +56,13 @@
                         <h1>{{ method.name }}</h1>
                     </div>
                 </div>
-                <img class="method-image" src="{{ method.picture }}">
+                <img class="method-image"
+                        {% if method.picture != null %}
+                     src="{{ method.picture }}"
+                        {% else %}
+                            src="{{ asset('img/logo_TGG_ombre.png') }}"
+
+                        {% endif %}>
             </div>
         </div>
         <div class="row method-infos p-2">
@@ -98,7 +104,7 @@
                 {% for methodContact in method.contact %}
                     <div class="col-12 col-xl-4 d-flex flex-column align-items-center">
                         <a href="{{ path('user_show', {'id': methodContact.id}) }}"><img class="method-image"
-                                                                                         src="{{ vich_uploader_asset(methodContact, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"></a>
+                        src="{{ vich_uploader_asset(methodContact, 'pictureFile') | default("img/default_avatar_noborder.png") | imagine_filter('thumb') }}"></a>
                         <p class="my-2 text-center">{{ methodContact.firstname }} {{ methodContact.lastname }}</p>
                         {% if methodContact.fonction %}
                             <p class="my-2">{{ methodContact.fonction }}</p>
