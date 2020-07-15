@@ -917,6 +917,15 @@ nav {
     }
 }
 
+// TEAM EDIT FORM
+#team_users {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px;
+    overflow: auto;
+}
+
 /* FOOTER */
 
 .footer {
