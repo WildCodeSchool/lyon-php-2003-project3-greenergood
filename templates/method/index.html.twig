@@ -84,7 +84,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <img class="card-img" src="{{ method.picture }}" alt="Card image cap">
+                                    <img class="card-img" {% if method.picture %}src="{{ asset(method.picture) }}"
+                                         {% else %}src="{{ asset(img/logo_TGG_ombre.png) }}"{% endif %}
+                                         alt="Card image cap">
                                 </div>
                             {% endif %}
                         {% endfor %}
