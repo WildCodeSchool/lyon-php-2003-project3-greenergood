@@ -1,8 +1,8 @@
 # The Greener Good - Gare centrale
 ### Prerequisites
 
-1. Check composer is installed : https://getcomposer.org/
-2. Check node & yarn are installed : 
+1. Check that composer is installed : https://getcomposer.org/
+2. Check that node & yarn are installed : 
     * https://nodejs.org/en/download/
     * https://classic.yarnpkg.com/fr/docs/install 
 
