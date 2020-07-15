@@ -1,16 +1,18 @@
 # The Greener Good - Gare centrale
 ### Prerequisites
 
-1. Check composer is installed
-2. Check yarn & node are installed
+1. Check composer is installed : https://getcomposer.org/
+2. Check node & yarn are installed : 
+    * https://nodejs.org/en/download/
+    * https://classic.yarnpkg.com/fr/docs/install 
 
 ## Deployment
 
+* Clone this project
 * Run `composer install`
 * Run `yarn install`
-* Change database infos in .env (line 27)
-* Change mailer DSN in .env (line 31)
-* 
+* Change database infos in .env.local (line 27)
+* Change mailer DSN in .env.local (line 31)
 
 ## Built With
 
