@@ -10381,13 +10381,24 @@ nav {
   }
 }
 .method-tabs {
-  padding: 10px;
+  padding: 0 50px 0 50px;
+}
+.method-tabs .mobile-btn-method {
+  display: none;
+}
+.method-tabs .nav-tabs-desktop {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
 }
 
 .container-tabs {
   background-color: #5AAFAA;
   border-bottom-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
 
@@ -10396,14 +10407,62 @@ nav {
   margin-top: 30px;
   font-size: 20px;
   font-family: "Lobster", cursive;
-  background-color: #5AAFAA;
+  background-color: #a9d6d2;
   color: #5F5F5F;
+  height: 75px;
 }
 
-.nav-link-tab.active {
-  background-color: white;
+#nav-home-tab.active {
+  background-color: #5AAFAA;
+  border: none;
+}
+#nav-home-tab.active:focus {
+  outline: none;
 }
 
+.nav-link.nav-link-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px 15px 0 0;
+  width: 160px;
+}
+
+.nav-link.nav-link-tab.plus {
+  font-size: 5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .method-tabs {
+    padding: 10px;
+  }
+  .method-tabs .mobile-btn-method {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+  }
+  .method-tabs .mobile-btn-method button {
+    display: block;
+    border: none;
+  }
+
+  .nav-link-tab-mobile {
+    color: #5F5F5F;
+  }
+
+  .nav.nav-tabs-desktop {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+  }
+  .nav .plus-mobile {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+  }
+}
 /* Index Method */
 #methodTitle {
   font-size: 1rem;
@@ -10487,6 +10546,10 @@ nav {
 .action-header .action-edition-style {
   max-width: 100%;
   height: 30px;
+}
+
+.team-container {
+  margin-bottom: 10px;
 }
 
 .container-add-team {
@@ -10677,8 +10740,17 @@ nav {
   }
   #action_methods .form-check {
     padding-left: 3.25rem;
+    margin-left: 20px;
   }
 }
+#team_users {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 300px;
+  overflow: auto;
+}
+
 /* FOOTER */
 .footer {
   font-family: "Montserrat", sans-serif;
@@ -10909,7 +10981,7 @@ nav {
 .trombi-background .polaroid-container .clip {
   height: 50px;
   position: absolute;
-  top: 20px;
+  top: 10px;
   z-index: 2;
 }
 .trombi-background .polaroid-container .polaroid-frame {
@@ -11029,6 +11101,9 @@ nav {
   padding: 6px 36px;
   height: 75px;
 }
+.create-action:hover {
+  color: #5F5F5F;
+}
 
 .action-filter-button {
   border: none;
@@ -11062,6 +11137,9 @@ nav {
   outline: none;
 }
 
+.method-btn {
+  border: none;
+}
 .method-btn a {
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -11125,6 +11203,7 @@ nav {
     align-items: stretch;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 40px 0 15px 0;
   }
 
   .container-btn-method {
@@ -11134,6 +11213,7 @@ nav {
   }
   .container-btn-method .method-btn {
     margin-left: 90px;
+    border: none;
   }
 
   .container-color-method {
@@ -11349,7 +11429,7 @@ nav {
     color: #FDEE6E;
   }
 }
-/* METHOD FORMS */
+/* METHOD FORMS MOBILE VIEW*/
 .methodForm-container {
   color: #5F5F5F;
   font-family: "Montserrat", sans-serif;
@@ -11368,6 +11448,19 @@ nav {
   margin-top: 10px;
 }
 
+/* METHOD FORMS DESKTOP VIEW*/
+@media all and (min-width: 769px) {
+  #method_contact {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 240px;
+    overflow: auto;
+  }
+  #method_contact .form-check {
+    margin-left: 20px;
+  }
+}
 .bloc_page_profile {
   width: 100%;
 }
@@ -11418,19 +11511,19 @@ nav {
   position: relative;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .profile-img {
-  width: 70%;
+  width: 50%;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .profile-yellow-frame-bottom {
   height: 50px;
   position: absolute;
-  bottom: 15px;
-  right: 65px;
+  bottom: 10px;
+  right: 10px;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .profile-yellow-frame-top {
   height: 50px;
   position: absolute;
-  top: 15px;
-  left: 65px;
+  top: 10px;
+  left: 10px;
 }
 .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .rotation180 {
   -webkit-transform: rotate(180deg);
@@ -11618,6 +11711,7 @@ nav {
   min-width: 50px;
   background-color: #5AAFAA;
   border-radius: 50%;
+  margin-right: 5px;
 }
 .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .container-circle-green-1 h5 {
   font-family: "Montserrat", sans-serif;
@@ -11635,7 +11729,7 @@ nav {
   min-width: 50px;
   background-color: #FDEE6E;
   border-radius: 50%;
-  margin: 8px 0 8px 0;
+  margin: 8px 5px 8px 0;
 }
 .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .container-circle-yellow h5 {
   font-family: "Montserrat", sans-serif;
@@ -11658,6 +11752,7 @@ nav {
   min-width: 50px;
   background-color: #5AAFAA;
   border-radius: 50%;
+  margin-right: 5px;
 }
 .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .yellow-line .container-circle-green-2 h5 {
   font-family: "Montserrat", sans-serif;
@@ -11772,7 +11867,7 @@ nav {
   display: none;
 }
 
-@media all and (max-width: 760px) {
+@media all and (max-width: 829px) {
   .event-form-label {
     text-align: center;
   }
@@ -11802,7 +11897,8 @@ nav {
     top: -8px;
     width: 0;
     z-index: 2;
-    right: 147px;
+    left: 50%;
+    margin-left: -20px;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-bottom: 30px solid #5F5F5F;
@@ -11955,15 +12051,15 @@ nav {
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .profile-yellow-frame-bottom {
     height: 75px;
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: -5px;
+    right: -5px;
     max-width: 65%;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .profile-yellow-frame-top {
     height: 75px;
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: -5px;
+    left: -5px;
     max-width: 65%;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-img .container-img-frame .rotation180 {
@@ -11996,6 +12092,7 @@ nav {
     top: 10px;
     height: 70px;
     display: block;
+    z-index: 2;
   }
   .bloc_page_profile .container-profile .container-card-img-infos .container-profile-infos .entry-date {
     height: 50px;
@@ -12174,6 +12271,7 @@ nav {
     min-width: 75px;
     background-color: #5AAFAA;
     border-radius: 50%;
+    margin-right: 5px;
   }
   .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .container-circle-green-1 h5 {
     font-family: "Montserrat", sans-serif;
@@ -12191,7 +12289,7 @@ nav {
     min-width: 75px;
     background-color: #FDEE6E;
     border-radius: 50%;
-    margin: 8px 0 8px 0;
+    margin: 8px 5px 8px 0;
   }
   .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .container-circle-yellow h5 {
     font-family: "Montserrat", sans-serif;
@@ -12214,6 +12312,7 @@ nav {
     min-width: 75px;
     background-color: #5AAFAA;
     border-radius: 50%;
+    margin-right: 5px;
   }
   .bloc_page_profile .container-profile .container-green-skills .green-skills-left .circles .yellow-line .container-circle-green-2 h5 {
     font-family: "Montserrat", sans-serif;
@@ -12238,7 +12337,8 @@ nav {
     height: 325px;
     z-index: 1;
   }
-
+}
+@media all and (min-width: 830px) {
   /* DESKTOP DISPLAY OF TIMELINE PAGE */
   .event-green-background .event-title-container .event-paint {
     left: 25px;
@@ -12254,6 +12354,7 @@ nav {
   }
   .event-green-background .event-white-background .timeline {
     overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
     text-align: center;
     height: 510px;
@@ -12264,7 +12365,7 @@ nav {
     position: absolute;
     bottom: 326px;
     width: 0;
-    z-index: 1;
+    z-index: 2;
     right: 0;
     border: medium solid #5F5F5F;
     border-width: 30px 0 30px 50px;
