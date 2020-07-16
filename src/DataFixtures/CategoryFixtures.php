@@ -10,7 +10,6 @@ use Doctrine\Persistence\ObjectManager;
 class CategoryFixtures extends Fixture
 {
     const CATEGORIES = [
-        'Autre',
         'Site internet et carte interactive',
         'Communication extérieure',
         'Guide',

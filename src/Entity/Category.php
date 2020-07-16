@@ -22,16 +22,16 @@ class Category
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $Name;
+    private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Method::class, mappedBy="category", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Method::class, mappedBy="category")
      */
-    private $method;
+    private $methods;
 
     public function __construct()
     {
-        $this->method = new ArrayCollection();
+        $this->methods = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,12 +41,12 @@ class Category
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $name): self
     {
-        $this->Name = $name;
+        $this->name = $name;
 
         return $this;
     }
@@ -56,29 +56,37 @@ class Category
      */
     public function getMethod(): Collection
     {
-        return $this->method;
+        return $this->methods;
     }
 
-    public function addMethod(Method $method): self
+    public function addMethod(Method $methods): self
     {
-        if (!$this->method->contains($method)) {
-            $this->method[] = $method;
-            $method->setCategory($this);
+        if (!$this->methods->contains($methods)) {
+            $this->methods[] = $methods;
+            $methods->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeMethod(Method $method): self
+    public function removeMethod(Method $methods): self
     {
-        if ($this->method->contains($method)) {
-            $this->method->removeElement($method);
+        if ($this->methods->contains($methods)) {
+            $this->methods->removeElement($methods);
             // set the owning side to null (unless already changed)
-            if ($method->getCategory() === $this) {
-                $method->setCategory(null);
+            if ($methods->getCategory() === $this) {
+                $methods->setCategory(null);
             }
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Method[]
+     */
+    public function getMethods(): Collection
+    {
+        return $this->methods;
     }
 }
