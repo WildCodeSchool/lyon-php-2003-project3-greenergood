@@ -25,7 +25,7 @@ class Category
     private $Name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Method::class, mappedBy="category", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Method::class, mappedBy="category")
      */
     private $method;
 

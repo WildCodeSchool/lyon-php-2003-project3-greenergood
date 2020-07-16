@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Method;
 use App\Entity\User;
 use App\Form\CategoryType;
 use App\Form\EditEmailType;
@@ -12,6 +13,7 @@ use App\Form\RegistrationFormType;
 use App\Form\UserType;
 use App\Repository\EventRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\MethodRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;

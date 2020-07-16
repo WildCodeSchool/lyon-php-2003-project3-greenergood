@@ -95,6 +95,7 @@ class Method
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;
 
