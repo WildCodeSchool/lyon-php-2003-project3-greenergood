@@ -74,7 +74,7 @@ class Method
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $author;
 
@@ -95,6 +95,7 @@ class Method
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;
 
@@ -224,7 +225,7 @@ class Method
         return $this;
     }
 
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }

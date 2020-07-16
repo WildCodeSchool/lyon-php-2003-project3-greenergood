@@ -10426,6 +10426,7 @@ nav {
   justify-content: center;
   border-radius: 15px 15px 0 0;
   width: 160px;
+  text-align: center;
 }
 
 .nav-link.nav-link-tab.plus {
@@ -10751,6 +10752,15 @@ nav {
   overflow: auto;
 }
 
+@media only screen and (max-width: 768px) {
+  #team_users {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+    overflow: hidden;
+  }
+}
 /* FOOTER */
 .footer {
   font-family: "Montserrat", sans-serif;
@@ -10999,7 +11009,7 @@ nav {
   color: #5F5F5F;
 }
 .trombi-background .polaroid-container .polaroid-frame .polaroid-picture {
-  width: 300px;
+  width: 285px;
   height: 300px;
   margin-bottom: 20px;
   background-color: #5F5F5F;
@@ -12484,7 +12494,7 @@ nav {
     position: absolute;
     bottom: 309px;
     width: 0;
-    z-index: 1;
+    z-index: 2;
     right: 0;
     border: medium solid #5F5F5F;
     border-width: 30px 0 30px 50px;

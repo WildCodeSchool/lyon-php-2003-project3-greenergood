@@ -16,7 +16,7 @@
         <div class="dropdown mobile-btn-method">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% if categories|length <= 1 %}Catégorie{% else %}Catégories{% endif %}
+                Catégories
             </button>
             <div class="nav-item dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="nav">
@@ -36,7 +36,7 @@
             {% for category in categories %}
                 <li class="nav-item">
                     <a class="nav-link nav-link-tab {{ loop.first ? 'active' }}" id="nav-home-tab" data-toggle="tab"
-                       href="#category_{{ category.id }}" role="tab" aria-controls="nav-home"
+                       href="#category_{{ loop.index }}" role="tab" aria-controls="nav-home"
                        aria-selected="true">{{ category.name }}</a>
                 </li>
             {% endfor %}
@@ -51,33 +51,29 @@
         </ul>
         <div class="tab-content" id="nav-tabContent">
             {% for category in categories %}
-                <div class="tab-pane fade {{ loop.first ? 'show active' }}" id="category_{{ category.id }}"
+                <div class="tab-pane fade {{ loop.first ? 'show active' }}" id="category_{{ loop.index }}"
                      role="tabpanel"
                      aria-labelledby="nav-home-tab">
                     <div class="container-card-method container-tabs">
-                        {% for method in methods %}
-                            {% if method.category.id == category.id and (method.activated == true) or (is_granted('ROLE_ADMIN')) %}
+                        {% for method in category.methods %}
+                            {% if method.activated == true or is_granted('ROLE_ADMIN') %}
                                 <div class="card cardmethod">
                                     <div class="card-body">
                                         <div class="card-head">
                                             <a href="{{ path('method_show', {'id': method.id}) }}">
-                                                <h5 class="{% if method.activated == false %} deactivated {% else %} card-title {% endif %}">{{ method.name }} {% if method.activated == false %} - Désactivée {% endif %}</h5>
+                                                <h5 class="card-title">{{ method.name }}</h5>
                                             </a>
                                             <div class="dropup dropup-method">
                                                 <div class="threeDots" data-toggle="dropdown"
                                                      aria-haspopup="true" aria-expanded="false">
                                                 </div>
-                                                <div class="dropdown-menu menu-method"
-                                                     aria-labelledby="dropdownMenuButton">
-                                                    <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                                                    <a class="pipe-link-method"
-                                                       href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
-                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                {% if is_granted('ROLE_ADMIN') %}
                                                     <div class="dropdown-menu menu-method menu-method-admin"
                                                          aria-labelledby="dropdownMenuButton">
                                                         <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
                                                         <a class="pipe-link-method"
                                                            href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+
                                                         {% if method.activated == true %}
                                                             <a class="pipe-link-method act-width"
                                                                href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
@@ -86,27 +82,23 @@
                                                                href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
                                                         {% endif %}
                                                     </div>
-                                                    {% else %}
-                                                        <div class="dropdown-menu menu-method menu-method-user"
-                                                             aria-labelledby="dropdownMenuButton">
-                                                            <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                                                            <a class="pipe-link-method"
-                                                               href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
-                                                        </div>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                </div>
+                                                {% else %}
+                                                    <div class="dropdown-menu menu-method menu-method-user"
+                                                         aria-labelledby="dropdownMenuButton">
+                                                        <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                                        <a class="pipe-link-method"
+                                                           href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+
                                             </div>
                                         </div>
-                                        <img class="card-img"
-                                             {% if method.picture != null %}
-                                                src="{{ method.picture }}"
-                                             {% else %}
-                                                 src="{{ asset('img/logo_TGG_ombre.png') }}"
-                                             {% endif %}
-                                             alt="Card image cap">
                                     </div>
-                                {% endif %}
+                                    <img class="card-img"
+                                         src="{{ asset(method.picture|default('img/logo_TGG_ombre.png')) }}"
+                                         alt="Card image cap">
+                                </div>
                             {% endif %}
                         {% endfor %}
                     </div>
