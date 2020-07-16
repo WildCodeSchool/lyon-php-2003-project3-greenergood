@@ -56,13 +56,7 @@
                     <h1>{{ method.name }}</h1>
                 </div>
             </div>
-            <img class="method-image"
-                    {% if method.picture != null %}
-                src="{{ method.picture }}"
-            {% else %}
-                src="{{ asset('img/logo_TGG_ombre.png') }}"
-
-                    {% endif %}>
+            <img class="method-image" src="{{ asset(method.picture)|default('img/logo_TGG_ombre.png') }}" alt="Logo TGG">
         </div>
     </div>
     <div class="row method-infos p-2">
