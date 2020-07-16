@@ -23,7 +23,7 @@
                     {% for category in categories %}
                         <a class="nav-link nav-link-tab-mobile {{ loop.first ? 'active' }}" id="nav-home-tab"
                            data-toggle="tab"
-                           href="#category_{{ category.id }}" role="tab" aria-controls="nav-home"
+                           href="#category_{{ loop.index }}" role="tab" aria-controls="nav-home"
                            aria-selected="true">{{ category.name }}</a>
                     {% endfor %}
                     <a class="plus-mobile" href="{{ path('category_new') }}" aria-controls="nav-home"
