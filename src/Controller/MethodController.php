@@ -103,7 +103,7 @@ class MethodController extends AbstractController
 
             $this->addFlash('success', "La fiche méthode a été modifiée avec succès");
 
-            return $this->redirectToRoute('method_index');
+            return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
         }
 
         return $this->render('method/edit.html.twig', [
@@ -114,6 +114,9 @@ class MethodController extends AbstractController
 
     /**
      * @Route("/{id}/duplicate", name="method_duplicate", methods={"GET","POST"})
+     * @param Request $request
+     * @param Method $method
+     * @return Response
      */
     public function duplicate(Request $request, Method $method): Response
     {
@@ -129,7 +132,7 @@ class MethodController extends AbstractController
 
             $this->addFlash('success', "La fiche méthode a été créée avec succès");
 
-            return $this->redirectToRoute('method_index');
+            return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
         }
 
         return $this->render('method/duplicate.html.twig', [
