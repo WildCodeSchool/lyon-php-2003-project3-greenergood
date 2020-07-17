@@ -82,10 +82,8 @@ class MethodController extends AbstractController
      */
     public function show(Method $method): Response
     {
-        $category = $method->getCategory();
         return $this->render('method/show.html.twig', [
-            'method' => $method,
-            'category' => $category,
+            'method' => $method
         ]);
     }
 

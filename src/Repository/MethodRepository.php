@@ -23,9 +23,9 @@ class MethodRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('m');
         return $qb
-            ->where($qb->expr()->orX(
+            ->where(
                 $qb->expr()->like('m.name', ':search')
-            ))
+            )
             ->setParameter('search', '%' . $search . '%')
             ->getQuery()
             ->getResult();
