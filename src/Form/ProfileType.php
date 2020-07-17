@@ -18,8 +18,8 @@ class ProfileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class, ['label' => "Prénom *"])
-            ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
+            ->add('firstname', TextType::class, ['label' => "Prénom *", 'empty_data' => ''])
+            ->add('lastname', TextType::class, ['label' => "Nom de famille *", 'empty_data' => ''])
             ->add('phone', TelType::class, [
                 'label' => "Numéro de téléphone *",
                 'required' => true,
