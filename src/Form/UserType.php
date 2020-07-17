@@ -23,7 +23,7 @@ class UserType extends AbstractType
     public function emailForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, ['label' => "E-mail *"]);
+            ->add('email', EmailType::class, ['label' => "E-mail *", 'empty_data' => '']);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -37,8 +37,8 @@ class UserType extends AbstractType
                 ],
                 'label' => "Role *"
             ])
-            ->add('firstname', TextType::class, ['label' => "Prénom *"])
-            ->add('lastname', TextType::class, ['label' => "Nom de famille *"])
+            ->add('firstname', TextType::class, ['label' => "Prénom *", 'empty_data' => ''])
+            ->add('lastname', TextType::class, ['label' => "Nom de famille *", 'empty_data' => ''])
             ->add('fonction', TextType::class, ['label' => "Fonction", 'required' => false])
             ->add('entry_date', DateType::class, [
                 'label' => "Date de début",

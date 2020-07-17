@@ -19,7 +19,7 @@ class MethodType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de la méthode *"])
+            ->add('name', null, ['label' => "Nom de la méthode *", 'empty_data' => ''])
             ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
             ->add('category', EntityType::class, [
                 'label' => "Catégorie *",
@@ -33,8 +33,8 @@ class MethodType extends AbstractType
                 'multiple' => false,
                 'by_reference'=> true,
                 ])
-            ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
-            ->add('content', CKEditorType::class, ['label' => "Procédure *"])
+            ->add('prerequisites', CKEditorType::class, ['label' => "Données *", 'empty_data' => ''])
+            ->add('content', CKEditorType::class, ['label' => "Procédure *", 'empty_data' => ''])
             ->add('objective1', null, ['label' => "Objectif 1 :"])
             ->add('objective2', null, ['label' => "Objectif 2 :"])
             ->add('objective3', null, ['label' => "Objectif 3 :"])
