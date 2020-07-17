@@ -70,6 +70,7 @@ class Method
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $picture;
 
