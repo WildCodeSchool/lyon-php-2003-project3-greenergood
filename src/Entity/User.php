@@ -32,6 +32,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email(message="Veuillez rentrer une adresse mail valide")
      * @Assert\Length(max="180", allowEmptyString="false")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $email;
 
@@ -49,12 +50,14 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Length(max="100", allowEmptyString="false", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Length(max="100", allowEmptyString="false", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $lastname;
 

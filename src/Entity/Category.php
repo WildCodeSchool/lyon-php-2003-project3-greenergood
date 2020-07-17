@@ -23,6 +23,7 @@ class Category
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\Length(max="100", maxMessage="Ce champ est trop long", allowEmptyString="false")
+     * @Assert\NotBlank(message="Le nom ne devrait pas être vide")
      */
     private $name;
 
