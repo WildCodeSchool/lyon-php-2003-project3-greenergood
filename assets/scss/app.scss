@@ -146,6 +146,16 @@ h2 {
     }
 }
 
+//LOGIN FORM BUTTON DESKTOP VIEW
+
+.container-btn-login {
+  @include flexCenter(column);
+
+    a {
+        margin-bottom: 10px;
+    }
+}
+
 /* Glow */
 .hvr-glow {
     vertical-align: middle;
