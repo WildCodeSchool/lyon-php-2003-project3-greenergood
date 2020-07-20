@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connectez vous{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <form method="post">
+    <div class="container">
+        <form method="post" class="col-md-6 offset-md-3">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -15,7 +15,7 @@
                 </div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal greenOnWhite">Connectez-vous</h1>
+            <h1 class="h3 mb-3 font-weight-normal greenOnWhite ">Connectez-vous</h1>
             <label for="inputEmail">E-mail</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
                    autofocus>
@@ -32,10 +32,10 @@
                     </label>
                 </div>
 
-            <br><button class="btn form-button" type="submit">
+            <br><button class="btn form-button col-md-6 offset-md-3" type="submit">
                 Connexion
             </button>
         </form>
-        <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+        <a href="{{ path('app_forgot_password_request') }}" class="offset-md-3">Mot de passe oublié</a>
     </div>
 {% endblock %}
