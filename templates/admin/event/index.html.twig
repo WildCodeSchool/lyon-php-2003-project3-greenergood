@@ -29,12 +29,12 @@
                 <td>{{ event.target }}</td>
                 <td>
                     {{ include('admin/event/_delete_form.html.twig') }}
-                    <a href="{{ path('admin_event_edit', {'id': event.id}) }}">edit</a>
+                    <a href="{{ path('admin_event_edit', {'id': event.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun évènement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
