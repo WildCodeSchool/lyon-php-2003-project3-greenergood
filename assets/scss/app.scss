@@ -146,13 +146,30 @@ h2 {
     }
 }
 
-//LOGIN FORM BUTTON DESKTOP VIEW
+//LOGIN FORM BUTTON MOBILE VIEW
 
 .container-btn-login {
-  @include flexCenter(column);
+    @include flexCenter(column);
 
     a {
         margin-bottom: 10px;
+    }
+}
+
+//LOGIN FORM BUTTON DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .container-btn-login {
+        @include flexCenter(column);
+
+        button {
+            width: 22%;
+        }
+
+        a {
+            margin-bottom: 10px;
+        }
     }
 }
 
