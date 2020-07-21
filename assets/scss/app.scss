@@ -791,6 +791,14 @@ nav {
     object-fit: cover;
 }
 
+.action-pen-image {
+    height: 75px;
+    width: auto;
+    object-fit: cover;
+    background-color: $primarycolor;
+    border-radius: 50%;
+}
+
 .action-plus-image:hover {
     cursor: grab;
 }
