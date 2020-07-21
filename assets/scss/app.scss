@@ -2028,6 +2028,8 @@ nav {
                         list-style-type: none;
                         padding-inline-start: 0;
                         margin-top: 35px;
+                        height: 320px;
+                        overflow: auto;
 
                         li {
                             width: 100%;
@@ -2704,6 +2706,8 @@ nav {
                             list-style-type: none;
                             padding-inline-start: 0;
                             margin-top: 35px;
+                            height: 380px;
+                            overflow: auto;
 
                             li {
                                 width: 100%;
@@ -2714,7 +2718,7 @@ nav {
 
                             h1 {
                                 padding: 0;
-                                font-size: 2.5rem;
+                                font-size: 1.8rem;
                             }
                         }
                     }
