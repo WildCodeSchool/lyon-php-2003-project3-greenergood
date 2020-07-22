@@ -12,7 +12,9 @@
             </div>
             {% if app.user.id == user.id and is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class="container-pen-mobile">
+                    <a href="{{ path('user_edit', {'id':user.id}) }}">
                     <img class="img-pen-mobile" src="{{ asset('img/profile/pen.png') }}" alt="image stylo">
+                    </a>
                 </div>
             {% endif %}
             <div class="container-vertical-green-line-top">
@@ -23,11 +25,11 @@
                     <img class="profile-img-scotch-top" src="{{ asset('img/profile/fiche_benevole_scotch.png') }}"
                          alt="Morceau de scotch">
                     <div class="container-img-frame">
-                        {% if user.userPicture %}
+
                             <img class="profile-img"
-                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('thumb') }}"
+                                 src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/profil_avatar_default_2.png") | imagine_filter('thumb') }}"
                                  alt="Image utilisateur">
-                        {% endif %}
+
                         <img class="profile-yellow-frame-bottom"
                              src="{{ asset('img/profile/fiche_benevole_cadre.png') }}"
                              alt="cadre jaune">
@@ -57,14 +59,20 @@
                             <div class="details container-center">
                                 <h3>COORDONNÉES</h3>
                                 <p>{{ user.email }}</p>
+                                <p>{{ user.phone }}</p>
                                 <p>
+                                    {% if user.facebook %}
                                     Facebook:
-                                    <a href="{{ user.facebook }}" onclick="window.open(this.href); return false;">
-                                        {{ user.firstname }} {{ user.lastname }}
-                                    </a> | Linkedin:
-                                    <a href="{{ user.linkedin }}" onclick="window.open(this.href); return false;">
+                                    <a href="{{ user.facebook }}" target="_blank">
                                         {{ user.firstname }} {{ user.lastname }}
                                     </a>
+                                    {% endif %}
+                                    {% if user.linkedin %}
+                                    <br> Linkedin:
+                                    <a href="{{ user.linkedin }}" target="_blank">
+                                        {{ user.firstname }} {{ user.lastname }}
+                                    </a>
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
@@ -90,7 +98,14 @@
                             {% for team in user.teams %}
                                 <li>
                                     <h1>
-                                        {{ team.action.name }}
+                                        <a href="{{ path('action_show', {'id': team.action.id}) }}">{{ team.action.name }}</a>
+                                    </h1>
+                                </li>
+                            {% endfor %}
+                            {% for method in user.methods %}
+                                <li>
+                                    <h1>
+                                        <a href="{{ path('method_show', {'id': method.id}) }}">{{ method.name }}</a>
                                     </h1>
                                 </li>
                             {% endfor %}
@@ -128,4 +143,3 @@
     </div>
 
 {% endblock %}
-

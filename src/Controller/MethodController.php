@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Entity\User;
 use App\Form\ContactType;
 use App\Form\MethodType;
+use App\Repository\CategoryRepository;
 use App\Repository\MethodRepository;
 use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -23,12 +25,22 @@ class MethodController extends AbstractController
     /**
      * @Route("/", name="method_index", methods={"GET"})
      * @param MethodRepository $methodRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function index(MethodRepository $methodRepository): Response
+    public function index(MethodRepository $methodRepository, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
+        $other = new Category();
+        $other->setName('Autre');
+        foreach ($methodRepository->findBy(['category' => null]) as $method) {
+            $other->addMethod($method);
+        }
+        $categories[] = $other;
+
         return $this->render('method/index.html.twig', [
-            'methods' => $methodRepository->findAll(),
+            'categories' => $categories
         ]);
     }
 
@@ -36,6 +48,7 @@ class MethodController extends AbstractController
      * @Route("/new", name="method_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
+     * @throws \Exception
      */
     public function new(Request $request): Response
     {
@@ -47,9 +60,6 @@ class MethodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $method->setAuthor($this->getUser());
 
-            if (!$method->getPicture()) {
-                $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
-            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($method);
             $entityManager->flush();
@@ -73,7 +83,7 @@ class MethodController extends AbstractController
     public function show(Method $method): Response
     {
         return $this->render('method/show.html.twig', [
-            'method' => $method,
+            'method' => $method
         ]);
     }
 
@@ -93,7 +103,7 @@ class MethodController extends AbstractController
 
             $this->addFlash('success', "La fiche méthode a été modifiée avec succès");
 
-            return $this->redirectToRoute('method_index');
+            return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
         }
 
         return $this->render('method/edit.html.twig', [
@@ -104,6 +114,9 @@ class MethodController extends AbstractController
 
     /**
      * @Route("/{id}/duplicate", name="method_duplicate", methods={"GET","POST"})
+     * @param Request $request
+     * @param Method $method
+     * @return Response
      */
     public function duplicate(Request $request, Method $method): Response
     {
@@ -119,7 +132,7 @@ class MethodController extends AbstractController
 
             $this->addFlash('success', "La fiche méthode a été créée avec succès");
 
-            return $this->redirectToRoute('method_index');
+            return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
         }
 
         return $this->render('method/duplicate.html.twig', [

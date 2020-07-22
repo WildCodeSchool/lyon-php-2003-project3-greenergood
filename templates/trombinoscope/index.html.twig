@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="trombi-background">
+        <div class="trombi-grey-line"></div>
         <h1 class="whiteOnGreen trombi-title">L'équipe</h1>
 
         <div class="polaroids-display">
@@ -16,9 +17,13 @@
                     <img class="clip" src="{{ asset("/img/trombinoscope/clip.png") }}">
                     <li>
                         <a class="polaroid-frame" href="{{ path('user_show', {'id': user.id}) }}">
-                            <img class="polaroid-picture" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar.png") | imagine_filter('trombi_square') }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
-                            <div>{{ user.firstname }} {{ user.lastname }},</div>
-                            <div>{{ user.fonction }}</div>
+                            <img class="polaroid-picture" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar_noborder.png") | imagine_filter('trombi_square') }}" alt="Photo de {{ user.firstname }} {{ user.lastname}}">
+                            <div>{{ user.firstname }} {{ user.lastname }}</div>
+                            {% if user.fonction != null %}
+                                <div>{{ user.fonction }}</div>
+                            {% else %}
+                                <br>
+                            {% endif %}
                         </a>
                     </li>
                 </div>

@@ -5,35 +5,51 @@
         <img class="img-leaf-palm rotation110" src="{{ asset('img/index/index_palme_verte_bleue.png') }}"
              alt="Feuille palme verte et bleue">
         <img class="img-leaf-blue" src="{{ asset('img/index/index_feuille_bleue.png') }}" alt="Feuille palme bleue">
-        <img class="img-leaf-green" src="{{ asset('img/index/index_feuille_verte.png') }}" alt="Feuille palme verte">
+        <img class="img-leaf-green" src="{{ asset('img/index/index_feuille_verte.png') }}"
+             alt="Feuille palme verte">
         <img class="img-leaf-palm-tall " src="{{ asset('img/index/index_palme_verte_bleue.png') }}"
              alt="Feuille palme verte et bleue">
-        <h1>Index</h1>
-
+        {% block titleIndex %}<h1>Index</h1>{% endblock %}
         <div class="index-container">
-            <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
-            <ul>
-                {% for action in actions %}
-                    <li>
-                        <a href="{{ path('action_show', {'id':action.id}) }}">
-                            {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
-            <ul>
-                {% for method in methods %}
-                    <li><a href="{{ path('method_show', {'id': method.id}) }}">{{ method.name }}</a></li>
-                {% endfor %}
-            </ul>
-            <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
-            <ul>
-                {% for user in users %}
-                    <li><a href="{{ path('admin_user_show', {'id':user.id}) }}">{{ user.lastname }}  {{ user.firstname }}</a></li>
-
-                {% endfor %}
-            </ul>
+            {% block index %}
+            <div class="container-list-index">
+                <h4><a href="{{ path('action_index') }}">Fiches actions</a></h4>
+                <ul>
+                    {% for action in actions %}
+                        {% if action.activated == true %}
+                            <li>
+                                <a href="{{ path('action_show', {'id':action.id}) }}">
+                                    {{ action.name }} : {{ action.startDate|date('d-m-Y') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <h4><a href="{{ path('method_index') }}">Fiches méthodes</a></h4>
+                <ul>
+                    {% for category in categories %}
+                        <h3 id="methodTitle">{{ category.name }}</h3>
+                        {% for method in category.methods %}
+                            {% if method.activated == true %}
+                                    <li>
+                                        <a href="{{ path('method_show', {'id': method.id}) }}">&emsp;&emsp;>
+                                            {{ method.name }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+                <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
+                <ul>
+                    {% for user in users %}
+                        <li>
+                            <a href="{{ path('user_show', {'id':user.id}) }}">{{ user.lastname }}  {{ user.firstname }}</a>
+                        </li>
+                    {% endfor %}
+                    {% endblock %}
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}

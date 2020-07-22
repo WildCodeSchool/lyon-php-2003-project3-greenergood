@@ -47,6 +47,7 @@ class Method
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $objective1;
 
@@ -69,22 +70,25 @@ class Method
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $picture;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $author;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $objective2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Le nom ne devrait pas dépasser {{ limit }} caractères")
      */
     private $objective3;
 
@@ -92,6 +96,12 @@ class Method
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="methods")
      */
     private $contact;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    private $category;
 
     public function __construct()
     {
@@ -219,7 +229,7 @@ class Method
         return $this;
     }
 
-    public function getAuthor(): User
+    public function getAuthor(): ?User
     {
         return $this->author;
     }
@@ -261,6 +271,7 @@ class Method
         $method->setName($this->getName());
         $method->setCreatedAt(new DateTime('now'));
         $method->setPrerequisites($this->getPrerequisites());
+        $method->setCategory($this->getCategory());
         $method->setContent($this->getContent());
         $method->setObjective1($this->getObjective1());
         $method->setObjective2($this->getObjective2());
@@ -297,6 +308,17 @@ class Method
         if ($this->contact->contains($contact)) {
             $this->contact->removeElement($contact);
         }
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

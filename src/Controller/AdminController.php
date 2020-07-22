@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\User;
+use App\Form\CategoryType;
 use App\Form\EditEmailType;
 use App\Form\EditPasswordType;
+use App\Form\EventType;
 use App\Form\RegistrationFormType;
 use App\Form\UserType;
+use App\Repository\EventRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -24,6 +29,7 @@ use App\Services\SendPassword;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use App\Entity\Event;
 
 /**
  * @Route("/admin")
@@ -146,17 +152,138 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /** Categories */
+
     /**
-     * @Route("/users/{id}", name="admin_user_delete", methods={"DELETE"})
+     * @Route("/category/", name="admin_category_index", methods={"GET"})
+     * @param CategoryRepository $categoryRepository
+     * @return Response
      */
-    public function deleteUser(Request $request, User $user): Response
+    public function indexCategory(CategoryRepository $categoryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+        return $this->render('admin/category/index.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="admin_category_show", methods={"GET"})
+     * @param Category $category
+     * @return Response
+     */
+    public function showCategory(Category $category): Response
+    {
+        return $this->render('admin/category/show.html.twig', [
+            'category' => $category,
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}/edit", name="admin_category_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
+     */
+    public function editCategory(Request $request, Category $category): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_category_index');
+        }
+
+        return $this->render('admin/category/edit.html.twig', [
+            'category' => $category,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="admin_category_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
+     */
+    public function deleteCategory(Request $request, Category $category): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
+            $entityManager->remove($category);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_user_index');
+        return $this->redirectToRoute('admin_category_index');
+    }
+
+    /**
+     * @Route("/event", name="admin_event_index", methods={"GET"})
+     * @param EventRepository $eventRepository
+     * @return Response
+     */
+    public function eventIndex(EventRepository $eventRepository): Response
+    {
+        return $this->render('admin/event/index.html.twig', [
+            'events' => $eventRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/event/new", name="admin_event_new", methods={"GET","POST"})
+     */
+    public function eventNew(Request $request): Response
+    {
+        $event = new Event();
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($event);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_event_index');
+        }
+
+        return $this->render('admin/event/new.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/event/{id}/edit", name="admin_event_edit", methods={"GET","POST"})
+     */
+    public function eventEdit(Request $request, Event $event): Response
+    {
+        $form = $this->createForm(EventType::class, $event);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('admin_event_index');
+        }
+
+        return $this->render('admin/event/edit.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/event/{id}", name="admin_event_delete", methods={"DELETE"})
+     */
+    public function eventDelete(Request $request, Event $event): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($event);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_event_index');
     }
 }

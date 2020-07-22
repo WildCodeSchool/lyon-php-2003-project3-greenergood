@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "friendsofsymfony/ckeditor-bundle": "^2.2",
+        "helios-ag/fm-elfinder-bundle": "^10.0",
         "knplabs/knp-paginator-bundle": "^5.2",
         "liip/imagine-bundle": "^2.3",
         "phpmd/phpmd": "^2.6",
@@ -76,7 +77,9 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "ckeditor:install" : "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "elfinder:install": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -90,7 +93,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": "true",
             "require": "4.4.*"
         }
     }

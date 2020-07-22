@@ -20,10 +20,10 @@ class ActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de l'action *"])
-            ->add('editionNumber', null, ['label' => "N° de l'édition"])
-            ->add('actionPicture', null, ['label' => "Lien vers une photo"])
-            ->add('description', CKEditorType::class, ['label' => "Description *"])
+            ->add('name', null, ['label' => "Nom de l'action *", 'empty_data' => ''])
+            ->add('editionNumber', null, ['label' => "N° de l'édition", 'empty_data' => ''])
+            ->add('actionPicture', null, ['label' => "Lien vers une photo", 'empty_data' => ''])
+            ->add('description', CKEditorType::class, ['label' => "Description *", 'empty_data' => ''])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
                 'format' => 'dd-MM--yyyy',
@@ -35,7 +35,7 @@ class ActionType extends AbstractType
                 'format' => 'dd-MM--yyyy',
                 'required'   => false,
             ])
-            ->add('location', null, ['label' => "Lieu"])
+            ->add('location', null, ['label' => "Lieu", 'empty_data' => ''])
             ->add('content', null, ['label' => "Champ libre"])
             ->add('status', ChoiceType::class, [
                 'choices'  => [
@@ -44,7 +44,17 @@ class ActionType extends AbstractType
                     'Annulée' => 'cancelled',
                 ],
             ])
-            ->add('projectProgress', null, ['label' => "Avancement du projet"])
+            ->add('projectProgress', CKEditorType::class, ['label' => "Avancement du projet"])
+            ->add('methods', EntityType::class, [
+                'label' => 'Fiche(s) Méthode',
+                'class' => Method::class,
+                'choice_label' => function (Method $method) {
+                    return $method->getId() . ' - ' . $method->getName();
+                },
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference'=> false,
+            ])
             ->add('actionDeliverable', CollectionType::class, [
                 'entry_type' => ActionDeliverableType::class,
                 'label' => false,
@@ -66,7 +76,9 @@ class ActionType extends AbstractType
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference'=> false,
-            ]);
+            ])
+        ->add('photoBook', null, ['label' => "Album photo"])
+        ->add('video', null, ['label' => "Vidéo"]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

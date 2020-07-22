@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MethodLinkRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MethodLinkRepository::class)
@@ -19,11 +20,13 @@ class MethodLink
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $title;
 

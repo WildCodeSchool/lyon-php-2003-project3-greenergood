@@ -8,6 +8,12 @@
 
         {{ include('method/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-        {{ include('method/_delete_form.html.twig') }}
+        {% if is_granted('ROLE_ADMIN') %}
+            {% if method.activated %}
+                {{ include('method/_delete_form.html.twig') }}
+            {% else %}
+                <a class="btn form-button" href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+            {% endif %}
+        {% endif %}
     </div>
 {% endblock %}

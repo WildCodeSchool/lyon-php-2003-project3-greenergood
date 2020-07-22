@@ -19,32 +19,15 @@ class MethodRepository extends ServiceEntityRepository
         parent::__construct($registry, Method::class);
     }
 
-    // /**
-    //  * @return Method[] Returns an array of Method objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function search($search)
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('m');
+        return $qb
+            ->where(
+                $qb->expr()->like('m.name', ':search')
+            )
+            ->setParameter('search', '%' . $search . '%')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Method
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

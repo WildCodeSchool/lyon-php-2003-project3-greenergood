@@ -3,6 +3,7 @@
 {% block title %}Action index{% endblock %}
 
 {% block body %}
+<main>
     <div class="container-fluid">
 
         <h1>Nos actions</h1>
@@ -13,7 +14,20 @@
                 <a href="{{ path('action_new') }}">
                     <img class="col action-plus-image" src="{{ asset('../img/action/button_plus.png') }}" alt="Ajouter une fiche action">
                 </a>
-                <div class="col-6 create-action greenOnYellow">Créer une fiche ACTION</div>
+                <a href="{{ path('action_new') }}" class="col-6 create-action greenOnYellow">Créer une fiche ACTION</a>
+            </div>
+
+                <div class="col-sm-4 col-md-2 dropdown ml-auto d-flex align-items-end justify-content-end">
+                    <button class="btn btn-secondary dropdown-toggle action-filter-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Trier
+                    </button>
+                    <div class="dropdown-menu menu-filter" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'name'}) }}">De A à Z</a>
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'startdate'}) }}">Par date</a>
+                        <a class="dropdown-item" href="{{ path('action_filter', {'filter': 'status'}) }}">Par état</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -22,36 +36,40 @@
     <div class="container">
         <div class="row justify-content-center">
             {% for action in actions %}
-                <div class="card cardaction hvr-glow" style="width: 18rem;">
-                    <a href="{{ path('action_show', {'id': action.id}) }}">
-                        <img class="card-img-top"
-                             src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
-                            {% if action.status == "started" %}
-                                <span class="badge badge-pill badge-primary ongoing">En cours</span>
-                            {% elseif action.status == "cancelled" %}
-                                <span class="badge badge-pill badge-primary cancelled">Annulé</span>
-                            {% elseif action.status == "ended" %}
-                                <span class="badge badge-pill badge-primary over">Terminé</span>
-                            {% endif %}
-                        <div class="card-body">
-                            <p class="card-title">
-                                {{ action.startDate ? action.startDate|date('d M Y') : '' }}
-                                {% if action.endDate %}
-                                    - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                {% if (action.activated == true) or (is_granted('ROLE_ADMIN')) %}
+                    <div class="card cardaction hvr-glow" style="width: 18rem;">
+                        <a href="{{ path('action_show', {'id': action.id}) }}">
+
+                            <img class="card-img-top action-image-index"
+                                 src="{% if action.actionPicture %}{{ action.actionPicture }}{% else %}{{ asset('../images/logo.png') }}{% endif %}" alt="Image de l'action {{ action.name }}">
+                                {% if action.status == "started" %}
+                                    <span class="badge badge-pill badge-primary ongoing">En cours</span>
+                                {% elseif action.status == "cancelled" %}
+                                    <span class="badge badge-pill badge-primary cancelled">Annulé</span>
+                                {% elseif action.status == "ended" %}
+                                    <span class="badge badge-pill badge-primary over">Terminé</span>
                                 {% endif %}
-                            </p>
-                            <h2 class="greyOnWhite">{{ action.name }}</h2>
-                            <p class="card-text">
-                                {% if action.editionNumber > 1 %}
-                                    {{ action.editionNumber }}ème édition
-                                {% elseif action.editionNumber == 1 %}
-                                    {{ action.editionNumber }}ère édition
-                                {% endif %}
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                            <div class="card-body">
+                                <p class="card-title">
+                                    {{ action.startDate ? action.startDate|date('d M Y') : '' }}
+                                    {% if action.endDate %}
+                                        - {{ action.endDate ? action.endDate|date('d M Y') : '' }}
+                                    {% endif %}
+                                </p>
+                                <h2 class="greyOnWhite  {% if action.activated == false %} deactivated {% endif %}">{{ action.name }} {% if action.activated == false %} - Désactivée {% endif %}</h2>
+                                <p class="card-text">
+                                    {% if action.editionNumber > 1 %}
+                                        {{ action.editionNumber }}ème édition
+                                    {% elseif action.editionNumber == 1 %}
+                                        {{ action.editionNumber }}ère édition
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
-
+    </div>
+</main>
 {% endblock %}

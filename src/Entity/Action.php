@@ -83,7 +83,7 @@ class Action
      *     choices = { "started", "ended", "cancelled" }
      * )
      */
-    private $status = 'En cours';
+    private $status = 'started';
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -124,6 +124,16 @@ class Action
      * @Assert\Valid()
      */
     private $actionDeliverable;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoBook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $video;
 
     public function getId(): ?int
     {
@@ -381,5 +391,29 @@ class Action
         }
 
         return $action;
+    }
+
+    public function getPhotoBook(): ?string
+    {
+        return $this->photoBook;
+    }
+
+    public function setPhotoBook(?string $photoBook): self
+    {
+        $this->photoBook = $photoBook;
+
+        return $this;
+    }
+
+    public function getVideo(): ?string
+    {
+        return $this->video;
+    }
+
+    public function setVideo(?string $video): self
+    {
+        $this->video = $video;
+
+        return $this;
     }
 }

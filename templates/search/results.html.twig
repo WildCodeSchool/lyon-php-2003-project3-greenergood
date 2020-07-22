@@ -1,0 +1,37 @@
+{% extends 'index.html.twig' %}
+
+{% block titleIndex %}
+    {% if results.users or results.actions or results.methods %}
+        <h1>Résultat de votre recherche</h1>
+    {% else %}
+        <h1>Aucun Résultat</h1>
+    {% endif %}
+{% endblock %}
+
+{% block index %}
+    <div class="search-results">
+        {% if results.methods %}
+            <h2>Fiches Méthodes</h2>
+        {% endif %}
+        {% for result in results.methods %}
+            <h3 id="methodTitle">{{ result.category.name }}</h3>
+            <a href="{{ path('method_show', {'id':result.id}) }}">{{ result.name }}</a>
+        {% endfor %}
+
+        {% if results.actions %}
+            <h2>Fiches Actions</h2>
+        {% endif %}
+        {% for result in results.actions %}
+            <a href="{{ path('action_show', {'id':result.id}) }}">{{ result.name }}</a>
+        {% endfor %}
+
+        {% if results.users %}
+            <h2>Membres</h2>
+        {% endif %}
+        {% for result in results.users %}
+            <a href="{{ path('user_show', {'id':result.id}) }}">
+                {{ result.firstname }} {{ result.lastname }}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

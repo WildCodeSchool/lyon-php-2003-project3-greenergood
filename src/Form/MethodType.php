@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Method;
 use App\Entity\MethodLink;
 use App\Entity\User;
@@ -18,10 +19,22 @@ class MethodType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de la méthode *"])
+            ->add('name', null, ['label' => "Nom de la méthode *", 'empty_data' => ''])
             ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
-            ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
-            ->add('content', CKEditorType::class, ['label' => "Procédure *"])
+            ->add('category', EntityType::class, [
+                'label' => "Catégorie *",
+                'class' => Category::class,
+                'choice_label' => function (Category $category) {
+                    return $category->getId() . ' - ' . $category->getName();
+                },
+                'required' => false,
+                'placeholder' => 'Autre',
+                'expanded' => false,
+                'multiple' => false,
+                'by_reference'=> true,
+                ])
+            ->add('prerequisites', CKEditorType::class, ['label' => "Données *", 'empty_data' => ''])
+            ->add('content', CKEditorType::class, ['label' => "Procédure *", 'empty_data' => ''])
             ->add('objective1', null, ['label' => "Objectif 1 :"])
             ->add('objective2', null, ['label' => "Objectif 2 :"])
             ->add('objective3', null, ['label' => "Objectif 3 :"])
@@ -38,15 +51,14 @@ class MethodType extends AbstractType
             ])
             ->add('contact', EntityType::class, [
                 'class' => User::class,
-                'label' => "Membres",
+                'label' => "Contacts utiles",
                 'choice_label' => function ($user) {
                     return $user->getFirstname() . ' ' . $user->getLastname();
                 },
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

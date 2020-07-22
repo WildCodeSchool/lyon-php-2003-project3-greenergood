@@ -12,8 +12,8 @@ class MethodLinkType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url', null, ['label' => 'Url'])
-            ->add('title', null, ['label' => 'Titre'])
+            ->add('url', null, ['label' => 'Url', 'empty_data' => ''])
+            ->add('title', null, ['label' => 'Titre', 'empty_data' => ''])
         ;
     }
 

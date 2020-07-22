@@ -30,6 +30,20 @@ class ActionController extends AbstractController
     }
 
     /**
+     * Show all action cards filtered
+     * @Route("/filter/{filter}", name="filter", methods={"GET"}, requirements={"filter"="name|startdate|status"})
+     * @param ActionRepository $actionRepository
+     * @param string $filter
+     * @return Response
+     */
+    public function filter(ActionRepository $actionRepository, string $filter): Response
+    {
+        return $this->render('action/index.html.twig', [
+            'actions' => $actionRepository->findByFilter($filter),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -104,15 +118,14 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/deactivate", name="delete")
+     * @Route("/{id}/deactivate", name="deactivate")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function delete(Request $request, Action $action): Response
+    public function deactivate(Request $request, Action $action): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $action->getId(), $request->request->get('_token'))) {
-            $action->setActivated(false);
-            $this->getDoctrine()->getManager()->flush();
-        }
+        $action->setActivated(false);
+        $this->getDoctrine()->getManager()->flush();
+
 
         $this->addFlash('danger', "La fiche action a été désactivée avec succès");
 

@@ -12,38 +12,98 @@
             </a>
         </button>
     </div>
-    <div class="container-card-method">
-        {% for method in methods %}
-            <div class="card cardmethod">
-                <div class="card-body">
-                    <div class="card-head">
-                        <a href="{{ path('method_show', {'id': method.id}) }}">
-                            <h5 class="card-title">{{ method.name }}</h5>
-                        </a>
-                        <div class="dropup dropup-method">
-                            <div class="threeDots" data-toggle="dropdown"
-                                 aria-haspopup="true" aria-expanded="false">
-                            </div>
-                            <div class="dropdown-menu menu-method" aria-labelledby="dropdownMenuButton">
-                                <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
-                                <a class="pipe-link-method"
-                                   href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
-                                {% if is_granted('ROLE_ADMIN') %}
+    <div class="method-tabs">
+        <div class="dropdown mobile-btn-method">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Catégories
+            </button>
+            <div class="nav-item dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="nav">
+                    {% for category in categories %}
+                        <a class="nav-link nav-link-tab-mobile {{ loop.first ? 'active' }}" id="nav-home-tab"
+                           data-toggle="tab"
+                           href="#category_{{ loop.index }}" role="tab" aria-controls="nav-home"
+                           aria-selected="true">{{ category.name }}</a>
+                    {% endfor %}
+                    <a class="plus-mobile" href="{{ path('category_new') }}" aria-controls="nav-home"
+                       aria-selected="true">+</a>
+                </div>
+            </div>
+        </div>
 
-                                    {% if method.activated == true %}
-                                        <a href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
-                                    {% elseif method.activated == false %}
-                                        <a href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
-                                    {% endif %}
+        <ul class="nav nav-tabs-desktop">
+            {% for category in categories %}
+                <li class="nav-item">
+                    <a class="nav-link nav-link-tab {{ loop.first ? 'active' }}" id="nav-home-tab" data-toggle="tab"
+                       href="#category_{{ loop.index }}" role="tab" aria-controls="nav-home"
+                       aria-selected="true">{{ category.name }}</a>
+                </li>
+            {% endfor %}
 
-                                {% endif %}
-                            </div>
-                        </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link nav-link-tab plus" id="nav-home-tab"
+                       href="{{ path('category_new') }}" aria-controls="nav-home"
+                       aria-selected="true">+</a>
+                </li>
+            {% endif %}
+        </ul>
+        <div class="tab-content" id="nav-tabContent">
+            {% for category in categories %}
+                <div class="tab-pane fade {{ loop.first ? 'show active' }}" id="category_{{ loop.index }}"
+                     role="tabpanel"
+                     aria-labelledby="nav-home-tab">
+                    <div class="container-card-method container-tabs">
+                        {% for method in category.methods %}
+                            {% if method.activated == true or is_granted('ROLE_ADMIN') %}
+                                <div class="card cardmethod">
+                                    <div class="card-body">
+                                        <div class="card-head">
+                                            <a href="{{ path('method_show', {'id': method.id}) }}">
+                                                <h5 class="card-title">{{ method.name }}</h5>
+                                            </a>
+                                            <div class="dropup dropup-method">
+                                                <div class="threeDots" data-toggle="dropdown"
+                                                     aria-haspopup="true" aria-expanded="false">
+                                                </div>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <div class="dropdown-menu menu-method menu-method-admin"
+                                                         aria-labelledby="dropdownMenuButton">
+                                                        <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                                        <a class="pipe-link-method"
+                                                           href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer</a>
+
+                                                        {% if method.activated == true %}
+                                                            <a class="pipe-link-method act-width"
+                                                               href="{{ path('method_deactivate', {'id': method.id}) }}">Désactiver</a>
+                                                        {% elseif method.activated == false %}
+                                                            <a class="pipe-link-method act-width"
+                                                               href="{{ path('method_activate', {'id': method.id}) }}">Activer</a>
+                                                        {% endif %}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="dropdown-menu menu-method menu-method-user"
+                                                         aria-labelledby="dropdownMenuButton">
+                                                        <a href="{{ path('method_edit', {'id': method.id}) }}">Modifier</a>
+                                                        <a class="pipe-link-method"
+                                                           href="{{ path('method_duplicate', {'id': method.id}) }}">Dupliquer
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img class="card-img"
+                                         src="{{ asset(method.picture|default('img/logo_TGG_ombre.png')) }}"
+                                         alt="Card image cap">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
-                <img class="card-img" src="{{ method.picture }}" alt="Card image cap">
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-
 {% endblock %}
