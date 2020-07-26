@@ -27,7 +27,7 @@ class ActionType extends AbstractType
                 'required' => false,
                 'allow_delete' => false, // True to display a delete checkbox
                 'download_uri' => false, // True to display a link of the picture
-                'label' => "Photo de profil",
+                'label' => "Photo de l'action",
                 'attr' => ['placeholder' => 'Ajoutez votre photo ici']
             ])
             ->add('description', CKEditorType::class, ['label' => "Description *", 'empty_data' => ''])

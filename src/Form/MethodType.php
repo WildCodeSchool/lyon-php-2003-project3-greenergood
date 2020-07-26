@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class MethodType extends AbstractType
 {
@@ -20,7 +21,13 @@ class MethodType extends AbstractType
     {
         $builder
             ->add('name', null, ['label' => "Nom de la méthode *", 'empty_data' => ''])
-            ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
+            ->add('methodFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => false, // True to display a delete checkbox
+                'download_uri' => false, // True to display a link of the picture
+                'label' => "Photo de la méthode",
+                'attr' => ['placeholder' => 'Ajoutez votre photo ici']
+            ])
             ->add('category', EntityType::class, [
                 'label' => "Catégorie *",
                 'class' => Category::class,

@@ -56,7 +56,7 @@
                     <h1>{{ method.name }}</h1>
                 </div>
             </div>
-            <img class="method-image" src="{{ asset(method.picture|default('img/logo_TGG_ombre.png')) }}" alt="Logo TGG">
+            <img class="method-image" src="{{ vich_uploader_asset(method, 'methodFile') | default("/images/logo.png") }}" alt="Logo TGG">
         </div>
     </div>
     <div class="row method-infos p-2">

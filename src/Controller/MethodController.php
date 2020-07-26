@@ -103,6 +103,9 @@ class MethodController extends AbstractController
 
             $this->addFlash('success', "La fiche méthode a été modifiée avec succès");
 
+            // Set the pictureFile property to null to avoid serialization error
+            $method->setMethodFile(null);
+
             return $this->redirectToRoute('method_show', ['id' => $method->getId()]);
         }
 

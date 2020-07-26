@@ -10,3 +10,7 @@ vich_uploader:
                 uri_prefix: /uploads/action/picture
                 upload_destination: '%upload_directory%/action/picture'
                 namer: Vich\UploaderBundle\Naming\UniqidNamer
+        method_file:
+                uri_prefix: /uploads/method/picture
+                upload_destination: '%upload_directory%/method/picture'
+                namer: Vich\UploaderBundle\Naming\UniqidNamer

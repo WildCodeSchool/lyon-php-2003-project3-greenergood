@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                     <img class="card-img"
-                                         src="{{ asset(method.picture|default('img/logo_TGG_ombre.png')) }}"
+                                         src="{{ vich_uploader_asset(method, 'methodFile') | default("/images/logo.png") }}"
                                          alt="Card image cap">
                                 </div>
                             {% endif %}
