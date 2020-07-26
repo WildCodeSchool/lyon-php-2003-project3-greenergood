@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use \DateTime;
-use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)

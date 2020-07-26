@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ActionType extends AbstractType
 {
@@ -22,7 +23,13 @@ class ActionType extends AbstractType
         $builder
             ->add('name', null, ['label' => "Nom de l'action *", 'empty_data' => ''])
             ->add('editionNumber', null, ['label' => "N° de l'édition", 'empty_data' => ''])
-            ->add('actionPicture', null, ['label' => "Lien vers une photo", 'empty_data' => ''])
+            ->add('actionFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => false, // True to display a delete checkbox
+                'download_uri' => false, // True to display a link of the picture
+                'label' => "Photo de profil",
+                'attr' => ['placeholder' => 'Ajoutez votre photo ici']
+            ])
             ->add('description', CKEditorType::class, ['label' => "Description *", 'empty_data' => ''])
             ->add('startDate', DateType::class, [
                 'label' => "Date de début",
