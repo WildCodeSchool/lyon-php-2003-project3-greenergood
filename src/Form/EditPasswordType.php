@@ -48,6 +48,9 @@ class EditPasswordType extends AbstractType
                     ]),
                 ],
                 'label' => 'Nouveau mot de passe',
+                'attr' => [
+                    'placeholder' => '6 caractères dont : 1 caractère spécial (@$!%*?&), 1 maj, 1 min, 1 chiffre'
+                ]
             ],
             'second_options' => ['label' => 'Répéter mot de passe'],
         ]);
