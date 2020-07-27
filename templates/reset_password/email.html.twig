@@ -3,7 +3,7 @@
 <p>
     Pour réinitialiser votre mot de passe, cliquez
     <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">ici</a>
-    Ce lien expire dans {{ tokenLifetime|date('g') }} heure(s).
+    Ce lien expire dans 48 heures.
 </p>
 
 <p>

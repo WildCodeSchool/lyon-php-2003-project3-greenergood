@@ -21,7 +21,7 @@ class ActionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de l'action *", 'empty_data' => ''])
+            ->add('name', null, ['label' => "Nom de l'action *", 'required' => false, 'empty_data' => ''])
             ->add('editionNumber', null, ['label' => "N° de l'édition", 'empty_data' => ''])
             ->add('actionFile', VichFileType::class, [
                 'required' => false,
