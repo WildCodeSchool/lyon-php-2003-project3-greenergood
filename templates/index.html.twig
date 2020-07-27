@@ -40,7 +40,7 @@
                         {% endfor %}
                     {% endfor %}
                 </ul>
-                <h4><a href="{{ path('admin_user_index') }}">Fiches des membres</a></h4>
+                <h4><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('admin_user_index') }}{% else %}#{% endif %}">Fiches des membres</a></h4>
                 <ul>
                     {% for user in users %}
                         <li>

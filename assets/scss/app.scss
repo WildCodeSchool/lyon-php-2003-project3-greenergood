@@ -609,7 +609,6 @@ nav {
 // TAB SHEET METHOD MOBILE VIEW
 
 @media only screen and (max-width: 768px) {
-
     .method-tabs {
         padding: 10px;
 
@@ -623,6 +622,11 @@ nav {
                 border: none;
             }
         }
+    }
+
+    .method-cat-img {
+        display: flex;
+        justify-content: center;
     }
 
     .nav-link-tab-mobile {
@@ -1384,9 +1388,9 @@ nav {
     align-items: center;
     text-align: center;
     font-family: $titlefont;
-    font-size: 1.1em;
+    font-size: 1.5em;
     border-radius: 10px;
-    padding: 6px 36px;
+    padding: 6px 0;
     height: 75px;
 
     &:hover {
