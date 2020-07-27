@@ -11,11 +11,11 @@
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">déconnexion</a>
-                </div>
-            {% endif %}
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">déconnexion</a>
+                        </div>
+                    {% endif %}
 
                     <h1 class="h3 mb-3 font-weight-normal greenOnWhite">Connectez-vous</h1>
                     <label for="inputEmail">E-mail</label>
@@ -37,9 +37,9 @@
 
                     <br>
                     <div class="container-btn-login">
-                    <button class="btn form-button" type="submit">
-                        Connexion
-                    </button>
+                        <button class="btn form-button" type="submit">
+                            Connexion
+                        </button>
                         <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
                     </div>
                 </form>
