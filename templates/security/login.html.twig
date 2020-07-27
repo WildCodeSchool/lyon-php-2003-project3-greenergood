@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connecte-toi!{% endblock %}
 
 {% block body %}
     <div class="container h-100">
@@ -11,13 +11,12 @@
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                     {% endif %}
 
-                    {% if app.user %}
-                        <div class="mb-3">
-                            Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">déconnexion</a>
-                        </div>
-                    {% endif %}
-
-                    <h1 class="h3 mb-3 font-weight-normal greenOnWhite">Connectez-vous</h1>
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+                    <h1 class="h3 mb-3 font-weight-normal greenOnWhite">Connecte-toi!</h1>
                     <label for="inputEmail">E-mail</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
                            required
