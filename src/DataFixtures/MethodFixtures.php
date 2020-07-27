@@ -28,7 +28,6 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
         $method->setObjective1("Connaître les fonctions de base de Slack.");
         $method->setObjective2("Connaître les bonnes pratiques pour l’utilisation de Slack au sein de TGG.");
         $method->setActivated(true);
-        $method->setPicture("https://a.slack-edge.com/80588/marketing/img/meta/slack_hash_256.png");
         $method->setAuthor($this->getReference("Lucas"));
         $manager->persist($method);
 
@@ -39,7 +38,6 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
             $method->setPrerequisites($faker->sentence);
             $method->setContent($faker->text);
             $method->setActivated(true);
-            $method->setPicture("img/logo_TGG_ombre.png");
             $method->setAuthor($this->getReference("Lucas"));
             $method->setCategory($this->getReference('category_' . random_int(0, 4)));
             $manager->persist($method);
