@@ -6,10 +6,14 @@ use App\Repository\ActionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use \DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=ActionRepository::class)
+ * @Vich\Uploadable
  */
 class Action
 {
@@ -35,12 +39,21 @@ class Action
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(
-     *     max="255",
-     *     maxMessage="Le lien ne devrait pas dépasser {{ limit }} caractères",
-     * )
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $actionPicture;
+
+    /**
+     * @Vich\UploadableField(mapping="action_file", fileNameProperty="actionPicture")
+     * @var File | null
+     */
+    private $actionFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTime
+     */
+    private $updateAt;
 
     /**
      * @ORM\Column(type="text")
@@ -174,6 +187,20 @@ class Action
         $this->actionPicture = $actionPicture;
 
         return $this;
+    }
+
+    public function setActionFile(File $picture = null): Action
+    {
+        $this->actionFile = $picture;
+        if ($picture) {
+            $this->updateAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getActionFile(): ?File
+    {
+        return $this->actionFile;
     }
 
     public function getDescription(): ?string
@@ -413,6 +440,18 @@ class Action
     public function setVideo(?string $video): self
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTime
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(\DateTime $updateAt): self
+    {
+        $this->updateAt = $updateAt;
 
         return $this;
     }

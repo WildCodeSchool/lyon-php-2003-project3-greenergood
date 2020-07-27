@@ -13,7 +13,7 @@ class ActionDeliverableType extends AbstractType
     {
         $builder
             ->add('link', null, ['label' => 'Url'])
-            ->add('name', null, ['label' => 'Titre'])
+            ->add('name', null, ['label' => 'Titre', 'empty_data' => ''])
         ;
     }
 

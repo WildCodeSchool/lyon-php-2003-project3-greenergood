@@ -43,6 +43,7 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(max="100", maxMessage="Ce champ est trop long")
      */
     private $description;
 

@@ -49,9 +49,9 @@ class ActionRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('a');
         return $qb
-            ->where($qb->expr()->orX(
+            ->where(
                 $qb->expr()->like('a.name', ':search')
-            ))
+            )
             ->setParameter('search', '%' . $search . '%')
             ->getQuery()
             ->getResult();

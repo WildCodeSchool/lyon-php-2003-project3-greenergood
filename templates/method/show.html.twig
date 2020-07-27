@@ -48,7 +48,7 @@
                         <img class="method-arrow" src="{{ asset('../img/method/fiche_methode_categorie.png') }}"
                              alt="Fond vert du titre">
                         <figcaption>
-                            {% if category.name is defined %}{{ category.name }}{% else %} Autre {% endif %}
+                            {% if method.category.name is defined %}{{ method.category.name }}{% else %} Autre {% endif %}
                         </figcaption>
                     </figure>
                 </div>
@@ -56,13 +56,7 @@
                     <h1>{{ method.name }}</h1>
                 </div>
             </div>
-            <img class="method-image"
-                    {% if method.picture != null %}
-                src="{{ method.picture }}"
-            {% else %}
-                src="{{ asset('img/logo_TGG_ombre.png') }}"
-
-                    {% endif %}>
+            <img class="method-image" src="{{ vich_uploader_asset(method, 'methodFile') | default("/images/logo.png") }}" alt="Logo TGG">
         </div>
     </div>
     <div class="row method-infos p-2">

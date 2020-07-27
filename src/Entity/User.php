@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use \DateTime;
-use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -29,6 +29,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="Veuillez rentrer une adresse mail valide")
+     * @Assert\Length(max="180", allowEmptyString="false")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $email;
 
@@ -45,16 +48,21 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(max="100", allowEmptyString="false", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(max="100", allowEmptyString="false", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=45, nullable=true)
+     * @Assert\Length(max="45", maxMessage="Ce champ est trop long")
      */
     private $fonction;
 
@@ -65,6 +73,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $address;
 
@@ -75,6 +84,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $userPicture;
 
@@ -92,11 +102,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $linkedin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $facebook;
 
@@ -117,21 +129,26 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $greenSkills1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $greenSkills2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
      */
     private $greenSkills3;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\Length(max="10", allowEmptyString="false", maxMessage="Veuillez entrer un numéro à 10 chiffres")
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Le numéro de téléphone ne doit contenir que des chiffres")
      */
     private $phone;
 

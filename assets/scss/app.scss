@@ -146,6 +146,33 @@ h2 {
     }
 }
 
+//LOGIN FORM BUTTON MOBILE VIEW
+
+.container-btn-login {
+    @include flexCenter(column);
+
+    a {
+        margin-bottom: 10px;
+    }
+}
+
+//LOGIN FORM BUTTON DESKTOP VIEW
+
+@media all and (min-width: 769px) {
+
+    .container-btn-login {
+        @include flexCenter(column);
+
+        button {
+            width: 22%;
+        }
+
+        a {
+            margin-bottom: 10px;
+        }
+    }
+}
+
 /* Glow */
 .hvr-glow {
     vertical-align: middle;
@@ -764,6 +791,14 @@ nav {
     object-fit: cover;
 }
 
+.action-pen-image {
+    height: 75px;
+    width: auto;
+    object-fit: cover;
+    background-color: $primarycolor;
+    border-radius: 50%;
+}
+
 .action-plus-image:hover {
     cursor: grab;
 }
@@ -1247,6 +1282,7 @@ nav {
                 height: 300px;
                 margin-bottom: 20px;
                 background-color: $tertiarycolor;
+                border: 1.5px solid black;
             }
         }
     }
@@ -1550,30 +1586,19 @@ nav {
 }
 
 .img-leaf-palm {
-    height: 150px;
-    position: absolute;
-    right: 0;
-    top: -60px;
+    display: none;
 }
 
 .img-leaf-palm-tall {
-    height: 150px;
-    position: absolute;
-    bottom: 0;
-    left: -25px;
+    display: none;
 }
 
 .img-leaf-blue {
-    height: 150px;
-    position: absolute;
-    left: -20px;
+    display: none;
 }
 
 .img-leaf-green {
-    height: 150px;
-    position: absolute;
-    bottom: 0;
-    right: -25px;
+    display: none;
 }
 
 .rotation110 {
@@ -1649,6 +1674,7 @@ nav {
             position: absolute;
             right: 0;
             top: -140px;
+            display: block;
         }
 
         .img-leaf-palm-tall {
@@ -1656,6 +1682,7 @@ nav {
             position: absolute;
             bottom: -40px;
             left: -57px;
+            display: block;
         }
 
         .img-leaf-blue {
@@ -1663,6 +1690,7 @@ nav {
             position: absolute;
             left: -42px;
             top: -45px;
+            display: block;
         }
 
         .img-leaf-green {
@@ -1670,6 +1698,7 @@ nav {
             position: absolute;
             bottom: -50px;
             right: -40px;
+            display: block;
         }
 
         .rotation110 {
@@ -2000,6 +2029,8 @@ nav {
                         list-style-type: none;
                         padding-inline-start: 0;
                         margin-top: 35px;
+                        height: 320px;
+                        overflow: auto;
 
                         li {
                             width: 100%;
@@ -2244,6 +2275,10 @@ nav {
             }
         }
     }
+}
+
+#event_endDate {
+    height: auto;
 }
 
 @media all and (max-width: 829px) {
@@ -2672,6 +2707,8 @@ nav {
                             list-style-type: none;
                             padding-inline-start: 0;
                             margin-top: 35px;
+                            height: 380px;
+                            overflow: auto;
 
                             li {
                                 width: 100%;
@@ -2682,7 +2719,7 @@ nav {
 
                             h1 {
                                 padding: 0;
-                                font-size: 2.5rem;
+                                font-size: 1.8rem;
                             }
                         }
                     }
