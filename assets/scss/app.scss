@@ -609,7 +609,6 @@ nav {
 // TAB SHEET METHOD MOBILE VIEW
 
 @media only screen and (max-width: 768px) {
-
     .method-tabs {
         padding: 10px;
 
@@ -623,6 +622,11 @@ nav {
                 border: none;
             }
         }
+    }
+
+    .method-cat-img {
+        display: flex;
+        justify-content: center;
     }
 
     .nav-link-tab-mobile {
