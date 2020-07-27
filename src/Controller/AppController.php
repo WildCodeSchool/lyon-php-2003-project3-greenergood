@@ -25,14 +25,6 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/member", name="member_index")
-     */
-    public function memberIndex(): Response
-    {
-        return $this->render("member/index.html.twig");
-    }
-
-    /**
      * @Route("/index", name="index", methods={"GET"})
      * @param ActionRepository $actionRepository
      * @param MethodRepository $methodRepository
