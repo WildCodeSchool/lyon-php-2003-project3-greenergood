@@ -10041,6 +10041,30 @@ h2 {
   background-color: cornflowerblue;
 }
 
+.container-btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container-btn-login a {
+  margin-bottom: 10px;
+}
+
+@media all and (min-width: 769px) {
+  .container-btn-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container-btn-login button {
+    width: 22%;
+  }
+  .container-btn-login a {
+    margin-bottom: 10px;
+  }
+}
 /* Glow */
 .hvr-glow {
   vertical-align: middle;
@@ -10598,6 +10622,14 @@ nav {
   object-fit: cover;
 }
 
+.action-pen-image {
+  height: 75px;
+  width: auto;
+  object-fit: cover;
+  background-color: #5AAFAA;
+  border-radius: 50%;
+}
+
 .action-plus-image:hover {
   cursor: grab;
 }
@@ -11013,6 +11045,7 @@ nav {
   height: 300px;
   margin-bottom: 20px;
   background-color: #5F5F5F;
+  border: 1.5px solid black;
 }
 
 /* Display of trombinoscope for really small mobiles */
@@ -11290,30 +11323,19 @@ nav {
 }
 
 .img-leaf-palm {
-  height: 150px;
-  position: absolute;
-  right: 0;
-  top: -60px;
+  display: none;
 }
 
 .img-leaf-palm-tall {
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  left: -25px;
+  display: none;
 }
 
 .img-leaf-blue {
-  height: 150px;
-  position: absolute;
-  left: -20px;
+  display: none;
 }
 
 .img-leaf-green {
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  right: -25px;
+  display: none;
 }
 
 .rotation110 {
@@ -11376,24 +11398,28 @@ nav {
     position: absolute;
     right: 0;
     top: -140px;
+    display: block;
   }
   .bloc_page .img-leaf-palm-tall {
     height: 300px;
     position: absolute;
     bottom: -40px;
     left: -57px;
+    display: block;
   }
   .bloc_page .img-leaf-blue {
     height: 300px;
     position: absolute;
     left: -42px;
     top: -45px;
+    display: block;
   }
   .bloc_page .img-leaf-green {
     height: 300px;
     position: absolute;
     bottom: -50px;
     right: -40px;
+    display: block;
   }
   .bloc_page .rotation110 {
     -webkit-transform: rotate(110deg);
@@ -11674,6 +11700,8 @@ nav {
   list-style-type: none;
   padding-inline-start: 0;
   margin-top: 35px;
+  height: 320px;
+  overflow: auto;
 }
 .bloc_page_profile .container-profile .container-infos-bio-work .container-infos-work .container-work-on .list-work-on li {
   width: 100%;
@@ -11875,6 +11903,10 @@ nav {
 }
 .event-green-background .event-white-background .event-accordion .card-header .event-button-plus .hide-button {
   display: none;
+}
+
+#event_endDate {
+  height: auto;
 }
 
 @media all and (max-width: 829px) {
@@ -12234,6 +12266,8 @@ nav {
     list-style-type: none;
     padding-inline-start: 0;
     margin-top: 35px;
+    height: 380px;
+    overflow: auto;
   }
   .bloc_page_profile .container-profile .container-infos-bio-work .container-infos-work .container-work-on .list-work-on li {
     width: 100%;
@@ -12243,7 +12277,7 @@ nav {
   }
   .bloc_page_profile .container-profile .container-infos-bio-work .container-infos-work .container-work-on .list-work-on h1 {
     padding: 0;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
   .bloc_page_profile .container-profile .container-green-skills {
     display: flex;

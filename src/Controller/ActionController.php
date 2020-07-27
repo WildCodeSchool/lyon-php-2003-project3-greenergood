@@ -108,6 +108,9 @@ class ActionController extends AbstractController
 
             $this->addFlash('success', "La fiche action a été modifiée avec succès");
 
+            // Set the pictureFile property to null to avoid serialization error
+            $action->setActionFile(null);
+
             return $this->redirectToRoute('action_show', ['id' => $action->getId()]);
         }
 

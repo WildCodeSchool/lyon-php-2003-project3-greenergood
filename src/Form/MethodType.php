@@ -13,14 +13,21 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class MethodType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de la méthode *"])
-            ->add('picture', TextType::class, ['label' => "Adresse de l'image :", 'required'   => false])
+            ->add('name', null, ['label' => "Nom de la méthode *", 'empty_data' => ''])
+            ->add('methodFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => false, // True to display a delete checkbox
+                'download_uri' => false, // True to display a link of the picture
+                'label' => "Photo de la méthode",
+                'attr' => ['placeholder' => 'Ajoutez votre photo ici']
+            ])
             ->add('category', EntityType::class, [
                 'label' => "Catégorie *",
                 'class' => Category::class,
@@ -33,8 +40,8 @@ class MethodType extends AbstractType
                 'multiple' => false,
                 'by_reference'=> true,
                 ])
-            ->add('prerequisites', CKEditorType::class, ['label' => "Données *"])
-            ->add('content', CKEditorType::class, ['label' => "Procédure *"])
+            ->add('prerequisites', CKEditorType::class, ['label' => "Données *", 'empty_data' => ''])
+            ->add('content', CKEditorType::class, ['label' => "Procédure *", 'empty_data' => ''])
             ->add('objective1', null, ['label' => "Objectif 1 :"])
             ->add('objective2', null, ['label' => "Objectif 2 :"])
             ->add('objective3', null, ['label' => "Objectif 3 :"])

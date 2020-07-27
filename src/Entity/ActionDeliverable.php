@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ActionDeliverableRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ActionDeliverableRepository::class)
@@ -19,11 +20,15 @@ class ActionDeliverable
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Le nom ne devrait pas être vide")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max="255", maxMessage="Ce champ est trop long")
+     * @Assert\NotBlank(message="Le lien ne devrait pas être vide")
      */
     private $link;
 

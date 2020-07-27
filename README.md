@@ -1,6 +1,7 @@
 # The Greener Good - Gare centrale
 ### Prerequisites
 
+
 1. Check that composer is installed : https://getcomposer.org/
 2. Check that node & yarn are installed : 
     * https://nodejs.org/en/download/
@@ -13,6 +14,7 @@
 * Run `yarn install`
 * Change database infos in .env.local (line 27)
 * Change mailer DSN in .env.local (line 31)
+
 
 ## Built With
 

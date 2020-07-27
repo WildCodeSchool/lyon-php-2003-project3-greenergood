@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker;
 
 class UserFixtures extends Fixture
 {
@@ -18,6 +19,8 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $faker = Faker\Factory::create('fr_FR');
+
         $user = new User();
         $user->setEmail('youpi@thegreenergood.fr');
         $user->setRoles(['ROLE_USER']);
@@ -48,7 +51,7 @@ class UserFixtures extends Fixture
             'userpassword'
         ));
         $user->setStatus(1);
-        $user->setPhone("0000000000");
+        $user->setPhone("0778092304");
         $manager->persist($user);
 
         $user = new User();
@@ -61,7 +64,7 @@ class UserFixtures extends Fixture
             'elodie'
         ));
         $user->setStatus(1);
-        $user->setPhone("0000000000");
+        $user->setPhone("0778092304");
         $manager->persist($user);
 
         $user = new User();
@@ -94,15 +97,19 @@ class UserFixtures extends Fixture
 
         for ($i = 0; $i < 20; $i++) {
             $user = new User();
-            $user->setEmail('test.test' . $i . '@gmail.com');
-            $user->setFirstname("User$i");
-            $user->setLastname("Lastname$i");
+            $firstName = $faker->firstName;
+            $lastname = $faker->lastName;
+            $user->setEmail("$firstName.$lastname@gmail.com");
+            $user->setFirstname($firstName);
+            $user->setLastname($lastname);
+            $user->setRoles(['ROLE_USER']);
             $user->setPassword($this->passwordEncoder->encodePassword(
                 $user,
                 'userpassword'
             ));
+            $user->setFonction("Membre");
             $user->setStatus(1);
-            $user->setPhone("0000000000");
+            $user->setPhone("0778092304");
             $manager->persist($user);
             $manager->flush();
         }

@@ -29,16 +29,14 @@
                 <ul>
                     {% for category in categories %}
                         <h3 id="methodTitle">{{ category.name }}</h3>
-                        {% for method in methods %}
+                        {% for method in category.methods %}
                             {% if method.activated == true %}
-                                {% if method.category.id == category.id %}
                                     <li>
                                         <a href="{{ path('method_show', {'id': method.id}) }}">&emsp;&emsp;>
                                             {{ method.name }}
                                         </a>
                                     </li>
                                 {% endif %}
-                            {% endif %}
                         {% endfor %}
                     {% endfor %}
                 </ul>

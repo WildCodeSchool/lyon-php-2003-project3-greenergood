@@ -14,7 +14,7 @@ class TeamType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => "Nom de l'équipe"])
+            ->add('name', null, ['label' => "Nom de l'équipe", 'empty_data' => ''])
             ->add('users', EntityType::class, [
                 'class' => User::class,
                 'label' => "Membres",
