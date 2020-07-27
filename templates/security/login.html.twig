@@ -16,7 +16,11 @@
                     Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">déconnexion</a>
                 </div>
             {% endif %}
-
+                    {% for message in app.flashes('warning') %}
+                        <div class="alert alert-warning">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                     <h1 class="h3 mb-3 font-weight-normal greenOnWhite">Connectez-vous</h1>
                     <label for="inputEmail">E-mail</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
