@@ -30,9 +30,17 @@ class MethodController extends AbstractController
      */
     public function index(MethodRepository $methodRepository, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
+        $other = new Category();
+        $other->setName('Autre');
+        foreach ($methodRepository->findBy(['category' => null]) as $method) {
+            $other->addMethod($method);
+        }
+        $categories[] = $other;
+
         return $this->render('method/index.html.twig', [
-            'methods' => $methodRepository->findAll(),
-            'categories' => $categoryRepository->findBy([], ['id' => 'asc'])
+            'categories' => $categories
         ]);
     }
 
@@ -52,9 +60,6 @@ class MethodController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $method->setAuthor($this->getUser());
 
-            if (!$method->getPicture()) {
-                $method->setPicture("https://www.thegreenergood.fr/wp-content/uploads/2018/08/logo-TGG-ombre.png");
-            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($method);
             $entityManager->flush();

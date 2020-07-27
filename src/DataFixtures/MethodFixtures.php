@@ -32,7 +32,7 @@ class MethodFixtures extends Fixture implements DependentFixtureInterface
             $method->setActivated(true);
             $method->setPicture("img/logo_TGG_ombre.png");
             $method->setAuthor($this->getReference("Lucas"));
-            $method->setCategory($this->getReference('category_'.random_int(0, 5)));
+            $method->setCategory($this->getReference('category_'.random_int(0, 4)));
             $manager->persist($method);
         }
         $manager->flush();

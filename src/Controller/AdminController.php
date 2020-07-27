@@ -154,20 +154,6 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/users/{id}", name="admin_user_delete", methods={"DELETE"})
-     */
-    public function deleteUser(Request $request, User $user): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('admin_user_index');
-    }
-
     /** Categories */
 
     /**
@@ -233,7 +219,7 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_category_index');
     }
-  
+
     /**
      * @Route("/event", name="admin_event_index", methods={"GET"})
      * @param EventRepository $eventRepository

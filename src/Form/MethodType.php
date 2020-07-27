@@ -27,6 +27,8 @@ class MethodType extends AbstractType
                 'choice_label' => function (Category $category) {
                     return $category->getId() . ' - ' . $category->getName();
                 },
+                'required' => false,
+                'placeholder' => 'Autre',
                 'expanded' => false,
                 'multiple' => false,
                 'by_reference'=> true,
