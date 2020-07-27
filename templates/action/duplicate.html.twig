@@ -3,10 +3,12 @@
 {% block title %}Modifier fiche action{% endblock %}
 
 {% block body %}
-    <h1>Dupliquer fiche action</h1>
+    <div class="action-form">
+        <h1>Dupliquer fiche action</h1>
 
-    {{ include('action/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+        {{ include('action/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('action_index') }}">Retour à la liste</a>
+        <a href="{{ path('action_index') }}">Retour à la liste</a>
+    </div>
 
 {% endblock %}
