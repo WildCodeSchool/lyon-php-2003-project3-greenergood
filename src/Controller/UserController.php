@@ -74,6 +74,7 @@ class UserController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPictureFile($form->get("pictureFile")->getData());
             $this->getDoctrine()->getManager()->flush();
 
             // Set the pictureFile property to null to avoid serialization error
