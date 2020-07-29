@@ -59,6 +59,7 @@ class UserType extends AbstractType
                 'label' => "Photo de profil",
                 'attr' => ['placeholder' => 'Ajoutez votre photo ici'],
                 'download_label' => 'Importer',
+                'mapped' => false,
             ])
             ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required' => false])
             ->add('facebook', TextType::class, ['label' => "Facebook", 'required' => false])
