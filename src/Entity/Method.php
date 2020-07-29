@@ -107,7 +107,7 @@ class Method
     private $contact;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="method")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="methods")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $category;

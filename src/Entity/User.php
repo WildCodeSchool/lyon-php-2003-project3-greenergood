@@ -90,6 +90,11 @@ class User implements UserInterface
 
     /**
      * @Vich\UploadableField(mapping="picture_file", fileNameProperty="userPicture")
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     maxSizeMessage = "Les fichiers de plus de 1Mo ne sont pas autorisés",
+     *     uploadIniSizeErrorMessage = "Les fichiers de plus de 1Mo ne sont pas autorisés"
+     * )
      * @var File | null
      */
     private $pictureFile;
@@ -161,6 +166,11 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->userPicture;
     }
 
     public function getEmail()
