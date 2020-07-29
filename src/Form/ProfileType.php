@@ -5,11 +5,13 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
@@ -35,6 +37,12 @@ class ProfileType extends AbstractType
                 'label' => "Photo de profil",
                 'attr' => ['placeholder' => 'Ajoutez votre photo ici'],
                 'download_label' => 'Importer',
+                'constraints' => new File([
+                        'maxSize' => "1024k",
+                        'maxSizeMessage' => "Les fichiers de plus de 1Mo ne sont pas autorisés",
+                        'uploadIniSizeErrorMessage' => "Les fichiers de plus de 1Mo ne sont pas autorisés"
+                ]),
+                'mapped' => false,
             ])
             ->add('linkedin', TextType::class, ['label' => "LinkedIn", 'required' => false])
             ->add('facebook', TextType::class, ['label' => "Facebook", 'required' => false])

@@ -14,6 +14,7 @@
 * Run `yarn install`
 * Change database infos in .env.local (line 27)
 * Change mailer DSN in .env.local (line 31)
+* Run `yarn encore prod`
 
 
 ## Built With

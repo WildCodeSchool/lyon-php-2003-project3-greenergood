@@ -19,3 +19,7 @@ liip_imagine:
                     {
                         dim: [300, 300]
                     }
+                background:
+                    size: [300, 300]
+                    color: '#ffffff'
+                    position: center
