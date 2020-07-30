@@ -35,7 +35,7 @@ class ProfileType extends AbstractType
                 'allow_delete' => false, // True to display a delete checkbox
                 'download_uri' => false, // True to display a link of the picture
                 'label' => "Photo de profil",
-                'attr' => ['placeholder' => 'Ajoutez votre photo ici'],
+                'attr' => ['placeholder' => 'Ajoutez votre photo ici, 1Mo max'],
                 'download_label' => 'Importer',
                 'constraints' => new File([
                         'maxSize' => "1024k",
