@@ -56,3 +56,5 @@ Composer extensions
 ### Images:
 * Images are located in public/img
 * Images uploaded are located in public/uploads/
+* Images are uploaded with VichUploader bundle
+* Image display is made with liipimagine bundle
