@@ -72,7 +72,7 @@
                         <div class="contact">
                             <div class="contact-img">
                                 <img class="photo" src="{{ vich_uploader_asset(user, 'pictureFile') | default("img/default_avatar_noborder.png") | imagine_filter('thumb_square') }}">
-                                <a href="{{ path('user_show', {'id': 'id'}) }}">
+                                <a href="{{ path('user_show', {'id': user.id}) }}">
                                     <img class="circle" src="{{ asset('img/bienvenue/nouveau_membre_rond.png') }}">
                                 </a>
                             </div>
